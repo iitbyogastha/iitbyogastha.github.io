@@ -1,46 +1,451 @@
 <!DOCTYPE html>
-<html>
-<style>
-    a:link {
-        color: orange;
-    }
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Yogastha - The Wellness club of IIT Bombay</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Kreon:300,400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href="css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+    <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
-    a:visited {
-        color: orange;
+
+    <style>
+    #yogathon-img {
+        box-shadow: 0px 0px 10px black;
+        border-radius: 100px;
+    }
+    #yogathon-img:hover {
+        box-shadow: 0px 0px 5px black;
+        border-radius: 100px;
     }
     
-    #block {
-        margin: auto;
-        position: absolute;
-        top: 30%; left: 0; bottom: 0; right: 0;
+    #cyp-img {
+        box-shadow: 0px 0px 10px black;
+        border-radius: 100px;
+    }
+    #cyp-img:hover {
+        box-shadow: 0px 0px 5px black;
+        border-radius: 100px;
+    }
+    #events-img {
+        -webkit-filter: drop-shadow(2px 2px 2px #222);
+        filter: drop-shadow(2px 2px 2px #222);
+    }
+    #events-img:hover {
+        -webkit-filter: drop-shadow(5px 5px 5px #222);
+        filter: drop-shadow(5px 5px 5px #222);
+    }
+    #prayers-img {
+        -webkit-filter: drop-shadow(2px 2px 2px #222);
+        filter: drop-shadow(2px 2px 2px #222);
+    }
+    #prayers-img:hover {
+        -webkit-filter: drop-shadow(5px 5px 5px #222);
+        filter: drop-shadow(5px 5px 5px #222);
     }
     
-    button {
-        border: none;
-        color: white;
-        background-color: #4CAF50;
-        font-weight: bold;
-        padding: 10px 10px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-    button:hover {
-        background-color: #46a049;
-        box-shadow:0px 0px 15px 5px green;
-    }
-</style>
 
-<title>404</title>
-<body style="background-color:black">
-<div id=block>
-    <div style="color:white;font-size:30px;font-weight:bold;text-align:center">
-    Under maintenance!
+    </style>
+
+</head>
+<body data-spy="scroll" data-target="#navbar" data-offset="120">
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+<div id="header">
+    <div id="events-img" style="position:fixed; top:65px; right:50px; z-index:5;">
+        <a href="events.html"><img src="img/upcoming_events.png" height="60px"></a>
     </div>
-    <br/>
-    <div style="color:white;font-size:20px;font-weight:bold;text-align:center">
-    Try navigating from our <a href="/"><button>Home Page</button></a>.
+    <div id="prayers-img" style="position:fixed; top:135px; right:70px; z-index:5;">
+        <a href="prayers.html"><img src="img/prayers.png" height="60px"></a>
+    </div>
+    <!--
+    <div id="yogathon-img" style="position:fixed; top:55px; right:50px; z-index:5;">
+    <a href="/yogathon2017.html"><img src="images/suryanamaskar_poses/surya_namaskar.png" width="100px"></a>
+    </div>
+    <div id="cyp-img" style="position:fixed; top:55px; right:155px; z-index:5;">
+    <a href="/CYP2017.html"><img src="img/cyp_logo.png" width="100px"></a>
+    </div>
+    -->
+    <div class="bg-overlay"></div>
+    <div id="menu" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="ion-navicon"></i>
+                </button>
+                <a class="navbar-brand" href="#"><h2><img src="img/yogastha_logo.png" height="40px" alt=""><img
+                        src="img/yogastha_text_image.png" height="40px" alt="Yogastha"></h2></a>
+            </div><!-- navbar-header -->
+            <div id="navbar" class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#aboutus">Who We Are</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#idoy">International Day of Yoga</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#footer">Contact Us</a></li>
+
+                </ul>
+            </div><!--/.navbar-collapse -->
+        </div><!-- container -->
+    </div><!-- menu -->
+
+    <div class="center text-right">
+
+        <div class="container">
+            <div class="banner">
+                <div><font size="6"> <u>Welcome to</u> </font> <br/> <br/></div>
+                <h1 class="condensed">YOGASTHA</h1>
+            </div>
+            <div class="subtitle"><h4>Wellness Club at IIT Bombay</h4></div>
+            <br/>
+            <!-- <div id="rcorners2"> <font size="3" color="blue">Documentary on <br/> <b>History of Yoga </b></font>    </div> -->
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="text-right container hidden-xs"><a id="scrollDownArrow" href="#"><i
+                class="ion-ios7-arrow-thin-down"></i></a></div>
+        <div class="signupForm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-right">
+                        <!-- SUCCESS OR ERROR MESSAGES -->
+                        <div id="subscription-response"></div>
+                    </div>
+                </div>
+            </div><!-- container -->
+        </div><!--/signupForm-->
     </div>
 </div>
+<!-- /#header -->
+
+<div id="aboutus" class="light-wrapper">
+    <div class="container inner">
+        <!--Who We Are -->
+        <div class="row story">
+            <div class="col-sm-6">
+                <div class="col-wrapper">
+                    <img class="bottom-marged" src="img/yogastha.jpg">
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="col-wrapper">
+                    <p><span class="up-caps">Y</span>ogastha (meaning <i>"established in yoga"</i>) is IIT Bombay's
+                        Wellness Club.
+                        The club is working towards a stress-free and happy campus community using ancient powerful
+                        practices of yoga and meditation.
+                        Yogastha was officially launched on 1<sup>st</sup> International Day of Yoga (21<sup>st</sup>
+                        June 2015).
+                        Since then the club is actively conducting weekly sessions and other events.
+                        <br/>
+                        <br/>
+                        Yogastha is associated with sports council of IIT Bombay.
+
+                    <h4><b>Weekly Yoga and Meditation Sessions</b></h4>
+                    The club conducts Yoga and Meditation training cum practice sessions every week on <b>Monday</b>,
+                    <b>Wednesday</b> and <b>Friday</b> mornings.
+                    Well trained yoga practitioners from the campus lead the sessions.
+                    </p>
+                    <p>
+                        To break from the routine, we invite a professional trainer to conduct a specialized sessions
+                        once in every 2-3 weeks.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- /.services -->
+    </div>
+    <!-- /.container -->
+</div><!-- #aboutus -->
+
+<div class="signupForm">
+    <div class="row">
+        <div class="col-md-6 text-right">
+        </div>
+    </div>
+</div><!--/signupForm-->
+
+<!-- Events-->
+<div id="events" class="cyan-wrapper">
+    <div class="container inner">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="col-wrapper">
+                    <!-- <h2>History of </h2><h1 class="giant-heading">
+                        Yoga<br/>
+                    </h1> -->
+                    <!--                        <p><strong> Screening of movie</strong> - &lsquo;<em>History of Yoga - the Path of my Ancestors&rsquo; </em>
+                                                <br /> <strong> Date</strong> : 15<sup>th</sup> June<br /> Venue : FC Kohli, KRESIT <br /> Time : 6 pm- 8pm</p>
+
+                                            <p><span class="up-caps">H</span><strong>istory of Yoga</strong> - the Path of my Ancestors is a 6000 year journey into origin, evolution &amp; development of yoga. The film is an amalgamation of six years of extensive research, filming, contribution of 30 eminent scholars, 35000 kms of travel, 137 locations, records from 84 archaeological sites, 37 museums, libraries, temples &amp; shrines. The story explores the elements of yoga in Harappa civilization, Vedas , Jainism, Buddhism, Hath-Yogic practices of medieval times &amp; other peripheral doctrines. The film ends in 19th century where modern science acknowledges the potential of yoga in a new light. India's magnificent iconography, temple art, diverse culture, ancient relics, wall paintings and manuscripts unfold with wisdom of yoga in this path defining documentary.</p>-->
+                    <p>
+                    <h4>For the latest updates check our <a href="http://iitbyogastha.in/events.html">upcoming events page</a>.</h4>
+                    <h4><b>Regular sessions</b></h4>
+                    The aim of conducting free regular sessions is to inculcate basic traditional yoga practices among
+                    the campus community.
+                    In these regular sessions, the core team members themselves lead and offer training to the learners
+                    of yoga.
+                    There are no prerequisites for attending the regular sessions and anyone from the campus is welcome
+                    to join anytime.
+                    The timing and day of the session may vary depending on the other Yogastha activities.
+                    Any changes in timing is notified in the Yogastha google group and <a
+                        href="https://www.facebook.com/yogastha.iitb">facebook page</a>.
+                    <br/><br/>
+                    Generally the timings of the regular sessions are as follows:
+                    <br/>
+                    <br/>
+                    <b>Monday</b>: 6:45 - 7:45 AM <br/>
+                    <b>Wednesday</b>: 6:45 - 7:45 AM <br/>
+                    <b>Friday</b>: 6:45 - 7:45 AM <br/>
+                    </p>
+                    <p>
+                    <h4><b>Special Sessions</b></h4>
+                    The special sessions are conducted to celebrate special occasions or short yoga workshops on certain
+                    aspects significant to our campus community.
+                    One such session was the <b>Mother’s day special</b> focusing on yoga for women which had huge
+                    participation from the ladies in our campus.
+                    <br/>
+                    <br/>
+                    Further, <b>Surya namaskar</b> (sun salutation) sessions focused on Surya namaskar are conducted in
+                    preparation for the 108 surya namaskar challenge during International yoga day celebrations.
+                    Another session <b>chair yoga and neck and spinal cord</b> focused on improving the sitting posture
+                    and taught a few table top asanas which can improve our working efficiency.
+                    <br/><br/>
+                    On the occasion of <b>Teacher's day</b> (5<sup>th</sup> Sept) special session was conducted for our
+                    highly talented teachers. This session focused on asanas and pranayams which can be easily
+                    incorporated within their busy schedules and practiced inside office environment.
+
+                    </p>
+                    <p>
+                    <h4><b>Camps</b></h4>
+                    Yogastha Club in association with the Sports Council of IIT Bombay conducts camps such as <b>Summer
+                    School of Yoga</b>, <b>Power Yoga</b> and <b>Yoga Fusion</b>.
+                    In these camps, a professional yoga practitioners/teachers are invited and they train the registered
+                    participants who have enrolled in the camps with a registration fee.
+                    Recently, some advanced camps like <b>Acro Yoga</b>, <b>Gymnastics Yoga</b> and <b>Contortion
+                    Yoga</b> have also been launched.
+                    </p>
+                    <h4><b>Lectures</b></h4>
+                    Yogastha conducts <b>Lecture Series on Yoga</b> where guest lectures/talks by eminent researchers
+                    and practitioners in the field of yoga are organized to obtain detailed and well researched
+                    information about yoga and its benefits.
+                    <b>Dr. S. D. Bhalekar</b>, <b>Dr. Shikha Sharma</b>, <b>Dr. Shirley Telles</b> and <b>Dr. Ganesh
+                    Rao</b> have been our recent distinguished speakers.
+                    </p>
+                    </p>
+                    <h4><b>Others</b></h4>
+                    A special acclaimed movie, <b>History of Yoga - the Path of my Ancestors</b> was screened at IIT
+                    Bombay on 14<sup>th</sup> June 2017 just prior to the International Yoga Day.
+                    <br/><br/>
+                    And sometimes, we do go for side events like <b>tree plantation drives</b> making our campus
+                    greener; and <b>T-shirt design competition</b> for Yoga enthusiasts in campus.
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="col-wrapper">
+                    <img class="bottom-marged" src="img/gallery/5.jpg">
+                    <p></p>
+                    <img class="bottom-marged" src="img/gallery/2.jpg">
+                    <p></p>
+                    <img class="bottom-marged" src="img/gallery/3_yogathon_practice.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</div><!-- #hoy -->
+
+
+<div class="signupForm">
+    <div class="row">
+        <div class="col-md-6 text-right">
+        </div>
+    </div>
+</div><!--/signupForm-->
+
+
+<div id="idoy" class="light-wrapper">
+    <div class="container inner">
+        <!--International Day of Yoga-->
+        <div class="row story">
+            <div class="col-sm-6">
+                <div class="col-wrapper">
+                    <img class="bottom-marged" style="height: 410px; width: 600px;" src="img/cyp.png">
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="col-wrapper">
+                    <p>
+                    <h4><b>International Day of Yoga 2017</b></h4>
+                    The International Day of Yoga is celebrated on <b>21<sup>st</sup> June</b> every year.<br>
+                    In 2017, a full week of yoga from 14<sup>th</sup> to 21<sup>st</sup> June was celebrated including
+                    various yoga related activities.
+                    The activities included <b>movie screening, lecture on Yoga, practice sessions</b> for <b>Yogathon
+                    Challenge</b> and <b>Common Yoga Protocol</b> at various places in campus. More than 400 campus
+                    residents participated in various activities.
+                    </p>
+                    <p>
+                    <h4><b>International Day of Yoga 2016</b></h4>
+                    In 2016, Yogastha Club organized, a first of its kind, full <b>Yoga Week</b> culminating in the
+                    practice of <b>Common Yoga Protocol (CYP)</b> and <b>Yogathon Challenge</b> on the event day.
+                    The Common Yoga Protocol (CYP), which is issued by the AYUSH MINISTRY, was conducted so that the
+                    people could get some basic information about various <i>asanas</i> and <i>pranayama</i>.
+                    Yogathon is a challenge of doing <b>108 Suryanamaskars</b> at one go.
+                    Practice sessions were offered for both.
+                    <br/>
+                    <br/>
+                    The week to Yoga day was also marked with <b>movie screening on yoga</b> and a <b>Guest lecture</b>.
+                    Lot of enthusiastic participation was seen from the campus residents.
+                    </p>
+                    </p>
+                    <h4><b>International Day of Yoga 2015</b></h4>
+                    Yoga day of 2015 is special to Yogastha because it was officially launched on this day. Movie
+                    screening and Yogathon Challenge were organized. Director of the Institute was the Chief Guest.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- /.services -->
+    </div>
+    <!-- /.container -->
+</div><!-- #aboutus -->
+
+<div class="signupForm">
+    <div class="row">
+        <div class="col-md-6 text-right">
+        </div>
+    </div>
+</div><!--/signupForm-->
+
+<div id="gallery" class="grid">
+    <a href="yogathon2017.html">
+        <figure class="effect-bubba">
+            <img src="img/gallery/1_yogathon.jpg" alt="Yogathon">
+            <figcaption>
+                <h2><span>Yogathon</span></h2>
+                <p>Yogathon Challenge on International Day of Yoga</p>
+                <!-- <a href="#">View more</a> -->
+            </figcaption>
+        </figure>
+    </a>
+    <figure class="effect-bubba">
+        <img src="img/gallery/2_womenday_spl.jpg" alt="Womens Day Special">
+        <figcaption>
+            <h2> Women's Day <span>Session</span></h2>
+            <p>Women's Day Special session by <br> Dr. Shikha Sharma</p>
+            <!-- <a href="#">View more</a> -->
+        </figcaption>
+    </figure>
+    <a href="yogathon2017.html">
+        <figure class="effect-bubba">
+            <img src="img/gallery/3_yogathon_practice.jpg" alt="Practice for Yogathon 2017">
+            <figcaption>
+                <h2><span>Yogathon 2017</span></h2>
+                <p>Practice sessions for Yogathon 2017 for 3rd International Day of Yoga</p>
+                <!-- <a href="#">View more</a> -->
+            </figcaption>
+        </figure>
+    </a>
+
+</div><!-- #gallery -->
+
+
+<footer id="footer" class="dark-wrapper">
+    <div class="container inner">
+        <div class="row">
+            <!-- <div class="col-sm-4"> <h2>Contact Us:</h2> <br/>-->
+            <h2><b>Contact Us:</b></h2>
+            <!--<table style="width:80%">
+                <tr>
+                   <th>Chandra Pratap Singh</th>
+                   <th>Sowmya Gupta</th>
+                </tr>
+                <tr>
+                   <td>Phone: +91 90150 43968</td>
+                   <td>Phone: +91 99674 86136</td>
+                </tr>
+                <tr>
+                   <td>Manager, Yogastha</td>
+                   <td>Manager, Yogastha</td>
+                   <td></td>
+                </tr>
+            </table>-->
+
+            <div class="row">
+                <div class="col-sm-6 col-md-3">
+                    <p>Chandra Pratap Singh<br>
+                        Phone: +91 90150 43968<br>
+                        Manager, Yogastha
+                    </p>
+                </div>
+                <div class="col-sm-6  col-md-3">
+                    <p>Sowmya Gupta<br>
+                        Phone: +91 99674 86136<br>
+                        Manager, Yogastha
+                    </p>
+                </div>
+            </div>
+
+            <br/>
+
+            Email:<br>
+            <a class="col-xs-10" href="mailto:yogastha.iitb@gmail.com">yogastha.iitb@gmail.com</a><br>
+            <a class="col-xs-10" href="mailto:yogastha@iitb.ac.in">yogastha@iitb.ac.in</a><br>
+
+            <br/>
+
+            <a href="http://www.iitbyogastha.in" data-toggle="tooltip" class="icon ion-android-globe tooltipped"
+               title="Website"></a>
+            <a href="http://www.iitbyogastha.in">www.iitbyogastha.in</a><br/>
+
+            <a href="https://www.youtube.com/channel/UCbQdsBUcM8bV2hMtI1PW42g" data-toggle="tooltip"
+               class="ion-social-youtube tooltipped" title="Youtube"></a>
+            <a href="https://www.youtube.com/channel/UCbQdsBUcM8bV2hMtI1PW42g" target="_blank">YouTube</a>
+
+            |
+
+            <a href="https://www.facebook.com/yogastha.iitb" data-toggle="tooltip"
+               class="ion-social-facebook tooltipped" title="Facebook" target="_blank"></a>
+            <a href="https://www.facebook.com/yogastha.iitb" target="_blank">Facebook</a>
+
+            <div class="social-bar">
+                <!-- <a href="https://www.facebook.com/yogastha.iitb" data-toggle="tooltip" class="ion-social-facebook tooltipped" title="Facebook"  target="_blank"></a> -->
+            </div>
+            <!--</div> -->
+        </div>
+    </div>
+    <!-- /.container -->
+</footer>
+
+
+<script src="js/jquery-2.1.3.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+
+<script src="js/jquery.actual.min.js"></script>
+<script src="js/jquery.scrollTo.min.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+
+<script src="js/main.js"></script>
 
 </body>
 </html>
+
