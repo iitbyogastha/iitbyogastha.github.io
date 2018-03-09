@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Registration</title>
+
+<style>
+
+.title{
+    font-weight: bold;
+    color: #5d6d7e;
+    text-shadow: 0px 2px 2px white;
+    font-size: 40px;
+    text-align: center;
+}
+
+.subtitle{
+    font-weight: bold;
+    color:     #2c3e50;
+    font-size: 20px;
+    text-align: center;
+}
+
+.timer{
+    font-weight: normal;
+    color:   #2c3e50;
+    font-size: 16px;
+    text-align: center;
+}
+
+.container-outer{
+    padding: 25px;
+    margin: 30px auto;
+    width: 960px;
+    box-shadow: 0px 0px 20px white;
+    border-radius: 20px;
+}
+
+.btn {
+    white-space: normal;
+    border-radius: 50px;
+    width: 300px;
+    font-size: 20px;
+    margin: 15px;
+    border: none;
+    color: white;
+    background-color:  #1f618d;
+    padding: 10px 50px;
+    box-shadow: 1px 4px 5px black;
+}
+
+.btn:hover {
+    box-shadow: 1px 2px 5px black;
+    cursor: pointer;
+    background-color:  #2e86c1;
+}
+
+.btn:active {
+    box-shadow: 1px 1px 2px black;
+    cursor: pointer;
+    background-color:  #2e86c1;
+}
+
+.raise:hover {
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px white;
+}
+
+#container-practice {
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#container-contact {
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.heading {
+    padding: 5px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #1b4f72;
+}
+
+.table-cell {
+    padding: 0px 20px;
+    color: #1b4f72;
+}
+
+.grad {
+        background: #d1f2eb; /* For browsers that do not support gradients */    
+        background: -webkit-linear-gradient(top, #48c9b0, #d1f2eb ); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(bottom, #48c9b0, #d1f2eb ); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(bottom, #48c9b0, #d1f2eb ); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(to bottom, #48c9b0, #d1f2eb ); /* Standard syntax (must be last) */
+    }
+
+</style>
+</head>
+
+<body style="background-color: #85929e;" onload="slideShow()">
+
+<div class="container-outer grad">
+    <div class="title">Common Yoga Protocol</div>
+    <div class="subtitle" style="color: #5d6d7e ;">Yoga for Daily Practice</div>
+    <br>
+    <div class="subtitle">International Day of Yoga - 21<sup>st</sup> June 2017</div>
+    <br>
+    <div style="width: 310px; margin: 0px auto;">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScbfGibcYadFHfQMcSjrxwqQWYHBGPiaclHknOLLfC1unoxAA/viewform?usp=sf_link">
+        <button class="btn">Register for CYP <br> 21.June.7am</button></a>
+    </div>
+    <br>
+    <br>
+    
+    <div id="container-practice" class="grad">
+        <div class="heading">Preparation for CYP</div>
+        <table>
+          <tr>
+            <td><img src="./images/calendar.png" height="40px"/></td>
+            <td class="table-cell" colspan="3"><b>17, 18 and 19 June</b> (Saturday, Sunday and Monday)</td>
+          </tr>
+          <tr>
+            <td><img src="./images/clock.png" height="40px"/></td>
+            <td class="table-cell"><b>5:30 pm</b> to <b>6:30 pm</b></td>
+            <td class="table-cell"><b>7:00 am</b> to <b>8:00 am</b></td>
+            <td class="table-cell"><b>7:00 am</b> to <b>8:00 am</b></td>
+          </tr>
+          <tr>
+            <td><img src="./images/venue.png" height="45px"/></td>
+            <td class="table-cell"><b>3rd Floor, Yoga Hall</b>, New SAC, Opp. H-11</td>
+            <td class="table-cell"><b>Refuge Area, 8th flr, Aravali Bldg.</b></td>
+            <td class="table-cell"><b>Refuge Area, 8th flr, Nilgiri Bldg.</b></td>
+          </tr>
+        </table>
+    </div>
+    
+    <br>
+    
+    <div style="padding: 15px">
+        <div style="width: 560px; height: 315px; margin: 0px auto; box-shadow: 0px 0px 10px;">
+        <iframe width="560px" height="315px" src="https://www.youtube.com/embed/zEKgKSidlz4" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <br>
+    
+    <div id="container-contact" class="grad">
+        <div class="heading">Contact</div>
+        <table border=0>
+        <tr>
+          <td class="table-cell"><b>Chandra Pratap</b><br>9015043968</td>
+          <td class="table-cell"><b>Sowmya</b><br>8850018469</td>
+          <td class="table-cell"><b>Sourabh</b><br>8291475328</td>
+        </tr>
+        </table>
+    </div>
+    
+    <br>
+    
+    <table border=0>
+    <tr>
+      <td class="table-cell"><a href="https://www.facebook.com/yogastha.iitb" target="_blank"><img class="raise" src="./images/facebook.png" height="40px"/></a></td>
+      <td class="table-cell"><a href="https://www.youtube.com/channel/UCbQdsBUcM8bV2hMtI1PW42g" target="_blank"><img class="raise" src="./images/youtube.png" height="40px"/></a></td>
+      <td class="table-cell"><a href="http://iitbyogastha.in/" target="_blank"><img class="raise" src="./images/website.png" height="40px"/></a></td>
+    </tr>
+    </table>
+    
+    <p id="cyp-date"></p>
+</div>
+ 
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Jun 21, 2017 07:00:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+    // Get todays date and time
+    var now = new Date().getTime();
+    
+    // Find the distance between now an the count down date
+    var distance = countDownDate - now;
+    
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    // Output the result in an element with id="demo"
+    document.getElementById("cyp-date").innerHTML = "Time Left: " + days + " days, " + hours + "h "
+    + minutes + "m " + seconds + "s";
+    
+    // If the count down is over, write some text 
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("cyp-date").innerHTML = "CYP EVENT IS OVER";
+    }
+    
+    document.getElementById("cyp-date").className = "timer";
+}, 1000);
+</script>
+
+</body>
+
+</html>

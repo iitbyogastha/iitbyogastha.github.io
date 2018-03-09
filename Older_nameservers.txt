@@ -1,0 +1,3 @@
+ns1.arvixeshared.com
+ns2.arvixeshared.com
+

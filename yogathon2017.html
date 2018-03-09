@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Registration</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
+
+<script>
+
+var imgArray = [
+    //'./images/suryanamaskar_poses/frames/000.png',
+    './images/suryanamaskar_poses/frames/001.png',
+    './images/suryanamaskar_poses/frames/002.png',
+    './images/suryanamaskar_poses/frames/003.png',
+    './images/suryanamaskar_poses/frames/004.png',
+    './images/suryanamaskar_poses/frames/005.png',
+    './images/suryanamaskar_poses/frames/006.png',
+    './images/suryanamaskar_poses/frames/007.png',
+    './images/suryanamaskar_poses/frames/008.png',
+    './images/suryanamaskar_poses/frames/009.png',
+    './images/suryanamaskar_poses/frames/010.png',
+    './images/suryanamaskar_poses/frames/011.png'],
+    curIndex = 0;
+    imgDuration = 3000;
+
+function slideShow() {
+    document.getElementById('slider').className += "fadeOut";
+    setTimeout(function() {
+        document.getElementById('slider').src = imgArray[curIndex];
+        document.getElementById('slider').className = "";
+    },1000);
+    curIndex++;
+    if (curIndex == imgArray.length) { curIndex = 0; }
+    setTimeout(slideShow, imgDuration);
+}
+
+</script>
+
+<style>
+
+#slider {
+    opacity:1;
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s; 
+}
+
+#slider.fadeOut {
+    opacity:0;
+}
+
+.title{
+    font-weight: bold;
+    color:  #138d75;
+    font-size: 60px;
+    text-align: center;
+}
+
+.subtitle{
+    font-weight: normal;
+    color:   #0e6655;
+    font-size: 20px;
+    text-align: center;
+}
+
+.timer{
+    font-weight: normal;
+    color:   #0e6655;
+    font-size: 16px;
+    text-align: center;
+}
+
+.container-outer{
+    padding: 25px;
+    margin: 30px auto;
+    width: 960px;
+    box-shadow: 0px 0px 20px white;
+    border-radius: 20px;
+}
+
+.btn {
+    white-space: normal;
+    width: 480px;
+    font-size: 20px;
+    margin: 15px;
+    border: none;
+    color: white;
+    background-color: #1e8449;
+    padding: 10px 50px;
+    box-shadow: 1px 4px 5px black;
+}
+
+.btn:hover {
+    box-shadow: 1px 2px 5px black;
+    cursor: pointer;
+    background-color: #27ae60;
+}
+
+.btn:active {
+    box-shadow: 1px 1px 2px black;
+    cursor: pointer;
+    background-color: #27ae60;
+}
+
+.raise:hover {
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px white;
+}
+
+#container-practice {
+    padding: 10px;
+}
+
+#container-contact {
+    padding: 10px;
+}
+
+.heading {
+    padding: 5px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #1b4f72;
+}
+
+.table-cell {
+    padding: 0px 20px;
+    color: #1b4f72;
+}
+
+.grad {
+        background: #aed6f1; /* For browsers that do not support gradients */    
+        background: -webkit-linear-gradient(left top, #aed6f1, #ebf5fb ); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(bottom right, #aed6f1, #ebf5fb ); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(bottom right, #aed6f1, #ebf5fb ); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(to bottom right, #aed6f1, #ebf5fb ); /* Standard syntax (must be last) */
+    }
+
+</style>
+</head>
+
+<body style="background-color: #aed6f1;" onload="slideShow()">
+
+<div class="container-outer grad">
+    <div style="margin: 0px auto; width: 80px"><img id="slider" src="./images/suryanamaskar_poses/frames/000.png" width="80px"/></div>
+    <div class="title">YOGATHON</div>
+    <div class="subtitle" style="color: #138d75;">108 Suryanamaskar Challenge</div>
+    <br>
+    <div class="subtitle">International Day of Yoga - 21<sup>st</sup> June 2017</div>
+    <br>
+    <div style="width: 510px; margin: 0px auto;">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSegv8oOwZfnQBzyOj1nFM1zP2xoiFCrdY5-vQAVgvoyb1BPeQ/viewform?usp=sf_link">
+        <button class="btn">*Register for YOGATHON <br> 21.June.6pm</button></a>
+    </div>
+    <p>*Registration is compulsory for participation.</p>
+    <br>
+    <br>
+    
+    <div id="container-practice" class="grad">
+        <div class="heading">Preparation for YOGATHON</div>
+        <table>
+          <tr>
+            <td><img src="./images/calendar.png" height="40px"/></td>
+            <td class="table-cell"><b>30 May</b> to <b>10 June</b> (Tuesday, Thursday and Saturday)<br>
+                                  <b>12 June</b> to <b>19 June</b> (Monday to Saturday)</td>
+          </tr>
+          <tr>
+            <td><img src="./images/clock.png" height="40px"/></td>
+            <td class="table-cell"><b>6:45 pm</b> to <b>7:45 pm</b></td>
+          </tr>
+          <tr>
+            <td><img src="./images/venue.png" height="45px"/></td>
+            <td class="table-cell"><b>3rd Floor, Multi-purpose Hall</b>, New SAC Building, Opp. Hostel 11</td>
+          </tr>
+        </table>
+    </div>
+    
+    <br>
+    
+    <div class="grad">
+        <canvas id="myChart" width="400" height="200"></canvas>
+    </div>
+    
+    <br>
+    
+    <div id="container-contact" class="grad">
+        <div class="heading">Contact</div>
+        <table border=0>
+        <tr>
+          <td class="table-cell"><b>Chandra Pratap</b><br>9015043968</td>
+          <td class="table-cell"><b>Sowmya</b><br>8850018469</td>
+          <td class="table-cell"><b>Sourabh</b><br>8291475328</td>
+        </tr>
+        </table>
+    </div>
+    
+    <table border=0>
+    <tr>
+      <td class="table-cell"><a href="https://www.facebook.com/yogastha.iitb" target="_blank"><img class="raise" src="./images/facebook.png" height="40px"/></a></td>
+      <td class="table-cell"><a href="https://www.youtube.com/channel/UCbQdsBUcM8bV2hMtI1PW42g" target="_blank"><img class="raise" src="./images/youtube.png" height="40px"/></a></td>
+      <td class="table-cell"><a href="http://iitbyogastha.in/" target="_blank"><img class="raise" src="./images/website.png" height="40px"/></a></td>
+    </tr>
+    </table>
+    
+    <p id="yogathon-date"></p>
+</div>
+
+<script>
+    // Define a plugin to provide data labels
+    Chart.plugins.register({
+        afterDatasetsDraw: function(chart, easing) {
+            // To only draw at the end of animation, check for easing === 1
+            var ctx = chart.ctx;
+
+            chart.data.datasets.forEach(function (dataset, i) {
+                var meta = chart.getDatasetMeta(i);
+                if (!meta.hidden) {
+                    meta.data.forEach(function(element, index) {
+                        // Draw the text in black, with the specified font
+                        ctx.fillStyle = 'rgb(0, 0, 0)';
+
+                        var fontSize = 16;
+                        var fontStyle = 'normal';
+                        var fontFamily = 'Helvetica Neue';
+                        ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
+
+                        // Just naively convert to string for now
+                        var dataString = dataset.data[index].toString();
+
+                        // Make sure alignment settings are correct
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+
+                        var padding = 5;
+                        var position = element.tooltipPosition();
+                        ctx.fillText(dataString, position.x, position.y - (fontSize / 2) - padding);
+                    });
+                }
+            });
+        }
+    });
+    var ctx = document.getElementById("myChart").getContext('2d');
+    ctx.height = "200px";
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["30-May", "01-Jun", "03-Jun", "06-Jun", "08-Jun", "10-Jun", "12-Jun", "13-Jun", "14-Jun", "15-Jun", "16-Jun", "17-Jun", "19-Jun", "21-June 'IDY'"],
+            datasets: [{
+                label: '# of Suryanamaskars',
+                data: [4, 12, 12, 12, 24, 24, 48, 48, 60, 60, 60, 80, 84, 108],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(75, 192, 192, 1.0)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255,99,132,1)',
+                    'rgba(75, 192, 192, 1.0)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+    });
+    </script>
+ 
+    <script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("Jun 21, 2017 18:00:00").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+        // Get todays date and time
+        var now = new Date().getTime();
+        
+        // Find the distance between now an the count down date
+        var distance = countDownDate - now;
+        
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        // Output the result in an element with id="demo"
+        document.getElementById("yogathon-date").innerHTML = "Time Left: " + days + " days, " + hours + "h "
+        + minutes + "m " + seconds + "s";
+        
+        // If the count down is over, write some text 
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("yogathon-date").innerHTML = "YOGATHON IS OVER";
+        }
+        
+        document.getElementById("yogathon-date").className = "timer";
+    }, 1000);
+    </script>
+
+</body>
+
+</html>
