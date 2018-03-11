@@ -20,6 +20,8 @@
 
 
 
+
+
     </script>
 
     <meta charset="utf-8">
@@ -46,21 +48,22 @@
     }
 
     .img-container .content {
+        transition: opacity 0.5s ease;
         position: absolute; /* Position the background text */
         bottom: 0; /* At the bottom. Use top:0 to append it to the top */
-        background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
-        color: #f1f1f1; /* Grey text */
+        background: rgba(255, 255, 255, 0.3); /* Black background with 0.5 opacity */
+        color: #010101; /* Grey text */
+        font-weight: bold;
+        text-shadow: 1px 1px 4px blue;
         width: 100%; /* Full width */
+        height: 100%; /* Full heihgt */
         padding: 20px; /* Some padding */
     }
 
     .img-container .content:hover {
+        transition: opacity 0.5s ease;
         opacity: 0.0;
     }
-
-
-
-
     </style>
 
 </head>
@@ -198,83 +201,81 @@
     <br>
 
 
-    <div class="container">
-        <div style="box-shadow: 2px 2px 8px black;padding:5px">
-            <h2>Group 1 (Age below 25) - Any four</h2>
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="img-container">
-                        <img class="img-responsive img-thumbnail" src="img/ypg/group1/dhanurasana.jpg"
-                             alt="Dhanurasana">
-                        <div class="content">
-                            Dhanurasana
-                        </div>
-                    </div>
-                    <div class="img-container">
-                        <img class="img-responsive img-thumbnail" src="img/ypg/group1/bakasana.jpg" alt="Bakasana">
-                        <div class="content">
-                            Bakasana
-                        </div>
+    <div class="container" style="box-shadow: 2px 2px 8px black;padding:5px">
+        <h2>Group 1 (Age below 25) - Choose any four</h2>
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="img-container">
+                    <img class="img-responsive img-thumbnail" src="img/ypg/group1/dhanurasana.jpg"
+                         alt="Dhanurasana">
+                    <div class="content">
+                        Dhanurasana
                     </div>
                 </div>
-
-                <div class="col-sm-3">
-                    <div class="img-container">
-                        <img class="img-responsive img-thumbnail" src="img/ypg/group1/sirshashana.jpg"
-                             alt="Sirshashana">
-                        <div class="content">
-                            Sirshashana
-                        </div>
+                <div class="img-container">
+                    <img class="img-responsive img-thumbnail" src="img/ypg/group1/bakasana.jpg" alt="Bakasana">
+                    <div class="content">
+                        Bakasana
                     </div>
                 </div>
+            </div>
 
-                <div class="col-sm-4">
-                    <div class="img-container">
-                        <img class="img-responsive img-thumbnail" src="img/ypg/group1/sarvangasana.jpg"
-                             alt="Sarvangasana">
-                        <div class="content">
-                            Sarvangasana
-                        </div>
+            <div class="col-sm-3">
+                <div class="img-container">
+                    <img class="img-responsive img-thumbnail" src="img/ypg/group1/sirshashana.jpg"
+                         alt="Sirshashana">
+                    <div class="content">
+                        Sirshashana
                     </div>
                 </div>
+            </div>
 
-                <div class="col-sm-7">
-                    <div class="img-container">
-                        <img class="img-responsive img-thumbnail" src="img/ypg/group1/hanumanasasa.jpg"
-                             alt="Hanumanasasa">
-                        <div class="content">
-                            Hanumanasasa
-                        </div>
+            <div class="col-sm-4">
+                <div class="img-container">
+                    <img class="img-responsive img-thumbnail" src="img/ypg/group1/sarvangasana.jpg"
+                         alt="Sarvangasana">
+                    <div class="content">
+                        Sarvangasana
                     </div>
                 </div>
+            </div>
 
-                <div class="col-sm-5">
-                    <div class="img-container">
-                        <img class="img-responsive img-thumbnail" src="img/ypg/group1/mayurasana.jpg" alt="Mayurasana">
-                        <div class="content">
-                            Mayurasana
-                        </div>
+            <div class="col-sm-7">
+                <div class="img-container">
+                    <img class="img-responsive img-thumbnail" src="img/ypg/group1/hanumanasasa.jpg"
+                         alt="Hanumanasasa">
+                    <div class="content">
+                        Hanumanasasa
                     </div>
                 </div>
+            </div>
 
-                <div class="col-sm-3">
-                    <div class="img-container">
-                        <img class="img-responsive img-thumbnail" src="img/ypg/group1/baddha_padmasana.jpg"
-                             alt="Baddha Padmasana">
-                        <div class="content">
-                            Baddha Padmasana
-                        </div>
+            <div class="col-sm-5">
+                <div class="img-container">
+                    <img class="img-responsive img-thumbnail" src="img/ypg/group1/mayurasana.jpg" alt="Mayurasana">
+                    <div class="content">
+                        Mayurasana
                     </div>
                 </div>
+            </div>
 
-                <div class="col-sm-3">
-                    <div class="img-container">
-                        <img class="img-responsive img-thumbnail" src="img/ypg/group1/niralamba_paschimottanasana.jpg"
-                             alt="Niralamba Paschimottanasana"
-                             style="width:100%">
-                        <div class="content">
-                            Niralamba Paschimottanasana
-                        </div>
+            <div class="col-sm-3">
+                <div class="img-container">
+                    <img class="img-responsive img-thumbnail" src="img/ypg/group1/baddha_padmasana.jpg"
+                         alt="Baddha Padmasana">
+                    <div class="content">
+                        Baddha Padmasana
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="img-container">
+                    <img class="img-responsive img-thumbnail" src="img/ypg/group1/niralamba_paschimottanasana.jpg"
+                         alt="Niralamba Paschimottanasana"
+                         style="width:100%">
+                    <div class="content">
+                        Niralamba Paschimottanasana
                     </div>
                 </div>
             </div>
