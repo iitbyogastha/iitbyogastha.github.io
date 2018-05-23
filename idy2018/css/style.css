@@ -25,10 +25,24 @@
 	transform: rotate(180deg);
 }
 
+h1, h2 {
+  font-family: 'Pacifico', cursive;
+}
+
 p {
   font-size: 16px;
   text-align:justify;
   margin-bottom:1em;
+}
+
+blockquote {
+  font-size: 20px;
+  text-align:justify;
+  font-family: 'Dancing Script', cursive;
+}
+
+blockquote footer {
+  font-family: sans-serif;
 }
 
 .imp {
