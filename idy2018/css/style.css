@@ -30,3 +30,7 @@ p {
   text-align:justify;
   margin-bottom:1em;
 }
+
+.imp {
+  font-weight: bold;
+}
