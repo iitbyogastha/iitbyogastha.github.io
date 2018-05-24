@@ -1,3 +1,7 @@
+.panel-group .panel {
+  margin-bottom: 2em;
+}
+
 .panel-heading {
   padding: 0;
 	border:0;
