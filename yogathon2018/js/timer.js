@@ -18,10 +18,10 @@ var x = setInterval(function() {
 
     // Output the result in an element with id="demo"
     document.getElementById("yogathon-date").innerHTML =
-    '<span class="clock-font">' + days + '</span> days &nbsp&nbsp&nbsp' +
-    '<span class="clock-font">' + fmt(hours) + '</span>:' +
-    '<span class="clock-font">' + fmt(minutes) + '</span>:' +
-    '<span class="clock-font">' + fmt(seconds) + '</span>'
+    '<span class="clock-font">' + days + '</span>days &nbsp&nbsp' +
+    '<span class="clock-font">' + fmt(hours) + '</span>h &nbsp&nbsp' +
+    '<span class="clock-font">' + fmt(minutes) + '</span>m &nbsp&nbsp' +
+    '<span class="clock-font">' + fmt(seconds) + '</span>s'
 
     // If the count down is over, write some text
     if (distance < 0) {
