@@ -6,10 +6,10 @@ a:visited {
     color: orange;
 }
 
-#block {
-    margin: auto;
-    position: absolute;
-    top: 30%; left: 0; bottom: 0; right: 0;
+.embed-video {
+    margin: 0px auto 50px auto;
+    width: 854px;
+    height: 480px;
 }
 
 button {
