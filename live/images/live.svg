@@ -7,6 +7,7 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="65.899086mm"
@@ -15,9 +16,24 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="live.svg">
+   sodipodi:docname="live.svg"
+   inkscape:export-filename="/home/sourabh/Desktop/temp/web/iitbyogastha.github.io/live/images/live.png"
+   inkscape:export-xdpi="79.846985"
+   inkscape:export-ydpi="79.846985">
   <defs
      id="defs4">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4157">
+      <stop
+         style="stop-color:#ff0000;stop-opacity:1;"
+         offset="0"
+         id="stop4159" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1"
+         id="stop4161" />
+    </linearGradient>
     <filter
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
@@ -44,6 +60,15 @@
          stdDeviation="2.4966436"
          id="feGaussianBlur4387" />
     </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4157"
+       id="linearGradient4165"
+       x1="376.28183"
+       y1="419.3595"
+       x2="452.47061"
+       y2="454.59854"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -52,9 +77,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="125.22052"
-     inkscape:cy="105.59813"
+     inkscape:zoom="1.979899"
+     inkscape:cx="132.6533"
+     inkscape:cy="-7.4356988"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -91,7 +116,7 @@
      id="layer1"
      transform="translate(-259.53148,-339.05385)">
     <ellipse
-       style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:url(#linearGradient4165);fill-opacity:1;stroke:none;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none"
        id="path4136"
        cy="419.3595"
        cx="376.28183"

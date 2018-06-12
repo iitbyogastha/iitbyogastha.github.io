@@ -100,3 +100,24 @@
   50%   {color: blue;}
   100%  {color: red;}
 }
+
+.anim_icon {
+  width: 80px;
+  opacity: 0;
+  transform: scale(0, 0);
+  animation-name: iconAnim;
+  animation-duration: 0.8s;
+  animation-delay: 2s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes iconAnim {
+  0%     {opacity: 0; transform: scale(0, 0);}
+  50%     {opacity: 1; transform: scale(1.4, 1.4);}
+  60%     {opacity: 1; transform: scale(0.6, 0.6);}
+  70%     {opacity: 1; transform: scale(1.2, 1.2);}
+  80%     {opacity: 1; transform: scale(0.8, 0.8);}
+  00%     {opacity: 1; transform: scale(1.1, 1.1);}
+  100%   {opacity: 1; transform: scale(1, 1);}
+}
