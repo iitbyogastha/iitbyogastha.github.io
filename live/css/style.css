@@ -1,3 +1,7 @@
+body {
+    background-image: url("../images/live_bg.jpg");
+}
+
 a:link {
     color: orange;
 }
