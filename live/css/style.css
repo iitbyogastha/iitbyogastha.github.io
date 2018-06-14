@@ -1,5 +1,6 @@
 body {
     background-image: url("../images/live_bg.jpg");
+    background-attachment: fixed;
 }
 
 a:link {
@@ -11,7 +12,8 @@ a:visited {
 }
 
 .embed-video {
-    margin: 0px auto 50px auto;
+    background: black;
+    margin: 50px auto 50px auto;
     width: 854px;
 }
 
