@@ -39,7 +39,7 @@ var myChart = new Chart(ctx, {
         labels: ["28-May", "30-May", "01-Jun", "04-Jun", "06-Jun", "08-Jun", "11-Jun", "13-Jun", "15-Jun", "16-Jun", "18-Jun", "19-Jun", "21-June 'IDY'"],
         datasets: [{
             label: '# of Suryanamaskars',
-            data: [4, 12, 12, 12, 24, 24, 48, 48, 60, 60, 80, 84, 108],
+            data: [4, 12, 12, 12, 24, 24, 48, 48, 54, 60, 80, 84, 108],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
