@@ -18,7 +18,7 @@
 	text-decoration:none;
 }
 
-.panel-title1>a, .panel-title>a:active{
+.panel-title1>a, .panel-title1>a:active{
 	display:block;
 	padding:15px;
   color:red;
@@ -30,7 +30,7 @@
 	text-decoration:none;
 }
 
-.panel-title2>a, .panel-title>a:active{
+.panel-title2>a, .panel-title2>a:active{
 	display:block;
 	padding:15px;
   color:Blue;
