@@ -38,24 +38,12 @@
     .floating-links {
       -webkit-filter: drop-shadow(0px 1px 2px black);
       filter: drop-shadow(0px 1px 2px black);
-      transition: filter 0.1s;
+      transition: filter 0.1s, transform 0.5s;
     }
     .floating-links:hover {
       -webkit-filter: drop-shadow(0px 5px 5px #222);
+      transform: scale(1.2);
       filter: drop-shadow(0px 5px 5px #222);
-    }
-
-    .move-lr {
-      left: 10px;
-      animation-name: move-lr-animation;
-      animation-timing-function: ease-in-out;
-      animation-duration: 2s;
-      animation-iteration-count: infinite;
-    }
-    @keyframes move-lr-animation {
-      0%   {left: 10px;}
-      50%  {left: 20px;}
-      100% {left: 10px;}
     }
   </style>
 
@@ -66,14 +54,11 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 <div id="header">
-  <div class="floating-links move-lr" style="position:fixed; top:65px; left:10px; z-index:5;">
-      <a href="idy2018/index.html"><img src="img/IDY_logo.png" height="80px"></a>
-  </div>
-    <div class="floating-links" style="position:fixed; top:65px; right:50px; z-index:5;">
-        <a href="yogathon2018/index.html"><img src="img/yogathon.png" width="80px"></a>
+    <div class="floating-links" style="position:fixed; top:65px; right:60px; z-index:5;">
+        <a href="events.html"><img src="img/upcoming_events.png" width="120px"></a>
     </div>
-    <div class="floating-links" style="position:fixed; top:155px; right:50px; z-index:5;">
-        <a href="CYP2018/index.html"><img src="img/cyp.png" width="80px"></a>
+    <div class="floating-links" style="position:fixed; top:155px; right:70px; z-index:5;">
+        <a href="prayers.html"><img src="img/prayers.png" width="80px"></a>
     </div>
     <!--
     <div id="yogathon-img" style="position:fixed; top:55px; right:50px; z-index:5;">
