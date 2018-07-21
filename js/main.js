@@ -18,7 +18,7 @@
 		}
 		;
 	}
-	// smartresize 
+	// smartresize
 	jQuery.fn[sr] = function(fn) {
 		return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr);
 	}
@@ -40,7 +40,7 @@ $(document).ready(function() {
 	///////////////////////////////
 	function centerHomeBannerText() {
 		var bannerText = jQuery('#header > .center');
-		var bannerTextTop = ((jQuery('#header').actual('height') - jQuery('#header .bottom').actual('height'))/2) - (jQuery('#header > .center').actual('height')/2) + + jQuery('#menu').actual('height');
+		var bannerTextTop = ((jQuery('#header').actual('height') - jQuery('#header .bottom').actual('height'))/1.33) - (jQuery('#header > .center').actual('height')/2) + + jQuery('#menu').actual('height');
 		bannerText.css('padding-top', bannerTextTop+'px');
 		bannerText.show();
 	}
@@ -51,13 +51,13 @@ $(document).ready(function() {
 		setHomeBannerHeight();
 		centerHomeBannerText();
 	});
-	
+
 	function scroll() {
 		if ($(window).scrollTop() == 0 ) {
 			//$('.nav > li').removeClass('active');
 			console.log($(window).scrollTop());
 		} else {
-			
+
 		}
 	}
 	document.onscroll = scroll;
