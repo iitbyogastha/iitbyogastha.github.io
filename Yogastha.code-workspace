@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "/home/vinay/Documents/C"
+		}
+	],
+	"settings": {
+		"python.pythonPath": "/usr/bin/python3",
+		"files.associations": {
+			"fstream": "cpp",
+			"iostream": "cpp"
+		}
+	}
+}
