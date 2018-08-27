@@ -248,7 +248,7 @@ button:focus {
 .mu-hero-overlay {
 	display: inline;
 	float: left;
-	opacity: 0.88;
+	opacity: 0.85;
 	width: 100%;
 }
 
@@ -995,7 +995,11 @@ button:focus {
 	top: 0;
 	right: 0;
 	position: absolute;
+<<<<<<< HEAD
 	opacity: 0.9;
+=======
+	opacity: 0.90;
+>>>>>>> 47e8736535b981444ee2646a7dc3255de5781b9b
 }
 
 .mu-register-area {
