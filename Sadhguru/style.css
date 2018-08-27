@@ -230,11 +230,25 @@ button:focus {
 	-webkit-background-size: cover;
 	background-size: cover;
 }
+.logo-yogastha{
+	position:fixed; 
+	top:65px; 
+	right:50px; 
+	z-index:5;"
+}
+.logo-iitb{
+	position:fixed; 
+	top:40px; 
+	left:40px; 
+	z-index:5;"
+}
+
+
 
 .mu-hero-overlay {
 	display: inline;
 	float: left;
-	opacity: 0.94;
+	opacity: 0.88;
 	width: 100%;
 }
 
@@ -338,7 +352,7 @@ button:focus {
 	height: 180px;
 	width: 180px;
 	text-align: center;
-	font-size: 22px;
+	font-size: 5px;
 	color: #fff;
 	margin: 0 20px;
 	font-weight: 300;
@@ -372,8 +386,8 @@ button:focus {
 }
 
 #mu-hero .navbar-default .navbar-brand {
-	padding: 15px 15px;
-	font-size: 28px;
+	padding: 10px 10px;
+	font-size: 25px;
 	line-height: 20px;
 }
 
@@ -923,7 +937,8 @@ button:focus {
 .mu-register-btn {
 	background-color: #fff;
 	border: 1px solid #555;
-	color: #555;
+	color: black;
+	font-weight: bold;
 	margin-top: 20px;
 	padding: 10px 40px;
 	text-align: center;
@@ -962,7 +977,7 @@ button:focus {
 /*--------------------*/
 
 #mu-register {
-	background-image: url("assets/images/register-bg.jpg");
+	background-image: url("assets/images/jv.png");
 	background-position: center center;
 	background-size: cover;
 	background-attachment: fixed;
@@ -980,7 +995,7 @@ button:focus {
 	top: 0;
 	right: 0;
 	position: absolute;
-	opacity: 0.9;
+	opacity: 0.97;
 }
 
 .mu-register-area {
@@ -993,6 +1008,7 @@ button:focus {
 .mu-register-area .mu-title,
 .mu-register-area p {
 	color: #fff;
+	font-size:1.5em;
 }
 
 .mu-register-content {
