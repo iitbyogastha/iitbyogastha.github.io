@@ -977,7 +977,7 @@ button:focus {
 /*--------------------*/
 
 #mu-register {
-	background-image: url("assets/images/jv.png");
+	background-image: url("assets/images/register-bg.jpg");
 	background-position: center center;
 	background-size: cover;
 	background-attachment: fixed;
@@ -995,11 +995,7 @@ button:focus {
 	top: 0;
 	right: 0;
 	position: absolute;
-<<<<<<< HEAD
-	opacity: 0.9;
-=======
-	opacity: 0.90;
->>>>>>> 47e8736535b981444ee2646a7dc3255de5781b9b
+	opacity: 1;
 }
 
 .mu-register-area {
