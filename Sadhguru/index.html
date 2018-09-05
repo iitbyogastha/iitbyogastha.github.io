@@ -210,7 +210,7 @@
 		<section id="mu-contact">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-6">
 						<div class="mu-faq-area">
 
 							<div class="mu-title-area">
@@ -224,17 +224,64 @@
 										</p>	
 										<div>
 										<a class="mu-register-btn" href="https://app2.sli.do/event/jrybjgtb"> Post here</a><br>
+										</div> 
+							</div> 
+
+						</div> 
+					</div> 
+
+						
+						
+					
+					<!-- floating Questions -->
+					<br><br><br><br><br><br><br><br>
+					<div class="col-md-6">
+						
+						<div class="mu-title"><h2>Questions Asked by Students</h2></div>
+						 
+
+						<div class="slideshow-container">
+
+							<div class="mySlides">
+								<div class="numbertext">Q 1 </div><br>
+								<q>In today's era impact of bad energies like selfishness, hatred, corruption is increasing day by day. How to deal with this?  </q>
+								<p class="author">- Vishal Kokadwar</p>
 										</div>
+
+							<div class="mySlides">
+								<div class="numbertext">Q 2</div><br>
+									<q>How we can stay always free without tension?</q>
+									<p class="author">- SAMBIT SUNDAR DE</p>
 							</div>
 
+							<div class="mySlides">
+								<div class="numbertext">Q 3</div><br>
+								<q>How to be less mechanical and more productive in life? How can be become more creative and aware? As a youth, how can we make full use of unlimited and never exhausting potential? How to get rid of 'all time confused state of mind' and increase decision making power? </q>
+								<p class="author">- Abhishek Singh</p>
 							    </div>
+							<div class="mySlides">
+								<div class="numbertext">Q 4</div><br>
+									<q>Namaskaram Sadhguru, Is marriage compulsory for me, How can I go beyond my body?</q>
+									<p class="author">- Anonymous </p>
 							</div>
 
-						</div>
-					</div>
-				</div>
+							<div class="mySlides">
+								<div class="numbertext">Q 5</div><br>
+									<q>Students are under tremendous pressure to perform.  How do they handle peer pressure with our affecting their personality?</q>
+									<p class="author">- Sheeja Vasudevan,</p>
+							</div>
+
+							</div>
+						<br>
+
+						<div style="text-align:center">
+							<span class="dot"></span> 
+							<span class="dot"></span> 
+							<span class="dot"></span>
+							<span class="dot"></span> 
+							<span class="dot"></span> 
 			</div>
-		</section>
+
 
 	
 						</div>
@@ -242,6 +289,8 @@
 				</div>
 			</div>
 		</section>
+
+
 
 	</main>
 	
@@ -281,7 +330,27 @@
     <script type="text/javascript" src="assets/js/jquery.countdown.min.js"></script>
     <!-- Ajax contact form  -->
     <script type="text/javascript" src="assets/js/app.js"></script>
+		<script>
+				var slideIndex = 0;
+				showSlides();
   
+				function showSlides() {
+						var i;
+						var slides = document.getElementsByClassName("mySlides");
+						var dots = document.getElementsByClassName("dot");
+						for (i = 0; i < slides.length; i++) {
+							slides[i].style.display = "none";  
+						}
+						slideIndex++;
+						if (slideIndex > slides.length) {slideIndex = 1}    
+						for (i = 0; i < dots.length; i++) {
+								dots[i].className = dots[i].className.replace(" active", "");
+						}
+						slides[slideIndex-1].style.display = "block";  
+						dots[slideIndex-1].className += " active";
+						setTimeout(showSlides, 3000); // Change image every 2 seconds
+				}
+		</script>
        
 	
     <!-- Custom js -->
