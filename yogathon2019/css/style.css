@@ -1,0 +1,149 @@
+.title {
+  font-family: 'Baloo', cursive;
+  font-weight: normal;
+  color:  #138d75;
+  font-size: 60px;
+  text-align: center;
+}
+
+.subtitle {
+  font-weight: normal;
+  color:   #0e6655;
+  font-size: 20px;
+  text-align: center;
+}
+
+#yogathon-date {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-weight: normal;
+  text-shadow: 0px 2px 4px white;
+  color:   #0e6655;
+  font-size: 100%;
+  text-align: center;
+}
+
+.clock-font {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 150%;
+  background: white;
+  padding: 3px;
+  border-radius: 15%;
+  box-shadow: inset 0 1px 3px black;
+}
+
+.container-outer {
+  padding: 5px 25px 5px 25px;
+  margin: 20px auto;
+  width: 960px;
+  box-shadow: 0px 0px 20px white;
+  border-radius: 20px;
+}
+
+.btn {
+  white-space: normal;
+  width: 480px;
+  font-size: 20px;
+  margin: 15px;
+  border: none;
+  color: white;
+  background: #1e8449;
+  padding: 10px 50px;
+  box-shadow: 1px 4px 5px black;
+  transition: background 0.5s, box-shadow 0.5s;
+}
+
+.btn:hover {
+  box-shadow: 1px 2px 5px black;
+  cursor: pointer;
+  background: #27ae60;
+}
+
+.btn:active {
+  box-shadow: 1px 1px 2px black;
+  cursor: pointer;
+  background-color: #27ae60;
+}
+
+.raise:hover {
+  border-radius: 15px;
+  box-shadow: 0px 0px 15px white;
+}
+
+#container-practice {
+  padding: 10px;
+}
+
+#container-contact {
+  padding: 10px;
+}
+
+.heading {
+  padding: 5px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #1b4f72;
+}
+
+.table-cell {
+  padding: 0px 20px;
+  color: #1b4f72;
+}
+
+.grad {
+  background: #aed6f1; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, #aed6f1, #ebf5fb ); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #aed6f1, #ebf5fb ); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #aed6f1, #ebf5fb ); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #aed6f1, #ebf5fb ); /* Standard syntax (must be last) */
+}
+
+.frames {
+  opacity: 0;
+  animation-name: animPoses;
+  animation-duration: 22s;
+  animation-iteration-count: infinite;
+  filter: drop-shadow(0px 5px 5px gray);
+}
+
+#frame00 {animation-delay: 0s;}
+#frame01 {animation-delay: 2s;}
+#frame02 {animation-delay: 4s;}
+#frame03 {animation-delay: 6s;}
+#frame04 {animation-delay: 8s;}
+#frame05 {animation-delay: 10s;}
+#frame06 {animation-delay: 12s;}
+#frame07 {animation-delay: 14s;}
+#frame08 {animation-delay: 16s;}
+#frame09 {animation-delay: 18s;}
+#frame10 {animation-delay: 20s;}
+
+/* Standard syntax */
+@keyframes animPoses {
+    0%   {opacity: 0;}
+    4%   {opacity: 0;}
+    8%   {opacity: 1;}
+    12%  {opacity: 0;}
+    100% {opacity: 0;}
+}
+
+.anim_icon {
+  width: 80px;
+  opacity: 0;
+  transform: scale(0, 0);
+  animation-name: iconAnim;
+  animation-duration: 0.8s;
+  animation-delay: 2s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes iconAnim {
+  0%     {opacity: 0; transform: scale(0, 0);}
+  50%     {opacity: 1; transform: scale(1.4, 1.4);}
+  60%     {opacity: 1; transform: scale(0.6, 0.6);}
+  70%     {opacity: 1; transform: scale(1.2, 1.2);}
+  80%     {opacity: 1; transform: scale(0.8, 0.8);}
+  00%     {opacity: 1; transform: scale(1.1, 1.1);}
+  100%   {opacity: 1; transform: scale(1, 1);}
+}
