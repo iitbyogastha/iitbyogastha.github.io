@@ -7,9 +7,12 @@
 	border:0;
 }
 .panel-title0>a, .panel-title0>a:active{
-	display:block;
+  display:block;
+  background-color: rgb(24, 66, 52); /* For browsers that do not support gradients */
+  background-image: linear-gradient(rgb(72, 236, 182), rgb(11, 165, 80)); 
+  fill-opacity: 1;
 	padding:15px;
-  color:#01579B;
+  color:rgb(255, 255, 255);
   font-size:16px;
   font-weight:bold;
 	text-transform:uppercase;
