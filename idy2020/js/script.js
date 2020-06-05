@@ -9,3 +9,4 @@ $(function() {
     $(this).siblings('.panel-heading').removeClass('active');
   })
 });
+
