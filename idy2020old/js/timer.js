@@ -1,5 +1,5 @@
 // Set the date we're counting down to
-var countDownDate = new Date("Jun 21, 2020 7:00:00").getTime();
+var countDownDate = new Date("Jun 21, 2020 17:30:00").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
@@ -21,12 +21,12 @@ var x = setInterval(function() {
     '<span class="clock-font">' + days + '</span>days &nbsp&nbsp' +
     '<span class="clock-font">' + fmt(hours) + '</span>h &nbsp&nbsp' +
     '<span class="clock-font">' + fmt(minutes) + '</span>m &nbsp&nbsp' +
-    '<span class="clock-font">' + fmt(seconds) + '</span>s &nbsp To Go'
+    '<span class="clock-font">' + fmt(seconds) + '</span>s'
 
     // If the count down is over, write some text
     if (distance < 0) {
         clearInterval(x);
-        document.getElementById("yogathon-date").innerHTML = "IDY IS OVER";
+        document.getElementById("yogathon-date").innerHTML = "YOGATHON IS OVER";
     }
 }, 1000);
 
