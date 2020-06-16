@@ -474,7 +474,7 @@ footer p {
 	box-sizing:border-box;
 	overflow:hidden;
 
-	margin:0 0 0px 25%;
+	margin:0px 0 0px 25%;
   }
   .button-3 a{
 	font-family:arial;
@@ -505,19 +505,19 @@ footer p {
   .button-4{
 	width:80px;
 	height:30px;
-	border:2px solid #3e5e34;
+	border:2px solid #12cc31;
 	float:center;
 	text-align:center;
 	cursor:pointer;
 	position:relative;
 	box-sizing:border-box;
 	overflow:hidden;
-	margin:0 20px 0px 10px;
+	margin:0 20px 5px 10px;
   }
   .button-4 a{
 	font-family:arial;
 	font-size:16px;
-	color:#345e3b;
+	color:#12cc31;
 	text-decoration:none;
 	line-height:30px;
 	transition:all .5s ease;
@@ -528,7 +528,7 @@ footer p {
 	width:80px;
 	height:30px;
 	left:-80px;
-	background:#345e3f;
+	background:#12cc31;
 	position:absolute;
 	transition:all .5s ease;
 	z-index:1;
