@@ -1,5 +1,5 @@
 // Set the date we're counting down to
-var countDownDate = new Date("Jun 21, 2020 07:00:00").getTime();
+var countDownDate = new Date("Jun 21, 2019 17:30:00").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
@@ -17,14 +17,22 @@ var x = setInterval(function() {
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     // Output the result in an element with id="demo"
-    document.getElementById("cyp-date").innerHTML = "Time Left: " + days + " days, " + hours + "h "
-    + minutes + "m " + seconds + "s";
+    document.getElementById("yogathon-date").innerHTML =
+    '<span class="clock-font">' + days + '</span>days &nbsp&nbsp' +
+    '<span class="clock-font">' + fmt(hours) + '</span>h &nbsp&nbsp' +
+    '<span class="clock-font">' + fmt(minutes) + '</span>m &nbsp&nbsp' +
+    '<span class="clock-font">' + fmt(seconds) + '</span>s'
 
     // If the count down is over, write some text
     if (distance < 0) {
         clearInterval(x);
-        document.getElementById("cyp-date").innerHTML = "CYP EVENT IS OVER";
+        document.getElementById("yogathon-date").innerHTML = "YOGATHON IS OVER";
     }
-
-    document.getElementById("cyp-date").className = "timer";
 }, 1000);
+
+function fmt(num) {
+  numStr = "" + num;
+  if(numStr.length == 1) {
+    return "0" + numStr;
+  } else return numStr;
+}

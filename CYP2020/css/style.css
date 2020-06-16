@@ -121,3 +121,42 @@
   00%     {opacity: 1; transform: scale(1.1, 1.1);}
   100%   {opacity: 1; transform: scale(1, 1);}
 }
+/*Button 5*/
+.button-5{
+	width:80px;
+	height:30px;
+	border:2px solid #0561bd;
+	float:center;
+	text-align:center;
+	cursor:pointer;
+	position:relative;
+	box-sizing:border-box;
+	overflow:hidden;
+
+	margin:10px 0 0px 40%;
+  }
+  .button-5 a{
+	font-family:arial;
+	font-size:15px;
+	color:#004c97;
+	text-decoration:none;
+	line-height:30px;
+	transition:all .5s ease;
+	z-index:2;
+	position:relative;
+  }
+  .eff-5{
+	width:80px;
+	height:30px;
+	bottom:-30px;
+	background:#054585;
+	position:absolute;
+	transition:all .5s ease;
+	z-index:1;
+  }
+  .button-5:hover .eff-5{
+	bottom:0;
+  }
+  .button-5:hover a{
+	color:#fff;
+  }
