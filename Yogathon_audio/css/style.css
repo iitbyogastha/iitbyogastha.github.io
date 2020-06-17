@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css?family=Vast+Shadow|Sarina|Kalam|Comfortaa');
+
+body {
+    background: url("../images/Yogastha_logo.svg");
+    background-repeat: repeat-x repeat-y;
+    background-attachment: fixed;
+    background-size: 10em;
+    font-family: 'Comfortaa', cursive;
+    font-size: 1em;
+}
+
+#app-container {
+    color: rgb(94, 0, 0); 
+    background: linear-gradient(to right, rgba(253, 241, 201, 0.6) 0%,rgba(255, 255, 255, 0.6) 100%);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#count-display {
+    text-align: center;
+}
+
+input[type=number] {
+    width: 5em;
+}
+
+#current-sn {
+    font-family: 'Vast Shadow', cursive;
+    color: red;
+    font-size: 10em;
+}
+
+#current-sn-step {
+    font-family: 'Sarina', cursive;
+    color: gray;
+    padding-left: 1rem;
+    font-size: 2em;
+}
+
+#todos {
+    color: lightgray;
+}
+
+#copyright {
+    color: gray;
+}
+
+#sn-pos-img-div{
+    position: absolute;
+    transition: transform 0.5s;
+    z-index: 100;
+    height: 100%; 
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    opacity: 1.0;
+}
+
+#sn-benefits {
+    font-family: 'Comfortaa', cursive;
+    color: rgb(112, 112, 112);
+    font-size: 1.2em;
+    margin-bottom: 2em;
+    text-align: left;
+}
+
+.show-sn-image-div {
+    transform: scale(1.0);
+}
+
+.hide-sn-image-div {
+    transform: scale(0.0);
+}
+
+.description-panel {
+    background: rgb(253, 241, 201);
+    color: rgb(94, 0, 0);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1em;
+    margin-top: 1em;
+    padding: 1em 0em 1em 0em;
+    font-family: 'Kalam', cursive;
+    font-size: 1.2em;
+}
+
+.description-panel img {
+    float: left;
+    height: 9em;
+    margin-right: 20px; 
+    margin-bottom: 10px;
+}
+
+.ad {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+/* --- start Slider css --- */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 3em;
+    height: 1.3em;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    box-shadow: 0 0 1px #28a745;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 1em;
+    width: 1em;
+    left: 4px;
+    bottom: 0.2em;
+    background-color:rgba(253, 241, 201, 0.9);
+    box-shadow: 0 1 2px rgb(94, 0, 0);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #28a745;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #28a745;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(1.5em);
+    -ms-transform: translateX(1.5em);
+    transform: translateX(1.5em);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 1em;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  /* End slider css */
