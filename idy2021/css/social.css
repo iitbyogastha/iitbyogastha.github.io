@@ -1,0 +1,97 @@
+.icon-bar {
+    position: fixed;
+    top: 5%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  
+  .icon-bar a {
+    display: block;
+    text-align: center;
+    padding: 7px;
+    transition: all 0.3s ease;
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+  }
+  
+  .icon-bar a:hover {
+    background-color: rgba(250, 250, 250, 0);
+    font-size: 35px;
+  }
+  
+  .back {
+   border-radius: 50%;
+    background: rgba(255, 255, 255, 0);
+    color: rgb(0, 0, 0);
+        animation-name: floating;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+  
+  }
+  
+  .facebook {
+    border-radius: 50%;
+     background: #3B5998;
+     color: white;
+         animation-name: floating;
+       animation-duration: 2s;
+       animation-iteration-count: infinite;
+       animation-timing-function: ease-in-out;
+   
+   }
+  .twitter {
+  border-radius: 50%;
+    background: #55ACEE;
+    color: white;
+        animation-name: floating;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+  }
+  
+  .google {
+  border-radius: 50%;
+    background: #dd4b39;
+    color: white;
+        animation-name: floating;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+  }
+  
+  .linkedin {
+  border-radius: 50%;
+    background: #007bb5;
+    color: white;
+      animation-name: floating;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out; 
+  }
+  
+  .youtube {
+  border-radius: 50%;
+    background: #bb0000;
+    color: white;
+        animation-name: floating;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+  }
+  .instagram {
+  border-radius: 50%;
+    background: #bb0000;
+    color: white;
+        animation-name: floating;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+  }
+  @keyframes floating {
+      from { transform: translate(0,  0px); }
+      65%  { transform: translate(0, 15px); }
+      to   { transform: translate(0, -0px); }    
+  }
+  
