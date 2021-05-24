@@ -17,7 +17,7 @@ var x = setInterval(function() {
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     // Output the result in an element with id="demo"
-    document.getElementById("yogathon-date").innerHTML =
+    document.getElementById("idy-date").innerHTML =
     '<span class="clock-font">' + days + '</span>days &nbsp&nbsp' +
     '<span class="clock-font">' + fmt(hours) + '</span>h &nbsp&nbsp' +
     '<span class="clock-font">' + fmt(minutes) + '</span>m &nbsp&nbsp' +
@@ -26,7 +26,7 @@ var x = setInterval(function() {
     // If the count down is over, write some text
     if (distance < 0) {
         clearInterval(x);
-        document.getElementById("yogathon-date").innerHTML = "IDY IS OVER";
+        document.getElementById("idy-date").innerHTML = "IDY IS OVER";
     }
 }, 1000);
 
