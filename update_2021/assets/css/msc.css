@@ -1,0 +1,27 @@
+    .floating-links {
+      -webkit-filter: drop-shadow(0px 1px 2px black);
+      filter: drop-shadow(0px 1px 2px black);
+      transition: filter 0.1s, transform 0.5s;
+    }
+    .floating-links:hover {
+      -webkit-filter: drop-shadow(0px 5px 5px #222);
+      transform: scale(1.7);
+      filter: drop-shadow(0px 5px 5px #222);
+    }
+    .managerphoto{
+     border-radius: 250px;
+     transition: border-radius .5s,transform .5s;
+     overflow:hidden;
+    }
+    .managerphoto:hover{
+    border-radius: 0px;
+    transform:scale(1.09,1.09);     
+    }
+
+    .mySlides1 {display:none}
+
+    .w3-left, .w3-right, .w3-badge {cursor:pointer}
+
+    .w3-badge {height:13px;width:13px;padding:0}
+
+    .mySlides {display:none;}
