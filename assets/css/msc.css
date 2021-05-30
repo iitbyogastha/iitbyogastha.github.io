@@ -122,3 +122,32 @@
   cursor: pointer;
   background-color:  #2e86c1;
 }
+
+.frames {
+  opacity: 0;
+  animation-name: animPoses;
+  animation-duration: 22s;
+  animation-iteration-count: infinite;
+  filter: drop-shadow(0px 5px 5px gray);
+}
+
+#frame00 {animation-delay: 0s;}
+#frame01 {animation-delay: 2s;}
+#frame02 {animation-delay: 4s;}
+#frame03 {animation-delay: 6s;}
+#frame04 {animation-delay: 8s;}
+#frame05 {animation-delay: 10s;}
+#frame06 {animation-delay: 12s;}
+#frame07 {animation-delay: 14s;}
+#frame08 {animation-delay: 16s;}
+#frame09 {animation-delay: 18s;}
+#frame10 {animation-delay: 20s;}
+
+/* Standard syntax */
+@keyframes animPoses {
+    0%   {opacity: 0;}
+    4%   {opacity: 0;}
+    8%   {opacity: 1;}
+    12%  {opacity: 0;}
+    100% {opacity: 0;}
+}
