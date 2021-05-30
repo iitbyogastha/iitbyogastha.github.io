@@ -25,3 +25,100 @@
     .w3-badge {height:13px;width:13px;padding:0}
 
     .mySlides {display:none;}
+
+    .glitter-text {
+  font-size: 120%;
+  animation-name: glitterText;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes glitterText {
+  0%    {color: red;}
+  50%   {color: blue;}
+  100%  {color: red;}
+}
+
+.anim_icon {
+  width: 80px;
+  opacity: 0;
+  transform: scale(0, 0);
+  animation-name: iconAnim;
+  animation-duration: 0.8s;
+  animation-delay: 2s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes iconAnim {
+  0%     {opacity: 0; transform: scale(0, 0);}
+  50%     {opacity: 1; transform: scale(1.4, 1.4);}
+  60%     {opacity: 1; transform: scale(0.6, 0.6);}
+  70%     {opacity: 1; transform: scale(1.2, 1.2);}
+  80%     {opacity: 1; transform: scale(0.8, 0.8);}
+  00%     {opacity: 1; transform: scale(1.1, 1.1);}
+  100%   {opacity: 1; transform: scale(1, 1);}
+}
+/*Button 5*/
+.button-5{
+  width:80px;
+  height:30px;
+  border:2px solid #0561bd;
+  float:center;
+  text-align:center;
+  cursor:pointer;
+  position:relative;
+  box-sizing:border-box;
+  overflow:hidden;
+
+  margin:10px 0 0px 40%;
+  }
+  .button-5 a{
+  font-family:arial;
+  font-size:15px;
+  color:#004c97;
+  text-decoration:none;
+  line-height:30px;
+  transition:all .5s ease;
+  z-index:2;
+  position:relative;
+  }
+  .eff-5{
+  width:80px;
+  height:30px;
+  bottom:-30px;
+  background:#054585;
+  position:absolute;
+  transition:all .5s ease;
+  z-index:1;
+  }
+  .button-5:hover .eff-5{
+  bottom:0;
+  }
+  .button-5:hover a{
+  color:#fff;
+  }
+  .butn {
+  white-space: normal;
+  border-radius: 50px;
+  width: 300px;
+  font-size: 20px;
+  margin: 15px;
+  border: none;
+  color: white;
+  background-color:  #1f618d;
+  padding: 10px 50px;
+  box-shadow: 1px 4px 5px black;
+}
+
+.butn:hover {
+  box-shadow: 1px 2px 5px black;
+  cursor: pointer;
+  background-color:  #2e86c1;
+}
+
+.butn:active {
+  box-shadow: 1px 1px 2px black;
+  cursor: pointer;
+  background-color:  #2e86c1;
+}
