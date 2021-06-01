@@ -180,11 +180,710 @@
 
         </div>
 </center>
+
 <div class="row" align="center">
 
-      <canvas id="myChart" width="400" height="200"></canvas>
+  <canvas id="myChart" width="400" height="200"></canvas>
 
 </div>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Sourabh Bhat">
+    <title>Surya Namaskar Counts</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-69828084-1"></script>
+    <script src="../js/gtag.js"></script>
+
+
+    <!-- AdSense -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-5232558571567163",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../vendor/devicons/css/devicons.min.css" rel="stylesheet">
+    <link href="../vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- My Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chat-style.css">
+    <link rel="stylesheet" href="../css/form.css">
+
+    <style>
+        #top-msg {
+            color: black;
+            margin: 0em;
+            animation-name: top-msg-anim;
+            animation-duration: 8s;
+        }
+
+        @keyframes top-msg-anim {
+            0% {
+                color: red;
+            }
+
+            22% {
+                margin-left: 0ex;
+            }
+
+            25% {
+                margin-left: -10ex;
+            }
+
+            28% {
+                margin-left: 10ex;
+            }
+
+            30% {
+                margin-left: -5ex;
+            }
+
+            32% {
+                margin-left: 5ex;
+            }
+
+            34% {
+                margin-left: 0ex;
+            }
+
+            50% {
+                color: blue;
+            }
+
+            90% {
+                color: green;
+            }
+
+            100% {
+                color: black;
+            }
+        }
+    </style>
+</head>
+
+<body onload="initialize()">
+    <div id=audio-placeholder>
+        <audio id="initial-instructions" preload="auto">
+            <source src="media/voices/sourabh/initial_instructions.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="1" preload="auto">
+            <source src="media/voices/sourabh/1.mp3" type="audio/mpeg">
+            Your browser does not support the audio tag.
+        </audio>
+        <audio id="2" preload="auto">
+            <source src="media/voices/sourabh/2.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="3" preload="auto">
+            <source src="media/voices/sourabh/3.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="4" preload="auto">
+            <source src="media/voices/sourabh/4.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="5" preload="auto">
+            <source src="media/voices/sourabh/5.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="6" preload="auto">
+            <source src="media/voices/sourabh/6.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="7" preload="auto">
+            <source src="media/voices/sourabh/7.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="8" preload="auto">
+            <source src="media/voices/sourabh/8.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="9" preload="auto">
+            <source src="media/voices/sourabh/9.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="10" preload="auto">
+            <source src="media/voices/sourabh/10.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="11" preload="auto">
+            <source src="media/voices/sourabh/11.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="12" preload="auto">
+            <source src="media/voices/sourabh/12.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="right" preload="auto">
+            <source src="media/voices/sourabh/right.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="left" preload="auto">
+            <source src="media/voices/sourabh/left.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="background_music" preload="auto">
+            <source src="media/background_music/bg_yt.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="end-instructions" preload="auto">
+            <source src="media/voices/sourabh/end_instructions.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+        <span id="top-msg">
+            Please wait, loading data ...
+        </span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div id="app-container" class="container">
+        <div class="row">
+            <h2 class="offset-lg-2">Counts for Surya Namaskar</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 offset-lg-2">
+                <div id="sn-pos-img-div" class="hide-sn-image-div">
+                    <img id="sn-pos-img" class="ml-4" height="100%" src="images/0.png" alt="Suryanamaskar asanas">
+                </div>
+                <label for="totalSN" style="padding-right:3em;">How many?</label>
+                <input type="number" name="totalSN" id="totalSN" min="1" value="16" onchange="totalSN_changed()">
+                <br><br>
+                <label for="delay">Delay before start: </label>
+                <input type="number" name="delay" id="delay" min="0" value="2">
+                <label for="delay">seconds</label>
+                <br><br>
+                <div>
+                    <label for="speed_range">slow</label>
+                    <input type="range" name="speed" id="speed_range" min="1000" max="10000" value="4000"
+                        style="direction: rtl;" onchange="speedRange_changed()">
+                    <label for="speed_range">fast</label>
+                </div>
+                <br>
+                <label class="switch">
+                    <input type="checkbox" name="bgMusic" id="bg_music_cb" checked onchange="bgMusicPlay()">
+                    <span class="slider round"></span>
+                </label>
+                <label for="bg_music_cb">Music</label>
+            </div>
+            <div class="col-lg-3">
+                <input type="button" class="btn btn-success btn-lg pr-5 pl-5 mt-2 mb-2" value="Start"
+                    onclick="start_pause_continue()" id="play_pause_btn" disabled>
+                <input type="button" class="btn btn-danger btn-lg pr-5 pl-5 mt-2 mb-2" value="Stop" onclick="stop()"
+                    id="stop_btn" disabled>
+            </div>
+        </div>
+        <div id="count-display">
+            <span id="current-sn"></span>
+            <span id="current-sn-step"></span>
+        </div>
+        <div id="time-estimate">
+            <span id="total-time-estimate">Approx. total time: </span>
+        </div>
+    </div>
+    <br>
+
+
+    <div class="container">
+
+        <div id="sn-benefits">
+            <strong>"Surya Namaskar"</strong> or <strong>"Sun Salutation"</strong> consists of 12 asanas with 9 unique
+            Yoga postures.
+            <ul>
+                <li>Fast paced Surya Namaskar is good for <strong>building stamina</strong>.</li>
+                <li>Slow paced Surya Namaskar, (by holding each posture for some time), is good for
+                    <strong>increasing flexibility, endurance and concentration</strong>.</li>
+                <li>Daily practice of Surya Namaskar:
+                    <ul>
+                        <li>improves metabolism,</li>
+                        <li>helps in weight management,</li>
+                        <li>improves cardio-vascular health,</li>
+                        <li>relaxes the mind.</li>
+                    </ul>
+                </li>
+            </ul>
+            After completion of Surya Namaskar sit in a meditative posture for few minutes filling yourself with
+            gratitude towards nature. You may practice Surya Namaskar early in the morning or in the evening with a gap
+            of at least 2 hours after any meal. Read below for details about each asana (posture).
+        </div>
+
+        <!-- Row for Ad -->
+        <div class="ad row">
+            <div class="col-12">
+                <!-- Ad -->
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5232558571567163"
+                    data-ad-slot="5414144171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+
+        <!-- Position 0 : Starting position -->
+        <div class="row description-panel">
+            <div class="col-12">
+                <h2>Step 0: Starting position</h2>
+                <img src="images/0.png" alt="Starting position">
+                <div>
+                    <strong>Before you start: </strong> Do some loosening exercises such as neck movements, arms, wrist,
+                    waist, knee and ankle rotations. Use a soft Yoga mat of at least 4mm thickness.
+                    <br><br>
+                    <strong>Posture: </strong> Move to the front of the mat and stand comfortably with feet about 2
+                    inches apart. Roll back your shoulders with both your arms by the side of your body. Stand straight
+                    with your spine erect. <br><br>
+                    <strong>Breathing: </strong> Breathe at a natural rhythm.
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Position 1 : Pranamasan -->
+        <div class="row description-panel">
+            <div class="col-12">
+                <h2>Step 1: Pranamasan</h2>
+                <img src="images/1.png" alt="Pranam asan">
+                <div>
+                    Pranam is a gesture made for greeting somebody. <br>
+                    <strong>Transition: </strong> Breathe in and out as you bring your palms together in namaskar mudra
+                    in front of your chest.
+                    <br><br>
+                    <strong>Posture: </strong> Stand with spine erect with thumbs at the centre of the chest. Fill
+                    yourself with gratitude towards the nature.
+                    <br><br>
+                    <strong>Breathing: </strong> Breathe at a natural rhythm after reaching the final posture.
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Position 2 : Hastauthanasan -->
+        <div class="row description-panel">
+            <div class="col-12">
+                <h2>Step 2: Hastauthanasan</h2>
+                <img src="images/2.png" alt="Hasta uthan asan">
+                <div>
+                    Hasta means hands and uthan means raised.<br>
+                    <strong>Transition: </strong> As you breathe in, stretch both your hands forward and raise them and
+                    stretch your entire body. Now bend slightly backwards (from your lower back) and look upwards such
+                    that your arms touch your ears.
+                    <br><br>
+                    <strong>Posture: </strong> In the final position your arms would be touching your ears and you will
+                    feel stretch in your complete body. Take care not to bend too much backwards as it may cause you to
+                    loose balance and feeling of giddiness.
+                    <br><br>
+                    <strong>Breathing: </strong> Breathe at a natural rhythm after reaching the final posture.
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Row for Ad -->
+        <div class="row">
+            <div class="col-12">
+                <!-- Ad -->
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5232558571567163"
+                    data-ad-slot="5414144171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+
+
+        <!-- Position 3 : Padahastasan -->
+        <div class="row description-panel">
+            <div class="col-12">
+                <h2>Step 3: Padahastasan</h2>
+                <img src="images/3.png" alt="Padahastasan">
+                <div>
+                    Pada means feet and hasta means hands.<br>
+                    <strong>Transition: </strong> As you breathe out, maintaining the stretch in your body bend forward
+                    from your hip to point both your hands forward. You may now bend further by curving your back.
+                    Try to place your palms by the side of legs.
+                    <br><br>
+                    <strong>Posture: </strong> Try to maintain the tension in your back as you try to place your palms
+                    besides your feet. If you can easily place your palms on the floor, then bend your elbows and push
+                    further down.
+                    <br><br>
+                    <strong>Breathing: </strong> Breathe at a natural rhythm after reaching the final posture.
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Position 4 : Ashwasanchalanasan -->
+        <div class="row description-panel">
+            <div class="col-12">
+                <h2>Step 4: Ashwasanchalanasan</h2>
+                <img src="images/4.png" alt="Ashwa sanchalan asan">
+                <div>
+                    Ashwa means horse and sanchalan means control.<br>
+                    <strong>Transition: </strong> Place both hands on the floor besides your feet. As you breathe in,
+                    move your right leg (during odd numbered suryanamaskar) or left leg (during even numbered
+                    suryanamaskar) as much back as possible and place your knee and toe on the floor. The other leg in
+                    front is almost perpendicular to the floor with the foot sole completely resting on the floor. The
+                    app on this page says right when you need to move the right leg backward and left when you need to
+                    move left leg backward.
+                    <br><br>
+                    <strong>Posture: </strong> In the final posture you will be looking upwards constantly pushing your
+                    hip towards the floor.
+                    <br><br>
+                    <strong>Breathing: </strong> Breathe at a natural rhythm after reaching the final posture.
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Position 5 : Hastadandasan -->
+        <div class="row description-panel">
+            <div class="col-12">
+                <h2>Step 5: Hastadandasan</h2>
+                <img src="images/5.png" alt="Hasta dand asan">
+                <div>
+                    Hasta means hand and dand means wooden pole.<br>
+                    <strong>Transition: </strong> Holding you breath inside, move the leg from forward to the back and
+                    place it besides the other leg. Raise both knees off the floor.
+                    <br><br>
+                    <strong>Posture: </strong> Try to maintain your complete body in a straight line as shown in the
+                    picture.
+                    <br><br>
+                    <strong>Breathing: </strong> Hold your breath for some time if you can before transitioning to the
+                    next posture.
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Row for Ad -->
+        <div class="row">
+            <div class="col-12">
+                <!-- Ad -->
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5232558571567163"
+                    data-ad-slot="5414144171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+
+
+        <!-- Position 6 : Ashtanga namaskar -->
+        <div class="row description-panel">
+            <div class="col-12">
+                <h2>Step 6: Ashtanga namaskar</h2>
+                <img src="images/6.png" alt="Ashtanga namaskar">
+                <div>
+                    Asta means eight, anga means body and namaskar means salutation: Eight parts of the body touching
+                    the floor for salutation.<br>
+                    <strong>Transition: </strong> Very slowly as you breathe out, lower you body to place your knees,
+                    chest and chin on the floor raising your abdomen off the floor.
+                    <br><br>
+                    <strong>Posture: </strong> Only eight parts of your body should be touching the floor, namely: chin,
+                    chest, two hands, two knees and two toes. The abdomen should be kept as away from the floor as
+                    possible.
+                    <br><br>
+                    <strong>Breathing: </strong> Breathe at a natural rhythm after reaching the final posture.
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Position 7 : Bhujangasan -->
+        <div class="row description-panel">
+            <div class="col-12">
+                <h2>Step 7: Bhujangasan</h2>
+                <img src="images/7.png" alt="Bhujang asan">
+                <div>
+                    Bhujang means snake (hence also known as cobra posture).<br>
+                    <strong>Transition: </strong> As you breathe in, slide further placing your abdomen on the floor and
+                    raising your chin and chest off the floor.
+                    <br><br>
+                    <strong>Posture: </strong> In this posture, try to look up and try to keep your shoulders away from
+                    the ears without locking your elbows. Do not use lot of hand strength, instead try to use your back
+                    muscles to raise your chin higher.
+                    <br><br>
+                    <strong>Breathing: </strong> Breathe at a natural rhythm after reaching the final posture.
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Position 8 : Adhomukhaswanasan or Parvatasan -->
+        <div class="row description-panel">
+            <div class="col-12">
+                <h2>Step 8: Adhomukhaswanasan or Parvatasan</h2>
+                <img src="images/8.png" alt="Adhomukha swan asan or Parvat asan">
+                <div>
+                    Adhomukha means downward facing and swan means dog. Parvat means mountain.<br>
+                    <strong>Transition: </strong> As you breathe out, raise you back and knees to form an inverted
+                    V-shape of the body.
+                    <br><br>
+                    <strong>Posture: </strong> In this posture, try to push your heels to touch the floor creating a
+                    tension in calf muscles. Also, try to push your head downwards, hence stretching your back.
+                    <br><br>
+                    <strong>Breathing: </strong> Breathe at a natural rhythm after reaching the final posture.
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Row for Ad -->
+        <div class="row">
+            <div class="col-12">
+                <!-- Ad -->
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5232558571567163"
+                    data-ad-slot="5414144171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+
+
+        <!-- Position 9 : Ashwasanchalanasan -->
+        <div class="row description-panel">
+            <div class="col-12">
+                <h2>Step 9: Ashwasanchalanasan</h2>
+                <img src="images/9.png" alt="Ashwa sanchalan asan">
+                <div>
+                    <strong>Transition: </strong> As you breathe in, bring your right leg or left leg (depending on odd
+                    or even numbered Suryanamaskar) forward and place in-between your hands. The app on this page says
+                    right or left depending on the current suryanamaskar number, hence alternating between left and
+                    right leg. Place the knee of the other leg (the one behind) on the floor.
+                    <br><br>
+                    <strong>Posture: </strong> In the final posture, look upwards and push your hip towards the floor.
+                    <br><br>
+                    <strong>Breathing: </strong> Breathe at a natural rhythm after reaching the final posture.
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Position 10 : Padahastasan -->
+        <div class="row description-panel">
+            <div class="col-12">
+                <h2>Step 10: Padahastasan</h2>
+                <img src="images/10.png" alt="Padahastasan">
+                <div>
+                    <strong>Transition: </strong> As you breathe out, move the behind leg forward to place it besides
+                    the other leg. Try to place your palms besides your feet.
+                    <br><br>
+                    <strong>Posture: </strong> Try to maintain the tension in your back as you try to place your palms
+                    besides your feet. If you can easily place your palms on the floor, then bend your elbows and push
+                    further down.
+                    <br><br>
+                    <strong>Breathing: </strong> Breathe at a natural rhythm after reaching the final posture.
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Position 11 : Hastauthanasan -->
+        <div class="row description-panel">
+            <div class="col-12">
+                <h2>Step 11: Hastauthanasan</h2>
+                <img src="images/11.png" alt="Hastauthanasan">
+                <div>
+                    <strong>Transition: </strong> As you breathe in, stretch both your hands forward and raise them
+                    above your head and stretch your entire body. Now bend slightly backwards (from your lower back) and
+                    look upwards such that your arms touch your ears.
+                    <br><br>
+                    <strong>Posture: </strong> In the final position your arms would be touching your ears and you will
+                    feel stretch in your complete body. Take care not to bend too much backwards as it may cause you to
+                    loose balance and feeling of giddiness.
+                    <br><br>
+                    <strong>Breathing: </strong> Breathe at a natural rhythm after reaching the final posture.
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Row for Ad -->
+        <div class="row">
+            <div class="col-12">
+                <!-- Ad -->
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5232558571567163"
+                    data-ad-slot="5414144171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+
+        <!-- Position 12 : Relaxation -->
+        <div class="row description-panel">
+            <div class="col-12">
+                <h2>Step 12: Relaxation posture</h2>
+                <img src="images/12.png" alt="Relaxation posture">
+                <div>
+                    <strong>Transition: </strong> Without bending your hands as you breathe out, swing your hands from
+                    sideways to place them beside your body. Keep your spine erect and relax as you get ready for the
+                    next suryanamaskar.
+                    <br><br>
+                    <strong>Posture: </strong> Relax your body.
+                    <br><br>
+                    <strong>Breathing: </strong> Breathe at a natural rhythm and relax your body.
+                </div>
+            </div>
+        </div>
+
+        <!-- Linking to demo video -->
+        <div class="row description-panel">
+            <div class="col-12">
+                <h3>Other helpful links:</h3>
+                <ul>
+                    <li>
+                        <a href="https://youtu.be/1xRX1MuoImw" target="_blank" rel="noopener noreferrer">
+                            Quick demo by Aparajita Jamwal (AJ)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://youtu.be/AbPufvvYiSw" target="_blank" rel="noopener noreferrer">
+                            Demo by Rashmi Ramesh
+                        </a>
+                    </li>
+                    <li>
+                        Ventuno Yoga:
+                        <a href="https://youtu.be/-knwaD4WUFY" target="_blank" rel="noopener noreferrer">
+                            Postures</a>,
+                        <a href="https://youtu.be/Ey4qJFFsReU" target="_blank" rel="noopener noreferrer">
+                            Breathing</a>,
+                        <a href="https://youtu.be/D9fKzVdNm_U" target="_blank" rel="noopener noreferrer">
+                            Benefits</a>
+                    </li>
+                    <li>
+                        <a href="https://www.artofliving.org/in-en/yoga/yoga-poses/sun-salutation" target="_blank"
+                            rel="noopener noreferrer">
+                            Suryanamaskar details from the "Art of Living" organization
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <!-- Comments -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Comments</h2>
+                <h6>Note: Comments will appear after review, which may take upto 24 hrs.</h6>
+                <form action="https://formspree.io/blog-comment@spbhat.in" method="POST">
+                    <!--label for="fname">Name</label>-->
+                    <input type="text" id="name" name="name" placeholder="Your Name (Email - optional)">
+
+                    <!--label for="message">Message</label>-->
+                    <textarea id="message" name="message" placeholder="What's on your mind ..."
+                        style="height:100px"></textarea>
+
+                    <button type="submit">
+                        <i class="fa fa-paper-plane mr-2"></i> Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Comments from people and replies -->
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <div class="chat-container">
+                  <img src="images/avatar.svg" alt="Avatar">
+                  <strong>Tarun Kumar: </strong>
+                  <span class="chat-time-right">04 April 2020</span>
+                  <p>Excellent app, can we have mantras also in beginning?</p>
+                </div>
+
+                <div class="chat-container chat-darker chat-reply">
+                  <img src="images/avatar.svg" alt="Avatar">
+                  <strong>Sourabh Bhat: </strong>
+                  <span class="chat-time-right">07 April 2020</span>
+                  <p>Thank you for your appreciation and suggestion. I will add it to the list of future improvements.</p>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="chat-container">
+                  <img src="images/avatar.svg" alt="Avatar">
+                  <strong>Laksh: </strong>
+                  <span class="chat-time-right">16 April 2020</span>
+                  <p>Nice idea; I was considering making this myself this morning until I found this online! You could consider removing the right/left directions as well.</p>
+                </div>
+
+                <div class="chat-container chat-darker chat-reply">
+                  <img src="images/avatar.svg" alt="Avatar">
+                  <strong>Sourabh Bhat: </strong>
+                  <span class="chat-time-right">16 April 2020</span>
+                  <p>
+                  Thank you for your appreciation and suggestion.
+                  I can probably add a switch to enable/disable the left-right directions.
+                  Nevertheless, I find it very useful during my personal practice.
+                  I am very glad that the tool is discoverable and helpful.
+                  </p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <hr>
+
+    <br>
+    <br>
+    <div class="ml-4" id="todos">
+        Coming soon:
+        <ul>
+            <li>Improve look & feel of the page</li>
+            <li>Controls for adjusting speed range of counts - Done</li>
+            <li>Smoothly vary speed using sinusoidal function - Done</li>
+            <li>Few seconds of rest between suryanamaskar - from YT comments</li>
+            <li>Mantras in beginning - from comments</li>
+            <li>Add voices / select different voices</li>
+            <li>Choose between different background music</li>
+            <li>Adjust relative volumes of voice and background music</li>
+            <li>Display estimated total time / time remaining - Done</li>
+            <li>Animation of suryanamaskar poses</li>
+            <li>Saving personal preferences of users</li>
+            <li>Show in fullscreen mode</li>
+            <li>Yogastha IITB logo - Done</li>
+            <li>Add comment / discussion section - Done</li>
+        </ul>
+    </div>
+
+    <!-- Ad -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5232558571567163" data-ad-slot="5414144171"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <div class="ml-4" id="copyright">
+        &copy; All rights reserved.
+        <br>
+        Sourabh Bhat, Yogastha IIT Bombay.
+        <br>
+        This application is provided for personal use only.
+    </div>
+    <br><br>
+
+    <!-- JS code -->
+    <script type="text/javascript" src="js/sn.js"></script>
+
+    <!-- Optional JavaScript - Bootstrap -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
       </section><!-- End Portfolio Section -->
   
     <!-- ======= Contact Section ======= -->
