@@ -172,11 +172,11 @@
           <div class="row" align="center">
 <center>
       <div class="heading">Preparation for YOGATHON</div>
-      <div style="width: 50%; margin: 0px auto;">
+<!--       <div style="width: 50%; margin: 0px auto;">
         <a href="../old_site_data/Yogathon_audio/index.html" target="_blank">
           <button class="butn">Yogathon count audio</button>
         </a>
-      </div>
+      </div> -->
 
         </div>
 </center>
@@ -276,6 +276,8 @@
 
 <body onload="initialize()">
     <div id=audio-placeholder>
+<br><br>
+
         <audio id="initial-instructions" preload="auto">
             <source src="media/voices/sourabh/initial_instructions.mp3" type="audio/mpeg">
         </audio>
@@ -383,9 +385,7 @@
             <span id="total-time-estimate">Approx. total time: </span>
         </div>
     </div>
-    <br>
-
-
+    
     <div class="container">
 
         <div id="sn-benefits">
@@ -763,101 +763,6 @@
             </div>
         </div>
     </div>
-
-    <hr>
-    <!-- Comments -->
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h2>Comments</h2>
-                <h6>Note: Comments will appear after review, which may take upto 24 hrs.</h6>
-                <form action="https://formspree.io/blog-comment@spbhat.in" method="POST">
-                    <!--label for="fname">Name</label>-->
-                    <input type="text" id="name" name="name" placeholder="Your Name (Email - optional)">
-
-                    <!--label for="message">Message</label>-->
-                    <textarea id="message" name="message" placeholder="What's on your mind ..."
-                        style="height:100px"></textarea>
-
-                    <button type="submit">
-                        <i class="fa fa-paper-plane mr-2"></i> Submit
-                    </button>
-                </form>
-            </div>
-        </div>
-        
-        <!-- Comments from people and replies -->
-        <br>
-        <div class="row">
-            <div class="col-12">
-                <div class="chat-container">
-                  <img src="images/avatar.svg" alt="Avatar">
-                  <strong>Tarun Kumar: </strong>
-                  <span class="chat-time-right">04 April 2020</span>
-                  <p>Excellent app, can we have mantras also in beginning?</p>
-                </div>
-
-                <div class="chat-container chat-darker chat-reply">
-                  <img src="images/avatar.svg" alt="Avatar">
-                  <strong>Sourabh Bhat: </strong>
-                  <span class="chat-time-right">07 April 2020</span>
-                  <p>Thank you for your appreciation and suggestion. I will add it to the list of future improvements.</p>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="chat-container">
-                  <img src="images/avatar.svg" alt="Avatar">
-                  <strong>Laksh: </strong>
-                  <span class="chat-time-right">16 April 2020</span>
-                  <p>Nice idea; I was considering making this myself this morning until I found this online! You could consider removing the right/left directions as well.</p>
-                </div>
-
-                <div class="chat-container chat-darker chat-reply">
-                  <img src="images/avatar.svg" alt="Avatar">
-                  <strong>Sourabh Bhat: </strong>
-                  <span class="chat-time-right">16 April 2020</span>
-                  <p>
-                  Thank you for your appreciation and suggestion.
-                  I can probably add a switch to enable/disable the left-right directions.
-                  Nevertheless, I find it very useful during my personal practice.
-                  I am very glad that the tool is discoverable and helpful.
-                  </p>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-    
-    <hr>
-
-    <br>
-    <br>
-    <div class="ml-4" id="todos">
-        Coming soon:
-        <ul>
-            <li>Improve look & feel of the page</li>
-            <li>Controls for adjusting speed range of counts - Done</li>
-            <li>Smoothly vary speed using sinusoidal function - Done</li>
-            <li>Few seconds of rest between suryanamaskar - from YT comments</li>
-            <li>Mantras in beginning - from comments</li>
-            <li>Add voices / select different voices</li>
-            <li>Choose between different background music</li>
-            <li>Adjust relative volumes of voice and background music</li>
-            <li>Display estimated total time / time remaining - Done</li>
-            <li>Animation of suryanamaskar poses</li>
-            <li>Saving personal preferences of users</li>
-            <li>Show in fullscreen mode</li>
-            <li>Yogastha IITB logo - Done</li>
-            <li>Add comment / discussion section - Done</li>
-        </ul>
-    </div>
-
-    <!-- Ad -->
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5232558571567163" data-ad-slot="5414144171"
-        data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
 
     <div class="ml-4" id="copyright">
         &copy; All rights reserved.
