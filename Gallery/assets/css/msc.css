@@ -1,0 +1,153 @@
+    .floating-links {
+      -webkit-filter: drop-shadow(0px 1px 2px black);
+      filter: drop-shadow(0px 1px 2px black);
+      transition: filter 0.1s, transform 0.5s;
+    }
+    .floating-links:hover {
+      -webkit-filter: drop-shadow(0px 5px 5px #222);
+      transform: scale(1.7);
+      filter: drop-shadow(0px 5px 5px #222);
+    }
+    .managerphoto{
+     border-radius: 250px;
+     transition: border-radius .5s,transform .5s;
+     overflow:hidden;
+    }
+    .managerphoto:hover{
+    border-radius: 0px;
+    transform:scale(1.09,1.09);     
+    }
+
+    .mySlides1 {display:none}
+
+    .w3-left, .w3-right, .w3-badge {cursor:pointer}
+
+    .w3-badge {height:13px;width:13px;padding:0}
+
+    .mySlides {display:none;}
+
+    .glitter-text {
+  font-size: 120%;
+  animation-name: glitterText;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes glitterText {
+  0%    {color: red;}
+  50%   {color: blue;}
+  100%  {color: red;}
+}
+
+.anim_icon {
+  width: 80px;
+  opacity: 0;
+  transform: scale(0, 0);
+  animation-name: iconAnim;
+  animation-duration: 0.8s;
+  animation-delay: 2s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes iconAnim {
+  0%     {opacity: 0; transform: scale(0, 0);}
+  50%     {opacity: 1; transform: scale(1.4, 1.4);}
+  60%     {opacity: 1; transform: scale(0.6, 0.6);}
+  70%     {opacity: 1; transform: scale(1.2, 1.2);}
+  80%     {opacity: 1; transform: scale(0.8, 0.8);}
+  00%     {opacity: 1; transform: scale(1.1, 1.1);}
+  100%   {opacity: 1; transform: scale(1, 1);}
+}
+/*Button 5*/
+.button-5{
+  width:80px;
+  height:30px;
+  border:2px solid #0561bd;
+  float:center;
+  text-align:center;
+  cursor:pointer;
+  position:relative;
+  box-sizing:border-box;
+  overflow:hidden;
+
+  margin:10px 0 0px 40%;
+  }
+  .button-5 a{
+  font-family:arial;
+  font-size:15px;
+  color:#004c97;
+  text-decoration:none;
+  line-height:30px;
+  transition:all .5s ease;
+  z-index:2;
+  position:relative;
+  }
+  .eff-5{
+  width:80px;
+  height:30px;
+  bottom:-30px;
+  background:#054585;
+  position:absolute;
+  transition:all .5s ease;
+  z-index:1;
+  }
+  .button-5:hover .eff-5{
+  bottom:0;
+  }
+  .button-5:hover a{
+  color:#fff;
+  }
+  .butn {
+  white-space: normal;
+  border-radius: 50px;
+  width: 300px;
+  font-size: 20px;
+  margin: 15px;
+  border: none;
+  color: white;
+  background-color:  #1f618d;
+  padding: 10px 50px;
+  box-shadow: 1px 4px 5px black;
+}
+
+.butn:hover {
+  box-shadow: 1px 2px 5px black;
+  cursor: pointer;
+  background-color:  #2e86c1;
+}
+
+.butn:active {
+  box-shadow: 1px 1px 2px black;
+  cursor: pointer;
+  background-color:  #2e86c1;
+}
+
+.frames {
+  opacity: 0;
+  animation-name: animPoses;
+  animation-duration: 22s;
+  animation-iteration-count: infinite;
+  filter: drop-shadow(0px 5px 5px gray);
+}
+
+#frame00 {animation-delay: 0s;}
+#frame01 {animation-delay: 2s;}
+#frame02 {animation-delay: 4s;}
+#frame03 {animation-delay: 6s;}
+#frame04 {animation-delay: 8s;}
+#frame05 {animation-delay: 10s;}
+#frame06 {animation-delay: 12s;}
+#frame07 {animation-delay: 14s;}
+#frame08 {animation-delay: 16s;}
+#frame09 {animation-delay: 18s;}
+#frame10 {animation-delay: 20s;}
+
+/* Standard syntax */
+@keyframes animPoses {
+    0%   {opacity: 0;}
+    4%   {opacity: 0;}
+    8%   {opacity: 1;}
+    12%  {opacity: 0;}
+    100% {opacity: 0;}
+}
