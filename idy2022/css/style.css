@@ -590,3 +590,8 @@ footer p {
   .work-box:hover img {
 	transform: scale(1.3);
   }
+
+  .work-box img {
+	max-width: 28em;
+	max-height: 28em;
+  }
