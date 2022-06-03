@@ -595,3 +595,15 @@ footer p {
 	max-width: 28em;
 	max-height: 28em;
   }
+
+  .form-popup {
+	  margin: 10px;
+  }
+
+  .RegisterButton{
+	background:#054585;
+	background-color: white;
+	transition:all .5s ease;
+  }
+
+  
