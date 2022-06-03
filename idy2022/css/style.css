@@ -592,8 +592,8 @@ footer p {
   }
 
   .work-box img {
-	max-width: 28em;
-	max-height: 28em;
+	max-width: 25em;
+	max-height: 25em;
   }
 
   .form-popup {
@@ -606,4 +606,5 @@ footer p {
 	transition:all .5s ease;
   }
 
+ 
   
