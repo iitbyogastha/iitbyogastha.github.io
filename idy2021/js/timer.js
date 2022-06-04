@@ -24,11 +24,11 @@ var x = setInterval(function() {
     '<span class="clock-font">' + fmt(seconds) + '</span>s &nbsp To Go'
 
     // If the count down is over, write some text
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("idy-date").innerHTML = "IDY IS OVER";
-    }
-}, 1000);
+//     if (distance < 0) {
+//         clearInterval(x);
+//         document.getElementById("idy-date").innerHTML = "IDY IS OVER";
+//     }
+// }, 1000);
 
 function fmt(num) {
   numStr = "" + num;
