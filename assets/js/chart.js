@@ -36,10 +36,10 @@ ctx.height = "200px";
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ["01-Jun", "03-Jun", "05-Jun", "06-Jun", "08-Jun", "10-Jun", "12-Jun", "13-Jun", "15-Jun", "17-Jun", "19-Jun", "21-June 'IDY'"],
+        labels: [ "06-Jun", "08-Jun", "10-Jun", "13-Jun", "15-Jun", "17-Jun", "19-Jun", "21-June 'IDY'"],
         datasets: [{
             label: '# of Suryanamaskars',
-            data: [6, 8, 12, 24, 24, 48, 48, 54, 60, 80, 84, 108],
+            data:  [10, 12, 24, 48, 60, 80, 84, 108],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
