@@ -19,11 +19,11 @@ h3,
 h4,
 h5,
 h6 {
-  color: #1e1e1e;
+  color:whitesmoke;
 }
 
 a {
-  color: #1e1e1e;
+  color: whitesmoke;
   text-decoration: none;
   transition: all 0.5s ease-in-out;
 }
