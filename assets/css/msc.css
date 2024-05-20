@@ -1,4 +1,40 @@
-    .floating-links {
+/* Container for the overall coordinators */
+.overallco {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding: 0 16px;
+}
+
+.coordinator {
+  flex: 1 1 330px;
+  max-width: 330px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 16px;
+}
+
+.container_of_coordinators {
+  padding: 0 16px;
+}
+
+@media screen and (max-width: 650px) {
+  .coordinator {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+.title {
+  color: grey;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.floating-links {
       -webkit-filter: drop-shadow(0px 1px 2px black);
       filter: drop-shadow(0px 1px 2px black);
       transition: filter 0.1s, transform 0.5s;
