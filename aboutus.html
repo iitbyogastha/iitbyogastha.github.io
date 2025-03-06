@@ -1087,7 +1087,7 @@
           populateDropdown(dropdownMenu, members) {
             members.forEach(member => {
               const listItem = document.createElement('li');
-              listItem.innerHTML = `<p class="dropdown-item mb-1">${member.name}</p>`;
+              listItem.innerHTML = `<p class="dropdown-item disabled text-dark mb-1">${member.name}</p>`;
               dropdownMenu.appendChild(listItem);
             });
           }
