@@ -1423,6 +1423,38 @@ a:hover {
 }
 
 /*--------------------------------------------------------------
+# Moving Events in each section on the main page
+--------------------------------------------------------------*/
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-image: none; /* Remove the default background image */
+  border: solid 2px black; /* Add a blue border for visibility */
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 8px;
+  transform: rotate(45deg);
+  background-color: transparent;
+}
+
+.carousel-control-prev {
+  left: -80px; /* Move the left arrow further left */
+}
+
+.carousel-control-next {
+  right: -80px; /* Move the right arrow further right */
+}
+
+.carousel-control-prev-icon {
+  transform: rotate(135deg); /* Rotate to point left */
+}
+
+.carousel-control-next-icon {
+  transform: rotate(-45deg); /* Rotate to point right */
+}
+
+
+/*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
 footer {
@@ -1442,4 +1474,61 @@ footer .credits {
 
 footer .credits a {
   color: #fff;
+}
+
+/*--------------------------------------------------------------
+# /* General Section Styling */
+--------------------------------------------------------------*/
+.about-mf {
+  background: #f9f9f9;
+  padding: 60px 0;
+}
+
+/* Section Title */
+.title-box {
+  margin-bottom: 30px;
+}
+.title-a {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.subtitle-a {
+  font-size: 1.2rem;
+  color: #6c757d;
+}
+
+/* Navigation Tabs */
+.nav-tabs .nav-link {
+  color: #343a40;
+  font-weight: bold;
+  border: none;
+  background: #e9ecef;
+  border-radius: 5px;
+  margin: 0 10px;
+  padding: 10px 20px;
+  transition: 0.3s;
+}
+.nav-tabs .nav-link.active {
+  background: #007bff;
+  color: #fff;
+}
+
+/* Team Cards */
+.team-card .card {
+  border: none;
+  transition: transform 0.3s ease;
+}
+.team-card .card:hover {
+  transform: scale(1.05);
+}
+.card-img-top {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  margin: auto;
+  object-fit: cover;
+}
+.card-title {
+  font-weight: bold;
+  margin-top: 10px;
 }
