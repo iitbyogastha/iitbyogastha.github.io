@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDY 2025</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background-color: #f7f7f7;
+            padding: 50px 0;
+        }
+        .bottom-section{
+            background-color: #f7f7f7;
+            padding: 50px 0;
+        }
+        .schedule-table th, .schedule-table td {
+            text-align: center;
+        }
+        .footer {
+            background-color: #443627;
+            color: #F2F6D0;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .idy-title{
+          border-radius: 5px;
+          background-color: #FF9D23; 
+          color: #FEF9E1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../index.html">Yogastha IITB</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#hero">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#schedule">Schedule</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 idy-title">International Day of Yoga 2025</h1>
+            <br>
+            <p class="lead">The <b>International Day of Yoga</b> is celebrated annually on 21<sup>st</sup> 
+                June since its inception in 2015. June 21<sup>st</sup> 
+                is the longest day of the year in the Northern Hemisphere and shares 
+                special significance in many parts of the world. From the perspective of yoga, 
+                the summer solstice marks the transition to Dakshinayana. 
+                The first full moon after summer solstice is known as Guru Purnima. 
+                Shiva, the first yogi (Adi Yogi), is said to have begun imparting the 
+                knowledge of yoga to the rest of mankind on this day, and became the first guru 
+                (Adi Guru). Dakshinayana is also considered a time when there is natural 
+                support for those pursuing spiritual practices.</p>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Events</h2>
+            <table class="table table-bordered schedule-table">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Event</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Venue</th>
+                        <th>Instructor</th>
+                    </tr>
+                </thead>
+				        <tbody id="events-container"></tbody>
+            </table>
+            <br>
+            <hr>
+            <br>
+            <h2 class="text-center mb-4">Competitions</h2></span>
+            <table class="table table-bordered schedule-table">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Event</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Venue</th>
+                    </tr>
+                </thead>
+				        <tbody id="competitions-container"></tbody>
+            </table>
+        </div>
+    </section>
+
+
+    <!-- Bottom Section-->
+    <section id="bottom" class="bottom-section text-center">
+      <div class="container">
+        <h1 class="display-6 idy-title">Some Words</h1>
+        <br>
+				<!-- paragraph -->
+				<p class="lead"><b>Yoga</b> is an invaluable gift of India's ancient tradition. It embodies unity of mind and
+            body; thought and action; restraint and fulfilment; harmony between man and nature; a holistic approach to health
+            and well-being. It is not about exercise but to discover the sense of oneness with yourself, the world and the
+            nature. By changing our lifestyle and creating consciousness, it can help in well-being. Let us work towards
+            adopting an International Yoga Day.</p>
+			<p>- Shri Narendra Modi, UN General Assembly.  </p>
+			
+			<p><u><a href="https://yoga.ayush.gov.in/YAP/IDY-2024/index?lang=en"> Yoga - Ministry of AYUSH</a></u></p>
+      <a href="https://iitbyogastha.in/"><img class="footer_logo" src="img/yogastha_logo_new.png"></a>
+			
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer text-center">
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+          <div class="row">
+            <div class="col-2"></div>
+            <a class="col-2" href="https://www.facebook.com/yogastha.iitb" target="_blank"><img class="raise" src="img/facebook.png" height="40px"/></a>
+            <a class="col-2" href="https://www.youtube.com/channel/UCbQdsBUcM8bV2hMtI1PW42g" target="_blank"><img class="raise" src="img/youtube.png" height="40px"/></a>
+            <a class="col-2" href="https://twitter.com/Yogastha_IITB" target="_blank"><img class="raise" src="img/Twitter.png" height="40px"/></a>
+            <a class="col-2" href="https://instagram.com/yogasthaiitb?igshid=pk6pij6kuewu" target="_blank"><img class="raise" src="img/Instagram.png" height="40px"/></a>
+            <div class="col-2"></div>
+          </div>
+        </tr>
+        <div class="col-4"></div>
+      </div>
+    </footer> 
+    <script type="application/json" id="events-data">
+        {
+          "events": [
+            {
+              "title": "Talk Session/Workshop: Yoga for Brain",
+              "date": "02-04 May 2025",
+              "time": "6:30 PM - 8:30 PM",
+              "venue": "Yoga Hall, New SAC",
+              "instructor": "Dr. Ajay R Kumbhar"
+            },
+            {
+              "title": "Talk Session/Workshop: Yoga for Brain",
+              "date": "02-04 May 2025",
+              "time": "6:30 PM - 8:30 PM",
+              "venue": "Yoga Hall, New SAC",
+              "instructor": "Dr. Ajay R Kumbhar"
+            }
+          ],
+          "competitions":[
+            {
+              "title": "T-Shirt Design Competition",
+              "date": "19-24 May 2025",
+              "time": "-",
+              "venue": "Online"
+            },
+            {
+              "title": "T-Shirt Design Competition",
+              "date": "19-24 May 2025",
+              "time": "-",
+              "venue": "Online"
+            }
+          ]
+        }
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const eventsContainer = document.getElementById('events-container');
+        const eventsData = JSON.parse(document.getElementById('events-data').textContent);
+        let count = 1;
+        eventsData.events.forEach((event, index) => {
+          const eventHTML = `
+          <tr>
+              <td class="col-1">${count}</td>
+              <td>${event.title}</td>
+              <td>${event.date}</td>
+              <td>${event.time}</td>
+              <td>${event.venue}</td>
+              <td>${event.instructor}</td>
+          </tr>
+          `;
+          eventsContainer.innerHTML += eventHTML;
+          count += 1;
+        });
+      });
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const eventsContainer = document.getElementById('competitions-container');
+        const eventsData = JSON.parse(document.getElementById('events-data').textContent);
+        let count = 1;
+        eventsData.competitions.forEach((competition, index) => {
+          const eventHTML = `
+          <tr>
+              <td class="col-1">${count}</td>
+              <td>${competition.title}</td>
+              <td>${competition.date}</td>
+              <td>${competition.time}</td>
+              <td>${competition.venue}</td>
+          </tr>
+          `;
+          eventsContainer.innerHTML += eventHTML;
+          count += 1;
+        });
+      });
+    </script>
+
+    <!-- Bootstrap JS and Popper.js (Bootstrap requires Popper.js for some components like dropdowns) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
