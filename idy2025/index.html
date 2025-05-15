@@ -35,6 +35,67 @@
       background-color: #FF9D23;
       color: #FEF9E1;
     }
+
+    .carousel-wrapper {
+      position: relative;
+    }
+
+    .event-carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 1rem;
+    }
+
+    .event-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .event-card {
+      flex: 0 0 auto;
+      width: 280px;
+      margin-right: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .event-image {
+      height: 340px;              /* Fixed height for image container */
+      width: 100%;
+      object-fit: contain;        /* Show entire image, no cropping */
+      object-position: center;
+      background-color: #fff;     /* Ensures empty space is white */
+      border-bottom: 1px solid #ddd; /* Optional: visual separation */
+    }
+
+    .nav-btn {
+      top: 0;
+      bottom: 0;
+      height: 50px;
+      width: 50px;
+      background-color: rgba(0, 0, 0, 0.3);
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      flex-shrink: 0;
+    }
+
+    .nav-btn:hover {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .nav-btn.left {
+      left: 0;
+    }
+
+    .nav-btn.right {
+      right: 0;
+    }
   </style>
 </head>
 
@@ -53,7 +114,13 @@
             <a class="nav-link active" href="#hero">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#schedule">Schedule</a>
+            <a class="nav-link" href="#upcoming_events">Upcoming Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#all_events">All Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#competitions">Competitions</a>
           </li>
         </ul>
       </div>
@@ -79,10 +146,30 @@
     </div>
   </section>
 
-  <!-- Schedule Section -->
-  <section id="schedule" class="py-5">
+  <!-- Current Events -->
+  <!-- Carousel -->
+  <section id="upcoming_events" class="py-5">
     <div class="container">
-      <h2 class="text-center mb-4">Events</h2>
+      
+      <h2 class="text-center mb-4">Upcoming Events</h2>
+      
+      <div class="mt-4 position-relative d-flex align-items-center">
+        
+        <button class="nav-btn left" id="scrollLeft"><span class="carousel-control-prev-icon"></span></button>
+        
+        <div class="event-carousel" id="eventCarousel"></div>
+        
+        <button class="nav-btn right" id="scrollRight"><span class="carousel-control-next-icon"></span></button>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Schedule Section -->
+  <section id="all_events" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">All Events</h2>
       <table class="table table-bordered schedule-table">
         <thead>
           <tr>
@@ -96,10 +183,11 @@
         </thead>
         <tbody id="events-container"></tbody>
       </table>
-      <br>
-      <hr>
-      <br>
-      <h2 class="text-center mb-4">Competitions</h2></span>
+    </div>
+  </section>
+  <section id="competitions" class="py-5">
+    <h2 class="text-center mb-4">Competitions</h2></span>
+    <div class="container">
       <table class="table table-bordered schedule-table">
         <thead>
           <tr>
@@ -156,27 +244,86 @@
         <div class="col-4"></div>
       </div>
   </footer>
+
+
+  <script type="application/json" id="current-events-data">
+    {
+     "events": [
+        {
+          "image": "img/Events/Social Media Poster Yoga for Brain.png",
+          "title": "Talk Session/Workshop: Yoga for Brain",
+          "date": "02-04 May 2025",
+          "time": "7:00 PM - 8:15 PM",
+          "venue": "Yoga Hall, New SAC",
+          "instructor": "Dr. Ajay R Kumbhar",
+          "registration": "#",
+          "enable_registration": false
+        },
+        {
+          "image": "img/Events/Social Media Yoga Camp Phase 2.png",
+          "title": "Yoga Camp",
+          "date": "05-08 May 2025",
+          "time": "6:45 AM - 7:45 AM & 7:15 PM - 8:00 PM",
+          "venue": "Yoga Hall, New SAC",
+          "instructor": "Swasti Yoga Centre",
+          "registration": "#",
+          "enable_registration": false
+        },
+        {
+          "image": "img/Events/Destressing in Today's world.png",
+          "title": "Yoga Workshop: De-stressing in Today's World",
+          "date": "09 May 2025",
+          "time": "7:15 PM - 8:00 PM",
+          "venue": "Yoga Hall, New SAC",
+          "instructor": "Mr. Kaushik Shah & Dr. Manju Shah",
+          "registration": "#",
+          "enable_registration": false
+        },
+        {
+          "image": "img/Events/Yoga Abhiyoga.jpeg",
+          "title": "Yoga Abhiyojna (54 Surya Namaskar)",
+          "date": "13-15 May 2025",
+          "time": "7:00 PM - 8:15 PM",
+          "venue": "Yoga Hall, New SAC",
+          "instructor": "Yogastha",
+          "registration": "#",
+          "enable_registration": false
+        },
+        {
+          "image": "img/Events/Upa Yoga & Miracle of Mind Workshop.jpg",
+          "title": "Workshop on Upa Yoga & Miracle of Mind (Meditation)",
+          "date": "16-17 May 2025",
+          "time": "6:00 PM - 7:15 PM",
+          "venue": "Yoga Hall, New SAC",
+          "instructor": "ISHA Foundation",
+          "registration": "https://docs.google.com/forms/d/e/1FAIpQLSd03hS614HO8Fg-YZAv3jWsDrSUUJT1iMyiCDao1W3KQzOqLQ/viewform?usp=header",
+          "enable_registration": true
+        }
+      ]
+    }
+  </script>
+
   <script type="application/json" id="events-data">
       {
         "events": [
           {
             "title": "Talk Session/Workshop: Yoga for Brain",
             "date": "02-04 May 2025",
-            "time": "6:30 PM - 8:30 PM",
+            "time": "7:00 PM - 8:15 PM",
             "venue": "Yoga Hall, New SAC",
             "instructor": "Dr. Ajay R Kumbhar"
           },
           {
             "title": "Yoga Camp",
             "date": "05-08 May 2025",
-            "time": "6:30 AM - 8:30 AM & 6:30 PM - 8:30 PM",
+            "time": "6:45 AM - 7:45 AM & 7:15 PM - 8:00 PM",
             "venue": "Yoga Hall, New SAC",
             "instructor": "Swasti Yoga Centre"
           },
           {
             "title": "Yoga Workshop: De-stressing in Today's World",
             "date": "09 May 2025",
-            "time": "6:30 PM - 8:30 PM",
+            "time": "7:15 PM - 8:00 PM",
             "venue": "Yoga Hall, New SAC",
             "instructor": "Mr. Kaushik Shah & Dr. Manju Shah"
           },
@@ -190,7 +337,7 @@
           {
             "title": "Workshop on Upa Yoga & Miracle of Mind (Meditation)",
             "date": "16-17 May 2025",
-            "time": "6:30 PM - 8:30 PM",
+            "time": "6:00 PM - 7:15 PM",
             "venue": "Yoga Hall, New SAC",
             "instructor": "ISHA Foundation"
           },
@@ -332,6 +479,67 @@
       });
     });
   </script>
+
+  
+<!-- JS Logic -->
+<script>
+  class EventRenderer {
+    constructor(containerId, jsonElementId) {
+      this.container = document.getElementById(containerId);
+      this.events = JSON.parse(document.getElementById(jsonElementId).textContent).events;
+    }
+
+    render() {
+      this.events.forEach(event => {
+        const card = document.createElement("div");
+        card.className = "card event-card";
+        const isRegistrationOpen = event.enable_registration;
+
+        const buttonHTML = isRegistrationOpen
+          ? `<a href="${event.registration}" class="btn btn-sm btn-primary" target="_blank">Register</a>`
+          : `<a href="javascript:void(0);" class="btn btn-sm btn-secondary disabled" tabindex="-1" aria-disabled="true">Registration Closed</a>`;
+
+        card.innerHTML = `
+          <img src="${event.image}" class="card-img-top event-image" alt="Event Image">
+          <div class="card-body p-2 text-center">
+            <h6 class="card-title mb-1">${event.title}</h6>
+            <small class="d-block"><b>Date:</b> ${event.date}</small>
+            <small class="d-block"><b>Time:</b> ${event.time}</small>
+            <small class="d-block"><b>Venue:</b> ${event.venue}</small>
+            <small class="d-block mb-2"><b>Instructor:</b> ${event.instructor}</small>
+          </div>
+          <div class="text-center mb-4">
+            ${buttonHTML}
+          </div>
+        `;
+        this.container.appendChild(card);
+      });
+    }
+
+    scrollToLatest() {
+      // scroll to the right-most position
+      this.container.scrollLeft = this.container.scrollWidth;
+    }
+
+    addScrollButtons() {
+      const scrollAmount = 300;
+      document.getElementById('scrollLeft').addEventListener('click', () => {
+        this.container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+      document.getElementById('scrollRight').addEventListener('click', () => {
+        this.container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const renderer = new EventRenderer("eventCarousel", "current-events-data");
+    renderer.render();
+    renderer.scrollToLatest();
+    renderer.addScrollButtons();
+  });
+</script>
+
 
   <!-- Bootstrap JS and Popper.js (Bootstrap requires Popper.js for some components like dropdowns) -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
