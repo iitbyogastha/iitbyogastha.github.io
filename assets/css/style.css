@@ -1540,3 +1540,17 @@ footer .credits a {
   font-weight: bold;
   margin-top: 10px;
 }
+
+/* changes */
+
+/* .slideshow-single {
+  animation: slideshow s infinite;
+  transition: background-image 0.1s ease-in-out;
+}
+
+@keyframes slideshow {
+  0%   { background-image: url('../img/bgimage24.jpg')}
+  50%  { background-image: url('../img/IMG_8876.JPG'); }
+  75%  { background-image: url('../img/IMG_7877.JPG'); }
+  100% { background-image: url('../img/bgimage24.jpg'); }
+} */
