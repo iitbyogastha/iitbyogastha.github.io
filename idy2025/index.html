@@ -607,8 +607,8 @@
         const isRegistrationOpen = event.enable_registration;
 
         const buttonHTML = isRegistrationOpen
-          ? `<a href="${event.registration}" class="btn btn-sm btn-primary" target="_blank">Register</a>`
-          : `<a href="javascript:void(0);" class="btn btn-sm btn-secondary disabled" tabindex="-1" aria-disabled="true">Registration Closed</a>`;
+          ? `<a href="${event.registration}" class="btn btn-md btn-primary" target="_blank">Register</a>`
+          : `<a href="javascript:void(0);" class="btn btn-md btn-secondary disabled" tabindex="-1" aria-disabled="true">Registration Closed</a>`;
 
         card.innerHTML = `
           <img src="${event.image}" class="card-img-top event-image" alt="Event Image">
@@ -619,9 +619,10 @@
             <small class="d-block"><b>Venue:</b> ${event.venue}</small>
             <small class="d-block mb-2"><b>Instructor:</b> ${event.instructor}</small>
           </div>
-          <div class="text-center mb-4">
+          <div class="text-center mb-3">
             ${buttonHTML}
           </div>
+          <br>
         `;
         this.container.appendChild(card);
       });
