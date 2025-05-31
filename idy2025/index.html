@@ -155,7 +155,7 @@
       <!-- IDY Countdown -->
       <div class="row bg-white py-2 justify-content-center">
         <h1 class="display-6">21 June 2025</h1>
-        <div class="col-md-4">
+        <div id="idy-counter" class="col-md-4">
           <div class="card-body mb-0">
             <div class="row text-center">
               <div class="col-3">
@@ -543,10 +543,7 @@
     // If the countdown is finished, write some text
     if (distance < 0) {
       clearInterval(x);
-      document.getElementById("days").innerHTML = "00";
-      document.getElementById("hours").innerHTML = "00";
-      document.getElementById("minutes").innerHTML = "00";
-      document.getElementById("seconds").innerHTML = "00";
+      document.getElementById("idy-counter").innerHTML="";
     }
     }, 1000);
   </script>
