@@ -1,0 +1,84 @@
+{
+     "events": [
+        {
+          "image": "img/Events/Social Media Poster Yoga for Brain.png",
+          "title": "Talk Session/Workshop: Yoga for Brain",
+          "date": "02-04 May 2025",
+          "time": "7:00 PM - 8:15 PM",
+          "venue": "Yoga Hall, New SAC",
+          "instructor": "Dr. Ajay R Kumbhar",
+          "registration": "#",
+          "enable_registration": false
+        },
+        {
+          "image": "img/Events/Social Media Yoga Camp Phase 2.png",
+          "title": "Yoga Camp",
+          "date": "05-08 May 2025",
+          "time": "6:45 AM - 7:45 AM & 7:15 PM - 8:00 PM",
+          "venue": "Yoga Hall, New SAC",
+          "instructor": "Swasti Yoga Centre",
+          "registration": "#",
+          "enable_registration": false
+        },
+        {
+          "image": "img/Events/Destressing in Today's world.png",
+          "title": "Yoga Workshop: De-stressing in Today's World",
+          "date": "09 May 2025",
+          "time": "7:15 PM - 8:00 PM",
+          "venue": "Yoga Hall, New SAC",
+          "instructor": "Mr. Kaushik Shah & Dr. Manju Shah",
+          "registration": "#",
+          "enable_registration": false
+        },
+        {
+          "image": "img/Events/Yoga Abhiyoga.jpeg",
+          "title": "Yoga Abhiyojna (54 Surya Namaskar)",
+          "date": "13-15 May 2025",
+          "time": "7:00 PM - 8:15 PM",
+          "venue": "Yoga Hall, New SAC",
+          "instructor": "Yogastha",
+          "registration": "#",
+          "enable_registration": false
+        },
+        {
+          "image": "img/Events/Upa Yoga & Miracle of Mind Workshop.jpg",
+          "title": "Workshop on Upa Yoga & Miracle of Mind (Meditation)",
+          "date": "16-17 May 2025",
+          "time": "6:00 PM - 7:15 PM",
+          "venue": "Yoga Hall, New SAC",
+          "instructor": "ISHA Foundation",
+          "registration": "#",
+          "enable_registration": false
+        },
+        {
+          "image": "img/Events/Yogastha BK Ritu Thakkar Insta.png",
+          "title": "Musical Meditation Workshop",
+          "date": "24 May 2025",
+          "time": "7:00 PM - 8:00 PM",
+          "venue": "Yoga Hall, New SAC",
+          "instructor": "BK Ritu Thakkar",
+          "registration": "https://docs.google.com/forms/d/e/1FAIpQLSfVh3l7P3AyX_epeJsqq6XQr5DOfhmUm5-VorAluzJkbfEUTw/viewform",
+          "enable_registration": false
+        },
+        {
+          "image": "img/Events/Social Media Poster.png",
+          "title": "Workshop on Empowering Women",
+          "date": "27-28 May 2025",
+          "time": "7:00 PM - 8:00 PM",
+          "venue": "Yoga Hall, New SAC",
+          "instructor": "Sarika P Chavan",
+          "registration": "https://docs.google.com/forms/d/e/1FAIpQLSccJ2rvbuaXVdhR4JOzKDLgapgf7v19Hm6uJULsKW0bbWGm5Q/viewform",
+          "enable_registration": false
+        },
+        {
+          "image": "img/Events/A MUSICAL RETREAT SOCIAL.png",
+          "title": "A Musical Yoga Retreat",
+          "date": "31 May 2025",
+          "time": "7:00 PM - 8:00 PM",
+          "venue": "Yoga Hall, New SAC",
+          "instructor": "Dr. Chirag Kher & BK Janki",
+          "registration": "https://docs.google.com/forms/d/e/1FAIpQLScfPEk6MBTwhDZnTdTe1Y2zJKJWkmgWktnMaBjWO0EVC7qnEA/viewform",
+          "enable_registration": true
+        }
+      ]
+    }
