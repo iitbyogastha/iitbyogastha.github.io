@@ -196,20 +196,39 @@
     </div>
   </section>
 
+
   <!-- Current Events -->
   <!-- Carousel -->
-  <section id="upcoming_events" class="py-5">
+  <section id="upcoming_contests" class="pt-5">
+    <div class="container">
+      
+      <h2 class="text-center mb-4">Upcoming Competitions</h2>
+      
+      <div class="mt-4 position-relative d-flex align-items-center">
+        
+        <button class="nav-btn left" id="competitionsScrollLeft"><span class="carousel-control-prev-icon"></span></button>
+        
+        <div class="event-carousel" id="competitionsCarousel"></div>
+        
+        <button class="nav-btn right" id="competitionsScrollRight"><span class="carousel-control-next-icon"></span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Current Events -->
+  <!-- Carousel -->
+  <section id="upcoming_events" class="pt-5">
     <div class="container">
       
       <h2 class="text-center mb-4">Upcoming Events</h2>
       
       <div class="mt-4 position-relative d-flex align-items-center">
         
-        <button class="nav-btn left" id="scrollLeft"><span class="carousel-control-prev-icon"></span></button>
+        <button class="nav-btn left" id="eventScrollLeft"><span class="carousel-control-prev-icon"></span></button>
         
         <div class="event-carousel" id="eventCarousel"></div>
         
-        <button class="nav-btn right" id="scrollRight"><span class="carousel-control-next-icon"></span></button>
+        <button class="nav-btn right" id="eventScrollRight"><span class="carousel-control-next-icon"></span></button>
       </div>
     </div>
   </section>
@@ -296,6 +315,43 @@
   </footer>
 
 
+  <script type="application/json" id="current-contests-data">
+    {
+     "competitions": [
+        {
+          "image": "img/Competitions/Yogastha_Tshirt Design Competition.jpg",
+          "title": "T-Shirt Design Competition",
+          "date": "19-24 May 2025",
+          "deadline": "26 May 2025, 11:59PM",
+          "venue": "Online",
+          "rules": "#",
+          "submission": "#",
+          "enable_submission": false
+        },
+        {
+          "image": "img/Competitions/Meme_Making Competition.jpg",
+          "title": "Meme Making Competition",
+          "date": "27-31 May 2025",
+          "deadline": "31 May 2025, 11:59PM",
+          "venue": "Online",
+          "rules": "https://drive.google.com/file/d/1_POBPOv5aR-v8jD7GHwsVA-XU-ixJt8q/view",
+          "submission": "#",
+          "enable_submission": false
+        },
+        {
+          "image": "img/Competitions/2Min Yoga_Social.png",
+          "title": "2 Minute Yoga Challenge",
+          "date": "27-31 May 2025",
+          "deadline": "31 May 2025, 11:59PM",
+          "venue": "Online",
+          "rules": "https://docs.google.com/document/d/1xOtr_jeKjLXIEUKCg4m9NA-EVsB7C5ocL61rudep0gM/view",
+          "submission": "#",
+          "enable_submission": false
+        }
+      ]
+    }
+  </script>
+
   <script type="application/json" id="current-events-data">
     {
      "events": [
@@ -356,7 +412,7 @@
           "time": "7:00 PM - 8:00 PM",
           "venue": "Yoga Hall, New SAC",
           "instructor": "BK Ritu Thakkar",
-          "registration": "https://docs.google.com/forms/d/e/1FAIpQLSfVh3l7P3AyX_epeJsqq6XQr5DOfhmUm5-VorAluzJkbfEUTw/viewform",
+          "registration": "#",
           "enable_registration": false
         },
         {
@@ -366,7 +422,7 @@
           "time": "7:00 PM - 8:00 PM",
           "venue": "Yoga Hall, New SAC",
           "instructor": "Sarika P Chavan",
-          "registration": "https://docs.google.com/forms/d/e/1FAIpQLSccJ2rvbuaXVdhR4JOzKDLgapgf7v19Hm6uJULsKW0bbWGm5Q/viewform",
+          "registration": "#",
           "enable_registration": false
         },
         {
@@ -376,8 +432,8 @@
           "time": "7:00 PM - 8:00 PM",
           "venue": "Yoga Hall, New SAC",
           "instructor": "Dr. Chirag Kher & BK Janki",
-          "registration": "https://docs.google.com/forms/d/e/1FAIpQLScfPEk6MBTwhDZnTdTe1Y2zJKJWkmgWktnMaBjWO0EVC7qnEA/viewform",
-          "enable_registration": true
+          "registration": "#",
+          "enable_registration": false
         }
       ]
     }
@@ -461,55 +517,55 @@
         {
           "title": "T-Shirt Design Competition",
           "date": "19-24 May 2025",
-          "time": "-",
+          "deadline": "26 May 2025, 11:59PM",
           "venue": "Online"
         },
         {
           "title": "Meme-Making Competition",
           "date": "27-31 May 2025",
-          "time": "-",
+          "deadline": "31 May 2025, 11:59PM",
           "venue": "Online"
         },
         {
           "title": "2 Minute Yoga Challenge",
           "date": "27-31 May 2025",
-          "time": "-",
+          "deadline": "31 May 2025, 11:59PM",
           "venue": "Online"
         },
         {
           "title": "Quiz",
           "date": "04-07 June 2025",
-          "time": "-",
+          "deadline": "-",
           "venue": "Online"
         },
         {
           "title": "Best Yogasana",
           "date": "04-07 June 2025",
-          "time": "-",
+          "deadline": "-",
           "venue": "Online"
         },
         {
           "title": "Essay Writing Competition",
           "date": "09-12 June 2025",
-          "time": "-",
+          "deadline": "-",
           "venue": "Online"
         },
         {
           "title": "Slogan Competition",
           "date": "09-12 June 2025",
-          "time": "-",
+          "deadline": "-",
           "venue": "Online"
         },
         {
           "title": "Poster Making Competition",
           "date": "15 June 2025",
-          "time": "05:30 PM - 07:30 PM",
+          "deadline": "05:30 PM - 07:30 PM",
           "venue": "Yoga Hall, New SAC"
         },
         {
           "title": "Tratak Competition",
           "date": "15 June 2025",
-          "time": "07:30 PM - 08:30 PM",
+          "deadline": "07:30 PM - 08:30 PM",
           "venue": "Yoga Hall, New SAC"
         }
       ]
@@ -581,7 +637,7 @@
               <td class="col-1">${count}</td>
               <td>${competition.title}</td>
               <td>${competition.date}</td>
-              <td>${competition.time}</td>
+              <td>${competition.deadline}</td>
               <td>${competition.venue}</td>
           </tr>
           `;
@@ -591,8 +647,105 @@
     });
   </script>
 
+<!-- Upcoming Competitions -->
+<script>
+  class CompetitionRenderer {
+    constructor(containerId, jsonElementId) {
+      this.container = document.getElementById(containerId);
+      this.competitions = JSON.parse(document.getElementById(jsonElementId).textContent).competitions;
+    }
+
+    render() {
+      this.competitions.forEach(competition => {
+        const card = document.createElement("div");
+        card.className = "card event-card flex-shrink-0"; // important for horizontal scroll
+        const isSubmissionOpen = competition.enable_submission;
+
+        const buttonHTML = isSubmissionOpen
+          ? `<a href="${competition.submission}" class="btn btn-md btn-primary" target="_blank">Submit</a>`
+          : `<a href="javascript:void(0);" class="btn btn-md btn-secondary disabled" tabindex="-1" aria-disabled="true">Submission Closed</a>`;
+
+        const isRuleLinkAvailable = competition.rules != "#";
+        const linkHTML = isRuleLinkAvailable
+          ? `<a href="${competition.rules}">Link</a>`
+          : `-`;
+        
+        card.innerHTML = `
+          <img src="${competition.image}" class="card-img-top event-image" alt="Event Image">
+          <div class="card-body p-2 text-center">
+            <h6 class="card-title mb-1">${competition.title}</h6>
+            <small class="d-block"><b>Date:</b> ${competition.date}</small>
+            <small class="d-block"><b>Deadline:</b> ${competition.deadline}</small>
+            <small class="d-block"><b>Venue:</b> ${competition.venue}</small>
+            <small class="d-block mb-2"><b>Rules:</b> ${linkHTML}</small>
+            </div>
+          <div class="text-center mb-3">
+            ${buttonHTML}
+          </div>
+          <br>
+        `;
+        this.container.appendChild(card);
+      });
+    }
+
+    scrollToLatest() {
+      this.container.scrollLeft = this.container.scrollWidth;
+      this.updateArrowVisibility(); // update arrows on load
+    }
+
+    addScrollButtons() {
+      const scrollLeftBtn = document.getElementById('competitionsScrollLeft');
+      const scrollRightBtn = document.getElementById('competitionsScrollRight');
+      const scrollAmount = 300;
+
+      scrollLeftBtn.addEventListener('click', () => {
+        this.container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        setTimeout(() => this.updateArrowVisibility(), 400);
+      });
+
+      scrollRightBtn.addEventListener('click', () => {
+        this.container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        setTimeout(() => this.updateArrowVisibility(), 400);
+      });
+
+      this.container.addEventListener('scroll', () => this.updateArrowVisibility());
+    }
+
+    updateArrowVisibility() {
+      const scrollLeftBtn = document.getElementById('competitionsScrollLeft');
+      const scrollRightBtn = document.getElementById('competitionsScrollRight');
+      const scrollLeft = this.container.scrollLeft;
+      const maxScrollLeft = this.container.scrollWidth - this.container.clientWidth;
+
+      if (scrollLeft <= 0) {
+        scrollLeftBtn.classList.add('disabled-arrow');
+        scrollLeftBtn.disabled = true;
+      } else {
+        scrollLeftBtn.classList.remove('disabled-arrow');
+        scrollLeftBtn.disabled = false;
+      }
+
+      if (scrollLeft >= maxScrollLeft - 1) {
+        scrollRightBtn.classList.add('disabled-arrow');
+        scrollRightBtn.disabled = true;
+      } else {
+        scrollRightBtn.classList.remove('disabled-arrow');
+        scrollRightBtn.disabled = false;
+      }
+    }
+
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const renderer = new CompetitionRenderer("competitionsCarousel", "current-contests-data");
+    renderer.render();
+    renderer.addScrollButtons();
+    setTimeout(() => renderer.scrollToLatest(), 1000); // wait a bit for DOM to update
+    renderer.scrollToLatest();
+  });
+</script>
   
-<!-- JS Logic -->
+<!-- Upcoming Events -->
 <script>
   class EventRenderer {
     constructor(containerId, jsonElementId) {
@@ -634,8 +787,8 @@
     }
 
     addScrollButtons() {
-      const scrollLeftBtn = document.getElementById('scrollLeft');
-      const scrollRightBtn = document.getElementById('scrollRight');
+      const scrollLeftBtn = document.getElementById('eventScrollLeft');
+      const scrollRightBtn = document.getElementById('eventScrollRight');
       const scrollAmount = 300;
 
       scrollLeftBtn.addEventListener('click', () => {
@@ -652,8 +805,8 @@
     }
 
     updateArrowVisibility() {
-      const scrollLeftBtn = document.getElementById('scrollLeft');
-      const scrollRightBtn = document.getElementById('scrollRight');
+      const scrollLeftBtn = document.getElementById('eventScrollLeft');
+      const scrollRightBtn = document.getElementById('eventScrollRight');
       const scrollLeft = this.container.scrollLeft;
       const maxScrollLeft = this.container.scrollWidth - this.container.clientWidth;
 
