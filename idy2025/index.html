@@ -73,7 +73,14 @@
       background-color: #fff;     /* Ensures empty space is white */
       border-bottom: 1px solid #ddd; /* Optional: visual separation */
     }
-
+    .celebration-image{
+      height: 200px;              /* Fixed height for image container */
+      width: 100%;
+      object-fit: contain;        /* Show entire image, no cropping */
+      object-position: center;
+      background-color: #fff;     /* Ensures empty space is white */
+      border-bottom: 1px solid #ddd; /* Optional: visual separation */
+    }
     .nav-btn {
       top: 0;
       bottom: 0;
@@ -131,13 +138,19 @@
             <a class="nav-link active" href="#hero">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#upcoming_events">Upcoming Events</a>
+            <a class="nav-link" href="#idy_celebration">Celebration</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#upcoming_competitions">Competitions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#upcoming_events">Events</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#all_events">All Events</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#competitions">Competitions</a>
+            <a class="nav-link" href="#competitions">All Competitions</a>
           </li>
         </ul>
       </div>
@@ -196,10 +209,23 @@
     </div>
   </section>
 
+  <section id="idy_celebration" class="pt-5">
+    <div class="container">
+      <h2 class="text-center mb-4">International Day of Yoga (IDY-2025) celebration</h2>
+      <div class="mt-4 position-relative d-flex align-items-center">
+        <button class="nav-btn left" id="celebrationsScrollLeft"><span class="carousel-control-prev-icon"></span></button>
+        
+        <div class="event-carousel w-100 justify-content-center" id="celebrationCarousel"></div>
+        
+        <button class="nav-btn right" id="celebrationsScrollRight"><span class="carousel-control-next-icon"></span></button>
+      </div>
+    </div>
+  </section>
 
-  <!-- Current Events -->
+
+  <!-- Current Competitions -->
   <!-- Carousel -->
-  <section id="upcoming_contests" class="pt-5">
+  <section id="upcoming_competitions" class="pt-5">
     <div class="container">
       
       <h2 class="text-center mb-4">Upcoming Competitions</h2>
@@ -208,7 +234,7 @@
         
         <button class="nav-btn left" id="competitionsScrollLeft"><span class="carousel-control-prev-icon"></span></button>
         
-        <div class="event-carousel" id="competitionsCarousel"></div>
+        <div class="event-carousel w-100 justify-content-center" id="competitionsCarousel"></div>
         
         <button class="nav-btn right" id="competitionsScrollRight"><span class="carousel-control-next-icon"></span></button>
       </div>
@@ -226,7 +252,7 @@
         
         <button class="nav-btn left" id="eventScrollLeft"><span class="carousel-control-prev-icon"></span></button>
         
-        <div class="event-carousel" id="eventCarousel"></div>
+        <div class="event-carousel w-100 justify-content-center" id="eventCarousel"></div>
         
         <button class="nav-btn right" id="eventScrollRight"><span class="carousel-control-next-icon"></span></button>
       </div>
@@ -314,6 +340,28 @@
       </div>
   </footer>
 
+  <script type="application/json" id="celebrations-data">
+    {
+      "celebrations":[
+        {
+          "image": "img/common yoga protocol.png",
+          "title": "Common Yoga Protocol",
+          "date": "02, 04, 06, 09, 11, 13, 16, 18 June 2025",
+          "time": "6:30 PM - 8:30 PM",
+          "venue": "Yoga Hall, New SAC",
+          "link": "#"
+        },
+        {
+          "image": "img/YOGA_THON.png",
+          "title": "Yogathon (108 Surya Namaskar Challenge)",
+          "date": "12, 14, 17, 19 June 2025",
+          "time": "6:30 AM - 8:30 AM",
+          "venue": "Yoga Hall, New SAC",
+          "link": "../pages/yogathon2025.html"
+        }
+      ]
+    }
+  </script>
 
   <script type="application/json" id="current-contests-data">
     {
@@ -647,6 +695,92 @@
     });
   </script>
 
+<!-- IDY Celebrations -->
+<script>
+  class CelebrationRenderer {
+    constructor(containerId, jsonElementId) {
+      this.container = document.getElementById(containerId);
+      this.celebrations = JSON.parse(document.getElementById(jsonElementId).textContent).celebrations;
+    }
+
+    render() {
+      this.celebrations.forEach(celebration => {
+        const card = document.createElement("div");
+        card.className = "card event-card flex-shrink-0"; // important for horizontal scroll
+
+        card.innerHTML = `
+          <img src="${celebration.image}" class="card-img-top celebration-image" alt="Event Image">
+          <div class="card-body p-2 text-center">
+            <h6 class="card-title mb-1">${celebration.title}</h6>
+            <small class="d-block"><b>Date:</b> ${celebration.date}</small>
+            <small class="d-block"><b>Deadline:</b> ${celebration.time}</small>
+            <small class="d-block mb-2"><b>Venue:</b> ${celebration.venue}</small>
+            </div>
+          <!-- <div class="text-center mb-4">
+            <a href="${celebration.link}" class="btn btn-md btn-outline-primary">Details</a>
+          </div> -->
+        `;
+        this.container.appendChild(card);
+      });
+    }
+
+    scrollToLatest() {
+      this.container.scrollLeft = this.container.scrollWidth;
+      this.updateArrowVisibility(); // update arrows on load
+    }
+
+    addScrollButtons() {
+      const scrollLeftBtn = document.getElementById('celebrationsScrollLeft');
+      const scrollRightBtn = document.getElementById('celebrationsScrollRight');
+      const scrollAmount = 300;
+
+      scrollLeftBtn.addEventListener('click', () => {
+        this.container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        setTimeout(() => this.updateArrowVisibility(), 400);
+      });
+
+      scrollRightBtn.addEventListener('click', () => {
+        this.container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        setTimeout(() => this.updateArrowVisibility(), 400);
+      });
+
+      this.container.addEventListener('scroll', () => this.updateArrowVisibility());
+    }
+
+    updateArrowVisibility() {
+      const scrollLeftBtn = document.getElementById('celebrationsScrollLeft');
+      const scrollRightBtn = document.getElementById('celebrationsScrollRight');
+      const scrollLeft = this.container.scrollLeft;
+      const maxScrollLeft = this.container.scrollWidth - this.container.clientWidth;
+
+      if (scrollLeft <= 0) {
+        scrollLeftBtn.classList.add('disabled-arrow');
+        scrollLeftBtn.disabled = true;
+      } else {
+        scrollLeftBtn.classList.remove('disabled-arrow');
+        scrollLeftBtn.disabled = false;
+      }
+
+      if (scrollLeft >= maxScrollLeft - 1) {
+        scrollRightBtn.classList.add('disabled-arrow');
+        scrollRightBtn.disabled = true;
+      } else {
+        scrollRightBtn.classList.remove('disabled-arrow');
+        scrollRightBtn.disabled = false;
+      }
+    }
+
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const renderer = new CelebrationRenderer("celebrationCarousel", "celebrations-data");
+    renderer.render();
+    renderer.addScrollButtons();
+    setTimeout(() => renderer.scrollToLatest(), 1000); // wait a bit for DOM to update
+    renderer.scrollToLatest();
+  });
+</script>
+
 <!-- Upcoming Competitions -->
 <script>
   class CompetitionRenderer {
@@ -679,10 +813,9 @@
             <small class="d-block"><b>Venue:</b> ${competition.venue}</small>
             <small class="d-block mb-2"><b>Rules:</b> ${linkHTML}</small>
             </div>
-          <div class="text-center mb-3">
+          <div class="text-center mb-4">
             ${buttonHTML}
           </div>
-          <br>
         `;
         this.container.appendChild(card);
       });
@@ -772,10 +905,9 @@
             <small class="d-block"><b>Venue:</b> ${event.venue}</small>
             <small class="d-block mb-2"><b>Instructor:</b> ${event.instructor}</small>
           </div>
-          <div class="text-center mb-3">
+          <div class="text-center mb-4">
             ${buttonHTML}
           </div>
-          <br>
         `;
         this.container.appendChild(card);
       });
