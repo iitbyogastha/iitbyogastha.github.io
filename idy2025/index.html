@@ -7,6 +7,10 @@
   <title>IDY 2025</title>
   <!-- Bootstrap CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- Styles -->
   <style>
     html, body {
       margin: 0;
@@ -346,10 +350,10 @@
         {
           "image": "img/YOGA_THON.png",
           "title": "Yogathon (108 Surya Namaskar Challenge)",
-          "date": "02, 04, 06, 09, 11, 13, 16, 18 June 2025",
+          "date": "06, 09, 11, 13, 16, 18 June 2025",
           "time": "6:30 PM - 8:30 PM",
           "venue": "Yoga Hall, New SAC",
-          "link": "../pages/yogathon2025.html"
+          "link": "yogathon_test.html"
         },
         {
           "image": "img/common yoga protocol.png",
@@ -548,7 +552,7 @@
         },
         {
           "title": "Yogathon Practice Sessions",
-          "date": "02, 04, 06, 09, 11, 13, 16, 18 June 2025",
+          "date": "06, 09, 11, 13, 16, 18 June 2025",
           "time": "6:30 PM - 8:30 PM",
           "venue": "Yoga Hall, New SAC",
           "instructor": "Yogastha"
@@ -652,6 +656,283 @@
     }, 1000);
   </script>
 
+
+  <!-- IDY Celebrations -->
+  <script>
+    class CelebrationRenderer {
+      constructor(containerId, jsonElementId) {
+        this.container = document.getElementById(containerId);
+        this.celebrations = JSON.parse(document.getElementById(jsonElementId).textContent).celebrations;
+      }
+
+      render() {
+        this.celebrations.forEach(celebration => {
+          const card = document.createElement("div");
+          card.className = "card event-card flex-shrink-0"; // important for horizontal scroll
+
+          card.innerHTML = `
+            <img src="${celebration.image}" class="card-img-top celebration-image" alt="Event Image">
+            <div class="card-body p-2 text-center">
+              <h6 class="card-title mb-1">${celebration.title}</h6>
+              <small class="d-block"><b>Date:</b> ${celebration.date}</small>
+              <small class="d-block"><b>Time:</b> ${celebration.time}</small>
+              <small class="d-block mb-2"><b>Venue:</b> ${celebration.venue}</small>
+              </div>
+            <!-- <div class="text-center mb-4">
+              <a href="${celebration.link}" class="btn btn-md btn-outline-primary">Details</a>
+            </div> -->
+          `;
+          this.container.appendChild(card);
+        });
+      }
+
+      scrollToLatest() {
+        this.container.scrollLeft = this.container.scrollWidth;
+        this.updateArrowVisibility(); // update arrows on load
+      }
+
+      addScrollButtons() {
+        const scrollLeftBtn = document.getElementById('celebrationsScrollLeft');
+        const scrollRightBtn = document.getElementById('celebrationsScrollRight');
+        const scrollAmount = 300;
+
+        scrollLeftBtn.addEventListener('click', () => {
+          this.container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+          setTimeout(() => this.updateArrowVisibility(), 400);
+        });
+
+        scrollRightBtn.addEventListener('click', () => {
+          this.container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+          setTimeout(() => this.updateArrowVisibility(), 400);
+        });
+
+        this.container.addEventListener('scroll', () => this.updateArrowVisibility());
+      }
+
+      updateArrowVisibility() {
+        const scrollLeftBtn = document.getElementById('celebrationsScrollLeft');
+        const scrollRightBtn = document.getElementById('celebrationsScrollRight');
+        const scrollLeft = this.container.scrollLeft;
+        const maxScrollLeft = this.container.scrollWidth - this.container.clientWidth;
+
+        if (scrollLeft <= 0) {
+          scrollLeftBtn.classList.add('disabled-arrow');
+          scrollLeftBtn.disabled = true;
+        } else {
+          scrollLeftBtn.classList.remove('disabled-arrow');
+          scrollLeftBtn.disabled = false;
+        }
+
+        if (scrollLeft >= maxScrollLeft - 1) {
+          scrollRightBtn.classList.add('disabled-arrow');
+          scrollRightBtn.disabled = true;
+        } else {
+          scrollRightBtn.classList.remove('disabled-arrow');
+          scrollRightBtn.disabled = false;
+        }
+      }
+
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const renderer = new CelebrationRenderer("celebrationCarousel", "celebrations-data");
+      renderer.render();
+      renderer.addScrollButtons();
+      setTimeout(() => renderer.scrollToLatest(), 1000); // wait a bit for DOM to update
+      renderer.scrollToLatest();
+    });
+  </script>
+
+  <!-- Upcoming Competitions -->
+  <script>
+    class CompetitionRenderer {
+      constructor(containerId, jsonElementId) {
+        this.container = document.getElementById(containerId);
+        this.competitions = JSON.parse(document.getElementById(jsonElementId).textContent).competitions;
+      }
+
+      render() {
+        this.competitions.forEach(competition => {
+          const card = document.createElement("div");
+          card.className = "card event-card flex-shrink-0"; // important for horizontal scroll
+          const isSubmissionOpen = competition.enable_submission;
+
+          const buttonHTML = isSubmissionOpen
+            ? `<a href="${competition.submission}" class="btn btn-md btn-primary" target="_blank">Submit</a>`
+            : `<a href="javascript:void(0);" class="btn btn-md btn-secondary disabled" tabindex="-1" aria-disabled="true">Submission Closed</a>`;
+
+          const isRuleLinkAvailable = competition.rules != "#";
+          const linkHTML = isRuleLinkAvailable
+            ? `<a href="${competition.rules}">Link</a>`
+            : `-`;
+          
+          card.innerHTML = `
+            <img src="${competition.image}" class="card-img-top event-image" alt="Event Image">
+            <div class="card-body p-2 text-center">
+              <h6 class="card-title mb-1">${competition.title}</h6>
+              <small class="d-block"><b>Date:</b> ${competition.date}</small>
+              <small class="d-block"><b>Deadline:</b> ${competition.deadline}</small>
+              <small class="d-block"><b>Venue:</b> ${competition.venue}</small>
+              <small class="d-block mb-2"><b>Rules:</b> ${linkHTML}</small>
+              </div>
+            <div class="text-center mb-4">
+              ${buttonHTML}
+            </div>
+          `;
+          this.container.appendChild(card);
+        });
+      }
+
+      scrollToLatest() {
+        this.container.scrollLeft = this.container.scrollWidth;
+        this.updateArrowVisibility(); // update arrows on load
+      }
+
+      addScrollButtons() {
+        const scrollLeftBtn = document.getElementById('competitionsScrollLeft');
+        const scrollRightBtn = document.getElementById('competitionsScrollRight');
+        const scrollAmount = 300;
+
+        scrollLeftBtn.addEventListener('click', () => {
+          this.container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+          setTimeout(() => this.updateArrowVisibility(), 400);
+        });
+
+        scrollRightBtn.addEventListener('click', () => {
+          this.container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+          setTimeout(() => this.updateArrowVisibility(), 400);
+        });
+
+        this.container.addEventListener('scroll', () => this.updateArrowVisibility());
+      }
+
+      updateArrowVisibility() {
+        const scrollLeftBtn = document.getElementById('competitionsScrollLeft');
+        const scrollRightBtn = document.getElementById('competitionsScrollRight');
+        const scrollLeft = this.container.scrollLeft;
+        const maxScrollLeft = this.container.scrollWidth - this.container.clientWidth;
+
+        if (scrollLeft <= 0) {
+          scrollLeftBtn.classList.add('disabled-arrow');
+          scrollLeftBtn.disabled = true;
+        } else {
+          scrollLeftBtn.classList.remove('disabled-arrow');
+          scrollLeftBtn.disabled = false;
+        }
+
+        if (scrollLeft >= maxScrollLeft - 1) {
+          scrollRightBtn.classList.add('disabled-arrow');
+          scrollRightBtn.disabled = true;
+        } else {
+          scrollRightBtn.classList.remove('disabled-arrow');
+          scrollRightBtn.disabled = false;
+        }
+      }
+
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const renderer = new CompetitionRenderer("competitionsCarousel", "current-contests-data");
+      renderer.render();
+      renderer.addScrollButtons();
+      setTimeout(() => renderer.scrollToLatest(), 1000); // wait a bit for DOM to update
+      renderer.scrollToLatest();
+    });
+  </script>
+    
+  <!-- Upcoming Events -->
+  <script>
+    class EventRenderer {
+      constructor(containerId, jsonElementId) {
+        this.container = document.getElementById(containerId);
+        this.events = JSON.parse(document.getElementById(jsonElementId).textContent).events;
+      }
+
+      render() {
+        this.events.forEach(event => {
+          const card = document.createElement("div");
+          card.className = "card event-card flex-shrink-0"; // important for horizontal scroll
+          const isRegistrationOpen = event.enable_registration;
+
+          const buttonHTML = isRegistrationOpen
+            ? `<a href="${event.registration}" class="btn btn-md btn-primary" target="_blank">Register</a>`
+            : `<a href="javascript:void(0);" class="btn btn-md btn-secondary disabled" tabindex="-1" aria-disabled="true">Registration Closed</a>`;
+
+          card.innerHTML = `
+            <img src="${event.image}" class="card-img-top event-image" alt="Event Image">
+            <div class="card-body p-2 text-center">
+              <h6 class="card-title mb-1">${event.title}</h6>
+              <small class="d-block"><b>Date:</b> ${event.date}</small>
+              <small class="d-block"><b>Time:</b> ${event.time}</small>
+              <small class="d-block"><b>Venue:</b> ${event.venue}</small>
+              <small class="d-block mb-2"><b>Instructor:</b> ${event.instructor}</small>
+            </div>
+            <div class="text-center mb-4">
+              ${buttonHTML}
+            </div>
+          `;
+          this.container.appendChild(card);
+        });
+      }
+
+      scrollToLatest() {
+        this.container.scrollLeft = this.container.scrollWidth;
+        this.updateArrowVisibility(); // update arrows on load
+      }
+
+      addScrollButtons() {
+        const scrollLeftBtn = document.getElementById('eventScrollLeft');
+        const scrollRightBtn = document.getElementById('eventScrollRight');
+        const scrollAmount = 300;
+
+        scrollLeftBtn.addEventListener('click', () => {
+          this.container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+          setTimeout(() => this.updateArrowVisibility(), 400);
+        });
+
+        scrollRightBtn.addEventListener('click', () => {
+          this.container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+          setTimeout(() => this.updateArrowVisibility(), 400);
+        });
+
+        this.container.addEventListener('scroll', () => this.updateArrowVisibility());
+      }
+
+      updateArrowVisibility() {
+        const scrollLeftBtn = document.getElementById('eventScrollLeft');
+        const scrollRightBtn = document.getElementById('eventScrollRight');
+        const scrollLeft = this.container.scrollLeft;
+        const maxScrollLeft = this.container.scrollWidth - this.container.clientWidth;
+
+        if (scrollLeft <= 0) {
+          scrollLeftBtn.classList.add('disabled-arrow');
+          scrollLeftBtn.disabled = true;
+        } else {
+          scrollLeftBtn.classList.remove('disabled-arrow');
+          scrollLeftBtn.disabled = false;
+        }
+
+        if (scrollLeft >= maxScrollLeft - 1) {
+          scrollRightBtn.classList.add('disabled-arrow');
+          scrollRightBtn.disabled = true;
+        } else {
+          scrollRightBtn.classList.remove('disabled-arrow');
+          scrollRightBtn.disabled = false;
+        }
+      }
+
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const renderer = new EventRenderer("eventCarousel", "current-events-data");
+      renderer.render();
+      renderer.addScrollButtons();
+      setTimeout(() => renderer.scrollToLatest(), 1000); // wait a bit for DOM to update
+      renderer.scrollToLatest();
+    });
+  </script>
+
+  <!-- All Events -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const eventsContainer = document.getElementById('events-container');
@@ -674,6 +955,7 @@
     });
   </script>
 
+  <!-- All Competitions -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const eventsContainer = document.getElementById('competitions-container');
@@ -694,281 +976,6 @@
       });
     });
   </script>
-
-<!-- IDY Celebrations -->
-<script>
-  class CelebrationRenderer {
-    constructor(containerId, jsonElementId) {
-      this.container = document.getElementById(containerId);
-      this.celebrations = JSON.parse(document.getElementById(jsonElementId).textContent).celebrations;
-    }
-
-    render() {
-      this.celebrations.forEach(celebration => {
-        const card = document.createElement("div");
-        card.className = "card event-card flex-shrink-0"; // important for horizontal scroll
-
-        card.innerHTML = `
-          <img src="${celebration.image}" class="card-img-top celebration-image" alt="Event Image">
-          <div class="card-body p-2 text-center">
-            <h6 class="card-title mb-1">${celebration.title}</h6>
-            <small class="d-block"><b>Date:</b> ${celebration.date}</small>
-            <small class="d-block"><b>Time:</b> ${celebration.time}</small>
-            <small class="d-block mb-2"><b>Venue:</b> ${celebration.venue}</small>
-            </div>
-          <!-- <div class="text-center mb-4">
-            <a href="${celebration.link}" class="btn btn-md btn-outline-primary">Details</a>
-          </div> -->
-        `;
-        this.container.appendChild(card);
-      });
-    }
-
-    scrollToLatest() {
-      this.container.scrollLeft = this.container.scrollWidth;
-      this.updateArrowVisibility(); // update arrows on load
-    }
-
-    addScrollButtons() {
-      const scrollLeftBtn = document.getElementById('celebrationsScrollLeft');
-      const scrollRightBtn = document.getElementById('celebrationsScrollRight');
-      const scrollAmount = 300;
-
-      scrollLeftBtn.addEventListener('click', () => {
-        this.container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-        setTimeout(() => this.updateArrowVisibility(), 400);
-      });
-
-      scrollRightBtn.addEventListener('click', () => {
-        this.container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        setTimeout(() => this.updateArrowVisibility(), 400);
-      });
-
-      this.container.addEventListener('scroll', () => this.updateArrowVisibility());
-    }
-
-    updateArrowVisibility() {
-      const scrollLeftBtn = document.getElementById('celebrationsScrollLeft');
-      const scrollRightBtn = document.getElementById('celebrationsScrollRight');
-      const scrollLeft = this.container.scrollLeft;
-      const maxScrollLeft = this.container.scrollWidth - this.container.clientWidth;
-
-      if (scrollLeft <= 0) {
-        scrollLeftBtn.classList.add('disabled-arrow');
-        scrollLeftBtn.disabled = true;
-      } else {
-        scrollLeftBtn.classList.remove('disabled-arrow');
-        scrollLeftBtn.disabled = false;
-      }
-
-      if (scrollLeft >= maxScrollLeft - 1) {
-        scrollRightBtn.classList.add('disabled-arrow');
-        scrollRightBtn.disabled = true;
-      } else {
-        scrollRightBtn.classList.remove('disabled-arrow');
-        scrollRightBtn.disabled = false;
-      }
-    }
-
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const renderer = new CelebrationRenderer("celebrationCarousel", "celebrations-data");
-    renderer.render();
-    renderer.addScrollButtons();
-    setTimeout(() => renderer.scrollToLatest(), 1000); // wait a bit for DOM to update
-    renderer.scrollToLatest();
-  });
-</script>
-
-<!-- Upcoming Competitions -->
-<script>
-  class CompetitionRenderer {
-    constructor(containerId, jsonElementId) {
-      this.container = document.getElementById(containerId);
-      this.competitions = JSON.parse(document.getElementById(jsonElementId).textContent).competitions;
-    }
-
-    render() {
-      this.competitions.forEach(competition => {
-        const card = document.createElement("div");
-        card.className = "card event-card flex-shrink-0"; // important for horizontal scroll
-        const isSubmissionOpen = competition.enable_submission;
-
-        const buttonHTML = isSubmissionOpen
-          ? `<a href="${competition.submission}" class="btn btn-md btn-primary" target="_blank">Submit</a>`
-          : `<a href="javascript:void(0);" class="btn btn-md btn-secondary disabled" tabindex="-1" aria-disabled="true">Submission Closed</a>`;
-
-        const isRuleLinkAvailable = competition.rules != "#";
-        const linkHTML = isRuleLinkAvailable
-          ? `<a href="${competition.rules}">Link</a>`
-          : `-`;
-        
-        card.innerHTML = `
-          <img src="${competition.image}" class="card-img-top event-image" alt="Event Image">
-          <div class="card-body p-2 text-center">
-            <h6 class="card-title mb-1">${competition.title}</h6>
-            <small class="d-block"><b>Date:</b> ${competition.date}</small>
-            <small class="d-block"><b>Deadline:</b> ${competition.deadline}</small>
-            <small class="d-block"><b>Venue:</b> ${competition.venue}</small>
-            <small class="d-block mb-2"><b>Rules:</b> ${linkHTML}</small>
-            </div>
-          <div class="text-center mb-4">
-            ${buttonHTML}
-          </div>
-        `;
-        this.container.appendChild(card);
-      });
-    }
-
-    scrollToLatest() {
-      this.container.scrollLeft = this.container.scrollWidth;
-      this.updateArrowVisibility(); // update arrows on load
-    }
-
-    addScrollButtons() {
-      const scrollLeftBtn = document.getElementById('competitionsScrollLeft');
-      const scrollRightBtn = document.getElementById('competitionsScrollRight');
-      const scrollAmount = 300;
-
-      scrollLeftBtn.addEventListener('click', () => {
-        this.container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-        setTimeout(() => this.updateArrowVisibility(), 400);
-      });
-
-      scrollRightBtn.addEventListener('click', () => {
-        this.container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        setTimeout(() => this.updateArrowVisibility(), 400);
-      });
-
-      this.container.addEventListener('scroll', () => this.updateArrowVisibility());
-    }
-
-    updateArrowVisibility() {
-      const scrollLeftBtn = document.getElementById('competitionsScrollLeft');
-      const scrollRightBtn = document.getElementById('competitionsScrollRight');
-      const scrollLeft = this.container.scrollLeft;
-      const maxScrollLeft = this.container.scrollWidth - this.container.clientWidth;
-
-      if (scrollLeft <= 0) {
-        scrollLeftBtn.classList.add('disabled-arrow');
-        scrollLeftBtn.disabled = true;
-      } else {
-        scrollLeftBtn.classList.remove('disabled-arrow');
-        scrollLeftBtn.disabled = false;
-      }
-
-      if (scrollLeft >= maxScrollLeft - 1) {
-        scrollRightBtn.classList.add('disabled-arrow');
-        scrollRightBtn.disabled = true;
-      } else {
-        scrollRightBtn.classList.remove('disabled-arrow');
-        scrollRightBtn.disabled = false;
-      }
-    }
-
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const renderer = new CompetitionRenderer("competitionsCarousel", "current-contests-data");
-    renderer.render();
-    renderer.addScrollButtons();
-    setTimeout(() => renderer.scrollToLatest(), 1000); // wait a bit for DOM to update
-    renderer.scrollToLatest();
-  });
-</script>
-  
-<!-- Upcoming Events -->
-<script>
-  class EventRenderer {
-    constructor(containerId, jsonElementId) {
-      this.container = document.getElementById(containerId);
-      this.events = JSON.parse(document.getElementById(jsonElementId).textContent).events;
-    }
-
-    render() {
-      this.events.forEach(event => {
-        const card = document.createElement("div");
-        card.className = "card event-card flex-shrink-0"; // important for horizontal scroll
-        const isRegistrationOpen = event.enable_registration;
-
-        const buttonHTML = isRegistrationOpen
-          ? `<a href="${event.registration}" class="btn btn-md btn-primary" target="_blank">Register</a>`
-          : `<a href="javascript:void(0);" class="btn btn-md btn-secondary disabled" tabindex="-1" aria-disabled="true">Registration Closed</a>`;
-
-        card.innerHTML = `
-          <img src="${event.image}" class="card-img-top event-image" alt="Event Image">
-          <div class="card-body p-2 text-center">
-            <h6 class="card-title mb-1">${event.title}</h6>
-            <small class="d-block"><b>Date:</b> ${event.date}</small>
-            <small class="d-block"><b>Time:</b> ${event.time}</small>
-            <small class="d-block"><b>Venue:</b> ${event.venue}</small>
-            <small class="d-block mb-2"><b>Instructor:</b> ${event.instructor}</small>
-          </div>
-          <div class="text-center mb-4">
-            ${buttonHTML}
-          </div>
-        `;
-        this.container.appendChild(card);
-      });
-    }
-
-    scrollToLatest() {
-      this.container.scrollLeft = this.container.scrollWidth;
-      this.updateArrowVisibility(); // update arrows on load
-    }
-
-    addScrollButtons() {
-      const scrollLeftBtn = document.getElementById('eventScrollLeft');
-      const scrollRightBtn = document.getElementById('eventScrollRight');
-      const scrollAmount = 300;
-
-      scrollLeftBtn.addEventListener('click', () => {
-        this.container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-        setTimeout(() => this.updateArrowVisibility(), 400);
-      });
-
-      scrollRightBtn.addEventListener('click', () => {
-        this.container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        setTimeout(() => this.updateArrowVisibility(), 400);
-      });
-
-      this.container.addEventListener('scroll', () => this.updateArrowVisibility());
-    }
-
-    updateArrowVisibility() {
-      const scrollLeftBtn = document.getElementById('eventScrollLeft');
-      const scrollRightBtn = document.getElementById('eventScrollRight');
-      const scrollLeft = this.container.scrollLeft;
-      const maxScrollLeft = this.container.scrollWidth - this.container.clientWidth;
-
-      if (scrollLeft <= 0) {
-        scrollLeftBtn.classList.add('disabled-arrow');
-        scrollLeftBtn.disabled = true;
-      } else {
-        scrollLeftBtn.classList.remove('disabled-arrow');
-        scrollLeftBtn.disabled = false;
-      }
-
-      if (scrollLeft >= maxScrollLeft - 1) {
-        scrollRightBtn.classList.add('disabled-arrow');
-        scrollRightBtn.disabled = true;
-      } else {
-        scrollRightBtn.classList.remove('disabled-arrow');
-        scrollRightBtn.disabled = false;
-      }
-    }
-
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const renderer = new EventRenderer("eventCarousel", "current-events-data");
-    renderer.render();
-    renderer.addScrollButtons();
-    setTimeout(() => renderer.scrollToLatest(), 1000); // wait a bit for DOM to update
-    renderer.scrollToLatest();
-  });
-</script>
 
   <!-- Bootstrap JS and Popper.js (Bootstrap requires Popper.js for some components like dropdowns) -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
