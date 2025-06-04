@@ -640,13 +640,13 @@
         {
           "title": "Quiz",
           "date": "04-07 June 2025",
-          "deadline": "-",
+          "deadline": "10 PM (each day)",
           "venue": "Online"
         },
         {
           "title": "Best Yogasana",
           "date": "04-07 June 2025",
-          "deadline": "-",
+          "deadline": "07 June 2025, 11:59PM",
           "venue": "Online"
         },
         {
@@ -994,12 +994,12 @@
       eventsData.events.forEach((event, index) => {
         const eventHTML = `
           <tr>
-              <td class="col-1">${count}</td>
-              <td>${event.title}</td>
-              <td>${event.date}</td>
-              <td>${event.time}</td>
-              <td>${event.venue}</td>
-              <td>${event.instructor}</td>
+              <td class="col-md-1">${count}</td>
+              <td class="col-md">${event.title}</td>
+              <td class="col-md">${event.date}</td>
+              <td class="col-md">${event.time}</td>
+              <td class="col-md">${event.venue}</td>
+              <td class="col-md">${event.instructor}</td>
           </tr>
           `;
         eventsContainer.innerHTML += eventHTML;
@@ -1017,11 +1017,11 @@
       eventsData.competitions.forEach((competition, index) => {
         const eventHTML = `
           <tr>
-              <td class="col-1">${count}</td>
-              <td>${competition.title}</td>
-              <td>${competition.date}</td>
-              <td>${competition.deadline}</td>
-              <td>${competition.venue}</td>
+              <td class="col-md-1">${count}</td>
+              <td class="col-md">${competition.title}</td>
+              <td class="col-md">${competition.date}</td>
+              <td class="col-md">${competition.deadline}</td>
+              <td class="col-md">${competition.venue}</td>
           </tr>
           `;
         eventsContainer.innerHTML += eventHTML;
