@@ -46,13 +46,10 @@
       color: #FEF9E1;
     }
 
-    .carousel-wrapper {
-      position: relative;
-    }
-
     .event-carousel {
       display: flex;
       overflow-x: auto;
+      scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
       padding-bottom: 1rem;
     }
@@ -65,6 +62,7 @@
       flex: 0 0 auto;
       width: 280px;
       margin-right: 1rem;
+      scroll-snap-align: start;
       display: flex;
       flex-direction: column;
     }
@@ -216,10 +214,10 @@
   <section id="idy_celebration" class="pt-5">
     <div class="container">
       <h2 class="text-center mb-4">International Day of Yoga (IDY-2025) Celebration</h2>
-      <div class="mt-4 position-relative d-flex align-items-center">
+      <div class="mt-4 position-relative d-flex align-items-center justify-content-center">
         <button class="nav-btn left" id="celebrationsScrollLeft"><span class="carousel-control-prev-icon"></span></button>
         
-        <div class="event-carousel w-100 justify-content-center" id="celebrationCarousel"></div>
+        <div class="event-carousel" id="celebrationCarousel"></div>
         
         <button class="nav-btn right" id="celebrationsScrollRight"><span class="carousel-control-next-icon"></span></button>
       </div>
@@ -234,12 +232,10 @@
       
       <h2 class="text-center mb-4">Upcoming Competitions</h2>
       
-      <div class="mt-4 position-relative d-flex align-items-center">
+      <div class="mt-4 position-relative d-flex align-items-center justify-content-center">
         
         <button class="nav-btn left" id="competitionsScrollLeft"><span class="carousel-control-prev-icon"></span></button>
-        
-        <div class="event-carousel w-100 justify-content-center" id="competitionsCarousel"></div>
-        
+        <div class="event-carousel" id="competitionsCarousel"></div>        
         <button class="nav-btn right" id="competitionsScrollRight"><span class="carousel-control-next-icon"></span></button>
       </div>
     </div>
@@ -252,11 +248,11 @@
       
       <h2 class="text-center mb-4">Upcoming Events</h2>
       
-      <div class="mt-4 position-relative d-flex align-items-center">
+      <div class="mt-4 position-relative d-flex align-items-center justify-content-center">
         
         <button class="nav-btn left" id="eventScrollLeft"><span class="carousel-control-prev-icon"></span></button>
         
-        <div class="event-carousel w-100 justify-content-center" id="eventCarousel"></div>
+        <div class="event-carousel" id="eventCarousel"></div>
         
         <button class="nav-btn right" id="eventScrollRight"><span class="carousel-control-next-icon"></span></button>
       </div>
@@ -751,7 +747,7 @@
       addScrollButtons() {
         const scrollLeftBtn = document.getElementById('celebrationsScrollLeft');
         const scrollRightBtn = document.getElementById('celebrationsScrollRight');
-        const scrollAmount = 300;
+        const scrollAmount = this.container.clientWidth;
 
         scrollLeftBtn.addEventListener('click', () => {
           this.container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
@@ -848,7 +844,7 @@
       addScrollButtons() {
         const scrollLeftBtn = document.getElementById('competitionsScrollLeft');
         const scrollRightBtn = document.getElementById('competitionsScrollRight');
-        const scrollAmount = 300;
+        const scrollAmount = this.container.clientWidth;
 
         scrollLeftBtn.addEventListener('click', () => {
           this.container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
