@@ -12,19 +12,80 @@
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   <!-- Styles -->
   <style>
-    html,
     body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      /* prevents horizontal scroll */
+      background: linear-gradient(to bottom right, #fdfbfb, #ebedee);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    .footer {
-      background-color: #443627;
-      color: #F2F6D0;
-      padding: 20px 0;
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-weight: 600;
+      color: #343a40;
+    }
+
+    .container {
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      margin-top: 3rem;
+    }
+
+    .btn-success {
+      background-color: #28a745;
+      border-color: #28a745;
+      font-weight: 500;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-success:hover {
+      transform: scale(1.05);
+      background-color: #218838;
+    }
+
+    .list-unstyled li {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      color: #495057;
+    }
+
+    footer {
+      margin-top: 4rem;
       text-align: center;
+      padding: 1rem;
+      color: #6c757d;
+    }
+
+    @media (max-width: 768px) {
+      .carousel-image {
+        height: 180px;
+      }
+
+      .container {
+        padding: 1.2rem;
+      }
+    }
+
+    .carousel-container {
+      max-width: 600px;
+      margin: 50px auto;
+      position: relative;
+      text-align: center;
+    }
+
+    .carousel-image {
+      max-width: 100%;
+      height: 350px;
+      object-fit: cover;
+      ;
+      transition: opacity 1s ease;
+      opacity: 1;
+    }
+
+    .fade-out {
+      opacity: 0;
     }
   </style>
 </head>
@@ -34,6 +95,7 @@
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="../index.html">Yogastha IITB</a>
+      <a class="navbar-brand" href="../idy2025/index.html">IDY 2025</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -48,39 +110,41 @@
     </div>
   </nav>
 
-  <div class="container my-5">
-    <div class="card p-5 m-2">    
-    <div id="sn-benefits">
-      <strong>"Surya Namaskar"</strong> or <strong>"Sun Salutation"</strong> consists of 12 asanas with 9 unique
-      Yoga postures.
-      <ul>
-        <li>Fast paced Surya Namaskar is good for <strong>building stamina</strong>.</li>
-        <li>Slow paced Surya Namaskar, (by holding each posture for some time), is good for
-          <strong>increasing flexibility, endurance and concentration</strong>.
-        </li>
-        <li>Daily practice of Surya Namaskar:
-          <ul>
-            <li>improves metabolism,</li>
-            <li>helps in weight management,</li>
-            <li>improves cardio-vascular health,</li>
-            <li>relaxes the mind.</li>
-          </ul>
-        </li>
-      </ul>
-      After completion of Surya Namaskar sit in a meditative posture for few minutes filling yourself with
-      gratitude towards nature. You may practice Surya Namaskar early in the morning or in the evening with a gap
-      of at least 2 hours after any meal. Read below for details about each asana (posture).
+  <!-- <div class="container my-5 p-4 rounded shadow-sm border bg-light">
+    <div class="row align-items-center">
+      <div class="col-md-5 text-center">
+        <img src="../idy2025/img/Yogathon_2025.jpg" height="500ox">
+      </div>
+
+      <div class="col-md-7 p-5">
+        <h3 class="text-primary mb-3">Yogathon (108 Surya Namaskar Challenge)</h3>
+        <p class="text-muted">Join us for a joyful and enriching event filled with fun, learning, and connection!</p>
+        <ul class="list-unstyled">
+          <li><strong>Date:</strong> June 21, 2025</li>
+          <li><strong>Time:</strong> 10:00 AM - 1:00 PM</li>
+          <li><strong>Venue:</strong> Community Hall, City Center</li>
+          <li><strong>Instructor:</strong> Mr. Joyful Sharma</li>
+        </ul>
+        <a href="#" class="btn btn-success mt-3 px-4 py-2">Register Now</a>
+      </div>
     </div>
+  </div> -->
+
+  <div class="p-4 text-center">
+    <img id="carouselImage" class="carousel-image" src="../assets/img/suryanamaskar_poses/frames/000.png"
+      alt="Carousel Image">
   </div>
 
-    <!-- Position 0 : Starting position -->
-    <div class="card p-5 m-2">
-      <div class="row description-panel">
-        <h2 class="mb-5">Step 0: Starting position</h2>
-        <div class="col-md">
-          <img src="../pages/images/0.png" height="150px" alt="Starting position">
+  <div class="container">
+    <div class="card mb-4">
+      <div class="card-header text-center">
+        <h4>Step 0: Starting position</h4>
+      </div>
+      <div class="card-body row">
+        <div class="col-md-3 col-xs-4 p-2">
+          <img src="../pages/images/0.png" width="100%" alt="Starting position">
         </div>
-        <div class="col-md">
+        <div class="col-md-9 col-xs-8 p-2">
           <strong>Before you start: </strong> Do some loosening exercises such as neck movements, arms, wrist,
           waist, knee and ankle rotations. Use a soft Yoga mat of at least 4mm thickness.
           <br><br>
@@ -91,17 +155,15 @@
         </div>
       </div>
     </div>
-
-
-    <!-- Position 1 : Pranamasan -->
-    <div class="card p-5 m-2">
-
-      <div class="row description-panel">
-        <h2 class="mb-5">Step 1: Pranamasan</h2>
-        <div class="col-md">
-          <img src="../pages/images/1.png" height="150px" alt="Pranam asan">
+    <div class="card mb-4">
+      <div class="card-header text-center">
+        <h4>Step 1: Pranamasan</h4>
+      </div>
+      <div class="card-body row">
+        <div class="col-md-3 col-xs-4 p-2">
+          <img src="../pages/images/1.png" width="100%" alt="Starting position">
         </div>
-        <div class="col-md">
+        <div class="col-md-9 col-xs-8 p-2">
           Pranam is a gesture made for greeting somebody. <br>
           <strong>Transition: </strong> Breathe in and out as you bring your palms together in namaskar mudra
           in front of your chest.
@@ -113,17 +175,15 @@
         </div>
       </div>
     </div>
-
-
-    <!-- Position 2 : Hastauthanasan -->
-    <div class="card p-5 m-2">
-      <div class="row description-panel">
-        <h2 class="mb-5">Step 2: Hastauthanasan</h2>
-        <div class="col-md">
-          <img src="../pages/images/2.png" height="150px" alt="Hasta uthan asan">
-
+    <div class="card mb-4">
+      <div class="card-header text-center">
+        <h4>Step 2: Hastauthanasan</h4>
+      </div>
+      <div class="card-body row">
+        <div class="col-md-3 col-xs-4 p-2">
+          <img src="../pages/images/2.png" width="100%" alt="Starting position">
         </div>
-        <div class="col-md">
+        <div class="col-md-9 col-xs-8 p-2">
           Hasta means hands and uthan means raised.<br>
           <strong>Transition: </strong> As you breathe in, stretch both your hands forward and raise them and
           stretch your entire body. Now bend slightly backwards (from your lower back) and look upwards such
@@ -137,16 +197,15 @@
         </div>
       </div>
     </div>
-
-    <!-- Position 3 : Padahastasan -->
-    <div class="card p-5 m-2">
-      <div class="row description-panel">
-        <h2 class="mb-5">Step 3: Padahastasan</h2>
-        <div class="col-md">
-          <img src="../pages/images/3.png" height="150px" alt="Padahastasan">
-
+    <div class="card mb-4">
+      <div class="card-header text-center">
+        <h4>Step 3: Padahastasan</h4>
+      </div>
+      <div class="card-body row">
+        <div class="col-md-3 col-xs-4 p-2">
+          <img src="../pages/images/3.png" width="100%" alt="Starting position">
         </div>
-        <div class="col-md">
+        <div class="col-md-9 col-xs-8 p-2">
           Pada means feet and hasta means hands.<br>
           <strong>Transition: </strong> As you breathe out, maintaining the stretch in your body bend forward
           from your hip to point both your hands forward. You may now bend further by curving your back.
@@ -160,17 +219,15 @@
         </div>
       </div>
     </div>
-
-
-    <!-- Position 4 : Ashwasanchalanasan -->
-    <div class="card p-5 m-2">
-      <div class="row description-panel">
-        <h2 class="mb-5">Step 4: Ashwasanchalanasan</h2>
-        <div class="col-md">
-          <img src="../pages/images/4.png" height="150px" alt="Ashwa sanchalan asan">
-
+    <div class="card mb-4">
+      <div class="card-header text-center">
+        <h4>Step 4: Ashwasanchalanasan</h4>
+      </div>
+      <div class="card-body row">
+        <div class="col-md-3 col-xs-4 p-2">
+          <img src="../pages/images/4.png" width="100%" alt="Starting position">
         </div>
-        <div class="col-md">
+        <div class="col-md-9 col-xs-8 p-2">
           Ashwa means horse and sanchalan means control.<br>
           <strong>Transition: </strong> Place both hands on the floor besides your feet. As you breathe in,
           move your right leg (during odd numbered suryanamaskar) or left leg (during even numbered
@@ -186,17 +243,16 @@
         </div>
       </div>
     </div>
-
-
-    <!-- Position 5 : Hastadandasan -->
-    <div class="card p-5 m-2">
-      <div class="row description-panel">
-        <h2 class="mb-5">Step 5: Hastadandasan</h2>
-        <div class="col-md">
-          <img src="../pages/images/5.png" height="150px" alt="Hasta dand asan">
-
+    <div class="card mb-4">
+      <div class="card-header text-center">
+        <h4>Step 5: Hastadandasan</h4>
+      </div>
+      <div class="card-body row">
+        <div class="col-md-3 col-xs-4 p-2">
+          <img src="../pages/images/5.png" width="100%" alt="Starting position">
         </div>
-        <div class="col-md"> Hasta means hand and dand means wooden pole.<br>
+        <div class="col-md-9 col-xs-8 p-2">
+          Hasta means hand and dand means wooden pole.<br>
           <strong>Transition: </strong> Holding you breath inside, move the leg from forward to the back and
           place it besides the other leg. Raise both knees off the floor.
           <br><br>
@@ -208,15 +264,15 @@
         </div>
       </div>
     </div>
-    <!-- Position 6 : Ashtanga namaskar -->
-    <div class="card p-5 m-2">
-      <div class="row description-panel">
-        <h2 class="mb-5">Step 6: Ashtanga namaskar</h2>
-        <div class="col-md">
-          <img src="../pages/images/6.png" height="150px" alt="Ashtanga namaskar">
-
+    <div class="card mb-4">
+      <div class="card-header text-center">
+        <h4>Step 6: Ashtanga namaskar</h4>
+      </div>
+      <div class="card-body row">
+        <div class="col-md-3 col-xs-4 p-2">
+          <img src="../pages/images/6.png" width="100%" alt="Starting position">
         </div>
-        <div class="col-md">
+        <div class="col-md-9 col-xs-8 p-2">
           Asta means eight, anga means body and namaskar means salutation: Eight parts of the body touching
           the floor for salutation.<br>
           <strong>Transition: </strong> Very slowly as you breathe out, lower you body to place your knees,
@@ -230,17 +286,15 @@
         </div>
       </div>
     </div>
-
-
-    <!-- Position 7 : Bhujangasan -->
-    <div class="card p-5 m-2">
-      <div class="row description-panel">
-        <h2 class="mb-5">Step 7: Bhujangasan</h2>
-        <div class="col-md">
-          <img src="../pages/images/7.png" height="150px" alt="Bhujang asan">
-
+    <div class="card mb-4">
+      <div class="card-header text-center">
+        <h4>Step 7: Bhujangasan</h4>
+      </div>
+      <div class="card-body row">
+        <div class="col-md-3 col-xs-4 p-2">
+          <img src="../pages/images/7.png" width="100%" alt="Starting position">
         </div>
-        <div class="col-md">
+        <div class="col-md-9 col-xs-8 p-2">
           Bhujang means snake (hence also known as cobra posture).<br>
           <strong>Transition: </strong> As you breathe in, slide further placing your abdomen on the floor and
           raising your chin and chest off the floor.
@@ -254,16 +308,15 @@
       </div>
     </div>
 
-
-    <!-- Position 8 : Adhomukhaswanasan or Parvatasan -->
-    <div class="card p-5 m-2">
-      <div class="row description-panel">
-        <h2 class="mb-5">Step 8: Adhomukhaswanasan or Parvatasan</h2>
-        <div class="col-md">
-          <img src="../pages/images/8.png" height="150px" alt="Adhomukha swan asan or Parvat asan">
-
+    <div class="card mb-4">
+      <div class="card-header text-center">
+        <h4>Step 8: Adhomukhaswanasan or Parvatasan</h4>
+      </div>
+      <div class="card-body row">
+        <div class="col-md-3 col-xs-4 p-2">
+          <img src="../pages/images/8.png" width="100%" alt="Starting position">
         </div>
-        <div class="col-md">
+        <div class="col-md-9 col-xs-8 p-2">
           Adhomukha means downward facing and swan means dog. Parvat means mountain.<br>
           <strong>Transition: </strong> As you breathe out, raise you back and knees to form an inverted
           V-shape of the body.
@@ -275,16 +328,15 @@
         </div>
       </div>
     </div>
-
-    <!-- Position 9 : Ashwasanchalanasan -->
-    <div class="card p-5 m-2">
-      <div class="row description-panel">
-        <h2 class="mb-5">Step 9: Ashwasanchalanasan</h2>
-        <div class="col-md">
-          <img src="../pages/images/9.png" height="150px" alt="Ashwa sanchalan asan">
-
+    <div class="card mb-4">
+      <div class="card-header text-center">
+        <h4>Step 9: Ashwasanchalanasan</h4>
+      </div>
+      <div class="card-body row">
+        <div class="col-md-3 col-xs-4 p-2">
+          <img src="../pages/images/9.png" width="100%" alt="Starting position">
         </div>
-        <div class="col-md">
+        <div class="col-md-9 col-xs-8 p-2">
           <strong>Transition: </strong> As you breathe in, bring your right leg or left leg (depending on odd
           or even numbered Suryanamaskar) forward and place in-between your hands. The app on this page says
           right or left depending on the current suryanamaskar number, hence alternating between left and
@@ -296,17 +348,15 @@
         </div>
       </div>
     </div>
-
-
-    <!-- Position 10 : Padahastasan -->
-    <div class="card p-5 m-2">
-      <div class="row description-panel">
-        <h2 class="mb-5">Step 10: Padahastasan</h2>
-        <div class="col-md">
-          <img src="../pages/images/10.png" height="150px" alt="Padahastasan">
-
+    <div class="card mb-4">
+      <div class="card-header text-center">
+        <h4>Step 10: Padahastasan</h4>
+      </div>
+      <div class="card-body row">
+        <div class="col-md-3 col-xs-4 p-2">
+          <img src="../pages/images/10.png" width="100%" alt="Starting position">
         </div>
-        <div class="col-md">
+        <div class="col-md-9 col-xs-8 p-2">
           <strong>Transition: </strong> As you breathe out, move the behind leg forward to place it besides
           the other leg. Try to place your palms besides your feet.
           <br><br>
@@ -318,17 +368,15 @@
         </div>
       </div>
     </div>
-
-
-    <!-- Position 11 : Hastauthanasan -->
-    <div class="card p-5 m-2">
-      <div class="row description-panel">
-        <h2 class="mb-5">Step 11: Hastauthanasan</h2>
-        <div class="col-md">
-          <img src="../pages/images/11.png" height="150px" alt="Hastauthanasan">
-
+    <div class="card mb-4">
+      <div class="card-header text-center">
+        <h4>Step 11: Hastauthanasan</h4>
+      </div>
+      <div class="card-body row">
+        <div class="col-md-3 col-xs-4 p-2">
+          <img src="../pages/images/11.png" width="100%" alt="Starting position">
         </div>
-        <div class="col-md">
+        <div class="col-md-9 col-xs-8 p-2">
           <strong>Transition: </strong> As you breathe in, stretch both your hands forward and raise them
           above your head and stretch your entire body. Now bend slightly backwards (from your lower back) and
           look upwards such that your arms touch your ears.
@@ -341,16 +389,15 @@
         </div>
       </div>
     </div>
-
-    <!-- Position 12 : Relaxation -->
-    <div class="card p-5 m-2">
-      <div class="row description-panel">
-        <h2 class="mb-5">Step 12: Relaxation posture</h2>
-        <div class="col-md">
-          <img src="../pages/images/12.png" height="150px" alt="Relaxation posture">
-
+    <div class="card mb-4">
+      <div class="card-header text-center">
+        <h4>Step 12: Relaxation posture</h4>
+      </div>
+      <div class="card-body row">
+        <div class="col-md-3 col-xs-4 p-2">
+          <img src="../pages/images/12.png" width="100%" alt="Starting position">
         </div>
-        <div class="col-md">
+        <div class="col-md-9 col-xs-8 p-2">
           <strong>Transition: </strong> Without bending your hands as you breathe out, swing your hands from
           sideways to place them beside your body. Keep your spine erect and relax as you get ready for the
           next suryanamaskar.
@@ -362,6 +409,7 @@
       </div>
     </div>
   </div>
+
   <!-- Footer -->
   <footer class="footer text-center">
     <div class="row">
@@ -384,6 +432,41 @@
       </div>
   </footer>
 </body>
+
+
+<script>
+  const imagePaths = [
+    '../assets/img/suryanamaskar_poses/frames/000.png',
+    '../assets/img/suryanamaskar_poses/frames/001.png',
+    '../assets/img/suryanamaskar_poses/frames/002.png',
+    '../assets/img/suryanamaskar_poses/frames/003.png',
+    '../assets/img/suryanamaskar_poses/frames/004.png',
+    '../assets/img/suryanamaskar_poses/frames/005.png',
+    '../assets/img/suryanamaskar_poses/frames/006.png',
+    '../assets/img/suryanamaskar_poses/frames/007.png',
+    '../assets/img/suryanamaskar_poses/frames/008.png',
+    '../assets/img/suryanamaskar_poses/frames/009.png',
+    '../assets/img/suryanamaskar_poses/frames/010.png',
+    '../assets/img/suryanamaskar_poses/frames/011.png'
+  ];
+
+  const imgElement = document.getElementById('carouselImage');
+  let currentIndex = 0;
+
+  setInterval(() => {
+    // Start fade-out
+    imgElement.classList.add('fade-out');
+
+    // After fade-out, change image and fade-in
+    setTimeout(() => {
+      currentIndex = (currentIndex + 1) % imagePaths.length;
+      imgElement.src = imagePaths[currentIndex];
+      imgElement.classList.remove('fade-out');
+    }, 1000); // matches CSS transition duration
+  }, 5000); // every 5 seconds
+</script>
+
+
 <!-- Bootstrap JS and Popper.js (Bootstrap requires Popper.js for some components like dropdowns) -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>

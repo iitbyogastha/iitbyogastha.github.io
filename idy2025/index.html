@@ -76,7 +76,7 @@
       border-bottom: 1px solid #ddd; /* Optional: visual separation */
     }
     .celebration-image{
-      height: 200px;              /* Fixed height for image container */
+      height: 340px;              /* Fixed height for image container */
       width: 100%;
       object-fit: contain;        /* Show entire image, no cropping */
       object-position: center;
@@ -344,20 +344,13 @@
     {
       "celebrations":[
         {
-          "image": "img/YOGA_THON.png",
+          "image": "img/Yogathon_2025.jpg",
           "title": "Yogathon (108 Surya Namaskar Challenge)",
           "date": "06, 09, 11, 13, 16, 18 June 2025",
           "time": "6:30 PM - 8:30 PM",
           "venue": "Yoga Hall, New SAC",
+          "contact": "+918602409282",
           "link": "yogathon_test.html"
-        },
-        {
-          "image": "img/common yoga protocol.png",
-          "title": "Common Yoga Protocol",
-          "date": "12, 14, 17, 19 June 2025",
-          "time": "6:30 AM - 8:30 AM",
-          "venue": "Yoga Hall, New SAC",
-          "link": "#"
         }
       ]
     }
@@ -606,7 +599,7 @@
         {
           "title": "Yogathon Practice Sessions",
           "date": "06, 09, 11, 13, 16, 18 June 2025",
-          "time": "6:30 PM - 8:30 PM",
+          "time": "6:30 PM - 8:00 PM",
           "venue": "Yoga Hall, New SAC",
           "instructor": "Yogastha"
         },
@@ -731,9 +724,9 @@
               <small class="d-block"><b>Time:</b> ${celebration.time}</small>
               <small class="d-block mb-2"><b>Venue:</b> ${celebration.venue}</small>
               </div>
-            <!-- <div class="text-center mb-4">
-              <a href="${celebration.link}" class="btn btn-md btn-outline-primary">Details</a>
-            </div> -->
+            <div class="text-center mb-4">
+              <a href="${celebration.link}" class="btn btn-md btn-outline-primary">Open</a>
+            </div>
           `;
           this.container.appendChild(card);
         });
