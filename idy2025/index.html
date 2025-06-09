@@ -12,10 +12,12 @@
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   <!-- Styles -->
   <style>
-    html, body {
+    html,
+    body {
       margin: 0;
       padding: 0;
-      overflow-x: hidden;  /* prevents horizontal scroll */
+      overflow-x: hidden;
+      /* prevents horizontal scroll */
     }
 
     .hero-section {
@@ -68,21 +70,45 @@
     }
 
     .event-image {
-      height: 340px;              /* Fixed height for image container */
+      height: 340px;
+      /* Fixed height for image container */
       width: 100%;
-      object-fit: contain;        /* Show entire image, no cropping */
+      object-fit: contain;
+      /* Show entire image, no cropping */
       object-position: center;
-      background-color: #fff;     /* Ensures empty space is white */
-      border-bottom: 1px solid #ddd; /* Optional: visual separation */
+      background-color: #fff;
+      /* Ensures empty space is white */
+      border-bottom: 1px solid #ddd;
+      /* Optional: visual separation */
     }
-    .celebration-image{
-      height: 340px;              /* Fixed height for image container */
+
+    .celebration-image {
+      height: 340px;
+      /* Fixed height for image container */
       width: 100%;
-      object-fit: contain;        /* Show entire image, no cropping */
+      object-fit: contain;
+      /* Show entire image, no cropping */
       object-position: center;
-      background-color: #fff;     /* Ensures empty space is white */
-      border-bottom: 1px solid #ddd; /* Optional: visual separation */
+      background-color: #fff;
+      /* Ensures empty space is white */
+      border-bottom: 1px solid #ddd;
+      /* Optional: visual separation */
     }
+
+    .guest-image {
+      height:400px;
+      /* Fixed height for image container */
+      width: 100%;
+      object-fit: contain;
+      /* Show entire image, no cropping */
+      object-position: center;
+      background-color: #fff;
+      /* Ensures empty space is white */
+      border-bottom: 1px solid #ddd;
+      /* Optional: visual separation */
+    }
+
+
     .nav-btn {
       top: 0;
       bottom: 0;
@@ -104,6 +130,7 @@
     .nav-btn:hover {
       background-color: rgba(0, 0, 0, 0.5);
     }
+
     .nav-btn.left {
       left: 0;
     }
@@ -121,15 +148,15 @@
     .quote-font {
       font-family: 'Georgia', cursive;
     }
-
   </style>
 </head>
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="../index.html">Yogastha IITB</a>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid px-5">
+      <a class="navbar-brand" href="../index.html"><img src="../assets/img/Header_logo.png" alt=""
+          height="40px"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -137,7 +164,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link active" href="#hero">Home</a>
+            <a class="nav-link" href="#guest">Chief Guest</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#idy_celebration">Celebration</a>
@@ -159,7 +186,7 @@
     </div>
   </nav>
 
-  
+
   <!-- Hero Section -->
   <img class="w-100" src="img/back3.jpg" />
   <!-- About IDY -->
@@ -174,20 +201,20 @@
           <div class="card-body mb-0">
             <div class="row text-center">
               <div class="col-3">
-                  <h2 id="days">00</h2>
-                  <p class="mb-0">Days</p>
+                <h2 id="days">00</h2>
+                <p class="mb-0">Days</p>
               </div>
               <div class="col-3">
-                  <h2 id="hours">00</h2>
-                  <p class="mb-0">Hours</p>
+                <h2 id="hours">00</h2>
+                <p class="mb-0">Hours</p>
               </div>
               <div class="col-3">
-                  <h2 id="minutes">00</h2>
-                  <p class="mb-0">Minutes</p>
+                <h2 id="minutes">00</h2>
+                <p class="mb-0">Minutes</p>
               </div>
               <div class="col-3">
-                  <h2 id="seconds">00</h2>
-                  <p class="mb-0">Seconds</p>
+                <h2 id="seconds">00</h2>
+                <p class="mb-0">Seconds</p>
               </div>
             </div>
           </div>
@@ -211,17 +238,37 @@
     </div>
   </section>
 
+<section id="guest">
+  <div class="mt-4 container">
+    <h2 class="text-center mb-4">Chief Guest Talk</h2>
+    <div class="mt-4 position-relative d-flex align-items-center justify-content-center">
+      <!-- Chief Guest -->
+      <div class="card">
+        <img src="img/Chief Guest.jpg" class="card-img-top guest-image" alt="Event Image">
+        <div class="card-body p-2 text-center" style="width: 380px;">
+          <h6 class="card-title mb-1">Dinesh Ghodke</h6>
+          <small class="d-block"><i>B.Tech, IIT Bombay | Meditation Teacher | Author | Speaker | Holistic Wellness Expert</i></small>
+          <br>
+          <small class="d-block"><b>Time:</b> 21 June, 2025, 06:30 AM</small>
+          <small class="d-block mb-2"><b>Venue:</b> Indoor Badminton Court, IIT Bombay</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
   <section id="idy_celebration" class="pt-5">
     <div class="container">
       <h2 class="text-center mb-4">International Day of Yoga (IDY-2025) Celebration</h2>
       <div class="mt-4 position-relative d-flex align-items-center justify-content-center">
         <!-- <button class="nav-btn left" id="celebrationsScrollLeft"><span class="carousel-control-prev-icon"></span></button> -->
-        
-        <div class="event-carousel" id="celebrationCarousel"></div>
-        
-        <!-- <button class="nav-btn right" id="celebrationsScrollRight"><span class="carousel-control-next-icon"></span></button> -->
+
+        <div class="event-carousel" id="celebrationCarousel">
+
+          <!-- <button class="nav-btn right" id="celebrationsScrollRight"><span class="carousel-control-next-icon"></span></button> -->
+        </div>
       </div>
-    </div>
   </section>
 
 
@@ -229,14 +276,16 @@
   <!-- Carousel -->
   <section id="upcoming_competitions" class="pt-5">
     <div class="container">
-      
+
       <h2 class="text-center mb-4">Upcoming Competitions</h2>
-      
+
       <div class="mt-4 position-relative d-flex align-items-center justify-content-center">
-        
-        <button class="nav-btn left" id="competitionsScrollLeft"><span class="carousel-control-prev-icon"></span></button>
-        <div class="event-carousel" id="competitionsCarousel"></div>        
-        <button class="nav-btn right" id="competitionsScrollRight"><span class="carousel-control-next-icon"></span></button>
+
+        <button class="nav-btn left" id="competitionsScrollLeft"><span
+            class="carousel-control-prev-icon"></span></button>
+        <div class="event-carousel" id="competitionsCarousel"></div>
+        <button class="nav-btn right" id="competitionsScrollRight"><span
+            class="carousel-control-next-icon"></span></button>
       </div>
     </div>
   </section>
@@ -245,15 +294,15 @@
   <!-- Carousel -->
   <section id="upcoming_events" class="pt-5">
     <div class="container">
-      
+
       <h2 class="text-center mb-4">Upcoming Events</h2>
-      
+
       <div class="mt-4 position-relative d-flex align-items-center justify-content-center">
-        
+
         <button class="nav-btn left" id="eventScrollLeft"><span class="carousel-control-prev-icon"></span></button>
-        
+
         <div class="event-carousel" id="eventCarousel"></div>
-        
+
         <button class="nav-btn right" id="eventScrollRight"><span class="carousel-control-next-icon"></span></button>
       </div>
     </div>
@@ -351,6 +400,15 @@
           "venue": "Yoga Hall, New SAC",
           "contact": "+918602409282",
           "link": "yogathon_2025.html"
+        },
+        {
+          "image": "img/common yoga protocol.png",
+          "title": "Common Yoga Protocol",
+          "date": "12, 14, 17, 19 June 2025",
+          "time": "6:30 AM - 8:30 AM",
+          "venue": "Yoga Hall, New SAC",
+          "contact": "+918602409282",
+          "link": "#"
         }
       ]
     }
@@ -715,30 +773,30 @@
     const countDownDate = new Date("June 21, 2025 00:00:00").getTime();
 
     // Update the countdown every 1 second
-    const x = setInterval(function() {
-    // Get today's date and time
-    const now = new Date().getTime();
+    const x = setInterval(function () {
+      // Get today's date and time
+      const now = new Date().getTime();
 
-    // Find the distance between now and the countdown date
-    const distance = countDownDate - now;
+      // Find the distance between now and the countdown date
+      const distance = countDownDate - now;
 
-    // Time calculations for days, hours, minutes and seconds
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      // Time calculations for days, hours, minutes and seconds
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Display the result
-    document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
-    document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
-    document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
-    document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+      // Display the result
+      document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+      document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+      document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+      document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
 
-    // If the countdown is finished, write some text
-    if (distance < 0) {
-      clearInterval(x);
-      document.getElementById("idy-counter").innerHTML="";
-    }
+      // If the countdown is finished, write some text
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("idy-counter").innerHTML = "";
+      }
     }, 1000);
   </script>
 
@@ -851,7 +909,7 @@
           const linkHTML = isRuleLinkAvailable
             ? `<a href="${competition.rules}">Link</a>`
             : `-`;
-          
+
           card.innerHTML = `
             <img src="${competition.image}" class="card-img-top event-image" alt="Event Image">
             <div class="card-body p-2 text-center">
@@ -925,7 +983,7 @@
       renderer.scrollToLatest();
     });
   </script>
-    
+
   <!-- Upcoming Events -->
   <script>
     class EventRenderer {
