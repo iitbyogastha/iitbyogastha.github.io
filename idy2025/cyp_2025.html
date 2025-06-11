@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CYP 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link href="../assets/img/favicon.png" rel="icon">
+  <style>
+    :root {
+      --primary: #1a5d63;
+      --secondary: #2d9b8d;
+      --accent: #f4a261;
+      --light: #f8f9fa;
+      --dark: #2c3e50;
+      --gradient-start: #1a5d63;
+      --gradient-end: #2d9b8d;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1a5d63, #2c3e50);
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.03)"/></svg>');
+      background-size: cover;
+      z-index: -1;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* Header Styles */
+    header {
+      text-align: center;
+      padding: 30px 0;
+      position: relative;
+      animation: fadeIn 1s ease-out;
+    }
+    
+    .header-logo {
+      width: 150px;
+      height: auto;
+      margin-bottom: 15px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+    
+    .main-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      margin: 10px 0;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .main-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    .subtitle {
+      font-size: 1.8rem;
+      color: rgba(255,255,255,0.9);
+      margin: 5px 0 20px;
+      font-weight: 300;
+    }
+    
+    .date-display {
+      font-size: 1.5rem;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 1px;
+      background: rgba(0,0,0,0.2);
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 30px;
+      margin: 10px 0;
+    }
+    
+    /* Content Card */
+    .content-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      padding: 40px;
+      margin: 30px 0;
+      position: relative;
+      overflow: hidden;
+      animation: slideUp 1s ease-out;
+    }
+    
+    .content-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+    }
+    
+    .info-text {
+      font-size: 1.1rem;
+      color: var(--dark);
+      margin-bottom: 25px;
+      text-align: center;
+      line-height: 1.8;
+    }
+    
+    .highlight {
+      color: var(--primary);
+      font-weight: 600;
+      background: rgba(26, 93, 99, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    
+    .alert-box {
+      background: #ffeaa7;
+      border-left: 4px solid var(--accent);
+      padding: 15px;
+      border-radius: 0 8px 8px 0;
+      margin: 20px 0;
+      text-align: center;
+      animation: pulse 2s infinite;
+    }
+    
+    /* Buttons */
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 30px 0;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      text-decoration: none;
+      color: white;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      box-shadow: 0 5px 15px rgba(26, 93, 99, 0.4);
+      transition: all 0.3s ease;
+      min-width: 250px;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn i {
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+    
+    .btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(26, 93, 99, 0.6);
+    }
+    
+    .btn:hover::after {
+      left: 100%;
+    }
+    
+    .btn-secondary {
+      background: linear-gradient(135deg, #f4a261, #e76f51);
+    }
+    
+    .btn-tertiary {
+      background: linear-gradient(135deg, #2a9d8f, #1d3557);
+    }
+    
+    /* Timer Section */
+    .timer-section {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      margin: 30px 0;
+      backdrop-filter: blur(10px);
+    }
+    
+    .timer-title {
+      color: white;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    
+    #timer {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: rgba(0,0,0,0.2);
+      padding: 15px 30px;
+      border-radius: 50px;
+      display: inline-block;
+    }
+    
+    /* Video Section */
+    .video-section {
+      margin: 40px 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 30px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+      border-radius: 2px;
+    }
+    
+    .video-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin: 30px 0;
+    }
+    
+    .video-wrapper {
+      width: 100%;
+      max-width: 560px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+    
+    .video-wrapper:hover {
+      transform: translateY(-10px);
+    }
+    
+    .video-wrapper iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+    
+    /* Languages Section */
+    .languages-section {
+      margin: 40px 0;
+    }
+    
+    .languages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 15px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .lang-btn {
+      display: block;
+      padding: 12px 15px;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: white;
+      text-align: center;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(26, 93, 99, 0.3);
+    }
+    
+    .lang-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(26, 93, 99, 0.4);
+      background: linear-gradient(135deg, #2d9b8d, #1a5d63);
+    }
+    
+    /* Document Section */
+    .document-section {
+      text-align: center;
+      margin: 40px 0;
+    }
+    
+    .pdf-container {
+      width: 100%;
+      height: 500px;
+      background: #f5f5f5;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      margin: 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .pdf-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #e0f2f1, #b2dfdb);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      padding: 20px;
+    }
+    
+    .pdf-placeholder i {
+      font-size: 5rem;
+      margin-bottom: 20px;
+      color: var(--secondary);
+    }
+    
+    .pdf-placeholder h3 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    
+    .download-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(26, 93, 99, 0.3);
+    }
+    
+    .download-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(26, 93, 99, 0.4);
+    }
+    
+    /* Contact Section */
+    .contact-section {
+      background: rgba(255,255,255,0.95);
+      border-radius: 20px;
+      padding: 30px;
+      margin: 40px 0;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    
+    .contact-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin: 30px 0;
+    }
+    
+    .contact-card {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      border-radius: 15px;
+      padding: 20px;
+      min-width: 250px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .contact-card h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+    
+    .contact-card p {
+      color: var(--dark);
+      font-size: 1.1rem;
+    }
+    
+    /* Social Media */
+    .social-section {
+      text-align: center;
+      margin: 40px 0;
+    }
+    
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 20px;
+    }
+    
+    .social-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: white;
+      font-size: 1.8rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(26, 93, 99, 0.3);
+    }
+    
+    .social-icon:hover {
+      transform: translateY(-8px) scale(1.1);
+      box-shadow: 0 10px 20px rgba(26, 93, 99, 0.4);
+    }
+    
+    .facebook:hover { background: linear-gradient(135deg, #3b5998, #2d4373); }
+    .youtube:hover { background: linear-gradient(135deg, #ff0000, #cc0000); }
+    .twitter:hover { background: linear-gradient(135deg, #1da1f2, #0d8bd9); }
+    .instagram:hover { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      margin-top: 40px;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      from { 
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(244, 162, 97, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(244, 162, 97, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(244, 162, 97, 0); }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .main-title {
+        font-size: 2.5rem;
+      }
+      
+      .subtitle {
+        font-size: 1.4rem;
+      }
+      
+      .content-card {
+        padding: 25px;
+      }
+      
+      .btn-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .video-wrapper {
+        max-width: 100%;
+      }
+      
+      .languages-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      }
+      .glyphicon {
+  margin-right: 8px;
+  color: #1f618d;
+}
+    }
+    /* PDF Section Styles */
+.document-section {
+  margin: 40px 0;
+}
+
+.pdf-preview-container {
+  background: #f8f9fa;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  overflow: hidden;
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+.pdf-viewer {
+  height: 500px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.pdf-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: #fff;
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 25px;
+  background: linear-gradient(135deg, #1a5d63, #2d9b8d);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(26, 93, 99, 0.3);
+}
+
+.download-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(26, 93, 99, 0.4);
+  background: linear-gradient(135deg, #2d9b8d, #1a5d63);
+}
+
+.download-btn i {
+  margin-right: 8px;
+}
+
+.zoom-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.zoom-btn {
+  background: #e9ecef;
+  border: none;
+  border-radius: 50px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+}
+
+.zoom-btn:hover {
+  background: #dee2e6;
+  transform: translateY(-2px);
+}
+
+.zoom-btn i {
+  font-size: 14px;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/International_Day_of_Yoga_logo.png/640px-International_Day_of_Yoga_logo.png" alt="Yoga Logo" class="header-logo"> -->
+      <!-- <a class="navbar-brand" href="../index.html"><img src="../assets/img/Header_logo.png" alt=""
+          height="40px"></a> -->
+      <h1 class="main-title">International Day of Yoga</h1>
+      <div class="subtitle">21<sup>st</sup> June 2025</div>
+      <div class="subtitle">Yoga For Harmony & Peace</div>
+      <div class="date-display">Common Yoga Protocol</div>
+    </header>
+    
+    <main>
+      <div class="content-card">
+        
+        <p class="info-text">
+  <span class="highlight">Common Yoga Protocol (CYP)</span>—recognized globally as a leading Yoga routine—will continue to be the central feature of the International Day of Yoga (IDY). This year, we invite you and your family to take part in the celebration by joining many others at the <strong>Indoor Badminton Court (Opposite Hostel-3)</strong> in IIT Bombay. The 45-minute CYP session begins at 6:30 AM on <span class="highlight">21st June 2025</span>, with entry starting at 6:00 AM. Designed for simplicity and inclusivity, CYP is suitable for people of all ages and genders. Practice sessions will make it easier to follow along. (If you have any health concerns, please consult a doctor before beginning your Yoga journey.)
+</p>
+
+        
+        <!-- <div class="alert-box">
+          <i class="fas fa-gift"></i> Yoga mats will be given for selected participants! <a href="#" style="color: #d35400; font-weight: 600; text-decoration: underline;">Check Criteria</a>
+          <br>*Registration is mandatory for participation
+        </div> -->
+        
+        <div class="btn-container">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXBTtQ_pVA5gBbo7PlKsavanmqWziiDeVa19TvgtvMnKVXAg/viewform?usp=header" target="_blank" class="btn"><i class="fas fa-user-plus"></i> Register for CYP</a>
+          <a href="#" class="btn btn-secondary"><i class="fas fa-video"></i> Join the Live Session</a>
+          <!-- <a href="#" class="btn btn-tertiary"><i class="fas fa-upload"></i> Submit Your Video<br>Before 6:00 22<sup>nd</sup> June 2025</a> -->
+        </div>
+        <!-- Add after the Join live button -->
+<div style="text-align: center; margin-top: 20px;">
+  <p class="subtitle" style="font-size: 22px; margin-bottom: 10px; color: #1b4f72;">
+    Four Practice sessions for CYP offered by Yogastha
+  </p>
+  <div class="timer" style="background: rgba(255,255,255,0.3); padding: 15px; border-radius: 10px; display: inline-block;">
+    <p style="margin: 5px 0; font-weight: bold; color: #1b4f72;">
+      <i class="glyphicon glyphicon-calendar"></i> Date: 12, 14, 16 and 19 June
+    </p>
+    <p style="margin: 5px 0; font-weight: bold; color: #1b4f72;">
+      <i class="glyphicon glyphicon-time"></i> Time: 6:30-8:30 AM
+    </p>
+    <p style="margin: 5px 0; font-weight: bold; color: #1b4f72;">
+      <i class="glyphicon glyphicon-map-marker"></i> Venue: Yoga room, 3rd floor, New Gymkhana Building, opposite to Hostel 11
+    </p>
+  </div>
+</div>
+        
+        <!-- <div class="timer-section">
+          <div class="timer-title">Countdown to the Event</div>
+          <div id="timer">00 days 00:00:00</div>
+        </div> -->
+      </div>
+      
+      <div class="video-section">
+        <h2 class="section-title" style="color: white;">Instructional Videos for CYP</h2>
+        <div class="video-container">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/wgjZ_LyNLRw" allowfullscreen></iframe>
+          </div>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/K-GJh9GeOxE" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+      
+      <div class="languages-section">
+        <h2 class="section-title" style="color: white;">Regional Language Instructions</h2>
+        <div class="languages-grid">
+          <a href="https://www.youtube.com/watch?v=iOGza5C9YhI" class="lang-btn">Manipuri</a>
+          <a href="https://www.youtube.com/watch?v=k5W4sR7Ercs" class="lang-btn">Kannada</a>
+          <a href="https://www.youtube.com/watch?v=KYDVngTkslo" class="lang-btn">Sanskrit</a>
+          <a href="https://www.youtube.com/watch?v=JNvyqnlOYTY" class="lang-btn">Marathi</a>
+          <a href="https://www.youtube.com/watch?v=ijJQAw-_XO8" class="lang-btn">Malayalam</a>
+          <a href="https://www.youtube.com/watch?v=oUlZzBbXz_U" class="lang-btn">Bengali</a>
+          <a href="https://www.youtube.com/watch?v=06h8PrIon3Y" class="lang-btn">Kashmiri</a>
+          <a href="https://www.youtube.com/watch?v=x_d3Ay7iy3c" class="lang-btn">Tamil</a>
+          <a href="https://www.youtube.com/watch?v=PWwp4KDQRwQ" class="lang-btn">Urdu</a>
+          <a href="https://www.youtube.com/watch?v=hKUqsrAXC34" class="lang-btn">Telugu</a>
+          <a href="https://www.youtube.com/watch?v=PEkxjWdNUU0" class="lang-btn">Assamese</a>
+          <a href="https://www.youtube.com/watch?v=LK4ZoeTKOdY" class="lang-btn">Punjabi</a>
+          <a href="https://www.youtube.com/watch?v=sqEHmSMCgt4" class="lang-btn">Oriya</a>
+          <a href="https://www.youtube.com/watch?v=0Bsb01XaCfc" class="lang-btn">Gujarati</a>
+        </div>
+      </div>
+      
+      <!-- <div class="document-section">
+        <h2 class="section-title" style="color: white;">Common Yoga Protocol Document</h2>
+        <div class="pdf-container">
+          <div class="pdf-placeholder">
+            <i class="fas fa-file-pdf"></i>
+            <h3>Common Yoga Protocol 2025</h3>
+            <p>Official guide to the Common Yoga Protocol</p>
+          </div>
+        </div>
+        <a href="#" class="download-link"><i class="fas fa-download"></i> Download CYP Document</a>
+      </div> -->
+      <!-- PDF Section -->
+<div class="document-section">
+  <h2 class="section-title" style="color: white;">Common Yoga Protocol Document</h2>
+  
+  <div class="pdf-preview-container">
+    <div class="pdf-viewer">
+      <!-- <iframe src="https://docs.google.com/gview?url=https://iitbyogastha.in/assets/docs/CYP_2022.pdf&embedded=true" 
+              style="width:100%; height:100%;" frameborder="0"></iframe> -->
+              <object data="../assets/docs/CYP_2022.pdf" type="application/pdf" width="100%" height="100%">
+        </object>
+    </div>
+    
+    <div class="pdf-controls">
+      <a href="../assets/docs/CYP_2022.pdf" download="Common_Yoga_Protocol_2022.pdf" 
+         class="download-btn">
+        <i class="fas fa-download"></i> Download PDF
+      </a>
+      
+     
+    </div>
+  </div>
+</div>
+      
+      <div class="contact-section">
+        <h2 class="section-title">Contact Information</h2>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Nidhi Verma</h3>
+            <p><i class="fas fa-phone"></i> +91 8602409282</p>
+            
+          </div>
+          <div class="contact-card">
+            <h3>Krishna Gahlod</h3>
+            <p><i class="fas fa-phone"></i> +91 9171241889</p>
+            
+          </div>
+        </div>
+      </div>
+      
+      <div class="social-section">
+        <h2 class="section-title" style="color: white;">Connect With Us</h2>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/yogastha.iitb" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.youtube.com/channel/UCbQdsBUcM8bV2hMtI1PW42g" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+          <a href="https://x.com/yogastha_iitb?lang=en" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/yogasthaiitb/?hl=en" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </main>
+    
+    <footer>
+      <p>© 2025 International Day of Yoga - Common Yoga Protocol</p>
+      <p>Ministry of AYUSH, Government of India</p>
+    </footer>
+  </div>
+  
+  <script>
+    // Countdown Timer
+    function updateTimer() {
+      const eventDate = new Date("June 21, 2025 07:00:00").getTime();
+      const now = new Date().getTime();
+      const timeLeft = eventDate - now;
+      
+      if (timeLeft < 0) {
+        document.getElementById("timer").innerHTML = "The event has started!";
+        return;
+      }
+      
+      // Calculate days, hours, minutes, seconds
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+      
+      // Format and display
+      document.getElementById("timer").innerHTML = 
+        `${days} days ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+    
+    // Update timer every second
+    setInterval(updateTimer, 1000);
+    updateTimer(); // Initial call
+    
+    // Add animation to buttons on hover
+    document.querySelectorAll('.btn, .lang-btn, .download-link').forEach(button => {
+      button.addEventListener('mouseenter', function() {
+        this.style.transform = this.classList.contains('btn') ? 'translateY(-7px)' : 'translateY(-5px)';
+      });
+      
+      button.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+      });
+    });
+    // Add this to your existing script section
+let zoomLevel = 100;
+
+function zoomIn() {
+  zoomLevel += 20;
+  document.querySelector('.pdf-viewer iframe').style.transform = `scale(${zoomLevel/100})`;
+}
+
+function zoomOut() {
+  if (zoomLevel > 40) {
+    zoomLevel -= 20;
+    document.querySelector('.pdf-viewer iframe').style.transform = `scale(${zoomLevel/100})`;
+  }
+}
+  </script>
+</body>
+</html>
