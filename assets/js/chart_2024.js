@@ -1,27 +1,23 @@
-// Define a plugin to provide data labels
 Chart.plugins.register({
-    afterDatasetsDraw: function(chart, easing) {
-        // To only draw at the end of animation, check for easing === 1
+    afterDatasetsDraw: function(chart) {
         var ctx = chart.ctx;
 
-        chart.data.datasets.forEach(function (dataset, i) {
+        chart.data.datasets.forEach(function(dataset, i) {
             var meta = chart.getDatasetMeta(i);
+
             if (!meta.hidden) {
                 meta.data.forEach(function(element, index) {
-                    // Draw the text in black, with the specified font
-                    ctx.fillStyle = 'rgb(0, 0, 0)';
+                    ctx.fillStyle = "rgb(0, 0, 0)";
 
                     var fontSize = 16;
-                    var fontStyle = 'normal';
-                    var fontFamily = 'Helvetica Neue';
+                    var fontStyle = "normal";
+                    var fontFamily = "Helvetica Neue";
                     ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
 
-                    // Just naively convert to string for now
                     var dataString = dataset.data[index].toString();
 
-                    // Make sure alignment settings are correct
-                    ctx.textAlign = 'center';
-                    ctx.textBaseline = 'middle';
+                    ctx.textAlign = "center";
+                    ctx.textBaseline = "middle";
 
                     var padding = 5;
                     var position = element.tooltipPosition();
@@ -31,53 +27,47 @@ Chart.plugins.register({
         });
     }
 });
-var ctx = document.getElementById("myChart").getContext('2d');
+
+var ctx = document.getElementById("myChart").getContext("2d");
 ctx.height = "200px";
+
 var myChart = new Chart(ctx, {
-    type: 'bar',
+    type: "bar",
     data: {
-        labels: [ "7-Jun", "10-Jun", "12-Jun", "14-Jun", "17-Jun", "19-Jun", "21-June 'IDY'"],
+        labels: ["7-Jun", "10-Jun", "12-Jun", "14-Jun", "17-Jun", "19-Jun", "21-June 'IDY'"],
         datasets: [{
-            label: '# of Suryanamaskars',
-            data:  [12, 24, 48, 60, 72, 84, 108],
+            label: "# of Suryanamaskars",
+            data: [12, 24, 48, 60, 72, 84, 108],
             backgroundColor: [
-                // 'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(75, 192, 192, 1.0)'
+                "rgba(54, 162, 235, 0.6)",
+                "rgba(255, 206, 86, 0.6)",
+                "rgba(75, 192, 192, 0.6)",
+                "rgba(153, 102, 255, 0.6)",
+                "rgba(255, 159, 64, 0.6)",
+                "rgba(255, 99, 132, 0.6)",
+                "rgba(75, 192, 192, 0.8)"
             ],
             borderColor: [
-                // 'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(75, 192, 192, 1.0)'
+                "rgba(54, 162, 235, 1)",
+                "rgba(255, 206, 86, 1)",
+                "rgba(75, 192, 192, 1)",
+                "rgba(153, 102, 255, 1)",
+                "rgba(255, 159, 64, 1)",
+                "rgba(255, 99, 132, 1)",
+                "rgba(75, 192, 192, 1)"
             ],
             borderWidth: 1
         }]
     },
     options: {
+        responsive: true,
+        legend: {
+            display: true
+        },
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero:true
+                    beginAtZero: true
                 }
             }]
         }
