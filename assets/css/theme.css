@@ -1,0 +1,11 @@
+:root {
+  --bg: #ffffff;
+  --text: #111;
+  --card: #f5f5f5;
+}
+
+.dark {
+  --bg: #121212;
+  --text: #ffffff;
+  --card: #1e1e1e;
+}

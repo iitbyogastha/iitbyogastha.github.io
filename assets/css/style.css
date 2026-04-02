@@ -1540,6 +1540,48 @@ footer .credits a {
   font-weight: bold;
   margin-top: 10px;
 }
+/* ===== DARK MODE OVERRIDES ===== */
+
+/* body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading) !important;
+}
+
+/* cards / boxes */
+.box-shadow-full,
+.service-box,
+.work-box,
+.card-blog,
+.post-box,
+.widget-sidebar,
+.form-comments {
+  background: var(--card) !important;
+  color: var(--text) !important;
+}
+
+/* dropdowns */
+.navbar .dropdown ul {
+  background: var(--card) !important;
+}
+
+/* mobile menu */
+.navbar-mobile ul {
+  background: var(--card) !important;
+}
+
+/* about section */
+.about-mf {
+  background: var(--bg) !important;
+}
+
+/* footer stays dark-ish already, so optional */
+footer {
+  background: #0062d3;
+} */
 
 /* changes */
 

@@ -24,6 +24,8 @@
 
   <!-- Additional CSS File -->
   <link href="assets/css/msc.css" rel="stylesheet">
+  <!-- <link href="assets/css/theme.css" rel="stylesheet"> -->
+
 
 
 </head>
@@ -60,6 +62,7 @@
           <li class="nav-link scrollto"><a href="events.html"><span>Events</span>
               <!-- <i class="bi bi-chevron-down"></i> -->
             </a>
+          <!-- <li><button onclick="toggleDarkMode()">🌙</button></li> -->
             <ul>
               <!-- <li><a href="#">Camps & workshops</a></li>         -->
 
@@ -756,7 +759,7 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="copyright-box">
-            <p class="copyright">&copy; <strong>Yogastha 2024</strong>.</p>
+            <p class="copyright">&copy; <strong>Yogastha 2026</strong>.</p>
             <div class="credits">
             </div>
           </div>
@@ -794,7 +797,22 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+<!-- <script>
+function toggleDarkMode() {
+  document.body.classList.toggle("dark");
 
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
+}
+
+// load saved theme
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+}
+</script> -->
 </body>
 
 </html>

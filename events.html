@@ -57,6 +57,7 @@
           <!-- <li><a class="nav-link scrollto " href="#camps">Events</a></li> -->
 
           <li class="dropdown"><a href="#"><span>Events</span>
+            <li><button onclick="toggleDarkMode()">🌙</button></li>
               <!-- <i class="bi bi-chevron-down"></i> -->
             </a>
 
@@ -3506,6 +3507,22 @@
 
             <!-- Template Main JS File -->
             <script src="assets/js/main.js"></script>
+            <script>
+function toggleDarkMode() {
+  document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
+}
+
+// load saved theme
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+}
+</script>
 
 </body>
 
