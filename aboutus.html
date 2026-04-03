@@ -89,7 +89,7 @@
        </a>
       </li>
       <li>
-       <button id="darkModeToggle" onclick="toggleDarkMode()" style="
+       <button id="themeToggle" onclick="toggleTheme()" style="
                   background: none;
                   border: none;
                   padding: 10px 20px;
@@ -691,24 +691,33 @@
   <script src="assets/vendor/typed.js/typed.min.js">
   </script>
   <script>
-   function toggleDarkMode() {
-  document.body.classList.toggle("dark");
-  const btn = document.getElementById("darkModeToggle");
-  if (document.body.classList.contains("dark")) {
-    localStorage.setItem("theme", "dark");
-    if(btn) btn.innerHTML = "&#x2600;&#xFE0F;"; // Sun
-  } else {
-    localStorage.setItem("theme", "light");
-    if(btn) btn.innerHTML = "&#x1F319;"; // Moon
+   function toggleTheme() {
+  let theme = localStorage.getItem("theme") || "light";
+  let nextTheme = "light";
+  if (theme === "light") nextTheme = "dark";
+  else if (theme === "dark") nextTheme = "saffron";
+  else nextTheme = "light";
+  setTheme(nextTheme);
+}
+
+function setTheme(theme) {
+  document.body.classList.remove("dark", "saffron");
+  if (theme !== "light") {
+    document.body.classList.add(theme);
+  }
+  localStorage.setItem("theme", theme);
+  const btn = document.getElementById("themeToggle");
+  if (btn) {
+    // Icon represents the NEXT mode you can click into
+    if (theme === "light") btn.innerHTML = "&#x1F319;"; // Moon (click for Dark)
+    else if (theme === "dark") btn.innerHTML = "&#x1F549;&#xFE0F;"; // Om (click for Saffron)
+    else btn.innerHTML = "&#x2600;&#xFE0F;"; // Sun (click for Light)
   }
 }
 
 // load saved theme
-if (localStorage.getItem("theme") === "dark") {
-  document.body.classList.add("dark");
-  const btn = document.getElementById("darkModeToggle");
-  if(btn) btn.innerHTML = "&#x2600;&#xFE0F;"; // Sun
-}
+let savedTheme = localStorage.getItem("theme") || "light";
+setTheme(savedTheme);
   </script>
   <script src="assets/js/main.js">
   </script>
