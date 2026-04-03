@@ -37,7 +37,16 @@
    * Easy on scroll event listener 
    */
   const onscroll = (el, listener) => {
-    el.addEventListener('scroll', listener)
+    let ticking = false;
+    el.addEventListener('scroll', (e) => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          listener(e);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
   }
 
   /**
