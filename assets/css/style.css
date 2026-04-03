@@ -1542,46 +1542,95 @@ footer .credits a {
 }
 /* ===== DARK MODE OVERRIDES ===== */
 
-/* body {
+body.dark {
   background: var(--bg) !important;
   color: var(--text) !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: var(--heading) !important;
-}
-
-/* cards / boxes */
-.box-shadow-full,
-.service-box,
-.work-box,
-.card-blog,
-.post-box,
-.widget-sidebar,
-.form-comments {
-  background: var(--card) !important;
+body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark h6 {
   color: var(--text) !important;
 }
 
+/* cards / boxes */
+body.dark .box-shadow-full,
+body.dark .box-shadow-full-z-default,
+body.dark .service-box,
+body.dark .work-box,
+body.dark .card-blog,
+body.dark .post-box,
+body.dark .widget-sidebar,
+body.dark .form-comments {
+  background-color: var(--card) !important;
+  color: var(--text) !important;
+}
+
+body.dark .box-shadow-full *,
+body.dark .box-shadow-full-z-default *,
+body.dark .service-box *,
+body.dark .work-box *,
+body.dark .card-blog *,
+body.dark .post-box *,
+body.dark .widget-sidebar *,
+body.dark .form-comments * {
+  color: var(--text) !important;
+}
+
+body.dark .box-shadow-full a:not(.btn),
+body.dark .box-shadow-full-z-default a:not(.btn),
+body.dark .service-box a:not(.btn),
+body.dark .work-box a:not(.btn),
+body.dark .card-blog a:not(.btn),
+body.dark .post-box a:not(.btn),
+body.dark .widget-sidebar a:not(.btn),
+body.dark .form-comments a:not(.btn) {
+  color: #0078ff !important;
+}
+
+body.dark .box-shadow-full a.btn,
+body.dark .box-shadow-full-z-default a.btn {
+  color: #ffffff !important;
+}
+
 /* dropdowns */
-.navbar .dropdown ul {
+body.dark .navbar .dropdown ul {
   background: var(--card) !important;
 }
 
 /* mobile menu */
-.navbar-mobile ul {
+body.dark .navbar-mobile ul {
   background: var(--card) !important;
 }
 
 /* about section */
-.about-mf {
+body.dark .about-mf {
   background: var(--bg) !important;
 }
 
 /* footer stays dark-ish already, so optional */
-footer {
+body.dark footer {
   background: #0062d3;
-} */
+}
+
+/* nav-tabs for events.html */
+body.dark .nav-tabs {
+  border-bottom: 1px solid #333 !important;
+}
+body.dark .nav-tabs .nav-link {
+  color: var(--text) !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+body.dark .nav-tabs .nav-link:hover,
+body.dark .nav-tabs .nav-link:focus {
+  background-color: var(--card) !important;
+  border-color: #333 !important;
+  color: var(--text) !important;
+}
+body.dark .nav-tabs .nav-link.active {
+  background-color: #0078ff !important;
+  color: #fff !important;
+  border-color: #0078ff !important;
+}
 
 /* changes */
 
