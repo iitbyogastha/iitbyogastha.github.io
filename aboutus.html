@@ -157,6 +157,16 @@
          <div class="row" id="seniorTeamMembersContainer">
          </div>
         </div>
+        <br/>
+        <div class="title-box-2">
+         <h5 class="title-left">
+          Faculty Advisor
+         </h5>
+        </div>
+        <div class="container">
+         <div class="row" id="facultyAdvisorContainer">
+         </div>
+        </div>
        </div>
       </div>
      </div>
@@ -237,6 +247,7 @@
         ]
       }
   </script>
+
   <script id="core_team_members_data" type="application/json">
    {
         "members": [
@@ -357,6 +368,17 @@
             "name": "Vamsi Triveni",
             "about": "(BTech)",
             "photo": "assets/img/CTMs/26-27/Vamsi Triveni Yenuganti.jpg"
+          }
+        ]
+      }
+  </script>
+    <script id="faculty_advisor_data" type="application/json">
+   {
+        "members": [
+          {
+            "name": "Prof. Neeraj Hanumante",
+            "about": "(Faculty Advisor)",
+            "photo": "assets/img/prof. neeraj.jpeg"
           }
         ]
       }
@@ -593,6 +615,10 @@
       }
 
       document.addEventListener("DOMContentLoaded", () => {
+        const faculty_advisor = new TeamRenderer(
+          "facultyAdvisorContainer",
+          "faculty_advisor_data",
+        );
         const managers = new TeamRenderer("managersContainer", "managers_data");
         const core_team_members = new TeamRenderer(
           "coreTeamMembersContainer",
@@ -607,6 +633,7 @@
           "senior_team_members_data",
         );
 
+        faculty_advisor.render();
         managers.render();
         core_team_members.render();
         coordinators.render();
