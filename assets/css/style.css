@@ -1600,6 +1600,19 @@ body.dark .navbar .dropdown ul, body.saffron .navbar .dropdown ul {
   background: var(--card) !important;
 }
 
+body.dark .dropdown-menu, body.saffron .dropdown-menu {
+  background: var(--card) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+body.dark .dropdown-menu .dropdown-item,
+body.dark .dropdown-menu .dropdown-item.disabled,
+body.saffron .dropdown-menu .dropdown-item,
+body.saffron .dropdown-menu .dropdown-item.disabled {
+  color: var(--text) !important;
+  opacity: 1 !important;
+}
+
 /* mobile menu */
 body.dark .navbar-mobile ul, body.saffron .navbar-mobile ul {
   background: var(--card) !important;
