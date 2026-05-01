@@ -1,0 +1,163 @@
+/* assets/css/asanas.css */
+.asana-section {
+  padding: 60px 0;
+  background-color: var(--bg-color, #f8f9fa);
+  overflow: hidden;
+}
+
+.asana-component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px 80px;
+}
+
+.asana-circle-wrapper {
+  position: relative;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/* The faint circle in the background */
+.asana-circle-wrapper::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.03);
+  z-index: 1;
+}
+
+.asana-center-display {
+  width: 300px;
+  height: 300px;
+  background: #fdfdfd;
+  border-radius: 50%;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+  z-index: 2;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.asana-center-display.fade-out {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.asana-center-content h4 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--primary-color, #1a1a1a);
+  margin-bottom: 12px;
+}
+
+.asana-center-content p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.asana-item {
+  position: absolute;
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  cursor: pointer;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 3;
+  /* Center the button, translate it out to the ring, then rotate it back so it's upright */
+  transform: rotate(var(--angle)) translate(240px) rotate(calc(-1 * var(--angle)));
+}
+
+.asana-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.asana-item:hover {
+  transform: rotate(var(--angle)) translate(240px) rotate(calc(-1 * var(--angle))) scale(1.1);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  z-index: 4;
+}
+
+.asana-item.active {
+  background: #fcefdc; /* Soft beige/orange inner circle */
+  transform: rotate(var(--angle)) translate(240px) rotate(calc(-1 * var(--angle))) scale(1.2);
+  box-shadow: 0 0 0 6px #0056b3, 0 10px 30px rgba(0, 86, 179, 0.2); /* Dark blue ring */
+  z-index: 5;
+}
+
+/* Responsive Fallback */
+@media (max-width: 768px) {
+  .asana-section {
+    padding: 40px 0;
+  }
+  
+  .asana-component {
+    padding: 20px 10px;
+  }
+  
+  .asana-circle-wrapper {
+    width: 100%;
+    height: auto;
+    border: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .asana-circle-wrapper::before {
+    display: none;
+  }
+
+  .asana-center-display {
+    grid-column: 1 / -1;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    padding: 30px 20px;
+    order: -1; /* place at top */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  }
+
+  .asana-item {
+    position: static;
+    transform: none !important;
+    width: 100%;
+    aspect-ratio: 1;
+    height: auto;
+    max-width: 90px;
+    margin: 0 auto;
+  }
+
+  .asana-item.active {
+    transform: scale(1.05) !important;
+    box-shadow: 0 0 0 4px #0056b3;
+  }
+
+  .asana-item:hover {
+    transform: scale(1.05) !important;
+  }
+}

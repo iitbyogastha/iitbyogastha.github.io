@@ -618,6 +618,9 @@ a:hover {
 */
 .mobile-nav-toggle {
   color: #fff;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 4px 6px;
+  border-radius: 4px;
   font-size: 28px;
   cursor: pointer;
   display: none;
@@ -627,10 +630,21 @@ a:hover {
 
 @media (max-width: 991px) {
   .mobile-nav-toggle {
-    display: block;
+    display: none !important;
   }
-  .navbar ul {
-    display: none;
+  .navbar > ul {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 15px;
+    row-gap: 5px;
+  }
+  .navbar > ul > li {
+    padding: 5px 0 !important;
+  }
+  #header {
+    background: rgba(0, 0, 0, 0.9) !important;
+    padding: 10px 0 !important;
   }
 }
 
@@ -653,14 +667,15 @@ a:hover {
 }
 
 .navbar-mobile ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
   position: absolute;
   top: 55px;
-  right: 15px;
-  bottom: 15px;
-  left: 15px;
-  padding: 10px 0;
-  background-color: #fff;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 20px 0;
+  background-color: transparent;
   overflow-y: auto;
   transition: 0.3s;
 }
@@ -674,9 +689,11 @@ a:hover {
 }
 
 .navbar-mobile a {
-  padding: 10px 20px;
-  font-size: 15px;
-  color: #4e4e4e;
+  padding: 12px 20px;
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  width: 100%;
 }
 
 .navbar-mobile a:hover, .navbar-mobile .active, .navbar-mobile li:hover > a {
@@ -690,13 +707,13 @@ a:hover {
 .navbar-mobile .dropdown ul {
   position: static;
   display: none;
-  margin: 10px 20px;
+  margin: 10px 0;
   padding: 10px 0;
   z-index: 99;
   opacity: 1;
   visibility: visible;
-  background: #fff;
-  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: none;
 }
 
 .navbar-mobile .dropdown ul li {
@@ -705,6 +722,7 @@ a:hover {
 
 .navbar-mobile .dropdown ul a {
   padding: 10px 20px;
+  color: #fff;
 }
 
 .navbar-mobile .dropdown ul a i {
@@ -726,6 +744,12 @@ a:hover {
   height: 100vh;
   position: relative;
   color: #fff;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 60vh;
+  }
 }
 
 .hero .hero-content {

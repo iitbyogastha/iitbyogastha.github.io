@@ -17,12 +17,13 @@
   <link href="assets/css/style.css" rel="stylesheet"/>
   <link href="assets/css/msc.css" rel="stylesheet"/>
   <link href="assets/css/theme.css" rel="stylesheet"/>
+   <link href="assets/css/asanas.css" rel="stylesheet"/>
  </head>
  <body>
   <header class="fixed-top" id="header">
    <div class="floating-links" style="position:fixed; top:90px; right:30px; z-index:5;">
-    <a href="idy2025/index.html">
-     <img alt="" src="./assets/img/IDY/IDY 2025_4.png" style="border-radius: 5px;" target="_blank" width="70px"/>
+    <a href="idy2026/index.html">
+     <img alt="" src="./assets/img/IDY/IDY 2026_4.png" style="border-radius: 5px;" target="_blank" width="70px"/>
     </a>
    </div>
    <div class="container d-flex align-items-center justify-content-between">
@@ -93,10 +94,13 @@
          </a>
         </li>
         <li>
-         <a href="idy2025/index.html" target="_blank">
-          <strong>
-           2025
-          </strong>
+         <a href="idy2026/index.html" target="_blank">
+          2025
+         </a>
+        </li>
+        <li>
+         <a href="idy2026/index.html" target="_blank">
+          <strong>2026</strong>
          </a>
         </li>
        </ul>
@@ -178,6 +182,7 @@
      </div>
     </div>
    </section>
+<!-- 
    <section class="portfolio-mf sect-pt4 route" id="camps">
     <div class="container">
      <div class="row">
@@ -332,6 +337,61 @@
         </div>
        </div>
       </div>
+     </div>
+    </div>
+   </section>
+-->
+
+   <section class="portfolio-mf sect-pt4 route" id="asanas">
+    <div class="container">
+     <div class="row">
+      <div class="col-sm-12">
+       <div class="title-box text-center">
+        <h3 class="title-a">YOGA ASANAS</h3>
+        <p class="subtitle-a">Click an asana to learn more</p>
+        <div class="line-mf"></div>
+       </div>
+      </div>
+     </div>
+     <div class="asana-component">
+       <div class="asana-circle-wrapper">
+         <div class="asana-center-display" id="asanaCenterDisplay">
+           <div class="asana-center-content">
+             <h4 id="asanaTitle">Pranamasana</h4>
+             <p id="asanaDesc">Prayer pose. Promotes balance and calmness.</p>
+           </div>
+         </div>
+         <button class="asana-item active" data-title="Pranamasana" data-desc="Prayer pose. Promotes balance and calmness." style="--angle: 0deg;">
+           <img src="assets/img/suryanamaskar_poses/frames/000.png" alt="Pranamasana">
+         </button>
+         <button class="asana-item" data-title="Hastauttanasana" data-desc="Raised arms pose. Stretches the abdomen and expands the chest." style="--angle: 36deg;">
+           <img src="assets/img/suryanamaskar_poses/frames/001.png" alt="Hastauttanasana">
+         </button>
+         <button class="asana-item" data-title="Hastapadasana" data-desc="Hand to foot pose. Stretches the hamstrings and spine." style="--angle: 72deg;">
+           <img src="assets/img/suryanamaskar_poses/frames/002.png" alt="Hastapadasana">
+         </button>
+         <button class="asana-item" data-title="Ashwa Sanchalanasana" data-desc="Equestrian pose. Tones abdominal organs and adds flexibility to legs." style="--angle: 108deg;">
+           <img src="assets/img/suryanamaskar_poses/frames/003.png" alt="Ashwa Sanchalanasana">
+         </button>
+         <button class="asana-item" data-title="Dandasana" data-desc="Stick pose. Strengthens arms, back, and improves posture." style="--angle: 144deg;">
+           <img src="assets/img/suryanamaskar_poses/frames/004.png" alt="Dandasana">
+         </button>
+         <button class="asana-item" data-title="Ashtanga Namaskara" data-desc="Eight limbed salutation. Strengthens chest, hands and legs." style="--angle: 180deg;">
+           <img src="assets/img/suryanamaskar_poses/frames/005.png" alt="Ashtanga Namaskara">
+         </button>
+         <button class="asana-item" data-title="Bhujangasana" data-desc="Cobra pose. Invigorates the heart and improves flexibility of the back." style="--angle: 216deg;">
+           <img src="assets/img/suryanamaskar_poses/frames/006.png" alt="Bhujangasana">
+         </button>
+         <button class="asana-item" data-title="Adho Mukha Svanasana" data-desc="Downward facing dog. Calms the brain and energizes the body." style="--angle: 252deg;">
+           <img src="assets/img/suryanamaskar_poses/frames/007.png" alt="Adho Mukha Svanasana">
+         </button>
+         <button class="asana-item" data-title="Ashwa Sanchalanasana" data-desc="Equestrian pose. Tones the spine and nervous system." style="--angle: 288deg;">
+           <img src="assets/img/suryanamaskar_poses/frames/008.png" alt="Ashwa Sanchalanasana">
+         </button>
+         <button class="asana-item" data-title="Hastapadasana" data-desc="Hand to foot pose. Invigorates the nervous system." style="--angle: 324deg;">
+           <img src="assets/img/suryanamaskar_poses/frames/009.png" alt="Hastapadasana">
+         </button>
+       </div>
      </div>
     </div>
    </section>
@@ -791,5 +851,6 @@ function setTheme(theme) {
 let savedTheme = localStorage.getItem("theme") || "light";
 setTheme(savedTheme);
   </script>
+   <script src="assets/js/asanas.js"></script>
  </body>
 </html>
