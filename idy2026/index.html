@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,13 @@
   <title>International Day of Yoga 2026 | IITB Yogastha</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="index.css">
+  <link rel="icon" href="yogastha.png" type="image/png">
 </head>
+
 <body>
   <header class="site-header">
     <a class="brand" href="#home" aria-label="International Day of Yoga 2026 home">
@@ -27,6 +32,8 @@
       <a href="#events">Events</a>
       <a href="#practice">Practice</a>
       <a href="#contact">Contact</a>
+      <button id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme"
+        style="background:none; border:none; font-size:1.2rem; cursor:pointer; padding: 0 10px; color: var(--ink); margin-left: 10px;">🌙</button>
     </nav>
   </header>
 
@@ -80,11 +87,11 @@
 
     <section class="stats-strip" aria-label="Event highlights">
       <article>
-        <strong>12+</strong>
+        <strong>10+</strong>
         <span>Events planned</span>
       </article>
       <article>
-        <strong>04</strong>
+        <strong>10+</strong>
         <span>Competition tracks</span>
       </article>
       <article>
@@ -133,42 +140,7 @@
         <h2>Celebrations</h2>
       </div>
 
-      <div class="poster-grid">
-        <article class="poster-card large">
-          <div class="poster-placeholder">
-            <span>Event Image</span>
-          </div>
-          <div class="poster-info">
-            <span>Morning Practice</span>
-            <h3>Common Yoga Protocol</h3>
-            <p>Begin the day with a steady campus practice for all experience levels.</p>
-            <a class="card-register" href="#">Registration opening soon</a>
-          </div>
-        </article>
-
-        <article class="poster-card">
-          <div class="poster-placeholder">
-            <span>Workshop Image</span>
-          </div>
-          <div class="poster-info">
-            <span>Workshop</span>
-            <h3>Breath & Balance</h3>
-            <p>Simple pranayama techniques for focus, energy, and calm.</p>
-            <a class="card-register" href="#">Registration opening soon</a>
-          </div>
-        </article>
-
-        <article class="poster-card">
-          <div class="poster-placeholder">
-            <span>Session Image</span>
-          </div>
-          <div class="poster-info">
-            <span>Evening</span>
-            <h3>Mindfulness Circle</h3>
-            <p>A guided wind-down session built around reflection and stillness.</p>
-            <a class="card-register" href="#">Registration opening soon</a>
-          </div>
-        </article>
+      <div class="poster-grid" id="dynamic-celebrations">
       </div>
     </section>
 
@@ -178,28 +150,7 @@
         <h2>Upcoming Competitions</h2>
       </div>
 
-      <div class="compact-card-grid">
-        <article class="compact-card">
-          <span class="pill">Design</span>
-          <div class="mini-poster-placeholder">Poster</div>
-          <h3>T-Shirt Design Competition</h3>
-          <p>Submit an original IDY-inspired design for the 2026 celebration.</p>
-          <a class="register-link" href="#">Registration link pending</a>
-        </article>
-        <article class="compact-card">
-          <span class="pill">Quiz</span>
-          <div class="mini-poster-placeholder">Poster</div>
-          <h3>Yoga Quiz</h3>
-          <p>Daily questions on yoga, wellness, history, and mindful living.</p>
-          <a class="register-link" href="#">Registration link pending</a>
-        </article>
-        <article class="compact-card">
-          <span class="pill">Performance</span>
-          <div class="mini-poster-placeholder">Poster</div>
-          <h3>Asana Challenge</h3>
-          <p>A friendly showcase of posture, balance, discipline, and grace.</p>
-          <a class="register-link" href="#">Registration link pending</a>
-        </article>
+      <div class="compact-card-grid" id="dynamic-competitions">
       </div>
     </section>
 
@@ -218,33 +169,107 @@
               <th>Date</th>
               <th>Time</th>
               <th>Venue</th>
-              <th>Add</th>
+              <th>Add to Calendar</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>1</td>
-              <td>Yoga for Brain</td>
-              <td>02 May 2026</td>
-              <td>7:00 PM - 8:15 PM</td>
-              <td><button class="venue-badge offline" onclick="openMap('Yoga Hall, New SAC IIT Bombay')">Yoga Hall, New SAC</button></td>
-              <td><button class="mini-calendar-btn" onclick="addToCalendar('Yoga for Brain','Yoga Hall, New SAC IIT Bombay','20260502T190000','20260502T201500')">Add</button></td>
+              <td>Yoga Camp - by Swasti Yoga Centre</td>
+              <td>04-07 May 2026</td>
+              <td>6:30 AM - 8:30 AM<br>6:30 PM - 8:30 PM</td>
+              <td><button class="venue-badge offline" onclick="openMap('Yoga Hall, New SAC IIT Bombay')">Yoga Hall, New
+                  SAC</button></td>
+              <td><button class="mini-calendar-btn"
+                  onclick="addToCalendar('Yoga Camp','Yoga Hall, New SAC by Swasti Yoga Centre','20260504T063000','20260507T083000')">Add</button>
+              </td>
             </tr>
             <tr>
               <td>2</td>
-              <td>Breath Workshop</td>
-              <td>09 May 2026</td>
-              <td>7:15 PM - 8:00 PM</td>
-              <td><span class="venue-badge online">Online</span></td>
-              <td><button class="mini-calendar-btn" onclick="addToCalendar('Breath Workshop','Online','20260509T191500','20260509T200000')">Add</button></td>
+              <td>Yogic Concentration Session - by Nilesh Varkute</td>
+              <td>15 May 2026</td>
+              <td>6:30 PM - 8:30 PM</td>
+              <td><button class="venue-badge offline" onclick="openMap('Yoga Hall, New SAC IIT Bombay')">Yoga Hall, New
+                  SAC</button></td>
+              <td><button class="mini-calendar-btn"
+                  onclick="addToCalendar('Yogic Concentration Session','Yoga Hall, New SAC','20260515T183000','20260515T203000')">Add</button>
+              </td>
             </tr>
             <tr>
               <td>3</td>
-              <td>Main IDY Celebration</td>
-              <td>21 June 2026</td>
+              <td>Yoga Abhiyojna (54 Surya Namaskar) - by Yogastha</td>
+              <td>18-20 May 2026</td>
+              <td>5:30 PM - 8:30 PM</td>
+              <td><button class="venue-badge offline" onclick="openMap('Yoga Hall, New SAC IIT Bombay')">Yoga Hall, New
+                  SAC</button></td>
+              <td><button class="mini-calendar-btn"
+                  onclick="addToCalendar('Yoga Abhiyojna','Yoga Hall, New SAC','20260518T173000','20260520T203000')">Add</button>
+              </td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Samarpan Meditation Session - by Himalayan Samarpan Meditation</td>
+              <td>25 May 2026</td>
+              <td>6:30 PM - 8:30 PM</td>
+              <td><button class="venue-badge offline" onclick="openMap('Yoga Hall, New SAC IIT Bombay')">Yoga Hall, New
+                  SAC</button></td>
+              <td><button class="mini-calendar-btn"
+                  onclick="addToCalendar('Samarpan Meditation Session','Yoga Hall, New SAC','20260525T183000','20260525T203000')">Add</button>
+              </td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Yoga Workshop for Women's Empowerment - by Sarika M Chavan</td>
+              <td>29 May 2026</td>
+              <td>7:00 PM - 8:00 PM</td>
+              <td><button class="venue-badge offline" onclick="openMap('IIT Bombay')">Offline</button></td>
+              <td><button class="mini-calendar-btn"
+                  onclick="addToCalendar('Yoga Workshop for Womens Empowerment','IIT Bombay','20260529T190000','20260529T200000')">Add</button>
+              </td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Sound Bath Session - by Savita Patodia</td>
+              <td>01 June 2026</td>
+              <td>6:30 PM - 8:30 PM</td>
+              <td><button class="venue-badge offline" onclick="openMap('Yoga Hall, New SAC IIT Bombay')">Yoga Hall, New
+                  SAC</button></td>
+              <td><button class="mini-calendar-btn"
+                  onclick="addToCalendar('Sound Bath Session','Yoga Hall, New SAC','20260601T183000','20260601T203000')">Add</button>
+              </td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Varenyam Yoga Session - by Sugam Kumar</td>
+              <td>12 June 2026</td>
+              <td>5:30 PM - 6:30 PM</td>
+              <td><button class="venue-badge offline" onclick="openMap('Yoga Hall, New SAC IIT Bombay')">Yoga Hall, New
+                  SAC</button></td>
+              <td><button class="mini-calendar-btn"
+                  onclick="addToCalendar('Varenyam Yoga Session','Yoga Hall, New SAC','20260612T173000','20260612T183000')">Add</button>
+              </td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>Yogathon Practice Sessions - by Yogastha</td>
+              <td>7, 9, 11, 13, 16, 18 June 2026</td>
+              <td>6:30 PM - 8:30 PM</td>
+              <td><button class="venue-badge offline" onclick="openMap('Yoga Hall, New SAC IIT Bombay')">Yoga Hall, New
+                  SAC</button></td>
+              <td><button class="mini-calendar-btn"
+                  onclick="addToCalendar('Yogathon Practice Sessions','Yoga Hall, New SAC','20260607T183000','20260618T203000')">Add</button>
+              </td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>Common Yoga Protocol Practice Sessions - by Yogastha</td>
+              <td>12, 15, 17 June 2026</td>
               <td>6:30 AM - 8:30 AM</td>
-              <td><button class="venue-badge offline" onclick="openMap('IIT Bombay')">IIT Bombay</button></td>
-              <td><button class="mini-calendar-btn" onclick="addToCalendar('Main IDY Celebration','IIT Bombay','20260621T063000','20260621T083000')">Add</button></td>
+              <td><button class="venue-badge offline" onclick="openMap('Yoga Hall, New SAC IIT Bombay')">Yoga Hall, New
+                  SAC</button></td>
+              <td><button class="mini-calendar-btn"
+                  onclick="addToCalendar('Common Yoga Protocol Practice Sessions','Yoga Hall, New SAC','20260612T063000','20260617T083000')">Add</button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -264,33 +289,203 @@
               <th>No.</th>
               <th>Competition</th>
               <th>Date</th>
-              <th>Deadline</th>
+              <th>Time</th>
               <th>Venue</th>
-              <th>Add</th>
+              <th>Add to Calendar</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>1</td>
               <td>T-Shirt Design Competition</td>
-              <td>19-24 May 2026</td>
-              <td>26 May 2026, 11:59 PM</td>
+              <td>1-10 May 2026</td>
+              <td>-</td>
               <td><span class="venue-badge online">Online</span></td>
-              <td><button class="mini-calendar-btn" onclick="addToCalendar('T-Shirt Design Competition','Online Submission','20260526T235900','20260526T235900')">Add</button></td>
+              <td><button class="mini-calendar-btn"
+                  onclick="addToCalendar('T-Shirt Design Competition','Online','20260501T000000','20260510T235900')">Add</button>
+              </td>
             </tr>
             <tr>
               <td>2</td>
-              <td>Yoga Quiz</td>
+              <td>Reel-Making Competition</td>
+              <td>24-31 May 2026</td>
+              <td>-</td>
+              <td><span class="venue-badge online">Online</span></td>
+              <td><button class="mini-calendar-btn"
+                  onclick="addToCalendar('Reel-Making Competition','Online','20260524T000000','20260531T235900')">Add</button>
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Mantra Chanting Competition</td>
+              <td>31 May 2026</td>
+              <td>05:30 PM - 08:30 PM</td>
+              <td><button class="venue-badge offline" onclick="openMap('IIT Bombay')">Offline</button></td>
+              <td><button class="mini-calendar-btn"
+                  onclick="addToCalendar('Mantra Chanting Competition','IIT Bombay','20260531T173000','20260531T203000')">Add</button>
+              </td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Quiz</td>
               <td>04-07 June 2026</td>
-              <td>10:00 PM each day</td>
-              <td><button class="venue-badge offline" onclick="openMap('IIT Bombay Campus')">IIT Bombay Campus</button></td>
-              <td><button class="mini-calendar-btn" onclick="addToCalendar('Yoga Quiz','IIT Bombay Campus','20260604T220000','20260607T220000')">Add</button></td>
+              <td>-</td>
+              <td><span class="venue-badge online">Online</span></td>
+              <td><button class="mini-calendar-btn"
+                  onclick="addToCalendar('Quiz','Online','20260604T000000','20260607T235900')">Add</button>
+              </td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Best Yogasana (Holding &amp; Advanced Practice)</td>
+              <td>07 June 2026</td>
+              <td>05:30 PM - 08:30 PM</td>
+              <td><button class="venue-badge offline" onclick="openMap('IIT Bombay')">Offline</button></td>
+              <td><button class="mini-calendar-btn"
+                  onclick="addToCalendar('Best Yogasana','IIT Bombay','20260607T173000','20260607T203000')">Add</button>
+              </td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Poem Writing Competition</td>
+              <td>09-12 June 2026</td>
+              <td>-</td>
+              <td><span class="venue-badge online">Online</span></td>
+              <td><button class="mini-calendar-btn"
+                  onclick="addToCalendar('Poem Writing Competition','Online','20260609T000000','20260612T235900')">Add</button>
+              </td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Slogan Competition</td>
+              <td>09-12 June 2026</td>
+              <td>-</td>
+              <td><span class="venue-badge online">Online</span></td>
+              <td><button class="mini-calendar-btn"
+                  onclick="addToCalendar('Slogan Competition','Online','20260609T000000','20260612T235900')">Add</button>
+              </td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>Poster making competition</td>
+              <td>14 June 2026</td>
+              <td>05:30 PM - 07:30 PM</td>
+              <td><button class="venue-badge offline" onclick="openMap('Yoga Hall, IIT Bombay')">Offline (Yoga
+                  Hall)</button></td>
+              <td><button class="mini-calendar-btn"
+                  onclick="addToCalendar('Poster making competition','Yoga Hall, IIT Bombay','20260614T173000','20260614T193000')">Add</button>
+              </td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>Tratak competition</td>
+              <td>14 June 2026</td>
+              <td>07:30 PM - 08:30 PM</td>
+              <td><button class="venue-badge offline" onclick="openMap('Yoga Hall, IIT Bombay')">Offline (Yoga
+                  Hall)</button></td>
+              <td><button class="mini-calendar-btn"
+                  onclick="addToCalendar('Tratak competition','Yoga Hall, IIT Bombay','20260614T193000','20260614T203000')">Add</button>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
+    <section class="premium-words-section">
+      <div class="premium-card">
 
+        <div class="premium-badge">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path
+              d="M12 2C12 2 10 5.5 8 7C5 9.5 2 9 2 9C2 9 4.5 13 8 13C10.5 13 12 11 12 11C12 11 13.5 13 16 13C19.5 13 22 9 22 9C22 9 19 9.5 16 7C14 5.5 12 2 12 2ZM12 14C12 14 9.5 18 5 19C4 19.2 3 19 3 19C3 19 5 22 12 22C19 22 21 19 21 19C21 19 20 19.2 19 19C14.5 18 12 14 12 14Z" />
+          </svg>
+          SOME WORDS
+        </div>
+
+        <div class="premium-content-grid">
+          <div class="premium-left-col">
+            <div class="premium-quote-icon">&ldquo;</div>
+            <h3 class="premium-heading">
+              Yoga is a way of life &ndash;<br>
+              it brings <span class="text-orange">harmony</span> to body,<br>
+              <span class="text-orange">clarity</span> to mind and <span class="text-orange">kindness</span> to heart.
+            </h3>
+
+            <p class="premium-body">
+              In today's fast-paced world, Yoga gives us the pause we all need.
+              It connects us with our inner self, with others and with nature.
+              Let us make Yoga a part of our daily life and inspire a healthier,
+              happier and more peaceful planet.
+            </p>
+
+            <div class="premium-modi-quote">
+              <span class="quote-mark-small">&ldquo;</span>
+              <p>
+                Yoga is not just about exercise; it is a way to discover the sense of oneness with yourself, the world
+                and the nature.
+              </p>
+              <div class="quote-author">
+                <strong>&ndash; Shri Narendra Modi</strong>
+                <span>Prime Minister of India</span>
+              </div>
+            </div>
+
+            <a href="https://ayush.gov.in/" target="_blank" rel="noopener noreferrer" class="premium-btn">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path
+                  d="M12 2C12 2 10 5.5 8 7C5 9.5 2 9 2 9C2 9 4.5 13 8 13C10.5 13 12 11 12 11C12 11 13.5 13 16 13C19.5 13 22 9 22 9C22 9 19 9.5 16 7C14 5.5 12 2 12 2ZM12 14C12 14 9.5 18 5 19C4 19.2 3 19 3 19C3 19 5 22 12 22C19 22 21 19 21 19C21 19 20 19.2 19 19C14.5 18 12 14 12 14Z" />
+              </svg>
+              <span>Yoga &ndash; Ministry of AYUSH &rarr;</span>
+            </a>
+
+            <a href="https://iitbyogastha.in" target="_blank" rel="noopener noreferrer" class="premium-logo-link">
+              <img src="yogastha.png" alt="Yogastha Logo">
+            </a>
+          </div>
+
+          <div class="premium-right-col">
+            <img src="sunset_meditation.png" alt="Person meditating at sunset" class="premium-image">
+          </div>
+        </div>
+
+        <div class="premium-footer-strip">
+          <div class="footer-item">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f89921" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2c0 0-4 4-4 8s4 10 4 10 4-6 4-10-4-8-4-8z" />
+              <path d="M12 21c-4 0-10-4-10-10 0-2 2-5 4-6" />
+              <path d="M12 21c4 0 10-4 10-10 0-2-2-5-4-6" />
+            </svg>
+            <span>Unity of Mind &amp; Body</span>
+          </div>
+          <div class="footer-item">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#68a04b" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+            </svg>
+            <span>Harmony with Nature</span>
+          </div>
+          <div class="footer-item">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#4b7fa0" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="6" r="3" />
+              <path d="M17 14c-1-2-3-3-5-3s-4 1-5 3L3 19c0 1 1 2 2 2h14c1 0 2-1 2-2l-4-5z" />
+            </svg>
+            <span>Inner Peace</span>
+          </div>
+          <div class="footer-item">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#d95e5e" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+              </path>
+            </svg>
+            <span>Better Health for All</span>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="breath-section" id="practice">
       <div class="breath-copy">
         <span class="section-kicker">Practice</span>
@@ -303,24 +498,24 @@
           <svg class="breath-dial" viewBox="0 0 240 240" role="img" aria-label="Guided breathing dial">
             <defs>
               <linearGradient id="breathGradient" x1="20" y1="20" x2="220" y2="220">
-                <stop offset="0%" stop-color="#d66a4a"/>
-                <stop offset="52%" stop-color="#c7922b"/>
-                <stop offset="100%" stop-color="#235c3a"/>
+                <stop offset="0%" stop-color="#d66a4a" />
+                <stop offset="52%" stop-color="#c7922b" />
+                <stop offset="100%" stop-color="#235c3a" />
               </linearGradient>
             </defs>
-            <circle class="dial-track" cx="120" cy="120" r="88"/>
-            <circle class="dial-progress" id="breathProgress" cx="120" cy="120" r="88"/>
+            <circle class="dial-track" cx="120" cy="120" r="88" />
+            <circle class="dial-progress" id="breathProgress" cx="120" cy="120" r="88" />
             <g class="mandala" id="breathMandala">
-              <ellipse cx="120" cy="64" rx="16" ry="45"/>
-              <ellipse cx="120" cy="176" rx="16" ry="45"/>
-              <ellipse cx="64" cy="120" rx="45" ry="16"/>
-              <ellipse cx="176" cy="120" rx="45" ry="16"/>
-              <ellipse cx="81" cy="81" rx="14" ry="42" transform="rotate(-45 81 81)"/>
-              <ellipse cx="159" cy="81" rx="14" ry="42" transform="rotate(45 159 81)"/>
-              <ellipse cx="81" cy="159" rx="14" ry="42" transform="rotate(45 81 159)"/>
-              <ellipse cx="159" cy="159" rx="14" ry="42" transform="rotate(-45 159 159)"/>
+              <ellipse cx="120" cy="64" rx="16" ry="45" />
+              <ellipse cx="120" cy="176" rx="16" ry="45" />
+              <ellipse cx="64" cy="120" rx="45" ry="16" />
+              <ellipse cx="176" cy="120" rx="45" ry="16" />
+              <ellipse cx="81" cy="81" rx="14" ry="42" transform="rotate(-45 81 81)" />
+              <ellipse cx="159" cy="81" rx="14" ry="42" transform="rotate(45 159 81)" />
+              <ellipse cx="81" cy="159" rx="14" ry="42" transform="rotate(45 81 159)" />
+              <ellipse cx="159" cy="159" rx="14" ry="42" transform="rotate(-45 159 159)" />
             </g>
-            <circle class="dial-center" cx="120" cy="120" r="48"/>
+            <circle class="dial-center" cx="120" cy="120" r="48" />
           </svg>
 
           <div class="breath-readout">
@@ -336,6 +531,8 @@
         </div>
       </div>
     </section>
+
+
   </main>
 
   <footer class="site-footer" id="contact">
@@ -353,17 +550,23 @@
       </a>
       <a href="https://www.facebook.com/yogastha.iitb" aria-label="Facebook">
         <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M14.2 8.2h2.1V5.1c-.4-.1-1.6-.2-3-.2-3 0-5 1.8-5 5.2v2.9H5v3.5h3.3V24h3.8v-7.5h3l.5-3.5h-3.5v-2.5c0-1 .3-2.3 2.1-2.3z"></path>
+          <path
+            d="M14.2 8.2h2.1V5.1c-.4-.1-1.6-.2-3-.2-3 0-5 1.8-5 5.2v2.9H5v3.5h3.3V24h3.8v-7.5h3l.5-3.5h-3.5v-2.5c0-1 .3-2.3 2.1-2.3z">
+          </path>
         </svg>
       </a>
       <a href="https://x.com/Yogastha_IITB" aria-label="X">
         <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4.3 4h4.5l4.1 5.6L17.7 4h2.5l-6.1 7.1L21 20h-4.5l-4.7-6.2L6.4 20H3.9l6.7-7.8L4.3 4zm3.2 1.8 9.9 12.4h1.3L8.8 5.8H7.5z"></path>
+          <path
+            d="M4.3 4h4.5l4.1 5.6L17.7 4h2.5l-6.1 7.1L21 20h-4.5l-4.7-6.2L6.4 20H3.9l6.7-7.8L4.3 4zm3.2 1.8 9.9 12.4h1.3L8.8 5.8H7.5z">
+          </path>
         </svg>
       </a>
       <a href="https://www.youtube.com/channel/UCbQdsBUcM8bV2hMtI1PW42g" aria-label="YouTube">
         <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M21.5 8.1s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C15 4.5 12 4.5 12 4.5s-3 0-6.3.3c-.5.1-1.5.1-2.3 1-.7.7-.9 2.3-.9 2.3S2.3 10 2.3 12v1.8c0 2 .2 3.9.2 3.9s.2 1.6.9 2.3c.9.9 2 .9 2.6 1 1.9.2 6 .3 6 .3s3 0 6.3-.3c.5-.1 1.5-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.9V12c0-2-.2-3.9-.2-3.9zM10.2 15.6V8.8l6 3.4-6 3.4z"></path>
+          <path
+            d="M21.5 8.1s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C15 4.5 12 4.5 12 4.5s-3 0-6.3.3c-.5.1-1.5.1-2.3 1-.7.7-.9 2.3-.9 2.3S2.3 10 2.3 12v1.8c0 2 .2 3.9.2 3.9s.2 1.6.9 2.3c.9.9 2 .9 2.6 1 1.9.2 6 .3 6 .3s3 0 6.3-.3c.5-.1 1.5-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.9V12c0-2-.2-3.9-.2-3.9zM10.2 15.6V8.8l6 3.4-6 3.4z">
+          </path>
         </svg>
       </a>
     </nav>
@@ -494,6 +697,139 @@
     resetBreath();
     breathBtn.addEventListener("click", startBreath);
     breathReset.addEventListener("click", resetBreath);
+
+    // Automate Upcoming Celebrations and Competitions
+    function parseTableToEvents(tableIndex) {
+      const tables = document.querySelectorAll('.event-table');
+      if (tables.length <= tableIndex) return [];
+      const table = tables[tableIndex];
+      const rows = table.querySelectorAll('tbody tr');
+      const events = [];
+
+      rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        if (cells.length >= 6) {
+          const title = cells[1].textContent.trim();
+          const dateText = cells[2].textContent.trim();
+          const btn = cells[5].querySelector('button');
+          if (btn) {
+            const onclick = btn.getAttribute('onclick');
+            if (onclick) {
+              const match = onclick.match(/'(\d{8}T\d{6})'/);
+              if (match) {
+                const startStr = match[1];
+                const year = parseInt(startStr.substring(0, 4));
+                const month = parseInt(startStr.substring(4, 6)) - 1;
+                const day = parseInt(startStr.substring(6, 8));
+                const hour = parseInt(startStr.substring(9, 11));
+                const min = parseInt(startStr.substring(11, 13));
+                const sec = parseInt(startStr.substring(13, 15));
+                const startDate = new Date(year, month, day, hour, min, sec);
+
+                events.push({ title, dateText, startDate });
+              }
+            }
+          }
+        }
+      });
+      return events;
+    }
+
+    function renderUpcoming() {
+      const now = new Date();
+
+      // Events Table (Celebrations)
+      const allEvents = parseTableToEvents(0);
+      const upcomingEvents = allEvents.filter(e => e.startDate > now)
+        .sort((a, b) => a.startDate - b.startDate)
+        .slice(0, 3);
+
+      const celGrid = document.getElementById('dynamic-celebrations');
+      if (celGrid) {
+        celGrid.innerHTML = '';
+        if (upcomingEvents.length === 0) {
+          celGrid.innerHTML = '<p style="padding: 20px; grid-column: 1/-1; text-align: center;">Stay tuned for more events!</p>';
+        } else {
+          upcomingEvents.forEach((ev, i) => {
+            const isLarge = i === 0 ? 'large' : '';
+            const imgLabel = i === 0 ? 'Event Image' : (i === 1 ? 'Workshop Image' : 'Session Image');
+            const typeLabel = i === 0 ? 'Upcoming Event' : (i === 1 ? 'Upcoming Workshop' : 'Upcoming Session');
+
+            celGrid.innerHTML += `
+              <article class="poster-card ${isLarge}">
+                <div class="poster-placeholder">
+                  <span>${imgLabel}</span>
+                </div>
+                <div class="poster-info">
+                  <span>${typeLabel}</span>
+                  <h3>${ev.title}</h3>
+                  <p>Scheduled for ${ev.dateText}.</p>
+                  <a class="card-register" href="#events">View Schedule</a>
+                </div>
+              </article>
+            `;
+          });
+        }
+      }
+
+      // Competitions Table
+      const allComps = parseTableToEvents(1);
+      const upcomingComps = allComps.filter(e => e.startDate > now)
+        .sort((a, b) => a.startDate - b.startDate)
+        .slice(0, 3);
+
+      const compGrid = document.getElementById('dynamic-competitions');
+      if (compGrid) {
+        compGrid.innerHTML = '';
+        if (upcomingComps.length === 0) {
+          compGrid.innerHTML = '<p style="padding: 20px; grid-column: 1/-1; text-align: center;">Stay tuned for more competitions!</p>';
+        } else {
+          upcomingComps.forEach(comp => {
+            compGrid.innerHTML += `
+              <article class="compact-card">
+                <span class="pill">Competition</span>
+                <div class="mini-poster-placeholder">Poster</div>
+                <h3>${comp.title}</h3>
+                <p>Scheduled for ${comp.dateText}.</p>
+                <a class="register-link" href="#competitions">View Details</a>
+              </article>
+            `;
+          });
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', renderUpcoming);
+
+    // Theme Toggle Logic
+    function toggleTheme() {
+      let theme = localStorage.getItem("theme") || "light";
+      let nextTheme = "light";
+      if (theme === "light") nextTheme = "dark";
+      else if (theme === "dark") nextTheme = "saffron";
+      else nextTheme = "light";
+      setTheme(nextTheme);
+    }
+
+    function setTheme(theme) {
+      document.body.classList.remove("dark", "saffron");
+      if (theme !== "light") {
+        document.body.classList.add(theme);
+      }
+      localStorage.setItem("theme", theme);
+
+      const btn = document.getElementById("themeToggle");
+      if (btn) {
+        if (theme === "light") btn.innerHTML = "&#x1F319;"; // Moon (click for Dark)
+        else if (theme === "dark") btn.innerHTML = "&#x1F549;&#xFE0F;"; // Om (click for Saffron)
+        else btn.innerHTML = "&#x2600;&#xFE0F;"; // Sun (click for Light)
+      }
+    }
+
+    // Load saved theme on startup
+    let savedTheme = localStorage.getItem("theme") || "light";
+    setTheme(savedTheme);
   </script>
 </body>
+
 </html>

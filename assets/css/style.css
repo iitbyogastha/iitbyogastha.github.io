@@ -1563,7 +1563,8 @@ footer .credits a {
 .card-title {
   font-weight: bold;
   margin-top: 10px;
-}/* ===== THEME MODE OVERRIDES (DARK & SAFFRON) ===== */
+}
+/* ===== THEME MODE OVERRIDES (DARK & SAFFRON) ===== */
 
 body.dark, body.saffron {
   background: var(--bg) !important;
