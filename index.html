@@ -360,61 +360,113 @@
           <div class="col-sm-12">
             <div class="title-box text-center">
               <h3 class="title-a">YOGA ASANAS</h3>
-              <p class="subtitle-a">Click an asana to learn more</p>
+              <p class="subtitle-a">Explore each Surya Namaskar posture with breath, focus, and benefits</p>
               <div class="line-mf"></div>
             </div>
           </div>
         </div>
         <div class="asana-component">
-          <div class="asana-circle-wrapper">
-            <div class="asana-center-display" id="asanaCenterDisplay">
-              <div class="asana-center-content">
-                <h4 id="asanaTitle">Pranamasana</h4>
-                <p id="asanaDesc">Prayer pose. Promotes balance and calmness.</p>
+          <div class="asana-stage">
+            <div class="asana-circle-wrapper" aria-label="Surya Namaskar posture selector">
+              <div class="asana-orbit-line"></div>
+              <div class="asana-center-display" id="asanaCenterDisplay">
+                <div class="asana-center-content">
+                  <span class="asana-step" id="asanaStep">Step 1 of 10</span>
+                  <h4 id="asanaTitle">Pranamasana</h4>
+                  <p id="asanaDesc">Prayer pose. Promotes balance and calmness.</p>
+                  <div class="asana-breath-pill" id="asanaBreath">Breathe: Center yourself</div>
+                </div>
               </div>
+              <button class="asana-item active" data-step="Step 1 of 10" data-title="Pranamasana"
+                data-desc="Prayer pose. Promotes balance and calmness." data-breath="Center yourself"
+                data-focus="Palms together, shoulders relaxed, spine tall"
+                data-benefits="Improves posture, steadies attention, prepares the breath" style="--angle: 0deg;">
+                <span>1</span>
+                <img src="assets/img/suryanamaskar_poses/frames/000.png" alt="Pranamasana">
+              </button>
+              <button class="asana-item" data-step="Step 2 of 10" data-title="Hastauttanasana"
+                data-desc="Raised arms pose. Stretches the abdomen and expands the chest." data-breath="Inhale"
+                data-focus="Lift through the chest, keep the neck long"
+                data-benefits="Opens the rib cage, lengthens the front body, energizes the spine" style="--angle: 36deg;">
+                <span>2</span>
+                <img src="assets/img/suryanamaskar_poses/frames/001.png" alt="Hastauttanasana">
+              </button>
+              <button class="asana-item" data-step="Step 3 of 10" data-title="Hastapadasana"
+                data-desc="Hand to foot pose. Stretches the hamstrings and spine." data-breath="Exhale"
+                data-focus="Fold from the hips and soften the knees if needed"
+                data-benefits="Releases the back body, improves flexibility, calms the mind" style="--angle: 72deg;">
+                <span>3</span>
+                <img src="assets/img/suryanamaskar_poses/frames/002.png" alt="Hastapadasana">
+              </button>
+              <button class="asana-item" data-step="Step 4 of 10" data-title="Ashwa Sanchalanasana"
+                data-desc="Equestrian pose. Tones abdominal organs and adds flexibility to legs." data-breath="Inhale"
+                data-focus="Step back, lift the heart, keep front knee aligned"
+                data-benefits="Stretches hip flexors, builds leg stability, encourages balance"
+                style="--angle: 108deg;">
+                <span>4</span>
+                <img src="assets/img/suryanamaskar_poses/frames/003.png" alt="Ashwa Sanchalanasana">
+              </button>
+              <button class="asana-item" data-step="Step 5 of 10" data-title="Dandasana"
+                data-desc="Stick pose. Strengthens arms, back, and improves posture." data-breath="Hold"
+                data-focus="Create one long line from heels to crown"
+                data-benefits="Builds core strength, supports shoulders, trains steady alignment" style="--angle: 144deg;">
+                <span>5</span>
+                <img src="assets/img/suryanamaskar_poses/frames/004.png" alt="Dandasana">
+              </button>
+              <button class="asana-item" data-step="Step 6 of 10" data-title="Ashtanga Namaskara"
+                data-desc="Eight limbed salutation. Strengthens chest, hands and legs." data-breath="Exhale"
+                data-focus="Lower knees, chest, and chin with control"
+                data-benefits="Strengthens arms and chest, improves coordination, builds humility" style="--angle: 180deg;">
+                <span>6</span>
+                <img src="assets/img/suryanamaskar_poses/frames/005.png" alt="Ashtanga Namaskara">
+              </button>
+              <button class="asana-item" data-step="Step 7 of 10" data-title="Bhujangasana"
+                data-desc="Cobra pose. Invigorates the heart and improves flexibility of the back." data-breath="Inhale"
+                data-focus="Draw shoulders back and lift through the sternum"
+                data-benefits="Strengthens the back, opens the chest, supports spinal mobility"
+                style="--angle: 216deg;">
+                <span>7</span>
+                <img src="assets/img/suryanamaskar_poses/frames/006.png" alt="Bhujangasana">
+              </button>
+              <button class="asana-item" data-step="Step 8 of 10" data-title="Adho Mukha Svanasana"
+                data-desc="Downward facing dog. Calms the brain and energizes the body." data-breath="Exhale"
+                data-focus="Press the floor away and lengthen the spine"
+                data-benefits="Stretches calves and shoulders, refreshes circulation, steadies the breath"
+                style="--angle: 252deg;">
+                <span>8</span>
+                <img src="assets/img/suryanamaskar_poses/frames/007.png" alt="Adho Mukha Svanasana">
+              </button>
+              <button class="asana-item" data-step="Step 9 of 10" data-title="Ashwa Sanchalanasana"
+                data-desc="Equestrian pose. Tones the spine and nervous system." data-breath="Inhale"
+                data-focus="Bring the opposite foot forward and open the chest"
+                data-benefits="Balances both sides, improves hip mobility, restores rhythm" style="--angle: 288deg;">
+                <span>9</span>
+                <img src="assets/img/suryanamaskar_poses/frames/008.png" alt="Ashwa Sanchalanasana">
+              </button>
+              <button class="asana-item" data-step="Step 10 of 10" data-title="Hastapadasana"
+                data-desc="Hand to foot pose. Invigorates the nervous system." data-breath="Exhale"
+                data-focus="Return to the fold with a soft belly and long neck"
+                data-benefits="Completes the forward stretch, relaxes the back, resets attention" style="--angle: 324deg;">
+                <span>10</span>
+                <img src="assets/img/suryanamaskar_poses/frames/009.png" alt="Hastapadasana">
+              </button>
             </div>
-            <button class="asana-item active" data-title="Pranamasana"
-              data-desc="Prayer pose. Promotes balance and calmness." style="--angle: 0deg;">
-              <img src="assets/img/suryanamaskar_poses/frames/000.png" alt="Pranamasana">
-            </button>
-            <button class="asana-item" data-title="Hastauttanasana"
-              data-desc="Raised arms pose. Stretches the abdomen and expands the chest." style="--angle: 36deg;">
-              <img src="assets/img/suryanamaskar_poses/frames/001.png" alt="Hastauttanasana">
-            </button>
-            <button class="asana-item" data-title="Hastapadasana"
-              data-desc="Hand to foot pose. Stretches the hamstrings and spine." style="--angle: 72deg;">
-              <img src="assets/img/suryanamaskar_poses/frames/002.png" alt="Hastapadasana">
-            </button>
-            <button class="asana-item" data-title="Ashwa Sanchalanasana"
-              data-desc="Equestrian pose. Tones abdominal organs and adds flexibility to legs."
-              style="--angle: 108deg;">
-              <img src="assets/img/suryanamaskar_poses/frames/003.png" alt="Ashwa Sanchalanasana">
-            </button>
-            <button class="asana-item" data-title="Dandasana"
-              data-desc="Stick pose. Strengthens arms, back, and improves posture." style="--angle: 144deg;">
-              <img src="assets/img/suryanamaskar_poses/frames/004.png" alt="Dandasana">
-            </button>
-            <button class="asana-item" data-title="Ashtanga Namaskara"
-              data-desc="Eight limbed salutation. Strengthens chest, hands and legs." style="--angle: 180deg;">
-              <img src="assets/img/suryanamaskar_poses/frames/005.png" alt="Ashtanga Namaskara">
-            </button>
-            <button class="asana-item" data-title="Bhujangasana"
-              data-desc="Cobra pose. Invigorates the heart and improves flexibility of the back."
-              style="--angle: 216deg;">
-              <img src="assets/img/suryanamaskar_poses/frames/006.png" alt="Bhujangasana">
-            </button>
-            <button class="asana-item" data-title="Adho Mukha Svanasana"
-              data-desc="Downward facing dog. Calms the brain and energizes the body." style="--angle: 252deg;">
-              <img src="assets/img/suryanamaskar_poses/frames/007.png" alt="Adho Mukha Svanasana">
-            </button>
-            <button class="asana-item" data-title="Ashwa Sanchalanasana"
-              data-desc="Equestrian pose. Tones the spine and nervous system." style="--angle: 288deg;">
-              <img src="assets/img/suryanamaskar_poses/frames/008.png" alt="Ashwa Sanchalanasana">
-            </button>
-            <button class="asana-item" data-title="Hastapadasana"
-              data-desc="Hand to foot pose. Invigorates the nervous system." style="--angle: 324deg;">
-              <img src="assets/img/suryanamaskar_poses/frames/009.png" alt="Hastapadasana">
-            </button>
+            <aside class="asana-detail-card" aria-live="polite">
+              <span class="asana-detail-kicker">Current Posture</span>
+              <h4 id="asanaDetailTitle">Pranamasana</h4>
+              <div class="asana-detail-row">
+                <strong>Focus</strong>
+                <p id="asanaFocus">Palms together, shoulders relaxed, spine tall</p>
+              </div>
+              <div class="asana-detail-row">
+                <strong>Benefits</strong>
+                <p id="asanaBenefits">Improves posture, steadies attention, prepares the breath</p>
+              </div>
+              <div class="asana-progress">
+                <span id="asanaProgressText">1 / 10</span>
+                <div class="asana-progress-track"><span id="asanaProgressBar"></span></div>
+              </div>
+            </aside>
           </div>
         </div>
       </div>

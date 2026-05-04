@@ -530,6 +530,60 @@ h2 {
   border-radius: 999px;
 }
 
+#celebrations {
+  overflow: hidden;
+}
+
+.celebration-heading .section-kicker,
+.celebration-heading h2 {
+  display: block;
+  opacity: 0;
+  filter: blur(14px);
+  transform: translateY(18px);
+  transition: opacity 800ms ease, filter 800ms ease, transform 800ms ease;
+}
+
+.celebration-heading h2 {
+  transition-delay: 120ms;
+}
+
+.celebration-card {
+  opacity: 0;
+  transition: opacity 850ms ease, transform 850ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.celebration-card-left {
+  transform: translateX(calc(-1 * min(28vw, 240px))) scale(0.98);
+}
+
+.celebration-card-right {
+  transform: translateX(min(28vw, 240px)) scale(0.98);
+}
+
+#celebrations.is-visible .celebration-heading .section-kicker,
+#celebrations.is-visible .celebration-heading h2,
+#celebrations.is-visible .celebration-card {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0) translateY(0) scale(1);
+}
+
+#celebrations.is-visible .celebration-card-right {
+  transition-delay: 120ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .celebration-heading .section-kicker,
+  .celebration-heading h2,
+  .celebration-card {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+}
+
 .poster-card {
   flex: 0 0 min(420px, 84vw);
   min-height: 420px;

@@ -142,13 +142,13 @@
 
     <!-- Celebrations section: featured IDY practice tracks shown as poster-style cards. -->
     <section class="poster-section" id="celebrations">
-      <div class="section-heading centered">
+      <div class="section-heading centered celebration-heading">
         <span class="section-kicker">Featured</span>
         <h2>Celebrations</h2>
       </div>
 
-      <div class="poster-grid" style="justify-content: center;">
-        <div style="flex: 0 0 min(420px, 84vw); background: #fff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; scroll-snap-align: start; box-shadow: var(--shadow);">
+      <div class="poster-grid celebrations-grid" style="justify-content: center;">
+        <div class="celebration-card celebration-card-left" style="flex: 0 0 min(420px, 84vw); background: #fff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; scroll-snap-align: start; box-shadow: var(--shadow);">
           <div style="background: linear-gradient(180deg, #d8ead9, #fffdf7); padding: 40px 20px; text-align: center; border-bottom: 1px solid var(--line); flex: 1;">
             <h4 style="color: #235c3a; margin-bottom: 10px; font-size: 0.9rem;">YOGASTHA PRESENTS</h4>
             <h2 style="font-size: 2.2rem; color: #d66a4a; margin-bottom: 10px; line-height: 1.1;">YOGATHON</h2>
@@ -163,7 +163,7 @@
           </div>
         </div>
 
-        <div style="flex: 0 0 min(420px, 84vw); background: #fff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; scroll-snap-align: start; box-shadow: var(--shadow);">
+        <div class="celebration-card celebration-card-right" style="flex: 0 0 min(420px, 84vw); background: #fff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; scroll-snap-align: start; box-shadow: var(--shadow);">
           <div style="background: linear-gradient(180deg, #e8f4dc, #fffdf7); padding: 40px 20px; text-align: center; border-bottom: 1px solid var(--line); flex: 1;">
             <h4 style="color: #235c3a; margin-bottom: 10px; font-size: 0.9rem;">YOGASTHA PRESENTS</h4>
             <h2 style="font-size: 2rem; color: #235c3a; margin-bottom: 10px; line-height: 1.1;">COMMON YOGA PROTOCOL</h2>
@@ -872,6 +872,30 @@
     }
 
     document.addEventListener('DOMContentLoaded', renderUpcoming);
+
+    // Scroll reveal: slides the two celebration cards in from the edges and resolves the heading text.
+    function initCelebrationReveal() {
+      const celebrations = document.getElementById('celebrations');
+      if (!celebrations) return;
+
+      if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        celebrations.classList.add('is-visible');
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            celebrations.classList.add('is-visible');
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.28 });
+
+      observer.observe(celebrations);
+    }
+
+    document.addEventListener('DOMContentLoaded', initCelebrationReveal);
 
     // Theme Toggle Logic
     // Theme toggle: cycles light, dark, and saffron modes.
