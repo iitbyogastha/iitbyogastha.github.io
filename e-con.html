@@ -18,7 +18,8 @@
   <link href="assets/css/theme.css" rel="stylesheet"/>
   <link href="assets/css/msc.css" rel="stylesheet"/>
  </head>
- <body>
+<body>
+  <!-- Site header: e-conference page navigation and theme toggle. -->
   <header class="fixed-top" id="header">
    <div class="container d-flex align-items-center justify-content-between">
     <h1 class="logo">
@@ -106,6 +107,7 @@
     </nav>
    </div>
   </header>
+  <!-- E-conference page body: page title and current conference details. -->
   <section class="about-mf sect-pt4 route" id="about">
    <div class="container">
     <div class="row">
@@ -117,6 +119,7 @@
        <p class="subtitle-a">
        </p>
       </div>
+      <!-- Ongoing conference section: registration, poster, WhatsApp, and brochure links live here. -->
       <section class="about-mf sect-pt4 route" id="ongoing">
        <div class="container">
         <div class="row">
@@ -203,6 +206,7 @@
         </div>
        </div>
       </section>
+      <!-- Contact section: duplicated contact card content for standalone e-conference access. -->
       <section class="paralax-mf footer-paralax bg-image sect-mt4 route" id="contact" style="background-image: url(assets/img/overlay-bg.jpg)">
  <div class="overlay-mf">
  </div>
@@ -344,6 +348,7 @@
   </div>
  </div>
 </section>
+      <!-- Footer and utilities: copyright, preloader, back-to-top, vendor scripts, and theme script. -->
       <footer>
        <div class="container">
         <div class="row">
@@ -383,6 +388,7 @@
       </script>
       <script src="assets/js/main.js">
       </script>
+      <!-- Page behavior: persists the selected color theme across visits. -->
       <script>
        function toggleTheme() {
   let theme = localStorage.getItem("theme") || "light";

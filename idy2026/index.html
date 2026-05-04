@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="International Day of Yoga 2026 celebrations by IITB Yogastha.">
-  <title>International Day of Yoga 2026 | IITB Yogastha</title>
+  <meta name="description" content="IDY 2026 celebrations by IITB Yogastha.">
+  <title>IDY 2026 | IITB Yogastha</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -16,8 +16,9 @@
 </head>
 
 <body>
+  <!-- IDY 2026 header: compact event branding, section links, and rotating theme toggle. -->
   <header class="site-header">
-    <a class="brand" href="#home" aria-label="International Day of Yoga 2026 home">
+    <a class="brand" href="../index.html" aria-label="International Day of Yoga 2026 home">
       <img src="yogastha.png" alt="Yogastha logo">
       <span>
         <strong>IDY 2026</strong>
@@ -37,12 +38,14 @@
     </nav>
   </header>
 
+  <!-- Main IDY 2026 page content: landing, schedule previews, tables, practice tool, and contact details. -->
   <main id="home">
+    <!-- Hero section: event promise, date badge, primary actions, and live countdown. -->
     <section class="hero">
       <div class="hero-content">
         <div class="hero-kicker">
-          <img src="IITB-500x500.png" alt="IIT Bombay logo">
-          <img src="yoga.png" alt="International Day of Yoga logo">
+          <a href="https://www.iitb.ac.in/"><img src="IITB-500x500.png" alt="IIT Bombay logo"></a>
+          <a href="https://www.ayush.gov.in/"><img src="yoga.png" alt="International Day of Yoga logo"></a>
           <span>21 June 2026</span>
         </div>
 
@@ -69,6 +72,7 @@
       </aside>
     </section>
 
+    <!-- Intro section: quote and short explanation of the celebration. -->
     <section class="intro-section">
       <div class="quote-panel">
         <p class="quote-mark">"Yoga is the journey of the self, through the self, to the self."</p>
@@ -85,6 +89,7 @@
       </div>
     </section>
 
+    <!-- Stats strip: quick numerical highlights for scanning. -->
     <section class="stats-strip" aria-label="Event highlights">
       <article>
         <strong>10+</strong>
@@ -104,6 +109,7 @@
       </article>
     </section>
 
+    <!-- Chief guest section: ready-to-fill space for speaker photo, talk title, venue, and time. -->
     <section class="split-feature" id="chief-guest">
       <div class="feature-image">
         <img src="guest.png" alt="Chief Guest Image">
@@ -134,18 +140,49 @@
       </div>
     </section>
 
+    <!-- Celebrations section: featured IDY practice tracks shown as poster-style cards. -->
     <section class="poster-section" id="celebrations">
-      <div class="section-heading">
+      <div class="section-heading centered">
         <span class="section-kicker">Featured</span>
         <h2>Celebrations</h2>
       </div>
 
-      <div class="poster-grid" id="dynamic-celebrations">
+      <div class="poster-grid" style="justify-content: center;">
+        <div style="flex: 0 0 min(420px, 84vw); background: #fff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; scroll-snap-align: start; box-shadow: var(--shadow);">
+          <div style="background: linear-gradient(180deg, #d8ead9, #fffdf7); padding: 40px 20px; text-align: center; border-bottom: 1px solid var(--line); flex: 1;">
+            <h4 style="color: #235c3a; margin-bottom: 10px; font-size: 0.9rem;">YOGASTHA PRESENTS</h4>
+            <h2 style="font-size: 2.2rem; color: #d66a4a; margin-bottom: 10px; line-height: 1.1;">YOGATHON</h2>
+            <p style="font-weight: 800; color: #18201b; letter-spacing: 1px; font-size: 0.9rem;">PRACTICE SESSIONS</p>
+          </div>
+          <div style="padding: 20px; text-align: center;">
+            <h3 style="font-size: 1.1rem; margin-bottom: 12px; color: #18201b;">Yogathon (108 Surya Namaskar Challenge)</h3>
+            <p style="font-size: 0.9rem; color: #5e685f; margin: 4px 0;"><strong>Date:</strong> 06, 09, 11, 13, 16, 18 June 2026</p>
+            <p style="font-size: 0.9rem; color: #5e685f; margin: 4px 0;"><strong>Time:</strong> 6:30 PM - 8:00 PM</p>
+            <p style="font-size: 0.9rem; color: #5e685f; margin: 4px 0;"><strong>Venue:</strong> Yoga Hall, New SAC</p>
+            <a class="secondary-btn" style="margin-top: 15px; color: #3388ff; border: 1px solid #3388ff; background: transparent; min-height: 36px; padding: 6px 16px;" href="#events">Details</a>
+          </div>
+        </div>
+
+        <div style="flex: 0 0 min(420px, 84vw); background: #fff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; scroll-snap-align: start; box-shadow: var(--shadow);">
+          <div style="background: linear-gradient(180deg, #e8f4dc, #fffdf7); padding: 40px 20px; text-align: center; border-bottom: 1px solid var(--line); flex: 1;">
+            <h4 style="color: #235c3a; margin-bottom: 10px; font-size: 0.9rem;">YOGASTHA PRESENTS</h4>
+            <h2 style="font-size: 2rem; color: #235c3a; margin-bottom: 10px; line-height: 1.1;">COMMON YOGA PROTOCOL</h2>
+            <p style="font-weight: 800; color: #18201b; letter-spacing: 1px; font-size: 0.9rem;">PRACTICE SESSIONS</p>
+          </div>
+          <div style="padding: 20px; text-align: center;">
+            <h3 style="font-size: 1.1rem; margin-bottom: 12px; color: #18201b;">Common Yoga Protocol</h3>
+            <p style="font-size: 0.9rem; color: #5e685f; margin: 4px 0;"><strong>Date:</strong> 12, 14, 17, 19 June 2026</p>
+            <p style="font-size: 0.9rem; color: #5e685f; margin: 4px 0;"><strong>Time:</strong> 6:30 AM - 8:30 AM</p>
+            <p style="font-size: 0.9rem; color: #5e685f; margin: 4px 0;"><strong>Venue:</strong> Yoga Hall, New SAC</p>
+            <a class="secondary-btn" style="margin-top: 15px; color: #3388ff; border: 1px solid #3388ff; background: transparent; min-height: 36px; padding: 6px 16px;" href="#events">Details</a>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- Upcoming competitions preview: generated from the competitions table below. -->
     <section class="poster-section" id="competitions">
-      <div class="section-heading">
+      <div class="section-heading centered">
         <span class="section-kicker">Participate</span>
         <h2>Upcoming Competitions</h2>
       </div>
@@ -154,7 +191,18 @@
       </div>
     </section>
 
-    <section class="table-section" id="events">
+    <!-- Upcoming events preview: generated from the all-events table and current date. -->
+    <section class="poster-section" id="events">
+      <div class="section-heading centered">
+        <span class="section-kicker">Schedule</span>
+        <h2>Upcoming Events</h2>
+      </div>
+
+      <div class="compact-card-grid" id="dynamic-events"></div>
+    </section>
+
+    <!-- All events table: canonical schedule source used by calendar buttons and preview cards. -->
+    <section class="table-section" id="all-events-table">
       <div class="section-heading centered">
         <span class="section-kicker">Schedule</span>
         <h2>All Events</h2>
@@ -276,6 +324,7 @@
       </div>
     </section>
 
+    <!-- Competitions table: canonical competition schedule source used by preview cards. -->
     <section class="table-section">
       <div class="section-heading centered">
         <span class="section-kicker">Compete</span>
@@ -391,6 +440,7 @@
         </table>
       </div>
     </section>
+    <!-- Theme message section: reflective copy that bridges the schedule and practice tool. -->
     <section class="premium-words-section">
       <div class="premium-card">
 
@@ -486,6 +536,7 @@
         </div>
       </div>
     </section>
+    <!-- Breathing practice section: interactive guided breathing tool with phase text and timer. -->
     <section class="breath-section" id="practice">
       <div class="breath-copy">
         <span class="section-kicker">Practice</span>
@@ -535,6 +586,7 @@
 
   </main>
 
+  <!-- Footer/contact section: official email, social links, and closing brand mark. -->
   <footer class="site-footer" id="contact">
     <div>
       <img src="yogastha.png" alt="Yogastha logo">
@@ -572,10 +624,12 @@
     </nav>
   </footer>
 
+  <!-- Page script: countdown, calendar/map helpers, breathing practice, generated previews, and themes. -->
   <script>
     const targetDate = new Date("2026-06-21T00:00:00");
     const timer = document.getElementById("timer");
 
+    // Countdown: updates the hero card until International Day of Yoga 2026.
     function updateTimer() {
       const distance = targetDate - new Date();
 
@@ -600,11 +654,13 @@
     updateTimer();
     setInterval(updateTimer, 1000);
 
+    // Calendar helper: opens a Google Calendar compose URL using table-provided dates.
     function addToCalendar(title, location, start, end) {
       const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${start}/${end}&location=${encodeURIComponent(location)}&details=${encodeURIComponent("Event organized by IITB Yogastha")}`;
       window.open(url, "_blank");
     }
 
+    // Map helper: opens the venue in Google Maps from schedule table buttons.
     function openMap(location) {
       window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(location)}`, "_blank");
     }
@@ -632,6 +688,7 @@
     let breathTimer;
     let isBreathing = false;
 
+    // Breathing tool reset: restores the visual ring and instruction copy to the starting state.
     function resetBreath() {
       clearInterval(breathTimer);
       isBreathing = false;
@@ -644,6 +701,7 @@
       breathBtn.textContent = "Start Practice";
     }
 
+    // Breathing phase resolver: maps elapsed seconds to inhale, hold, exhale, and rest states.
     function getPhase(elapsed) {
       let cursor = 0;
       for (const phase of breathCycle) {
@@ -656,6 +714,7 @@
       return { phase: breathCycle[breathCycle.length - 1], phaseElapsed: breathCycle[breathCycle.length - 1].duration };
     }
 
+    // Breathing tool loop: animates the ring, phase label, and remaining time.
     function updateBreath() {
       const elapsed = Math.min((Date.now() - breathStartedAt) / 1000, cycleLength);
       const { phase } = getPhase(elapsed);
@@ -679,6 +738,7 @@
       }
     }
 
+    // Breathing tool start: begins a guided practice cycle from the CTA button.
     function startBreath(event) {
       if (event) event.preventDefault();
       if (isBreathing) {
@@ -699,6 +759,7 @@
     breathReset.addEventListener("click", resetBreath);
 
     // Automate Upcoming Celebrations and Competitions
+    // Table parser: reads schedule rows and calendar button dates into sortable event objects.
     function parseTableToEvents(tableIndex) {
       const tables = document.querySelectorAll('.event-table');
       if (tables.length <= tableIndex) return [];
@@ -715,18 +776,27 @@
           if (btn) {
             const onclick = btn.getAttribute('onclick');
             if (onclick) {
-              const match = onclick.match(/'(\d{8}T\d{6})'/);
-              if (match) {
-                const startStr = match[1];
-                const year = parseInt(startStr.substring(0, 4));
-                const month = parseInt(startStr.substring(4, 6)) - 1;
-                const day = parseInt(startStr.substring(6, 8));
-                const hour = parseInt(startStr.substring(9, 11));
-                const min = parseInt(startStr.substring(11, 13));
-                const sec = parseInt(startStr.substring(13, 15));
-                const startDate = new Date(year, month, day, hour, min, sec);
+              const matches = onclick.match(/'(\d{8}T\d{6})'/g);
+              if (matches && matches.length > 0) {
+                const startStr = matches[0].replace(/'/g, '');
+                const sYear = parseInt(startStr.substring(0, 4));
+                const sMonth = parseInt(startStr.substring(4, 6)) - 1;
+                const sDay = parseInt(startStr.substring(6, 8));
+                const sHour = parseInt(startStr.substring(9, 11));
+                const sMin = parseInt(startStr.substring(11, 13));
+                const sSec = parseInt(startStr.substring(13, 15));
+                const startDate = new Date(sYear, sMonth, sDay, sHour, sMin, sSec);
 
-                events.push({ title, dateText, startDate });
+                const endStr = matches.length > 1 ? matches[1].replace(/'/g, '') : startStr;
+                const eYear = parseInt(endStr.substring(0, 4));
+                const eMonth = parseInt(endStr.substring(4, 6)) - 1;
+                const eDay = parseInt(endStr.substring(6, 8));
+                const eHour = parseInt(endStr.substring(9, 11));
+                const eMin = parseInt(endStr.substring(11, 13));
+                const eSec = parseInt(endStr.substring(13, 15));
+                const endDate = new Date(eYear, eMonth, eDay, eHour, eMin, eSec);
+
+                events.push({ title, dateText, startDate, endDate });
               }
             }
           }
@@ -735,46 +805,48 @@
       return events;
     }
 
+    // Preview renderer: builds the upcoming event and competition cards from the tables.
     function renderUpcoming() {
       const now = new Date();
 
-      // Events Table (Celebrations)
+      // Events Table (Table 0)
       const allEvents = parseTableToEvents(0);
-      const upcomingEvents = allEvents.filter(e => e.startDate > now)
+      const upcomingEvents = allEvents.filter(e => e.endDate > now)
         .sort((a, b) => a.startDate - b.startDate)
         .slice(0, 3);
 
-      const celGrid = document.getElementById('dynamic-celebrations');
-      if (celGrid) {
-        celGrid.innerHTML = '';
+      const eventsGrid = document.getElementById('dynamic-events');
+      if (eventsGrid) {
+        eventsGrid.innerHTML = '';
         if (upcomingEvents.length === 0) {
-          celGrid.innerHTML = '<p style="padding: 20px; grid-column: 1/-1; text-align: center;">Stay tuned for more events!</p>';
+          eventsGrid.innerHTML = '<p style="padding: 20px; grid-column: 1/-1; text-align: center; color: var(--muted);">Stay tuned for more events!</p>';
         } else {
           upcomingEvents.forEach((ev, i) => {
-            const isLarge = i === 0 ? 'large' : '';
-            const imgLabel = i === 0 ? 'Event Image' : (i === 1 ? 'Workshop Image' : 'Session Image');
             const typeLabel = i === 0 ? 'Upcoming Event' : (i === 1 ? 'Upcoming Workshop' : 'Upcoming Session');
-
-            celGrid.innerHTML += `
-              <article class="poster-card ${isLarge}">
-                <div class="poster-placeholder">
-                  <span>${imgLabel}</span>
-                </div>
-                <div class="poster-info">
-                  <span>${typeLabel}</span>
-                  <h3>${ev.title}</h3>
-                  <p>Scheduled for ${ev.dateText}.</p>
-                  <a class="card-register" href="#events">View Schedule</a>
-                </div>
+            let posterHtml = `<div class="mini-poster-placeholder">${typeLabel}</div>`;
+            let detailsHref = '#all-events-table';
+            let detailsTarget = '';
+            if (ev.title.includes('Swasti')) {
+              posterHtml = `<div class="compact-poster-media"><img src="../assets/img/events_2026/Swasti.png" alt="Swasti Yoga Camp Poster"></div>`;
+              detailsHref = 'https://docs.google.com/forms/d/19WqmZcJUDok4yaEh_vrHGP7pHpw6bAqVyNCSFUPNtr0/edit?usp=drivesdk&ouid=112002247348647291799&chromeless=1';
+              detailsTarget = ' target="_blank" rel="noopener"';
+            }
+            eventsGrid.innerHTML += `
+              <article class="compact-card">
+                <span class="pill">Event</span>
+                ${posterHtml}
+                <h3 style="font-size: 1.15rem; margin-bottom: 8px; margin-top: 15px;">${ev.title}</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 4px; color: var(--muted);"><strong>Date:</strong> ${ev.dateText}</p>
+                <a class="register-link" href="${detailsHref}"${detailsTarget}>View Details</a>
               </article>
             `;
           });
         }
       }
 
-      // Competitions Table
+      // Competitions Table (Table 1)
       const allComps = parseTableToEvents(1);
-      const upcomingComps = allComps.filter(e => e.startDate > now)
+      const upcomingComps = allComps.filter(e => e.endDate > now)
         .sort((a, b) => a.startDate - b.startDate)
         .slice(0, 3);
 
@@ -782,7 +854,7 @@
       if (compGrid) {
         compGrid.innerHTML = '';
         if (upcomingComps.length === 0) {
-          compGrid.innerHTML = '<p style="padding: 20px; grid-column: 1/-1; text-align: center;">Stay tuned for more competitions!</p>';
+          compGrid.innerHTML = '<p style="padding: 20px; grid-column: 1/-1; text-align: center; color: var(--muted);">Stay tuned for more competitions!</p>';
         } else {
           upcomingComps.forEach(comp => {
             compGrid.innerHTML += `
@@ -802,6 +874,7 @@
     document.addEventListener('DOMContentLoaded', renderUpcoming);
 
     // Theme Toggle Logic
+    // Theme toggle: cycles light, dark, and saffron modes.
     function toggleTheme() {
       let theme = localStorage.getItem("theme") || "light";
       let nextTheme = "light";
@@ -811,6 +884,7 @@
       setTheme(nextTheme);
     }
 
+    // Theme applier: updates body classes, stores preference, and refreshes the toggle icon.
     function setTheme(theme) {
       document.body.classList.remove("dark", "saffron");
       if (theme !== "light") {

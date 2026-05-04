@@ -20,7 +20,8 @@
   <link href="assets/css/msc.css" rel="stylesheet"/>
   <link href="assets/css/dropdown.css" rel="stylesheet"/>
  </head>
- <body>
+<body>
+  <!-- Site header: shared navigation for the team page, including dropdowns and theme toggle. -->
   <header class="fixed-top" id="header">
    <div class="container d-flex align-items-center justify-content-between">
     <h1 class="logo">
@@ -108,8 +109,10 @@
     </nav>
    </div>
   </header>
+  <!-- Team page wrapper: groups the present team, previous teams, and career/recruitment copy. -->
   <section class="about-mf sect-pt4 route" id="about">
    <div class="container">
+    <!-- Present team section: JavaScript renders managers, CTMs, coordinators, seniors, and faculty advisor cards into these containers. -->
     <section class="about-mf sect-pt4 route" id="presentteam">
      <div class="container">
       <div class="col-sm-12">
@@ -174,6 +177,7 @@
       </div>
      </div>
     </section>
+    <!-- Previous team section: dropdowns are generated from JSON so older team rosters stay compact. -->
     <section class="about-mf sect-pt4 route" id="previousteam">
      <div class="container">
       <div class="title-box-1">
@@ -189,6 +193,7 @@
       </div>
      </div>
     </section>
+    <!-- Career section: invitation copy for students who want to work with Yogastha. -->
     <section class="about-mf sect-pt4 route" id="career">
      <div class="container">
       <div class="row">
@@ -207,8 +212,10 @@
     </section>
    </div>
   </section>
+  <!-- Contact placeholder: shared contact-cards.html content is injected here. -->
   <div id="contactSection">
   </div>
+  <!-- Footer: shared copyright block, credits, preloader, and back-to-top link. -->
   <footer>
    <div class="container">
     <div class="row">
@@ -234,6 +241,7 @@
    <i class="bi bi-arrow-up-short">
    </i>
   </a>
+  <!-- Data block: present managers rendered by the team-card script below. -->
   <script id="managers_data" type="application/json">
    {
         "members": [
@@ -246,6 +254,7 @@
       }
   </script>
 
+  <!-- Data block: current core team members. Keep photo paths and contact links in this JSON. -->
   <script id="core_team_members_data" type="application/json">
    {
         "members": [
@@ -333,6 +342,7 @@
         ]
       }
   </script>
+  <!-- Data block: current coordinators. -->
   <script id="coordinators_data" type="application/json">
    {
         "members": [
@@ -355,6 +365,7 @@
         ]
       }
   </script>
+  <!-- Data block: senior team members. -->
   <script id="senior_team_members_data" type="application/json">
    {
         "members": [
@@ -376,6 +387,7 @@
         ]
       }
   </script>
+    <!-- Data block: faculty advisor card. -->
     <script id="faculty_advisor_data" type="application/json">
    {
         "members": [
@@ -387,6 +399,7 @@
         ]
       }
   </script>
+  <!-- Data block: previous core team members grouped by year for dropdown rendering. -->
   <script id="previous_ctm_data" type="application/json">
    {
         "sections": [
@@ -583,6 +596,7 @@
         ]
       }
   </script>
+  <!-- Team renderer: converts each JSON data block into Bootstrap-style profile cards. -->
   <script>
    class TeamRenderer {
         constructor(containerId, jsonElementId) {
@@ -644,6 +658,7 @@
         senior_team_members.render();
       });
   </script>
+  <!-- Previous team renderer: builds year dropdowns from previous_ctm_data. -->
   <script>
    class DynamicDropdown {
         constructor(containerId, jsonElementId) {
@@ -696,6 +711,7 @@
         dynamicDropdown.initialize();
       });
   </script>
+  <!-- Contact loader: pulls the reusable contact card fragment into this page. -->
   <script>
    window.addEventListener("DOMContentLoaded", () => {
         fetch("contact-cards.html")
@@ -723,6 +739,7 @@
   </script>
   <script src="assets/vendor/typed.js/typed.min.js">
   </script>
+  <!-- Page behavior: persists the selected color theme across pages. -->
   <script>
    function toggleTheme() {
   let theme = localStorage.getItem("theme") || "light";

@@ -18,7 +18,8 @@
   <link href="assets/css/msc.css" rel="stylesheet"/>
   <link href="assets/css/theme.css" rel="stylesheet"/>
  </head>
- <body>
+<body>
+  <!-- Site header: shared navigation for the events archive, dropdowns, and theme toggle. -->
   <header class="fixed-top" id="header">
    <div class="container d-flex align-items-center justify-content-between">
     <h1 class="logo">
@@ -115,6 +116,7 @@
     </nav>
    </div>
   </header>
+  <!-- Events page intro: title area that explains the purpose of this archive. -->
   <section class="about-mf sect-pt4 route" id="about">
    <div class="container">
     <div class="row">
@@ -158,6 +160,7 @@
      </div>
     </div>
     
+    <!-- Upcoming events section: current/future event cards with registration and poster details. -->
     <section class="about-mf sect-pt4 route" id="upcoming">
      <div class="container">
       <div class="row">
@@ -190,9 +193,11 @@
           <div class="col-md-5">
            <div class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
-             <div class="carousel-item active" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; min-height: 250px; border-radius:8px;">
-              <img class="img-fluid" src="assets/img/Header_logo.png" style="max-height: 150px; opacity:0.3;" alt="Placeholder Poster"/>
-              <p style="position:absolute; bottom:10px; width:100%; text-align:center; color:#888; margin:0;">Poster coming soon</p>
+             <div class="carousel-item active">
+              <img class="d-block w-100" src="assets/img/events_2026/Swasti.png"/>
+              <!-- style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; min-height: 250px; border-radius:8px;"> -->
+              <!-- <img class="img-fluid" src="assets/img/Header_logo.png" style="max-height: 150px; opacity:0.3;" alt="Placeholder Poster"/>
+              <p style="position:absolute; bottom:10px; width:100%; text-align:center; color:#888; margin:0;">Poster coming soon</p> -->
              </div>
             </div>
            </div>
@@ -737,6 +742,7 @@
       </div>
      </div>
     </section>
+<!-- Ongoing events section: active recurring or currently running programs. -->
 <section class="about-mf sect-pt4 route" id="ongoing">
      <div class="container">
       <div class="row">
@@ -813,6 +819,7 @@
       </div>
      </div>
     </section>
+    <!-- Recent events archive: most recent completed workshops, camps, and sessions. -->
     <section class="about-mf sect-pt4 route" id="recent">
      <div class="container">
       <div class="row">
@@ -3168,6 +3175,7 @@
      </div>
     </section>
     <div class="container">
+     <!-- Workshop archive: older hands-on yoga and pranayama workshops. -->
      <div class="row" id="workshops">
       <div class="col-sm-12">
        <div class="title-box-1">
@@ -3289,6 +3297,7 @@
          </div>
         </div>
        </div>
+       <!-- Talks archive: notable lectures and speaker sessions from previous years. -->
        <section class="about-mf sect-pt4 route" id="talks">
         <div class="container">
          <div class="row">
@@ -3494,8 +3503,10 @@
          </div>
         </div>
        </section>
+       <!-- Contact placeholder: shared contact-cards.html is loaded here at runtime. -->
        <div id="contactSection">
        </div>
+       <!-- Footer and utilities: copyright, preloader, back-to-top, vendor scripts, and theme handling. -->
        <footer>
         <div class="container">
          <div class="row">
@@ -3521,6 +3532,7 @@
         <i class="bi bi-arrow-up-short">
         </i>
        </a>
+       <!-- Contact loader: injects the reusable contact card fragment. -->
        <script>
         window.addEventListener("DOMContentLoaded", () => {
                 fetch("contact-cards.html")
@@ -3550,6 +3562,7 @@
        </script>
        <script src="assets/js/main.js">
        </script>
+       <!-- Page behavior: stores and reapplies the selected visual theme. -->
        <script>
         function toggleTheme() {
   let theme = localStorage.getItem("theme") || "light";

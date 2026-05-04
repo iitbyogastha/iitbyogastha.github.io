@@ -1,3 +1,4 @@
+/* Theme tokens: central color, surface, shadow, and page background values for the light theme. */
 :root {
   --ink: #18201b;
   --muted: #5e685f;
@@ -12,6 +13,7 @@
   --bg-gradient: radial-gradient(circle at top left, rgba(216, 234, 217, 0.9), transparent 34rem), linear-gradient(180deg, #fff9ec 0%, #f4f8ef 44%, #fffdf7 100%);
 }
 
+/* Dark theme overrides: applied when body.dark is set by the theme toggle. */
 body.dark {
   --ink: #e8eee9;
   --muted: #a4afa6;
@@ -26,6 +28,7 @@ body.dark {
   --bg-gradient: radial-gradient(circle at top left, rgba(35, 63, 44, 0.9), transparent 34rem), linear-gradient(180deg, #18201b 0%, #151a16 44%, #0f1411 100%);
 }
 
+/* Saffron theme overrides: third visual mode for the IDY page. */
 body.saffron {
   --ink: #331500;
   --muted: #804d1a;
@@ -40,6 +43,7 @@ body.saffron {
   --bg-gradient: radial-gradient(circle at top left, rgba(253, 236, 217, 0.9), transparent 34rem), linear-gradient(180deg, #fffaf5 0%, #fff5e6 44%, #ffebcc 100%);
 }
 
+/* Base reset and global element behavior. */
 * {
   box-sizing: border-box;
 }
@@ -84,6 +88,7 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Sticky header and primary navigation. */
 .site-header {
   position: sticky;
   top: 0;
@@ -153,6 +158,7 @@ a {
   color: var(--leaf);
 }
 
+/* Hero: first viewport layout, atmospheric background, action buttons, and countdown card. */
 .hero {
   min-height: calc(100vh - 77px);
   display: grid;
@@ -336,6 +342,7 @@ h2 {
   margin: 18px 0 0;
 }
 
+/* Shared intro/feature section layout used by the quote, chief guest, and breathing areas. */
 .intro-section,
 .split-feature,
 .breath-section {
@@ -491,6 +498,7 @@ h2 {
   font-weight: 800;
 }
 
+/* Poster and schedule sections: reusable card, poster, and compact preview styles. */
 .poster-section,
 .table-section {
   padding: clamp(54px, 7vw, 92px) clamp(18px, 6vw, 96px);
@@ -630,16 +638,19 @@ h2 {
   transform: translateY(-2px);
 }
 
+/* Compact preview cards: generated upcoming event and competition cards. */
 .compact-card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
+  align-items: start;
 }
 
 .compact-card {
   display: flex;
   flex-direction: column;
   padding: 24px;
+  height: auto;
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
@@ -649,17 +660,24 @@ h2 {
 }
 
 .compact-card h3 {
-  margin-top: 16px;
+  margin-top: 18px;
+  margin-bottom: 8px;
   font-size: 1.35rem;
 }
 
+.compact-poster-media,
 .mini-poster-placeholder {
   display: grid;
   place-items: center;
-  min-height: 170px;
+  width: 100%;
+  aspect-ratio: 1 / 1.414;
   margin-top: 18px;
   border: 1px dashed rgba(35, 92, 58, 0.32);
   border-radius: 8px;
+  overflow: hidden;
+}
+
+.mini-poster-placeholder {
   background:
     linear-gradient(135deg, rgba(216, 234, 217, 0.76), rgba(255, 253, 247, 0.7)),
     repeating-linear-gradient(45deg, transparent 0 12px, rgba(35, 92, 58, 0.05) 12px 24px);
@@ -670,6 +688,13 @@ h2 {
   text-transform: uppercase;
 }
 
+.compact-poster-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.02);
+}
+
 .pill {
   display: inline-flex;
   align-self: flex-start;
@@ -678,6 +703,7 @@ h2 {
   background: #f8e9d6;
 }
 
+/* Schedule tables and small calendar/venue controls. */
 .table-wrap {
   overflow-x: auto;
   border: 1px solid var(--line);
@@ -708,6 +734,7 @@ h2 {
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  text-align: center;
   transition: background 0.3s ease;
 }
 
@@ -780,7 +807,7 @@ button.venue-badge {
 
 .register-link {
   align-self: flex-start;
-  margin-top: auto;
+  margin-top: 16px;
 }
 
 .register-link:hover {
@@ -808,6 +835,7 @@ button.venue-badge {
   color: rgba(255, 253, 247, 0.78);
 }
 
+/* Guided breathing tool: ring animation, controls, and practice feedback. */
 .breath-container {
   display: grid;
   justify-items: center;
@@ -952,6 +980,7 @@ button.venue-badge {
   color: #231806;
 }
 
+/* Footer and social links. */
 .site-footer {
   display: flex;
   align-items: center;
@@ -1035,6 +1064,7 @@ button.venue-badge {
   text-align: center;
 }
 
+/* Tablet layout adjustments. */
 @media (max-width: 980px) {
   .site-header,
   .site-footer {
@@ -1071,6 +1101,7 @@ button.venue-badge {
   }
 }
 
+/* Phone layout adjustments. */
 @media (max-width: 620px) {
   .site-header {
     position: static;
@@ -1120,6 +1151,7 @@ button.venue-badge {
   }
 }
 
+/* Premium words section: reflective message block between schedules and practice. */
 .premium-words-section {
   padding: clamp(40px, 6vw, 80px) clamp(18px, 6vw, 96px);
   background: var(--mist);
@@ -1307,6 +1339,7 @@ button.venue-badge {
   font-weight: 600;
 }
 
+/* Additional tablet refinements for the premium words and breathing layouts. */
 @media (max-width: 980px) {
   .premium-content-grid {
     grid-template-columns: 1fr;

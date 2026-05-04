@@ -22,6 +22,7 @@
 </head>
 
 <body>
+  <!-- Site header: shared top navigation, IDY 2026 quick link, dropdowns, and theme toggle. -->
   <header class="fixed-top" id="header">
     <div class="floating-links" style="position:fixed; top:90px; right:30px; z-index:5;">
       <a href="idy2026/index.html" class="floating-idy-btn" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 70px; height: 70px; background: linear-gradient(135deg, #f89921, #d66a4a); color: #fff; text-decoration: none; border-radius: 12px; font-weight: 800; box-shadow: 0 4px 15px rgba(214, 106, 74, 0.4); transition: transform 0.2s; font-family: sans-serif;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
@@ -127,6 +128,7 @@
       </nav>
     </div>
   </header>
+  <!-- Hero section: first visual impression for Yogastha with the main campus image and title. -->
   <div class="hero route bg-image" id="hero" style="background-image: url(assets/img/IDY/group_2.webp)">
     <div class="overlay-itro">
     </div>
@@ -140,7 +142,9 @@
       </div>
     </div>
   </div>
+  <!-- Main page content: all homepage sections live inside this landmark for easier navigation. -->
   <main id="main">
+    <!-- About section: introduces Yogastha with a slideshow and short mission copy. -->
     <section class="about-mf sect-pt4 route" id="about">
       <div class="container">
         <div class="row">
@@ -189,6 +193,7 @@
       </div>
     </section>
     <!-- 
+   <!-- Yoga camps section: highlights recurring or past camp/workshop offerings as portfolio cards. -->
    <section class="portfolio-mf sect-pt4 route" id="camps">
     <div class="container">
      <div class="row">
@@ -348,6 +353,7 @@
    </section>
 -->
 
+    <!-- Asanas section: interactive Surya Namaskar showcase powered by assets/js/asanas.js. -->
     <section class="portfolio-mf sect-pt4 route" id="asanas">
       <div class="container">
         <div class="row">
@@ -413,6 +419,7 @@
         </div>
       </div>
     </section>
+    <!-- Talks section: featured lectures and speaker events presented as clickable cards. -->
     <section class="portfolio-mf sect-pt4 route" id="talks">
       <div class="container">
         <div class="row">
@@ -501,6 +508,7 @@
         </div>
       </div>
     </section>
+    <!-- Gallery/blog section: carousel-driven visual highlights from Yogastha activities. -->
     <section class="blog-mf sect-pt4 route" id="blog">
       <div class="container">
         <div class="row">
@@ -787,9 +795,11 @@
         </div>
       </div>
     </div>
+    <!-- Contact placeholder: contact-cards.html is injected here so contact details stay reusable. -->
     <div id="contactSection">
     </div>
   </main>
+  <!-- Footer: copyright, credits, preloader, and back-to-top affordance follow the main content. -->
   <footer>
     <div class="container">
       <div class="row">
@@ -815,6 +825,7 @@
     <i class="bi bi-arrow-up-short">
     </i>
   </a>
+  <!-- Contact loader: fetches the shared contact fragment and places it into #contactSection. -->
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       fetch("contact-cards.html")
@@ -844,6 +855,7 @@
   </script>
   <script src="assets/js/main.js">
   </script>
+  <!-- Page behavior: theme persistence and homepage-specific UI initialization. -->
   <script>
     function toggleTheme() {
       let theme = localStorage.getItem("theme") || "light";
