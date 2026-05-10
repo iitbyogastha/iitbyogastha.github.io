@@ -1,139 +1,405 @@
 <!-- Shared contact section: this fragment is fetched into multiple pages through #contactSection. -->
-<section class="paralax-mf footer-paralax bg-image sect-mt4 route" id="contact" style="background-image: url(assets/img/overlay-bg.jpg)">
+<section class="paralax-mf footer-paralax bg-image sect-mt4 route yogastha-contact" id="contact" style="background-image: url(assets/img/overlay-bg.jpg)">
+ <style>
+  .yogastha-contact {
+   --yc-ink: #183229;
+   --yc-muted: #65766f;
+   --yc-line: rgba(24, 50, 41, 0.12);
+   --yc-green: #16745b;
+   --yc-saffron: #f89921;
+   --yc-paper: rgba(255, 255, 255, 0.94);
+   --yc-soft: #f5fbf7;
+  }
+
+  .yogastha-contact .contact-shell {
+   position: relative;
+   z-index: 2;
+   overflow: hidden;
+   padding: 0;
+   border: 1px solid rgba(255, 255, 255, 0.45);
+   border-radius: 8px;
+   background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(244, 251, 247, 0.94)),
+    var(--yc-paper);
+   box-shadow: 0 22px 55px rgba(9, 31, 24, 0.22);
+  }
+
+  .yogastha-contact .contact-visual {
+   min-height: 100%;
+   padding: 2.4rem;
+   color: #fff;
+   background:
+    linear-gradient(145deg, rgba(22, 116, 91, 0.92), rgba(248, 153, 33, 0.78)),
+    url(assets/img/IDY/group.webp) center/cover;
+  }
+
+  .yogastha-contact .contact-kicker {
+   display: inline-flex;
+   align-items: center;
+   gap: 0.5rem;
+   margin-bottom: 1rem;
+   padding: 0.35rem 0.75rem;
+   border: 1px solid rgba(255, 255, 255, 0.45);
+   border-radius: 999px;
+   background: rgba(255, 255, 255, 0.14);
+   font-size: 0.8rem;
+   font-weight: 700;
+   letter-spacing: 0.08em;
+   text-transform: uppercase;
+  }
+
+  .yogastha-contact .contact-visual h3 {
+   margin-bottom: 1rem;
+   color: #fff;
+   font-size: clamp(2rem, 4vw, 3.2rem);
+   line-height: 1.05;
+  }
+
+  .yogastha-contact .contact-visual p {
+   max-width: 34rem;
+   margin-bottom: 1.5rem;
+   color: rgba(255, 255, 255, 0.92);
+   font-size: 1.05rem;
+   line-height: 1.75;
+  }
+
+  .yogastha-contact .contact-actions {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 0.75rem;
+  }
+
+  .yogastha-contact .contact-btn {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   gap: 0.55rem;
+   min-height: 46px;
+   padding: 0.7rem 1.05rem;
+   border-radius: 6px;
+   font-weight: 700;
+   text-decoration: none;
+   transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  }
+
+  .yogastha-contact .contact-btn:hover {
+   transform: translateY(-2px);
+   text-decoration: none;
+  }
+
+  .yogastha-contact .contact-btn-primary {
+   background: #fff;
+   color: var(--yc-green);
+   box-shadow: 0 12px 26px rgba(13, 45, 35, 0.22);
+  }
+
+  .yogastha-contact .contact-btn-secondary {
+   border: 1px solid rgba(255, 255, 255, 0.5);
+   color: #fff;
+   background: rgba(255, 255, 255, 0.12);
+  }
+
+  .yogastha-contact .contact-logo-pair {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 2.4rem;
+   width: 100%;
+   max-width: 430px;
+   margin: 2.35rem auto 0;
+  }
+
+  .yogastha-contact .contact-logo-pair img {
+   display: block;
+   max-width: 100%;
+   object-fit: contain;
+  }
+
+  .yogastha-contact .contact-logo-pair .iitb-logo {
+   width: 118px;
+   height: 118px;
+   flex: 0 0 118px;
+   transform: scale(1.28);
+   transform-origin: center;
+  }
+
+  .yogastha-contact .contact-logo-pair .yogastha-logo {
+   width: 108px;
+   height: 108px;
+   flex: 0 0 108px;
+  }
+
+  .yogastha-contact .contact-content {
+   padding: 2.4rem;
+  }
+
+  .yogastha-contact .contact-grid {
+   display: grid;
+   grid-template-columns: minmax(0, 1fr);
+   gap: 1rem;
+  }
+
+  .yogastha-contact .contact-card {
+   padding: 1.15rem;
+   border: 1px solid var(--yc-line);
+   border-radius: 8px;
+   background: rgba(255, 255, 255, 0.72);
+  }
+
+  .yogastha-contact .contact-card h5 {
+   margin-bottom: 0.75rem;
+   color: var(--yc-ink);
+   font-size: 1.05rem;
+   font-weight: 800;
+  }
+
+  .yogastha-contact .manager-card {
+   display: grid;
+   grid-template-columns: 96px minmax(0, 1fr);
+   gap: 1rem;
+   align-items: center;
+   overflow: visible;
+  }
+
+  .yogastha-contact .managerphoto {
+   width: 96px;
+   height: 96px;
+   border: 4px solid #fff;
+   border-radius: 50%;
+   object-fit: cover;
+   object-position: center 46%;
+   box-shadow: 0 10px 24px rgba(24, 50, 41, 0.16);
+   transition: border-radius 350ms ease, transform 350ms ease, object-position 350ms ease;
+  }
+
+  .yogastha-contact .managerphoto:hover {
+   position: relative;
+   z-index: 3;
+   border-radius: 8px;
+   object-position: center 52%;
+   transform: scale(1.08);
+  }
+
+  .yogastha-contact .manager-name {
+   margin: 0;
+   color: var(--yc-ink);
+   font-size: 1.15rem;
+   font-weight: 800;
+   line-height: 1.25;
+  }
+
+  .yogastha-contact .manager-role {
+   margin: 0.2rem 0 0.65rem;
+   color: var(--yc-muted);
+  }
+
+  .yogastha-contact .contact-link {
+   display: inline-flex;
+   align-items: center;
+   gap: 0.45rem;
+   color: var(--yc-green);
+   font-weight: 700;
+   word-break: break-word;
+  }
+
+  .yogastha-contact .contact-link:hover {
+   color: #0e5f49;
+  }
+
+  .yogastha-contact .email-stack {
+   display: grid;
+   gap: 0.65rem;
+  }
+
+  .yogastha-contact .social-row {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 0.65rem;
+   margin: 0;
+   padding: 0;
+   list-style: none;
+  }
+
+  .yogastha-contact .social-row a {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   width: 42px;
+   height: 42px;
+   border: 1px solid var(--yc-line);
+   border-radius: 50%;
+   color: var(--yc-green);
+   background: var(--yc-soft);
+   font-size: 1.2rem;
+   transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+  }
+
+  .yogastha-contact .social-row a:hover {
+   color: #fff;
+   background: var(--yc-green);
+   transform: translateY(-2px);
+  }
+
+  body.dark .yogastha-contact .contact-shell,
+  body.saffron .yogastha-contact .contact-shell {
+   background: var(--card) !important;
+   border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  body.dark .yogastha-contact .contact-card,
+  body.saffron .yogastha-contact .contact-card {
+   background: rgba(255, 255, 255, 0.04);
+   border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  body.dark .yogastha-contact .manager-name,
+  body.dark .yogastha-contact .contact-card h5,
+  body.saffron .yogastha-contact .manager-name,
+  body.saffron .yogastha-contact .contact-card h5 {
+   color: var(--text) !important;
+  }
+
+  @media (max-width: 767.98px) {
+   .yogastha-contact .contact-visual,
+   .yogastha-contact .contact-content {
+    padding: 1.5rem;
+   }
+
+   .yogastha-contact .manager-card {
+    grid-template-columns: 78px minmax(0, 1fr);
+   }
+
+   .yogastha-contact .managerphoto {
+    width: 78px;
+    height: 78px;
+   }
+
+   .yogastha-contact .contact-logo-pair {
+    gap: 1.6rem;
+    max-width: 280px;
+    margin-top: 1.8rem;
+   }
+
+   .yogastha-contact .contact-logo-pair .iitb-logo {
+    width: 82px;
+    height: 82px;
+    flex-basis: 82px;
+   }
+
+   .yogastha-contact .contact-logo-pair .yogastha-logo {
+    width: 76px;
+    height: 76px;
+    flex-basis: 76px;
+   }
+  }
+ </style>
+
  <div class="overlay-mf">
  </div>
  <div class="container">
   <div class="row">
    <div class="col-sm-12">
     <div class="contact-mf">
-     <div class="box-shadow-full-z-default" id="contact">
-      <div class="row">
-       <div class="col-md-6">
-        <div class="title-box-2">
-         <h5 class="title-left">
-          Submit a proposal
-         </h5>
-        </div>
-        <div>
-         <!-- Contact action: primary call-to-action sends visitors to the current Google Form. -->
-         <form action="forms/contact.php" class="php-email-form" method="post" role="form">
-          <div class="row">
-           <div class="col-md-8 text-center">
-            Want to introduce your favourite yoga guru in IIT
-                        Bombay?
-            <br/>
-            <br/>
-            <a class="btn btn-primary btn-lg" href="https://forms.gle/mAmd3WHo4MEAw3cL6" role="button" target="_blank">
-             Fill the form
-            </a>
-           </div>
-          </div>
-         </form>
-         <br/>
-         <!-- Manager card: update this block when the public point-of-contact changes. -->
-         <div class="col-md-8 text-center">
-          <table class="text-center">
-           <thead>
-            <tr>
-             <th>
-              <img align="center" alt="Nidhi Verma" class="managerphoto" src="assets/img/CTMs/26-27/vagvala jitendra kumar.JPG" width="150"/>
-             </th>
-             <th>
-             Vagvala Jitendra Kumar
-              <br/>
-              Manager, Yogastha
-              <br/>
-              +91 86864 84484
-              <br/>
-             </th>
-            </tr>
-           </thead>
-          </table>
-          <br/>
-          <!-- <table class="text-center">
-           <thead>
-            <tr>
-             <th>
-              <img align="center" alt="Krishna Gahlod" class="managerphoto" src="assets/img/CTMs/25-26/Krishna Gahlod.png" width="150"/>
-             </th>
-             <th>
-              Krishna Gahlod
-              <br/>
-              Manager, Yogastha
-              <br/>
-              +91 9171241889
-              <br/>
-             </th>
-            </tr>
-           </thead> -->
-          <!-- </table>  -->
+     <div class="contact-shell">
+      <div class="row g-0">
+       <div class="col-lg-6">
+        <div class="contact-visual">
+         <div class="contact-kicker">
+          <i class="bi bi-flower1" aria-hidden="true"></i>
+          Yogastha IIT Bombay
+         </div>
+         <h3>
+          Bring a wellness idea to campus.
+         </h3>
+         <p>
+          Propose a yoga camp, workshop, talk, or collaboration. For event details, regular sessions, and coordination, reach out to the team directly.
+         </p>
+         <div class="contact-actions">
+          <a class="contact-btn contact-btn-primary" href="https://forms.gle/mAmd3WHo4MEAw3cL6" target="_blank" rel="noopener">
+           <i class="bi bi-send" aria-hidden="true"></i>
+           Submit proposal
+          </a>
+          <a class="contact-btn contact-btn-secondary" href="mailto:yogastha.iitb@gmail.com">
+           <i class="bi bi-envelope" aria-hidden="true"></i>
+           Email us
+          </a>
+         </div>
+         <div class="contact-logo-pair" aria-label="IIT Bombay and Yogastha logos">
+          <img alt="IIT Bombay" class="iitb-logo" src="idy2026/IITB-500x500.png"/>
+          <img alt="Yogastha" class="yogastha-logo" src="idy2026/yogastha.png"/>
          </div>
         </div>
        </div>
-       <div class="col-md-6">
-        <div class="title-box-2 pt-4 pt-md-0">
-         <h5 class="title-left">
-          Get in Touch
-         </h5>
-        </div>
-        <!-- Contact details and socials: canonical email plus official social media links. -->
-        <div class="more-info">
-         <p class="lead">
-          You may reach out to us to know more about upcoming events
-                    and workshops. Kindly drop any workshop or event proposal on
-                    the submit proposal button. Let us work together to spread
-                    the message of wellness and yoga for health and well-being.
-         </p>
-         <ul class="list-ico">
-          <li>
-           <span class="bi bi-envelope">
-           </span>
-           <a href="mailto:yogastha.iitb@gmail.com">
-            yogastha.iitb@gmail.com
-           </a>
-           ;
-           <a href="mailto:yogastha@iitb.ac.in">
-            yogastha@iitb.ac.in
-           </a>
-           <br/>
-          </li>
-         </ul>
-        </div>
-        <div class="socials">
-         <ul>
-          <li>
-           <a href="https://www.facebook.com/yogastha.iitb" target="_blank">
-            <span class="ico-circle">
-             <i class="bi bi-facebook">
-             </i>
-            </span>
-           </a>
-          </li>
-          <li>
-           <a href="https://www.youtube.com/channel/UCbQdsBUcM8bV2hMtI1PW42g" target="_blank">
-            <span class="ico-circle">
-             <i class="bi bi-youtube">
-             </i>
-            </span>
-           </a>
-          </li>
-          <li>
-           <a href="https://www.instagram.com/yogasthaiitb/?hl=en" target="_blank">
-            <span class="ico-circle">
-             <i class="bi bi-instagram">
-             </i>
-            </span>
-           </a>
-          </li>
-          <li>
-           <a href="https://twitter.com/yogastha_iitb?lang=en" target="_blank">
-            <span class="ico-circle">
-             <i class="bi bi-twitter">
-             </i>
-            </span>
-           </a>
-          </li>
-         </ul>
+
+       <div class="col-lg-6">
+        <div class="contact-content">
+         <div class="title-box-2">
+          <h5 class="title-left">
+           Get in Touch
+          </h5>
+         </div>
+
+         <div class="contact-grid">
+          <div class="contact-card manager-card">
+           <img alt="Vagvala Jitendra Kumar" class="managerphoto" src="assets/img/CTMs/26-27/vagvala jitendra kumar.JPG"/>
+           <div>
+            <p class="manager-name">
+             Vagvala Jitendra Kumar
+            </p>
+            <p class="manager-role">
+             Manager, Yogastha
+            </p>
+            <a class="contact-link" href="tel:+918686484484">
+             <i class="bi bi-telephone" aria-hidden="true"></i>
+             +91 86864 84484
+            </a>
+           </div>
+          </div>
+
+          <div class="contact-card">
+           <h5>
+            Mailbox
+           </h5>
+           <div class="email-stack">
+            <a class="contact-link" href="mailto:yogastha.iitb@gmail.com">
+             <i class="bi bi-envelope" aria-hidden="true"></i>
+             yogastha.iitb@gmail.com
+            </a>
+            <a class="contact-link" href="mailto:yogastha@iitb.ac.in">
+             <i class="bi bi-envelope-paper" aria-hidden="true"></i>
+             yogastha@iitb.ac.in
+            </a>
+           </div>
+          </div>
+
+          <div class="contact-card">
+           <h5>
+            Follow Updates
+           </h5>
+           <ul class="social-row" aria-label="Yogastha social links">
+            <li>
+             <a href="https://www.facebook.com/yogastha.iitb" target="_blank" rel="noopener" aria-label="Facebook">
+              <i class="bi bi-facebook" aria-hidden="true"></i>
+             </a>
+            </li>
+            <li>
+             <a href="https://www.youtube.com/channel/UCbQdsBUcM8bV2hMtI1PW42g" target="_blank" rel="noopener" aria-label="YouTube">
+              <i class="bi bi-youtube" aria-hidden="true"></i>
+             </a>
+            </li>
+            <li>
+             <a href="https://www.instagram.com/yogasthaiitb/?hl=en" target="_blank" rel="noopener" aria-label="Instagram">
+              <i class="bi bi-instagram" aria-hidden="true"></i>
+             </a>
+            </li>
+            <li>
+             <a href="https://twitter.com/yogastha_iitb?lang=en" target="_blank" rel="noopener" aria-label="Twitter">
+              <i class="bi bi-twitter" aria-hidden="true"></i>
+             </a>
+            </li>
+           </ul>
+          </div>
+         </div>
         </div>
        </div>
       </div>
