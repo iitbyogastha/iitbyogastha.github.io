@@ -58,6 +58,7 @@ body {
   background: var(--bg-gradient);
   font-family: "Manrope", Arial, sans-serif;
   transition: background 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -693,6 +694,80 @@ h2 {
 }
 
 /* Compact preview cards: generated upcoming event and competition cards. */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 14px auto 0;
+  perspective: 1200px; /* 3D depth */
+  padding: 24px 0 72px;
+  touch-action: pan-y; /* allow vertical scroll, intercept horizontal */
+}
+
+.carousel-track {
+  position: relative;
+  width: 100%;
+  min-height: 620px;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-item {
+  position: absolute;
+  width: min(320px, 78vw);
+  height: auto;
+  min-height: 500px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease;
+  will-change: transform, opacity;
+  transform-origin: 50% 50% -800px; /* Center point of the cylinder */
+  cursor: pointer;
+  background: var(--paper); /* Ensure background is solid for 3D effect */
+  opacity: 0;
+  pointer-events: none;
+}
+
+.carousel-item.active {
+  transform: rotateY(0deg);
+  opacity: 1;
+  z-index: 10;
+  pointer-events: auto;
+  box-shadow: 0 30px 60px rgba(34, 67, 45, 0.25);
+  cursor: default; /* Center is active */
+}
+
+.carousel-item.prev {
+  transform: rotateY(32deg);
+  opacity: 0.6;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.carousel-item.next {
+  transform: rotateY(-32deg);
+  opacity: 0.6;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.carousel-item.prev-hidden {
+  transform: rotateY(64deg);
+  opacity: 0;
+  z-index: 1;
+}
+
+.carousel-item.next-hidden {
+  transform: rotateY(-64deg);
+  opacity: 0;
+  z-index: 1;
+}
+
 .compact-card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -724,7 +799,7 @@ h2 {
   display: grid;
   place-items: center;
   width: 100%;
-  aspect-ratio: 1 / 1.414;
+  aspect-ratio: 4 / 5;
   margin-top: 18px;
   border: 1px dashed rgba(35, 92, 58, 0.32);
   border-radius: 8px;
@@ -755,6 +830,22 @@ h2 {
   padding: 8px 11px;
   border-radius: 999px;
   background: #f8e9d6;
+}
+
+@media (max-width: 640px) {
+  .carousel-container {
+    margin-top: 8px;
+    padding-bottom: 56px;
+  }
+
+  .carousel-track {
+    min-height: 560px;
+  }
+
+  .carousel-item {
+    width: min(292px, 84vw);
+    min-height: 470px;
+  }
 }
 
 /* Schedule tables and small calendar/venue controls. */

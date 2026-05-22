@@ -187,18 +187,21 @@
         <h2>Upcoming Competitions</h2>
       </div>
 
-      <div class="compact-card-grid" id="dynamic-competitions">
+      <div class="carousel-container" id="carousel-competitions-container">
+        <div class="carousel-track" id="dynamic-competitions"></div>
       </div>
     </section>
 
-    <!-- Upcoming events preview: generated from the all-events table and current date. -->
+    <!-- Upcoming events preview: generated from the all-events table, with past items retained. -->
     <section class="poster-section" id="events">
       <div class="section-heading centered">
         <span class="section-kicker">Participate</span>
         <h2>Upcoming Events</h2>
       </div>
 
-      <div class="compact-card-grid" id="dynamic-events"></div>
+      <div class="carousel-container" id="carousel-events-container">
+        <div class="carousel-track" id="dynamic-events"></div>
+      </div>
     </section>
 
     <!-- All events table: canonical schedule source used by calendar buttons and preview cards. -->
@@ -805,24 +808,27 @@
       return events;
     }
 
-    // Preview renderer: builds the upcoming event and competition cards from the tables.
+    function orderByNearestUpcoming(items, now) {
+      const upcoming = items.filter(item => item.endDate > now).sort((a, b) => a.startDate - b.startDate);
+      const past = items.filter(item => item.endDate <= now).sort((a, b) => b.startDate - a.startDate);
+      return [...upcoming, ...past];
+    }
+
+    // Preview renderer: builds event and competition cards from the full tables, nearest upcoming first.
     function renderUpcoming() {
       const now = new Date();
 
       // Events Table (Table 0)
-      const allEvents = parseTableToEvents(0);
-      const upcomingEvents = allEvents.filter(e => e.endDate > now)
-        .sort((a, b) => a.startDate - b.startDate)
-        .slice(0, 3);
+      const allEvents = orderByNearestUpcoming(parseTableToEvents(0), now);
 
       const eventsGrid = document.getElementById('dynamic-events');
       if (eventsGrid) {
         eventsGrid.innerHTML = '';
-        if (upcomingEvents.length === 0) {
-          eventsGrid.innerHTML = '<p style="padding: 20px; grid-column: 1/-1; text-align: center; color: var(--muted);">Stay tuned for more events!</p>';
+        if (allEvents.length === 0) {
+          eventsGrid.innerHTML = '<p style="padding: 20px; text-align: center; color: var(--muted);">Stay tuned for more events!</p>';
         } else {
-          upcomingEvents.forEach((ev, i) => {
-            const typeLabel = i === 0 ? 'Upcoming Event' : (i === 1 ? 'Upcoming Workshop' : 'Upcoming Session');
+          allEvents.forEach((ev, i) => {
+            const typeLabel = ev.endDate > now ? 'Upcoming Event' : 'Past Event';
             let posterHtml = `<div class="mini-poster-placeholder">${typeLabel}</div>`;
             let detailsHref = '#all-events-table';
             let detailsTarget = '';
@@ -830,48 +836,156 @@
               posterHtml = `<div class="compact-poster-media"><img src="../assets/img/events_2026/Swasti.png" alt="Swasti Yoga Camp Poster"></div>`;
               detailsHref = 'https://docs.google.com/forms/d/19WqmZcJUDok4yaEh_vrHGP7pHpw6bAqVyNCSFUPNtr0/edit?usp=drivesdk&ouid=112002247348647291799&chromeless=1';
               detailsTarget = ' target="_blank" rel="noopener"';
+            } else if (ev.title.includes('Yogic Concentration')) {
+              posterHtml = `<div class="compact-poster-media"><img src="YOGIC CONCENTRATION SESSION final social media.png" alt="Yogic Concentration Session Poster"></div>`;
+              detailsHref = 'https://forms.gle/BsaiCxQcg11CPCNWA';
+              detailsTarget = ' target="_blank" rel="noopener"';
+            } else if (ev.title.includes('Yoga Abhiyojna')) {
+              posterHtml = `<div class="compact-poster-media"><img src="Yoga Abhiyojna social media.png" alt="Yoga Abhiyojna Poster"></div>`;
+              detailsHref = 'https://forms.gle/wGAkx2aDHKZc8Ubk8';
+              detailsTarget = ' target="_blank" rel="noopener"';
+            } else if (ev.title.includes('Himalayan Samarpan Meditation')) {
+              posterHtml = `<div class="compact-poster-media"><img src="himalayan.jpeg" alt="Himalayan Samarpan Meditation Poster"></div>`;
+              detailsHref = 'https://forms.gle/L99qQdEZVzDkFu1y9';
+              detailsTarget = ' target="_blank" rel="noopener"';
+            } else if (ev.title.includes('Sound Bath')) {
+              posterHtml = `<div class="compact-poster-media"><img src="Sound Bath Session.png" alt="Sound Bath Session Poster"></div>`;
+              detailsHref = 'https://forms.gle/7kGYP9mXuSj6stbA6';
+              detailsTarget = ' target="_blank" rel="noopener"';
             }
             eventsGrid.innerHTML += `
-              <article class="compact-card">
+              <article class="carousel-item">
                 <span class="pill">Event</span>
                 ${posterHtml}
                 <h3 style="font-size: 1.15rem; margin-bottom: 8px; margin-top: 15px;">${ev.title}</h3>
                 <p style="font-size: 0.9rem; margin-bottom: 4px; color: var(--muted);"><strong>Date:</strong> ${ev.dateText}</p>
-                <a class="register-link" href="${detailsHref}"${detailsTarget}>View Details</a>
+                <a class="register-link" href="${detailsHref}"${detailsTarget} style="display:inline-block; margin-top:10px; font-weight:bold; color:var(--coral);">Register</a>
               </article>
             `;
           });
+          initCarousel('dynamic-events', 0);
         }
       }
 
       // Competitions Table (Table 1)
-      const allComps = parseTableToEvents(1);
-      const upcomingComps = allComps.filter(e => e.endDate > now)
-        .sort((a, b) => a.startDate - b.startDate)
-        .slice(0, 3);
+      const allComps = orderByNearestUpcoming(parseTableToEvents(1), now);
 
       const compGrid = document.getElementById('dynamic-competitions');
       if (compGrid) {
         compGrid.innerHTML = '';
-        if (upcomingComps.length === 0) {
-          compGrid.innerHTML = '<p style="padding: 20px; grid-column: 1/-1; text-align: center; color: var(--muted);">Stay tuned for more competitions!</p>';
+        if (allComps.length === 0) {
+          compGrid.innerHTML = '<p style="padding: 20px; text-align: center; color: var(--muted);">Stay tuned for more competitions!</p>';
         } else {
-          upcomingComps.forEach(comp => {
+          allComps.forEach(comp => {
+            let posterHtml = `<div class="mini-poster-placeholder">Poster</div>`;
+            let detailsHref = '#competitions';
+            let detailsTarget = '';
+            if (comp.title.includes('T-Shirt Design')) {
+              posterHtml = `<div class="compact-poster-media"><img src="T-shirt Design Competition extension Social Media.jpg" alt="T-Shirt Design Competition Poster"></div>`;
+              detailsHref = 'https://forms.gle/maJNZDqyEr2FAqkD7';
+              detailsTarget = ' target="_blank" rel="noopener"';
+            } else if (comp.title.includes('Reel-Making')) {
+              posterHtml = `<div class="compact-poster-media"><img src="reel.jpeg" alt="Reel-Making Competition Poster"></div>`;
+              detailsHref = 'https://forms.gle/D9r1L29WLHFhSwieA';
+              detailsTarget = ' target="_blank" rel="noopener"';
+            } else if (comp.title.includes('Mantra Chanting')) {
+              posterHtml = `<div class="compact-poster-media"><img src="Mantra chanting PRO.png" alt="Mantra Chanting Competition Poster"></div>`;
+              detailsHref = 'https://forms.gle/ivkYa15LdMTKBeK98';
+              detailsTarget = ' target="_blank" rel="noopener"';
+            }
             compGrid.innerHTML += `
-              <article class="compact-card">
+              <article class="carousel-item">
                 <span class="pill">Competition</span>
-                <div class="mini-poster-placeholder">Poster</div>
-                <h3>${comp.title}</h3>
-                <p>Scheduled for ${comp.dateText}.</p>
-                <a class="register-link" href="#competitions">View Details</a>
+                ${posterHtml}
+                <h3 style="font-size: 1.15rem; margin-bottom: 8px; margin-top: 15px;">${comp.title}</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 4px; color: var(--muted);"><strong>Date:</strong> ${comp.dateText}</p>
+                <a class="register-link" href="${detailsHref}"${detailsTarget} style="display:inline-block; margin-top:10px; font-weight:bold; color:var(--coral);">Register</a>
               </article>
             `;
           });
+          initCarousel('dynamic-competitions', 0);
         }
       }
     }
 
     document.addEventListener('DOMContentLoaded', renderUpcoming);
+
+    // 3D Carousel logic
+    function initCarousel(trackId, startIndex = 0) {
+      const track = document.getElementById(trackId);
+      if (!track) return;
+      const items = Array.from(track.querySelectorAll('.carousel-item'));
+      if (items.length === 0) return;
+
+      let currentIndex = Math.max(0, Math.min(startIndex, items.length - 1));
+
+      function updateCarousel() {
+        items.forEach((item, index) => {
+          item.className = 'carousel-item'; // reset
+          if (index === currentIndex) {
+            item.classList.add('active');
+          } else if (index === currentIndex - 1) { // Removed wrap-around
+            item.classList.add('prev');
+          } else if (index === currentIndex + 1) { // Removed wrap-around
+            item.classList.add('next');
+          } else if (index < currentIndex) {
+            item.classList.add('prev-hidden');
+          } else {
+            item.classList.add('next-hidden');
+          }
+        });
+      }
+
+      updateCarousel();
+
+      // Click to navigate
+      items.forEach((item, index) => {
+        item.addEventListener('click', (e) => {
+          if (index !== currentIndex) {
+            e.preventDefault(); // prevent link click if it's not active
+            currentIndex = index;
+            updateCarousel();
+          }
+        });
+      });
+
+      // Swipe / Scroll support
+      let startX = 0;
+      let isDragging = false;
+
+      const container = track.parentElement;
+      container.addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+      }, { passive: true });
+
+      container.addEventListener('touchend', e => {
+        if (!isDragging) return;
+        const endX = e.changedTouches[0].clientX;
+        const diffX = startX - endX;
+        
+        if (Math.abs(diffX) > 50) {
+          if (diffX > 0 && currentIndex < items.length - 1) {
+            currentIndex++;
+          } else if (diffX < 0 && currentIndex > 0) {
+            currentIndex--;
+          }
+          updateCarousel();
+        }
+        isDragging = false;
+      });
+
+      // Wheel scroll horizontally or vertically inside container
+      container.addEventListener('wheel', e => {
+        e.preventDefault();
+        if ((e.deltaY > 0 || e.deltaX > 0) && currentIndex < items.length - 1) {
+          currentIndex++;
+        } else if ((e.deltaY < 0 || e.deltaX < 0) && currentIndex > 0) {
+          currentIndex--;
+        }
+        updateCarousel();
+      }, { passive: false });
+    }
 
     // Scroll reveal: slides the two celebration cards in from the edges and resolves the heading text.
     function initCelebrationReveal() {
