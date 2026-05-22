@@ -694,98 +694,66 @@ h2 {
 }
 
 /* Compact preview cards: generated upcoming event and competition cards. */
-.carousel-container {
-  position: relative;
-  width: 100%;
-  max-width: 1000px;
-  margin: 14px auto 0;
-  perspective: 1200px; /* 3D depth */
-  padding: 24px 0 72px;
-  touch-action: pan-y; /* allow vertical scroll, intercept horizontal */
-}
-
-.carousel-track {
-  position: relative;
-  width: 100%;
-  min-height: 620px;
-  transform-style: preserve-3d;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.carousel-item {
-  position: absolute;
-  width: min(320px, 78vw);
-  height: auto;
-  min-height: 500px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease;
-  will-change: transform, opacity;
-  transform-origin: 50% 50% -800px; /* Center point of the cylinder */
-  cursor: pointer;
-  background: var(--paper); /* Ensure background is solid for 3D effect */
-  opacity: 0;
-  pointer-events: none;
-}
-
-.carousel-item.active {
-  transform: rotateY(0deg);
-  opacity: 1;
-  z-index: 10;
-  pointer-events: auto;
-  box-shadow: 0 30px 60px rgba(34, 67, 45, 0.25);
-  cursor: default; /* Center is active */
-}
-
-.carousel-item.prev {
-  transform: rotateY(32deg);
-  opacity: 0.6;
-  z-index: 5;
-  pointer-events: auto;
-}
-
-.carousel-item.next {
-  transform: rotateY(-32deg);
-  opacity: 0.6;
-  z-index: 5;
-  pointer-events: auto;
-}
-
-.carousel-item.prev-hidden {
-  transform: rotateY(64deg);
-  opacity: 0;
-  z-index: 1;
-}
-
-.carousel-item.next-hidden {
-  transform: rotateY(-64deg);
-  opacity: 0;
-  z-index: 1;
-}
-
 .compact-card-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   gap: 18px;
   align-items: start;
+  overflow-x: auto;
+  padding: 4px 4px 22px;
+  scroll-padding-inline: 4px;
+  scroll-snap-type: x proximity;
+  scrollbar-color: rgba(35, 92, 58, 0.38) transparent;
+}
+
+.compact-card-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.compact-card-grid::-webkit-scrollbar-thumb {
+  background: rgba(35, 92, 58, 0.34);
+  border-radius: 999px;
 }
 
 .compact-card {
   display: flex;
   flex-direction: column;
+  flex: 0 0 calc((100% - 36px) / 3);
   padding: 24px;
   height: auto;
+  scroll-snap-align: start;
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
 .compact-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 28px 60px rgba(34, 67, 45, 0.18);
+}
+
+.compact-card.is-closed {
+  background: #141814;
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: none;
+  color: rgba(255, 253, 247, 0.82);
+}
+
+.compact-card.is-closed:hover {
+  transform: none;
+}
+
+.compact-card.is-closed .compact-poster-media,
+.compact-card.is-closed .mini-poster-placeholder {
+  border-color: rgba(255, 255, 255, 0.16);
+  filter: grayscale(1) brightness(0.42);
+}
+
+.compact-card.is-closed h3,
+.compact-card.is-closed p {
+  color: rgba(255, 253, 247, 0.72) !important;
+}
+
+.compact-card.is-closed .pill {
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 253, 247, 0.76);
 }
 
 .compact-card h3 {
@@ -830,22 +798,6 @@ h2 {
   padding: 8px 11px;
   border-radius: 999px;
   background: #f8e9d6;
-}
-
-@media (max-width: 640px) {
-  .carousel-container {
-    margin-top: 8px;
-    padding-bottom: 56px;
-  }
-
-  .carousel-track {
-    min-height: 560px;
-  }
-
-  .carousel-item {
-    width: min(292px, 84vw);
-    min-height: 470px;
-  }
 }
 
 /* Schedule tables and small calendar/venue controls. */
@@ -957,6 +909,20 @@ button.venue-badge {
 
 .register-link:hover {
   transform: translateY(-2px);
+}
+
+.compact-card.is-closed .register-link,
+.register-link[aria-disabled="true"] {
+  background: #050605;
+  border-color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 253, 247, 0.62);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.compact-card.is-closed .register-link:hover,
+.register-link[aria-disabled="true"]:hover {
+  transform: none;
 }
 
 .breath-section {
@@ -1232,8 +1198,8 @@ button.venue-badge {
     justify-self: stretch;
   }
 
-  .compact-card-grid {
-    grid-template-columns: 1fr;
+  .compact-card {
+    flex-basis: calc((100% - 18px) / 2);
   }
 
   .poster-card {
@@ -1284,6 +1250,10 @@ button.venue-badge {
   .breath-container,
   .compact-card {
     padding: 20px;
+  }
+
+  .compact-card {
+    flex-basis: min(86vw, 340px);
   }
 
   .event-table th,

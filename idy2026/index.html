@@ -187,9 +187,7 @@
         <h2>Upcoming Competitions</h2>
       </div>
 
-      <div class="carousel-container" id="carousel-competitions-container">
-        <div class="carousel-track" id="dynamic-competitions"></div>
-      </div>
+      <div class="compact-card-grid" id="dynamic-competitions"></div>
     </section>
 
     <!-- Upcoming events preview: generated from the all-events table, with past items retained. -->
@@ -199,9 +197,7 @@
         <h2>Upcoming Events</h2>
       </div>
 
-      <div class="carousel-container" id="carousel-events-container">
-        <div class="carousel-track" id="dynamic-events"></div>
-      </div>
+      <div class="compact-card-grid" id="dynamic-events"></div>
     </section>
 
     <!-- All events table: canonical schedule source used by calendar buttons and preview cards. -->
@@ -828,7 +824,10 @@
           eventsGrid.innerHTML = '<p style="padding: 20px; text-align: center; color: var(--muted);">Stay tuned for more events!</p>';
         } else {
           allEvents.forEach((ev, i) => {
-            const typeLabel = ev.endDate > now ? 'Upcoming Event' : 'Past Event';
+            const isClosed = ev.endDate <= now;
+            const typeLabel = isClosed ? 'Completed Event' : 'Upcoming Event';
+            const cardClass = isClosed ? 'compact-card is-closed' : 'compact-card';
+            const registerText = isClosed ? 'Registration Closed' : 'Register';
             let posterHtml = `<div class="mini-poster-placeholder">${typeLabel}</div>`;
             let detailsHref = '#all-events-table';
             let detailsTarget = '';
@@ -853,17 +852,17 @@
               detailsHref = 'https://forms.gle/7kGYP9mXuSj6stbA6';
               detailsTarget = ' target="_blank" rel="noopener"';
             }
+            const registerAttrs = isClosed ? 'href="#" aria-disabled="true" onclick="event.preventDefault()"' : `href="${detailsHref}"${detailsTarget}`;
             eventsGrid.innerHTML += `
-              <article class="carousel-item">
+              <article class="${cardClass}">
                 <span class="pill">Event</span>
                 ${posterHtml}
                 <h3 style="font-size: 1.15rem; margin-bottom: 8px; margin-top: 15px;">${ev.title}</h3>
                 <p style="font-size: 0.9rem; margin-bottom: 4px; color: var(--muted);"><strong>Date:</strong> ${ev.dateText}</p>
-                <a class="register-link" href="${detailsHref}"${detailsTarget} style="display:inline-block; margin-top:10px; font-weight:bold; color:var(--coral);">Register</a>
+                <a class="register-link" ${registerAttrs}>${registerText}</a>
               </article>
             `;
           });
-          initCarousel('dynamic-events', 0);
         }
       }
 
@@ -877,6 +876,9 @@
           compGrid.innerHTML = '<p style="padding: 20px; text-align: center; color: var(--muted);">Stay tuned for more competitions!</p>';
         } else {
           allComps.forEach(comp => {
+            const isClosed = comp.endDate <= now;
+            const cardClass = isClosed ? 'compact-card is-closed' : 'compact-card';
+            const registerText = isClosed ? 'Registration Closed' : 'Register';
             let posterHtml = `<div class="mini-poster-placeholder">Poster</div>`;
             let detailsHref = '#competitions';
             let detailsTarget = '';
@@ -893,99 +895,22 @@
               detailsHref = 'https://forms.gle/ivkYa15LdMTKBeK98';
               detailsTarget = ' target="_blank" rel="noopener"';
             }
+            const registerAttrs = isClosed ? 'href="#" aria-disabled="true" onclick="event.preventDefault()"' : `href="${detailsHref}"${detailsTarget}`;
             compGrid.innerHTML += `
-              <article class="carousel-item">
+              <article class="${cardClass}">
                 <span class="pill">Competition</span>
                 ${posterHtml}
                 <h3 style="font-size: 1.15rem; margin-bottom: 8px; margin-top: 15px;">${comp.title}</h3>
                 <p style="font-size: 0.9rem; margin-bottom: 4px; color: var(--muted);"><strong>Date:</strong> ${comp.dateText}</p>
-                <a class="register-link" href="${detailsHref}"${detailsTarget} style="display:inline-block; margin-top:10px; font-weight:bold; color:var(--coral);">Register</a>
+                <a class="register-link" ${registerAttrs}>${registerText}</a>
               </article>
             `;
           });
-          initCarousel('dynamic-competitions', 0);
         }
       }
     }
 
     document.addEventListener('DOMContentLoaded', renderUpcoming);
-
-    // 3D Carousel logic
-    function initCarousel(trackId, startIndex = 0) {
-      const track = document.getElementById(trackId);
-      if (!track) return;
-      const items = Array.from(track.querySelectorAll('.carousel-item'));
-      if (items.length === 0) return;
-
-      let currentIndex = Math.max(0, Math.min(startIndex, items.length - 1));
-
-      function updateCarousel() {
-        items.forEach((item, index) => {
-          item.className = 'carousel-item'; // reset
-          if (index === currentIndex) {
-            item.classList.add('active');
-          } else if (index === currentIndex - 1) { // Removed wrap-around
-            item.classList.add('prev');
-          } else if (index === currentIndex + 1) { // Removed wrap-around
-            item.classList.add('next');
-          } else if (index < currentIndex) {
-            item.classList.add('prev-hidden');
-          } else {
-            item.classList.add('next-hidden');
-          }
-        });
-      }
-
-      updateCarousel();
-
-      // Click to navigate
-      items.forEach((item, index) => {
-        item.addEventListener('click', (e) => {
-          if (index !== currentIndex) {
-            e.preventDefault(); // prevent link click if it's not active
-            currentIndex = index;
-            updateCarousel();
-          }
-        });
-      });
-
-      // Swipe / Scroll support
-      let startX = 0;
-      let isDragging = false;
-
-      const container = track.parentElement;
-      container.addEventListener('touchstart', e => {
-        startX = e.touches[0].clientX;
-        isDragging = true;
-      }, { passive: true });
-
-      container.addEventListener('touchend', e => {
-        if (!isDragging) return;
-        const endX = e.changedTouches[0].clientX;
-        const diffX = startX - endX;
-        
-        if (Math.abs(diffX) > 50) {
-          if (diffX > 0 && currentIndex < items.length - 1) {
-            currentIndex++;
-          } else if (diffX < 0 && currentIndex > 0) {
-            currentIndex--;
-          }
-          updateCarousel();
-        }
-        isDragging = false;
-      });
-
-      // Wheel scroll horizontally or vertically inside container
-      container.addEventListener('wheel', e => {
-        e.preventDefault();
-        if ((e.deltaY > 0 || e.deltaX > 0) && currentIndex < items.length - 1) {
-          currentIndex++;
-        } else if ((e.deltaY < 0 || e.deltaX < 0) && currentIndex > 0) {
-          currentIndex--;
-        }
-        updateCarousel();
-      }, { passive: false });
-    }
 
     // Scroll reveal: slides the two celebration cards in from the edges and resolves the heading text.
     function initCelebrationReveal() {
