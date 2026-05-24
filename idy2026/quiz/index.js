@@ -1,5 +1,5 @@
 // Paste your Google Apps Script Web App URL here
-const SCRIPT_URL = ""; 
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwoFgskZkSIv3j6mPA0RngXtfWQHsaAi5unNqO9VlMsHbAD2zDXhJWz09HqGL_SxUhCZg/exec";
 
 const QUIZ_CONFIG = {
   durationMinutes: 15,
@@ -326,7 +326,7 @@ async function submitQuiz(isAutoSubmit = false) {
 
   try {
     const result = localScoreAttempt(finishedAt);
-    
+
     if (SCRIPT_URL) {
       try {
         await fetch(SCRIPT_URL, {
@@ -398,7 +398,7 @@ async function renderLeaderboard() {
     } else {
       rows = getLocalLeaderboard();
     }
-    
+
     rows.sort(sortLeaderboard);
 
     const dayFilter = document.getElementById("dayFilter") ? document.getElementById("dayFilter").value : "all";
