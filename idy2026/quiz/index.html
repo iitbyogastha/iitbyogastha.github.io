@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="IDY 2026 online quiz by IITB Yogastha.">
+  <title>Quiz | Yogastha IITB 2026</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="icon" href="yogastha.png" type="image/png">
+</head>
+
+<body>
+
+
+  <main>
+    <section class="hero" id="quiz">
+      <div class="hero-copy">
+        <span class="section-kicker">04-07 June 2026 · Online Competition</span>
+        <h1>International Day of Yoga Quiz</h1>
+        <p>
+          Test your knowledge of yoga, wellness, and International Day of Yoga. The quiz has one total timer,
+          single-correct MCQs, instant results, and a public leaderboard.
+        </p>
+
+        <div class="hero-actions">
+          <a class="primary-btn" href="#quiz-app">Start Quiz</a>
+          <a class="secondary-btn" href="#leaderboard">View Leaderboard</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel" aria-label="Quiz details">
+        <div>
+          <span>Duration</span>
+          <strong id="durationLabel">15 min</strong>
+        </div>
+        <div>
+          <span>Questions</span>
+          <strong id="questionCountLabel">--</strong>
+        </div>
+      </aside>
+    </section>
+
+    <section class="app-shell" id="quiz-app" aria-live="polite">
+      <div class="status-bar">
+        <div>
+          <span class="status-label">Status</span>
+          <strong id="statusText">Ready</strong>
+        </div>
+        <div>
+          <span class="status-label">Time Left</span>
+          <strong id="timerText">15:00</strong>
+        </div>
+        <div>
+          <span class="status-label">Progress</span>
+          <strong id="progressText">0 / 0</strong>
+        </div>
+      </div>
+
+      <div class="notice" id="connectionNotice" hidden></div>
+
+      <section class="quiz-view is-active" id="startView">
+        <div class="start-grid">
+          <div>
+            <span class="section-kicker">Before You Begin</span>
+            <h2>Enter your name and settle in.</h2>
+            <p>
+              Your submitted attempts appear on the leaderboard. Keep this tab open until your result is shown.
+            </p>
+          </div>
+
+          <form class="participant-form" id="participantForm">
+            <label for="participantName">Participant name</label>
+            <input id="participantName" name="participantName" type="text" autocomplete="name" maxlength="60"
+              placeholder="Your full name" required>
+
+            <ul class="rule-list">
+              <li>One total quiz timer starts after pressing Begin.</li>
+              <li>Each question has exactly one correct option.</li>
+              <li>Correct answers are shown after submission.</li>
+              <li>The leaderboard ranks score first, then faster time.</li>
+            </ul>
+
+            <button class="primary-btn" type="submit">Begin Quiz</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="quiz-view" id="questionView">
+        <div class="question-layout">
+          <aside class="question-nav" aria-label="Question list">
+            <h2>Questions</h2>
+            <div class="question-dots" id="questionDots"></div>
+          </aside>
+
+          <article class="question-card">
+            <div class="question-meta">
+              <span id="questionMeta">Question 1</span>
+              <span id="answeredMeta">Not answered</span>
+            </div>
+
+            <h2 id="questionText"></h2>
+            <div class="options" id="optionsList"></div>
+
+            <div class="question-actions">
+              <button class="secondary-btn" id="prevBtn" type="button">Previous</button>
+              <button class="secondary-btn" id="nextBtn" type="button">Next</button>
+              <button class="primary-btn" id="submitBtn" type="button">Submit Quiz</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="quiz-view" id="resultView">
+        <div class="result-grid">
+          <div class="score-card">
+            <span class="section-kicker">Result</span>
+            <h2 id="scoreTitle">Score submitted</h2>
+            <p id="scoreSummary"></p>
+            <div class="score-stats">
+              <div><span>Score</span><strong id="scoreValue">--</strong></div>
+              <div><span>Time</span><strong id="elapsedValue">--</strong></div>
+              <div><span>Rank</span><strong id="rankValue">--</strong></div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <h2>Answer Review</h2>
+            <div id="reviewList" class="review-list"></div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="leaderboard-section" id="leaderboard">
+      <div class="section-heading" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 15px;">
+        <div>
+          <span class="section-kicker">Live Standings</span>
+          <h2 style="margin-bottom: 0;">Leaderboard</h2>
+        </div>
+        <div class="leaderboard-controls">
+          <label for="dayFilter" style="font-weight: 900; margin-right: 10px; color: var(--leaf);">Select Day:</label>
+          <select id="dayFilter" style="padding: 8px 12px; border-radius: 8px; border: 1px solid var(--line); font-weight: 800; color: var(--ink); background: #fffdf7; cursor: pointer;">
+            <option value="all">All Days</option>
+            <option value="2026-05-24">24 May 2026 (Test)</option>
+            <option value="2026-06-04">04 June 2026</option>
+            <option value="2026-06-05">05 June 2026</option>
+            <option value="2026-06-06">06 June 2026</option>
+            <option value="2026-06-07">07 June 2026</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="leaderboard-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Score</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboardBody">
+            <tr>
+              <td colspan="4">Loading leaderboard...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <img src="yogastha.png" alt="Yogastha logo">
+    <p>© 2026 IITB Yogastha · International Day of Yoga Quiz</p>
+  </footer>
+
+  <div class="floating-nav">
+    <a href="../../index.html" class="floating-back-btn" aria-label="Back to Yogastha">
+      <img src="yogastha.png" alt="Yogastha">
+    </a>
+    <a href="../index.html" class="floating-back-btn" aria-label="Back to IDY 2026">
+      ← IDY 2026
+    </a>
+  </div>
+  <script type="module" src="index.js"></script>
+</body>
+
+</html>

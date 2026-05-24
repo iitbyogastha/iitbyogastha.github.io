@@ -375,7 +375,7 @@
             </tr>
             <tr>
               <td>4</td>
-              <td>Quiz</td>
+              <td><a href="quiz/" style="color: var(--leaf); font-weight: 800;">Quiz</a></td>
               <td>04-07 June 2026</td>
               <td>-</td>
               <td><span class="venue-badge online">Online</span></td>
@@ -894,6 +894,9 @@
               posterHtml = `<div class="compact-poster-media"><img src="Mantra chanting PRO.png" alt="Mantra Chanting Competition Poster"></div>`;
               detailsHref = 'https://forms.gle/ivkYa15LdMTKBeK98';
               detailsTarget = ' target="_blank" rel="noopener"';
+            } else if (comp.title.includes('Quiz')) {
+              posterHtml = `<div class="mini-poster-placeholder">Quiz</div>`;
+              detailsHref = 'quiz/';
             }
             const registerAttrs = isClosed ? 'href="#" aria-disabled="true" onclick="event.preventDefault()"' : `href="${detailsHref}"${detailsTarget}`;
             compGrid.innerHTML += `
@@ -967,6 +970,7 @@
     let savedTheme = localStorage.getItem("theme") || "light";
     setTheme(savedTheme);
   </script>
+  <a href="quiz/index.html" class="floating-quiz-btn" aria-label="Take me to quiz">Take me to quiz 🚀</a>
 </body>
 
 </html>
