@@ -25,7 +25,6 @@
 
         <div class="hero-actions">
           <a class="primary-btn" href="#quiz-app">Start Quiz</a>
-          <a class="secondary-btn" href="#leaderboard">View Leaderboard</a>
         </div>
       </div>
 
@@ -65,14 +64,14 @@
             <span class="section-kicker">Before You Begin</span>
             <h2>Enter your name and settle in.</h2>
             <p>
-              Your submitted attempts appear on the leaderboard. Keep this tab open until your result is shown.
+              Please enter your name below to get started. 
             </p>
           </div>
 
           <form class="participant-form" id="participantForm">
-            <label for="participantName">Participant name</label>
+            <label for="participantName">Your Name</label>
             <input id="participantName" name="participantName" type="text" autocomplete="name" maxlength="60"
-              placeholder="Your full name" required>
+              placeholder="e.g. Arvind" required>
 
             <ul class="rule-list">
               <li>One total quiz timer starts after pressing Begin.</li>
@@ -112,65 +111,16 @@
       </section>
 
       <section class="quiz-view" id="resultView">
-        <div class="result-grid">
-          <div class="score-card">
-            <span class="section-kicker">Result</span>
-            <h2 id="scoreTitle">Score submitted</h2>
-            <p id="scoreSummary"></p>
-            <div class="score-stats">
-              <div><span>Score</span><strong id="scoreValue">--</strong></div>
-              <div><span>Time</span><strong id="elapsedValue">--</strong></div>
-              <div><span>Rank</span><strong id="rankValue">--</strong></div>
-            </div>
-          </div>
-
-          <div class="review-card">
-            <h2>Answer Review</h2>
-            <div id="reviewList" class="review-list"></div>
+        <div class="result-grid" style="grid-template-columns: 1fr;">
+          <div class="score-card" style="text-align: center; padding: 40px;">
+            <h2 id="scoreTitle" style="font-size: 2.5rem; color: var(--leaf); margin-bottom: 20px;">Thank You</h2>
+            <p id="scoreSummary" style="font-size: 1.2rem; margin-bottom: 30px;"></p>
+            <strong id="scoreValue" style="display: block; font-size: 1.1rem; color: var(--coral);">Redirecting...</strong>
           </div>
         </div>
       </section>
     </section>
 
-    <section class="leaderboard-section" id="leaderboard">
-      <div class="section-heading"
-        style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 15px;">
-        <div>
-          <span class="section-kicker">Live Standings</span>
-          <h2 style="margin-bottom: 0;">Leaderboard</h2>
-        </div>
-        <div class="leaderboard-controls">
-          <label for="dayFilter" style="font-weight: 900; margin-right: 10px; color: var(--leaf);">Select Day:</label>
-          <select id="dayFilter"
-            style="padding: 8px 12px; border-radius: 8px; border: 1px solid var(--line); font-weight: 800; color: var(--ink); background: #fffdf7; cursor: pointer;">
-            <option value="all">All Days</option>
-            <option value="2026-05-24">24 May 2026 (Test)</option>
-            <option value="2026-06-04">04 June 2026</option>
-            <option value="2026-06-05">05 June 2026</option>
-            <option value="2026-06-06">06 June 2026</option>
-            <option value="2026-06-07">07 June 2026</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="table-wrap">
-        <table class="leaderboard-table">
-          <thead>
-            <tr>
-              <th>Rank</th>
-              <th>Name</th>
-              <th>Score</th>
-              <th>Time</th>
-            </tr>
-          </thead>
-          <tbody id="leaderboardBody">
-            <tr>
-              <td colspan="4">Loading leaderboard...</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
   </main>
 
   <footer class="site-footer">

@@ -353,10 +353,10 @@ p {
 
 .question-dot {
   min-height: 42px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--gold);
   border-radius: 8px;
-  background: var(--mist);
-  color: var(--muted);
+  background: #fdf5e6;
+  color: #7a5211;
   cursor: pointer;
   font-weight: 900;
 }
@@ -367,8 +367,9 @@ p {
 }
 
 .question-dot.is-answered {
-  border-color: rgba(35, 118, 66, 0.42);
-  color: var(--success);
+  border-color: var(--line);
+  background: var(--mist);
+  color: var(--muted);
 }
 
 .question-meta {

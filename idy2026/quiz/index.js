@@ -240,6 +240,18 @@ function startTimer() {
 function beginQuiz(name) {
   state.name = name.trim();
 
+  if (!state.name) {
+    showNotice("Please enter your name.");
+    return;
+  }
+
+  const leaderboard = getLocalLeaderboard();
+  const isDuplicate = leaderboard.some(entry => entry.name.toLowerCase() === state.name.toLowerCase());
+  if (isDuplicate) {
+    showNotice("You have already submitted the quiz under this name.");
+    return;
+  }
+
   const now = new Date();
   const endTime = new Date(QUIZ_CONFIG.competitionEnd);
   if (now > endTime) {
@@ -346,7 +358,6 @@ async function submitQuiz(isAutoSubmit = false) {
     }
 
     renderResult(result);
-    await renderLeaderboard();
   } catch (error) {
     state.submitted = false;
     saveState();
@@ -357,89 +368,21 @@ async function submitQuiz(isAutoSubmit = false) {
 
 function renderResult(result) {
   setView(els.resultView);
-  const percentage = Math.round((result.score / result.total) * 100);
-  els.scoreTitle.textContent = percentage >= 70 ? "Beautiful work" : "Submitted successfully";
-  els.scoreSummary.textContent = `${state.name}, you scored ${result.score} out of ${result.total}.`;
-  els.scoreValue.textContent = `${result.score}/${result.total}`;
-  els.elapsedValue.textContent = formatTime(result.elapsedSeconds);
-  els.rankValue.textContent = result.rank || "--";
-  els.reviewList.innerHTML = "";
-
-  result.review.forEach((item, index) => {
-    const selected = item.selectedIndex === undefined ? "Not answered" : item.options[item.selectedIndex];
-    const correct = item.options[item.correctIndex];
-    const article = document.createElement("article");
-    article.className = `review-item ${item.isCorrect ? "is-correct" : "is-wrong"}`;
-    article.innerHTML = `
-      <h3>${index + 1}. ${item.prompt}</h3>
-      <p><strong>Your answer:</strong> ${selected}</p>
-      <p><strong>Correct answer:</strong> ${correct}</p>
-    `;
-    els.reviewList.appendChild(article);
-  });
-}
-
-async function renderLeaderboard() {
-  try {
-    let rows = [];
-    if (SCRIPT_URL) {
-      try {
-        const response = await fetch(SCRIPT_URL);
-        rows = await response.json();
-        // Convert fetched string values to numbers for sorting
-        rows.forEach(r => {
-          r.score = Number(r.score);
-          r.elapsedSeconds = Number(r.elapsedSeconds);
-        });
-      } catch (e) {
-        console.warn("Failed to fetch global leaderboard. Falling back to local.", e);
-        rows = getLocalLeaderboard();
-      }
-    } else {
-      rows = getLocalLeaderboard();
+  
+  let count = 10;
+  els.scoreValue.textContent = `Redirecting to homepage in ${count}...`;
+  
+  const timerId = setInterval(() => {
+    count--;
+    els.scoreValue.textContent = `Redirecting to homepage in ${count}...`;
+    if (count <= 0) {
+      clearInterval(timerId);
+      window.location.href = "../index.html";
     }
-
-    rows.sort(sortLeaderboard);
-
-    const dayFilter = document.getElementById("dayFilter") ? document.getElementById("dayFilter").value : "all";
-
-    if (dayFilter !== "all") {
-      rows = rows.filter(entry => {
-        if (!entry.submittedAt) return false;
-        const dateObj = new Date(entry.submittedAt);
-        const year = dateObj.getFullYear();
-        const month = String(dateObj.getMonth() + 1).padStart(2, '0');
-        const day = String(dateObj.getDate()).padStart(2, '0');
-        const localDateStr = `${year}-${month}-${day}`;
-        return localDateStr === dayFilter;
-      });
-    }
-
-    if (!rows || rows.length === 0) {
-      els.leaderboardBody.innerHTML = '<tr><td colspan="4">No attempts found for this selection.</td></tr>';
-      return;
-    }
-
-    els.leaderboardBody.innerHTML = rows.map((entry, index) => `
-      <tr>
-        <td>${index + 1}</td>
-        <td>${entry.name}</td>
-        <td>${entry.score}/${entry.total || questions.length}</td>
-        <td>${formatTime(entry.elapsedSeconds)}</td>
-      </tr>
-    `).join("");
-  } catch (error) {
-    els.leaderboardBody.innerHTML = '<tr><td colspan="4">Leaderboard is temporarily unavailable.</td></tr>';
-    console.error(error);
-  }
+  }, 1000);
 }
 
 function bindEvents() {
-  const dayFilter = document.getElementById("dayFilter");
-  if (dayFilter) {
-    dayFilter.addEventListener("change", () => renderLeaderboard());
-  }
-
   els.participantForm.addEventListener("submit", event => {
     event.preventDefault();
     beginQuiz(els.participantName.value);
@@ -460,12 +403,11 @@ function bindEvents() {
   els.submitBtn.addEventListener("click", () => submitQuiz(false));
 }
 
-async function init() {
+function init() {
   els.durationLabel.textContent = `${QUIZ_CONFIG.durationMinutes} min`;
   els.questionCountLabel.textContent = String(questions.length);
   updateStatus();
   bindEvents();
-  await renderLeaderboard();
 
   if (restoreState()) {
     showNotice("Your in-progress quiz was restored from this browser.");
