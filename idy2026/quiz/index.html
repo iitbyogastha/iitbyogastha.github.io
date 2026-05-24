@@ -19,8 +19,7 @@
         <span class="section-kicker">04-07 June 2026 · Online Competition</span>
         <h1>International Day of Yoga Quiz</h1>
         <p>
-          Test your knowledge of yoga, wellness, and International Day of Yoga. The quiz has one total timer,
-          single-correct MCQs, instant results, and a public leaderboard.
+          Test your knowledge of yoga, wellness, and International Day of Yoga. The quiz has a fast-paced 20-second timer per question and instant results.
         </p>
 
         <div class="hero-actions">
@@ -74,10 +73,9 @@
               placeholder="e.g. Arvind" required>
 
             <ul class="rule-list">
-              <li>One total quiz timer starts after pressing Begin.</li>
+              <li>a question timer starts after pressing Begin.</li>
               <li>Each question has exactly one correct option.</li>
-              <li>Correct answers are shown after submission.</li>
-              <li>The leaderboard ranks score first, then faster time.</li>
+              <li>The leaderboard ranks are based on how fast you score correct answer.</li>
             </ul>
 
             <button class="primary-btn" type="submit">Begin Quiz</button>
@@ -101,10 +99,8 @@
             <h2 id="questionText"></h2>
             <div class="options" id="optionsList"></div>
 
-            <div class="question-actions">
-              <button class="secondary-btn" id="prevBtn" type="button">Previous</button>
-              <button class="secondary-btn" id="nextBtn" type="button">Next</button>
-              <button class="primary-btn" id="submitBtn" type="button">Submit Quiz</button>
+            <div class="question-actions" style="justify-content: flex-end;">
+              <button class="primary-btn" id="submitBtn" type="button" style="display: none;">Submit Quiz</button>
             </div>
           </article>
         </div>

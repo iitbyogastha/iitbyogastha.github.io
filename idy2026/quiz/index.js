@@ -2,7 +2,7 @@
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwoFgskZkSIv3j6mPA0RngXtfWQHsaAi5unNqO9VlMsHbAD2zDXhJWz09HqGL_SxUhCZg/exec";
 
 const QUIZ_CONFIG = {
-  durationMinutes: 15,
+  secondsPerQuestion: 20,
   competitionStart: "2026-05-24T08:00:00+05:30",
   competitionEnd: "2026-05-24T20:00:00+05:30",
   storageKey: "idy2026QuizState",
@@ -80,9 +80,20 @@ const state = {
   currentIndex: 0,
   answers: {},
   startedAt: null,
+  questionStartedAt: null,
+  questionOrder: [],
   submitted: false,
   timerId: null
 };
+
+function shuffle(array) {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
 
 const els = {
   durationLabel: document.getElementById("durationLabel"),
@@ -101,8 +112,6 @@ const els = {
   answeredMeta: document.getElementById("answeredMeta"),
   questionText: document.getElementById("questionText"),
   optionsList: document.getElementById("optionsList"),
-  prevBtn: document.getElementById("prevBtn"),
-  nextBtn: document.getElementById("nextBtn"),
   submitBtn: document.getElementById("submitBtn"),
   scoreTitle: document.getElementById("scoreTitle"),
   scoreSummary: document.getElementById("scoreSummary"),
@@ -138,9 +147,9 @@ function getElapsedSeconds(finishedAt = Date.now()) {
 }
 
 function getRemainingSeconds() {
-  if (!state.startedAt) return QUIZ_CONFIG.durationMinutes * 60;
-  const elapsed = (Date.now() - state.startedAt) / 1000;
-  return Math.max(0, QUIZ_CONFIG.durationMinutes * 60 - elapsed);
+  if (!state.questionStartedAt) return QUIZ_CONFIG.secondsPerQuestion;
+  const elapsed = (Date.now() - state.questionStartedAt) / 1000;
+  return Math.max(0, QUIZ_CONFIG.secondsPerQuestion - Math.floor(elapsed));
 }
 
 function updateStatus() {
@@ -156,6 +165,8 @@ function saveState() {
     currentIndex: state.currentIndex,
     answers: state.answers,
     startedAt: state.startedAt,
+    questionStartedAt: state.questionStartedAt,
+    questionOrder: state.questionOrder,
     submitted: state.submitted
   };
   localStorage.setItem(QUIZ_CONFIG.storageKey, JSON.stringify(payload));
@@ -172,6 +183,8 @@ function restoreState() {
     state.currentIndex = saved.currentIndex || 0;
     state.answers = saved.answers || {};
     state.startedAt = saved.startedAt;
+    state.questionStartedAt = saved.questionStartedAt || saved.startedAt;
+    state.questionOrder = saved.questionOrder || questions.map(q => q.id);
     els.participantName.value = state.name;
     return getRemainingSeconds() > 0;
   } catch {
@@ -186,21 +199,19 @@ function renderDots() {
     button.type = "button";
     button.className = "question-dot";
     button.textContent = index + 1;
-    button.setAttribute("aria-label", `Go to question ${index + 1}`);
     if (index === state.currentIndex) button.classList.add("is-current");
-    if (state.answers[question.id] !== undefined) button.classList.add("is-answered");
-    button.addEventListener("click", () => {
-      state.currentIndex = index;
-      renderQuestion();
-      saveState();
-    });
+    const qId = state.questionOrder[index];
+    if (qId && state.answers[qId] !== undefined) button.classList.add("is-answered");
+    button.disabled = true;
     els.questionDots.appendChild(button);
   });
 }
 
 function renderQuestion() {
-  const question = questions[state.currentIndex];
-  const selected = state.answers[question.id];
+  const questionId = state.questionOrder[state.currentIndex];
+  const question = questions.find(q => q.id === questionId);
+  const answerData = state.answers[question.id];
+  const selected = typeof answerData === 'object' ? answerData.selectedIndex : answerData;
 
   els.questionMeta.textContent = `Question ${state.currentIndex + 1} of ${questions.length}`;
   els.answeredMeta.textContent = selected === undefined ? "Not answered" : "Answered";
@@ -214,15 +225,24 @@ function renderQuestion() {
     if (selected === index) button.classList.add("is-selected");
     button.innerHTML = `<strong>${String.fromCharCode(65 + index)}</strong>${option}`;
     button.addEventListener("click", () => {
-      state.answers[question.id] = index;
-      renderQuestion();
-      saveState();
+      if (state.answers[question.id] === undefined) {
+        state.answers[question.id] = {
+          selectedIndex: index,
+          remainingSeconds: getRemainingSeconds()
+        };
+        if (state.currentIndex < questions.length - 1) {
+          state.currentIndex++;
+          state.questionStartedAt = Date.now();
+          renderQuestion();
+          saveState();
+        } else {
+          submitQuiz(true);
+        }
+      }
     });
     els.optionsList.appendChild(button);
   });
 
-  els.prevBtn.disabled = state.currentIndex === 0;
-  els.nextBtn.disabled = state.currentIndex === questions.length - 1;
   renderDots();
   updateStatus();
 }
@@ -232,7 +252,14 @@ function startTimer() {
   state.timerId = setInterval(() => {
     updateStatus();
     if (getRemainingSeconds() <= 0 && !state.submitted) {
-      submitQuiz(true);
+      if (state.currentIndex < questions.length - 1) {
+        state.currentIndex++;
+        state.questionStartedAt = Date.now();
+        renderQuestion();
+        saveState();
+      } else {
+        submitQuiz(true);
+      }
     }
   }, 1000);
 }
@@ -259,7 +286,9 @@ function beginQuiz(name) {
     return;
   }
 
+  state.questionOrder = shuffle(questions.map(q => q.id));
   state.startedAt = state.startedAt || Date.now();
+  state.questionStartedAt = Date.now();
   state.submitted = false;
   setView(els.questionView);
   renderQuestion();
@@ -268,24 +297,50 @@ function beginQuiz(name) {
 }
 
 function localScoreAttempt(finishedAt) {
+  let score = 0;
   const review = questions.map(question => {
-    const selectedIndex = state.answers[question.id];
+    const answerData = state.answers[question.id];
+    const selectedIndex = typeof answerData === 'object' ? answerData.selectedIndex : answerData;
     const correctIndex = localAnswerKey[question.id];
+    const isCorrect = selectedIndex === correctIndex;
+    
+    let points = 0;
+    if (isCorrect) {
+      const remainingSeconds = typeof answerData === 'object' && answerData.remainingSeconds !== undefined ? answerData.remainingSeconds : 0;
+      const timeTaken = QUIZ_CONFIG.secondsPerQuestion - remainingSeconds;
+      
+      if (timeTaken <= 2) {
+        points = 100;
+      } else if (timeTaken <= 5) {
+        points = 90;
+      } else if (timeTaken <= 10) {
+        points = 75;
+      } else if (timeTaken <= 15) {
+        points = 50;
+      } else if (timeTaken < 19) {
+        points = 25;
+      }
+    }
+    score += points;
+
     return {
       id: question.id,
       prompt: question.prompt,
       options: question.options,
       selectedIndex,
       correctIndex,
-      isCorrect: selectedIndex === correctIndex
+      isCorrect,
+      points
     };
   });
-  const score = review.filter(item => item.isCorrect).length;
+  
   const elapsedSeconds = getElapsedSeconds(finishedAt);
+  const total = questions.length * 100;
+  
   const entry = {
     name: state.name,
     score,
-    total: questions.length,
+    total,
     elapsedSeconds,
     submittedAt: new Date(finishedAt).toISOString()
   };
@@ -299,7 +354,7 @@ function localScoreAttempt(finishedAt) {
     name: entry.name,
     submittedAt: entry.submittedAt,
     score,
-    total: questions.length,
+    total,
     elapsedSeconds,
     rank: getLocalLeaderboard().findIndex(item => item.name === state.name && item.submittedAt === entry.submittedAt) + 1 || "--",
     review
@@ -388,23 +443,11 @@ function bindEvents() {
     beginQuiz(els.participantName.value);
   });
 
-  els.prevBtn.addEventListener("click", () => {
-    state.currentIndex = Math.max(0, state.currentIndex - 1);
-    renderQuestion();
-    saveState();
-  });
-
-  els.nextBtn.addEventListener("click", () => {
-    state.currentIndex = Math.min(questions.length - 1, state.currentIndex + 1);
-    renderQuestion();
-    saveState();
-  });
-
   els.submitBtn.addEventListener("click", () => submitQuiz(false));
 }
 
 function init() {
-  els.durationLabel.textContent = `${QUIZ_CONFIG.durationMinutes} min`;
+  els.durationLabel.textContent = `${QUIZ_CONFIG.secondsPerQuestion}s / Q`;
   els.questionCountLabel.textContent = String(questions.length);
   updateStatus();
   bindEvents();

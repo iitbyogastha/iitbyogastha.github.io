@@ -357,7 +357,7 @@ p {
   border-radius: 8px;
   background: #fdf5e6;
   color: #7a5211;
-  cursor: pointer;
+  cursor: default;
   font-weight: 900;
 }
 
