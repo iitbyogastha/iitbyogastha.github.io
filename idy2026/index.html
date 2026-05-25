@@ -851,6 +851,10 @@
               posterHtml = `<div class="compact-poster-media"><img src="Sound Bath Session.png" alt="Sound Bath Session Poster"></div>`;
               detailsHref = 'https://forms.gle/7kGYP9mXuSj6stbA6';
               detailsTarget = ' target="_blank" rel="noopener"';
+            } else if (ev.title.includes('Women\'s Empowerment')) {
+              posterHtml = `<div class="compact-poster-media"><img src="women empowerment workshop social media.png" alt="Women's Empowerment Workshop Poster"></div>`;
+              detailsHref = 'https://forms.gle/dR3JqTYPSA1svJYW8';
+              detailsTarget = ' target="_blank" rel="noopener"';
             }
             const registerAttrs = isClosed ? 'href="#" aria-disabled="true" onclick="event.preventDefault()"' : `href="${detailsHref}"${detailsTarget}`;
             eventsGrid.innerHTML += `
