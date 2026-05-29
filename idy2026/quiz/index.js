@@ -3,77 +3,41 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwoFgskZkSIv3j6mPA0R
 
 const QUIZ_CONFIG = {
   secondsPerQuestion: 20,
-  competitionStart: "2026-05-24T08:00:00+05:30",
-  competitionEnd: "2026-05-24T20:00:00+05:30",
   storageKey: "idy2026QuizState",
   localLeaderboardKey: "idy2026QuizLocalLeaderboard"
 };
 
-const questions = [
-  {
-    id: "q1",
-    prompt: "International Day of Yoga is observed every year on which date?",
-    options: ["1 January", "21 June", "15 August", "5 September"]
-  },
-  {
-    id: "q2",
-    prompt: "Which Sanskrit word is commonly translated as union or integration?",
-    options: ["Yoga", "Ahimsa", "Prana", "Dharana"]
-  },
-  {
-    id: "q3",
-    prompt: "Which practice is most directly associated with regulated breathing?",
-    options: ["Pranayama", "Trataka", "Yama", "Asana"]
-  },
-  {
-    id: "q4",
-    prompt: "Surya Namaskar is commonly known in English as what?",
-    options: ["Moon Salutation", "Sun Salutation", "Lotus Seat", "Breath Retention"]
-  },
-  {
-    id: "q5",
-    prompt: "In the eight limbs of yoga, which limb refers to physical postures?",
-    options: ["Dhyana", "Pratyahara", "Asana", "Samadhi"]
-  },
-  {
-    id: "q6",
-    prompt: "Which of these is a common benefit associated with regular mindfulness practice?",
-    options: ["Improved focus", "Reduced need for sleep entirely", "Instant cure for all illness", "Loss of hydration"]
-  },
-  {
-    id: "q7",
-    prompt: "What is Shavasana most commonly used for at the end of a yoga session?",
-    options: ["Deep relaxation", "Fast running", "Jump training", "Strength testing"]
-  },
-  {
-    id: "q8",
-    prompt: "Which ministry in India is closely associated with promoting International Day of Yoga activities?",
-    options: ["Ministry of AYUSH", "Ministry of Railways", "Ministry of Coal", "Ministry of Power"]
-  },
-  {
-    id: "q9",
-    prompt: "Trataka is primarily a practice of concentration using what kind of focus?",
-    options: ["Steady gazing", "Rapid jumping", "Loud chanting only", "Random movement"]
-  },
-  {
-    id: "q10",
-    prompt: "Which principle is usually understood as non-violence in yogic ethics?",
-    options: ["Ahimsa", "Aparigraha", "Tapas", "Svadhyaya"]
-  }
-];
+let questions = [];
+let localAnswerKey = {};
+let activeConfig = null;
+let currentStorageKey = QUIZ_CONFIG.storageKey;
 
-const localAnswerKey = {
-  q1: 1,
-  q2: 0,
-  q3: 0,
-  q4: 1,
-  q5: 2,
-  q6: 0,
-  q7: 0,
-  q8: 0,
-  q9: 0,
-  q10: 0
-};
+function getActiveQuizConfig() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth();
+  const date = now.getDate();
+  const hours = now.getHours();
+
+  if (month === 4) { // May is month 4 (0-indexed)
+    if (date >= 4 && date <= 7) {
+      if (hours >= 8 && hours < 20) {
+        return {
+          filename: `Yoga_Quiz_Set_${date - 3}.txt`,
+          start: new Date(year, month, date, 8, 0, 0),
+          end: new Date(year, month, date, 20, 0, 0)
+        };
+      }
+    } else if (date === 30) {
+      return {
+        filename: `test.txt`,
+        start: new Date(year, month, date, 0, 0, 0),
+        end: new Date(year, month, date, 23, 59, 59)
+      };
+    }
+  }
+  return null;
+}
 
 const state = {
   name: "",
@@ -169,11 +133,11 @@ function saveState() {
     questionOrder: state.questionOrder,
     submitted: state.submitted
   };
-  localStorage.setItem(QUIZ_CONFIG.storageKey, JSON.stringify(payload));
+  localStorage.setItem(currentStorageKey, JSON.stringify(payload));
 }
 
 function restoreState() {
-  const raw = localStorage.getItem(QUIZ_CONFIG.storageKey);
+  const raw = localStorage.getItem(currentStorageKey);
   if (!raw) return false;
 
   try {
@@ -280,7 +244,7 @@ function beginQuiz(name) {
   }
 
   const now = new Date();
-  const endTime = new Date(QUIZ_CONFIG.competitionEnd);
+  const endTime = activeConfig ? activeConfig.end : new Date(0);
   if (now > endTime) {
     showNotice("The quiz has ended and the leaderboard is frozen. No new attempts can be started.");
     return;
@@ -446,17 +410,75 @@ function bindEvents() {
   els.submitBtn.addEventListener("click", () => submitQuiz(false));
 }
 
-function init() {
+async function init() {
   els.durationLabel.textContent = `${QUIZ_CONFIG.secondsPerQuestion}s / Q`;
-  els.questionCountLabel.textContent = String(questions.length);
-  updateStatus();
-  bindEvents();
+  
+  activeConfig = getActiveQuizConfig();
+  if (!activeConfig) {
+    els.questionCountLabel.textContent = "0";
+    showNotice("No quiz is active at this time.");
+    els.participantName.disabled = true;
+    const submitBtn = els.participantForm.querySelector('button');
+    if (submitBtn) submitBtn.disabled = true;
+    return;
+  }
 
-  if (restoreState()) {
-    showNotice("Your in-progress quiz was restored from this browser.");
-    setView(els.questionView);
-    renderQuestion();
-    startTimer();
+  currentStorageKey = QUIZ_CONFIG.storageKey + "_" + activeConfig.filename;
+
+  try {
+    const res = await fetch(activeConfig.filename);
+    if (!res.ok) throw new Error("Could not fetch questions.");
+    const text = await res.text();
+    
+    const lines = text.split('\n').map(l => l.trim()).filter(l => l);
+    let currentQuestion = null;
+    let options = [];
+    
+    for (let line of lines) {
+      if (line.match(/^\d+\.\s/)) {
+        if (currentQuestion) {
+          questions.push({
+            id: `q${questions.length + 1}`,
+            prompt: currentQuestion,
+            options: options
+          });
+          options = [];
+        }
+        currentQuestion = line.replace(/^\d+\.\s*/, '');
+      } else if (line.match(/^[A-D]\)\s/)) {
+        options.push(line.replace(/^[A-D]\)\s*/, ''));
+      } else if (line.startsWith('Answer:')) {
+        const ansMatch = line.match(/Answer:\s*([A-D])\)/);
+        if (ansMatch) {
+          localAnswerKey[`q${questions.length + 1}`] = ansMatch[1].charCodeAt(0) - 65;
+        }
+      }
+    }
+    
+    if (currentQuestion) {
+      questions.push({
+        id: `q${questions.length + 1}`,
+        prompt: currentQuestion,
+        options: options
+      });
+    }
+
+    els.questionCountLabel.textContent = String(questions.length);
+    updateStatus();
+    bindEvents();
+
+    if (restoreState()) {
+      showNotice("Your in-progress quiz was restored from this browser.");
+      setView(els.questionView);
+      renderQuestion();
+      startTimer();
+    }
+  } catch (error) {
+    console.error(error);
+    showNotice("Failed to load quiz questions.");
+    els.participantName.disabled = true;
+    const submitBtn = els.participantForm.querySelector('button');
+    if (submitBtn) submitBtn.disabled = true;
   }
 }
 
