@@ -1,5 +1,5 @@
 // Paste your Google Apps Script Web App URL here
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwoFgskZkSIv3j6mPA0RngXtfWQHsaAi5unNqO9VlMsHbAD2zDXhJWz09HqGL_SxUhCZg/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxSihB9KvWqjsWPa-ETW5qWOvjAPIIGDECUXM0QwEpXVRIP-ZzCW0flExto41JvLyjwow/exec";
 
 const QUIZ_CONFIG = {
   secondsPerQuestion: 20,
@@ -41,6 +41,7 @@ function getActiveQuizConfig() {
 
 const state = {
   name: "",
+  email: "",
   currentIndex: 0,
   answers: {},
   startedAt: null,
@@ -68,6 +69,7 @@ const els = {
   connectionNotice: document.getElementById("connectionNotice"),
   participantForm: document.getElementById("participantForm"),
   participantName: document.getElementById("participantName"),
+  participantEmail: document.getElementById("participantEmail"),
   startView: document.getElementById("startView"),
   questionView: document.getElementById("questionView"),
   resultView: document.getElementById("resultView"),
@@ -126,6 +128,7 @@ function updateStatus() {
 function saveState() {
   const payload = {
     name: state.name,
+    email: state.email,
     currentIndex: state.currentIndex,
     answers: state.answers,
     startedAt: state.startedAt,
@@ -144,12 +147,14 @@ function restoreState() {
     const saved = JSON.parse(raw);
     if (!saved.startedAt || saved.submitted) return false;
     state.name = saved.name || "";
+    state.email = saved.email || "";
     state.currentIndex = saved.currentIndex || 0;
     state.answers = saved.answers || {};
     state.startedAt = saved.startedAt;
     state.questionStartedAt = saved.questionStartedAt || saved.startedAt;
     state.questionOrder = saved.questionOrder || questions.map(q => q.id);
     els.participantName.value = state.name;
+    if (els.participantEmail) els.participantEmail.value = state.email;
     return getRemainingSeconds() > 0;
   } catch {
     return false;
@@ -228,18 +233,24 @@ function startTimer() {
   }, 1000);
 }
 
-function beginQuiz(name) {
+function beginQuiz(name, email) {
   state.name = name.trim();
+  state.email = email.trim();
 
   if (!state.name) {
     showNotice("Please enter your name.");
     return;
   }
 
+  if (!state.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email)) {
+    showNotice("Please enter a valid email address.");
+    return;
+  }
+
   const leaderboard = getLocalLeaderboard();
-  const isDuplicate = leaderboard.some(entry => entry.name.toLowerCase() === state.name.toLowerCase());
+  const isDuplicate = leaderboard.some(entry => entry.email && entry.email.toLowerCase() === state.email.toLowerCase());
   if (isDuplicate) {
-    showNotice("You have already submitted the quiz under this name.");
+    showNotice("You have already submitted the quiz with this email address.");
     return;
   }
 
@@ -267,12 +278,12 @@ function localScoreAttempt(finishedAt) {
     const selectedIndex = typeof answerData === 'object' ? answerData.selectedIndex : answerData;
     const correctIndex = localAnswerKey[question.id];
     const isCorrect = selectedIndex === correctIndex;
-    
+
     let points = 0;
     if (isCorrect) {
       const remainingSeconds = typeof answerData === 'object' && answerData.remainingSeconds !== undefined ? answerData.remainingSeconds : 0;
       const timeTaken = QUIZ_CONFIG.secondsPerQuestion - remainingSeconds;
-      
+
       if (timeTaken <= 2) {
         points = 100;
       } else if (timeTaken <= 5) {
@@ -297,12 +308,13 @@ function localScoreAttempt(finishedAt) {
       points
     };
   });
-  
+
   const elapsedSeconds = getElapsedSeconds(finishedAt);
   const total = questions.length * 100;
-  
+
   const entry = {
     name: state.name,
+    email: state.email,
     score,
     total,
     elapsedSeconds,
@@ -316,11 +328,12 @@ function localScoreAttempt(finishedAt) {
 
   return {
     name: entry.name,
+    email: entry.email,
     submittedAt: entry.submittedAt,
     score,
     total,
     elapsedSeconds,
-    rank: getLocalLeaderboard().findIndex(item => item.name === state.name && item.submittedAt === entry.submittedAt) + 1 || "--",
+    rank: getLocalLeaderboard().findIndex(item => item.email === state.email && item.submittedAt === entry.submittedAt) + 1 || "--",
     review
   };
 }
@@ -364,6 +377,7 @@ async function submitQuiz(isAutoSubmit = false) {
           method: 'POST',
           body: JSON.stringify({
             name: result.name,
+            email: result.email,
             score: result.score,
             total: result.total,
             elapsedSeconds: result.elapsedSeconds,
@@ -387,10 +401,10 @@ async function submitQuiz(isAutoSubmit = false) {
 
 function renderResult(result) {
   setView(els.resultView);
-  
+
   let count = 10;
   els.scoreValue.textContent = `Redirecting to homepage in ${count}...`;
-  
+
   const timerId = setInterval(() => {
     count--;
     els.scoreValue.textContent = `Redirecting to homepage in ${count}...`;
@@ -404,7 +418,7 @@ function renderResult(result) {
 function bindEvents() {
   els.participantForm.addEventListener("submit", event => {
     event.preventDefault();
-    beginQuiz(els.participantName.value);
+    beginQuiz(els.participantName.value, els.participantEmail.value);
   });
 
   els.submitBtn.addEventListener("click", () => submitQuiz(false));
@@ -412,12 +426,13 @@ function bindEvents() {
 
 async function init() {
   els.durationLabel.textContent = `${QUIZ_CONFIG.secondsPerQuestion}s / Q`;
-  
+
   activeConfig = getActiveQuizConfig();
   if (!activeConfig) {
     els.questionCountLabel.textContent = "0";
     showNotice("No quiz is active at this time.");
     els.participantName.disabled = true;
+    if (els.participantEmail) els.participantEmail.disabled = true;
     const submitBtn = els.participantForm.querySelector('button');
     if (submitBtn) submitBtn.disabled = true;
     return;
@@ -429,11 +444,11 @@ async function init() {
     const res = await fetch(activeConfig.filename);
     if (!res.ok) throw new Error("Could not fetch questions.");
     const text = await res.text();
-    
+
     const lines = text.split('\n').map(l => l.trim()).filter(l => l);
     let currentQuestion = null;
     let options = [];
-    
+
     for (let line of lines) {
       if (line.match(/^\d+\.\s/)) {
         if (currentQuestion) {
@@ -454,7 +469,7 @@ async function init() {
         }
       }
     }
-    
+
     if (currentQuestion) {
       questions.push({
         id: `q${questions.length + 1}`,
