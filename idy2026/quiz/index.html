@@ -24,11 +24,18 @@
         </p>
 
         <ul class="hero-rules">
-          <li><strong>Four Quizzes (June 4th–7th):</strong> Each daily quiz is open from <strong>8:00 AM to 8:00 PM</strong>. Make sure you don't miss your window!</li>
-          <li><strong>One Attempt Only:</strong> Please enter your authentic valid details. You get one shot per quiz, so make it count.</li>
-          <li><strong>Fast-Paced Action:</strong> A 20-second timer starts immediately for each question. The faster you select the correct answer, the more points you earn!</li>
-          <li><strong>Grand Champions:</strong> While each day has its own winners, the <strong>Overall Champions</strong> will be crowned based on your combined scores across all four days.</li>
-          <li><strong>The Big Reveal:</strong> Final winners will be announced just before International Day of Yoga and honored during the main celebration on <strong>June 21st, 2026</strong>.</li>
+          <li><strong>Four Quizzes (June 4th–7th):</strong> Each daily quiz is open from <strong>8:00 AM to 8:00
+              PM</strong>. Make sure you don't miss your window!</li>
+          <li><strong>One Attempt Only:</strong> Please enter your authentic valid details. You get one shot per quiz,
+            so make it count.</li>
+          <li><strong>Fast-Paced Action:</strong> A 20-second timer starts immediately for each question. The faster you
+            select the correct answer, the more points you earn!</li>
+          <li><strong>Grand Champions:</strong> While each day has its own winners, the <strong>Overall
+              Champions</strong> will be crowned based on your combined scores across all four days.</li>
+          <li><strong>The Big Reveal:</strong> Final winners will be announced just before International Day of Yoga and
+            honored during the main celebration on <strong>June 21st, 2026</strong>.</li>
+          <li><strong>Note : </strong>You will not be able to review the question or edit the option you chose once an
+            option is clicked. </li>
         </ul>
 
         <div class="hero-actions">
@@ -74,6 +81,10 @@
             <p>
               Please enter your name below to get started.
             </p>
+            <p style="color: var(--coral); font-size: 0.95rem; margin-top: 12px; font-weight: 500;">
+              <strong>Note:</strong> You will not be able to review the question or edit the option you chose once an
+              option is clicked.
+            </p>
           </div>
 
           <form class="participant-form" id="participantForm">
@@ -86,11 +97,12 @@
               placeholder="e.g. arvind@example.com" required>
 
             <label for="participantPhone" style="margin-top: 15px; display: block;">Your Phone Number</label>
-            <input id="participantPhone" name="participantPhone" type="tel" autocomplete="tel" maxlength="10" pattern="[0-9]{10}"
-              placeholder="e.g. 9876543210" required>
+            <input id="participantPhone" name="participantPhone" type="tel" autocomplete="tel" maxlength="10"
+              pattern="[0-9]{10}" placeholder="e.g. 9876543210" required>
 
             <label for="participantAffiliation" style="margin-top: 15px; display: block;">Affiliation with IITB</label>
-            <select id="participantAffiliation" name="participantAffiliation" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 1rem; color: var(--text-primary); background: var(--surface-color);">
+            <select id="participantAffiliation" name="participantAffiliation" required
+              style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 1rem; color: var(--text-primary); background: var(--surface-color);">
               <option value="" disabled selected>Select your affiliation</option>
               <option value="Student">Student</option>
               <option value="Faculty">Faculty</option>
