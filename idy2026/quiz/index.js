@@ -192,16 +192,20 @@ function renderQuestion() {
   els.questionText.textContent = question.prompt;
   els.optionsList.innerHTML = "";
 
-  question.options.forEach((option, index) => {
+  const randomizedOptions = question.options.map((text, originalIndex) => ({ text, originalIndex }));
+  // Shuffle the options to randomize their display order
+  shuffle(randomizedOptions);
+
+  randomizedOptions.forEach((optObj, displayIndex) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "option-btn";
-    if (selected === index) button.classList.add("is-selected");
-    button.innerHTML = `<strong>${String.fromCharCode(65 + index)}</strong>${option}`;
+    if (selected === optObj.originalIndex) button.classList.add("is-selected");
+    button.innerHTML = `<strong>${String.fromCharCode(65 + displayIndex)}</strong>${optObj.text}`;
     button.addEventListener("click", () => {
       if (state.answers[question.id] === undefined) {
         state.answers[question.id] = {
-          selectedIndex: index,
+          selectedIndex: optObj.originalIndex,
           remainingSeconds: getRemainingSeconds()
         };
         if (state.currentIndex < questions.length - 1) {
