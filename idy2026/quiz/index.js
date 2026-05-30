@@ -42,6 +42,7 @@ function getActiveQuizConfig() {
 const state = {
   name: "",
   email: "",
+  phone: "",
   currentIndex: 0,
   answers: {},
   startedAt: null,
@@ -70,6 +71,7 @@ const els = {
   participantForm: document.getElementById("participantForm"),
   participantName: document.getElementById("participantName"),
   participantEmail: document.getElementById("participantEmail"),
+  participantPhone: document.getElementById("participantPhone"),
   startView: document.getElementById("startView"),
   questionView: document.getElementById("questionView"),
   resultView: document.getElementById("resultView"),
@@ -129,6 +131,7 @@ function saveState() {
   const payload = {
     name: state.name,
     email: state.email,
+    phone: state.phone,
     currentIndex: state.currentIndex,
     answers: state.answers,
     startedAt: state.startedAt,
@@ -148,6 +151,7 @@ function restoreState() {
     if (!saved.startedAt || saved.submitted) return false;
     state.name = saved.name || "";
     state.email = saved.email || "";
+    state.phone = saved.phone || "";
     state.currentIndex = saved.currentIndex || 0;
     state.answers = saved.answers || {};
     state.startedAt = saved.startedAt;
@@ -155,6 +159,7 @@ function restoreState() {
     state.questionOrder = saved.questionOrder || questions.map(q => q.id);
     els.participantName.value = state.name;
     if (els.participantEmail) els.participantEmail.value = state.email;
+    if (els.participantPhone) els.participantPhone.value = state.phone;
     return getRemainingSeconds() > 0;
   } catch {
     return false;
@@ -233,9 +238,10 @@ function startTimer() {
   }, 1000);
 }
 
-function beginQuiz(name, email) {
+function beginQuiz(name, email, phone) {
   state.name = name.trim();
   state.email = email.trim();
+  state.phone = phone.trim();
 
   if (!state.name) {
     showNotice("Please enter your name.");
@@ -244,6 +250,11 @@ function beginQuiz(name, email) {
 
   if (!state.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email)) {
     showNotice("Please enter a valid email address.");
+    return;
+  }
+
+  if (!state.phone || !/^\d{10}$/.test(state.phone)) {
+    showNotice("Please enter a valid 10-digit phone number.");
     return;
   }
 
@@ -315,6 +326,7 @@ function localScoreAttempt(finishedAt) {
   const entry = {
     name: state.name,
     email: state.email,
+    phone: state.phone,
     score,
     total,
     elapsedSeconds,
@@ -329,6 +341,7 @@ function localScoreAttempt(finishedAt) {
   return {
     name: entry.name,
     email: entry.email,
+    phone: entry.phone,
     submittedAt: entry.submittedAt,
     score,
     total,
@@ -378,6 +391,7 @@ async function submitQuiz(isAutoSubmit = false) {
           body: JSON.stringify({
             name: result.name,
             email: result.email,
+            phone: result.phone,
             score: result.score,
             total: result.total,
             elapsedSeconds: result.elapsedSeconds,
@@ -418,7 +432,7 @@ function renderResult(result) {
 function bindEvents() {
   els.participantForm.addEventListener("submit", event => {
     event.preventDefault();
-    beginQuiz(els.participantName.value, els.participantEmail.value);
+    beginQuiz(els.participantName.value, els.participantEmail.value, els.participantPhone.value);
   });
 
   els.submitBtn.addEventListener("click", () => submitQuiz(false));
@@ -433,6 +447,7 @@ async function init() {
     showNotice("No quiz is active at this time.");
     els.participantName.disabled = true;
     if (els.participantEmail) els.participantEmail.disabled = true;
+    if (els.participantPhone) els.participantPhone.disabled = true;
     const submitBtn = els.participantForm.querySelector('button');
     if (submitBtn) submitBtn.disabled = true;
     return;

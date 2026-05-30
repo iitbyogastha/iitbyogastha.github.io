@@ -19,7 +19,8 @@
         <span class="section-kicker">04-07 June 2026 · Online Competition</span>
         <h1>International Day of Yoga Quiz</h1>
         <p>
-          Test your knowledge of yoga, wellness, and International Day of Yoga. The quiz has a fast-paced 20-second timer per question and instant results.
+          Test your knowledge of yoga, wellness, and International Day of Yoga. The quiz has a fast-paced 20-second
+          timer per question and instant results.
         </p>
 
         <div class="hero-actions">
@@ -63,7 +64,7 @@
             <span class="section-kicker">Before You Begin</span>
             <h2>Enter your name and settle in.</h2>
             <p>
-              Please enter your name below to get started. 
+              Please enter your name below to get started.
             </p>
           </div>
 
@@ -71,10 +72,14 @@
             <label for="participantName">Your Name</label>
             <input id="participantName" name="participantName" type="text" autocomplete="name" maxlength="60"
               placeholder="e.g. Arvind" required>
-              
-            <label for="participantEmail" style="margin-top: 15px; display: block;">Your Email</label>
+
+            <label for="participantEmail" style="margin-top: 15px; display: block;">Your Email(Institute)</label>
             <input id="participantEmail" name="participantEmail" type="email" autocomplete="email" maxlength="100"
               placeholder="e.g. arvind@example.com" required>
+
+            <label for="participantPhone" style="margin-top: 15px; display: block;">Your Phone Number</label>
+            <input id="participantPhone" name="participantPhone" type="tel" autocomplete="tel" maxlength="10" pattern="[0-9]{10}"
+              placeholder="e.g. 9876543210" required>
 
             <ul class="rule-list">
               <li>a question timer starts after pressing Begin.</li>
@@ -115,7 +120,8 @@
           <div class="score-card" style="text-align: center; padding: 40px;">
             <h2 id="scoreTitle" style="font-size: 2.5rem; color: var(--leaf); margin-bottom: 20px;">Thank You</h2>
             <p id="scoreSummary" style="font-size: 1.2rem; margin-bottom: 30px;"></p>
-            <strong id="scoreValue" style="display: block; font-size: 1.1rem; color: var(--coral);">Redirecting...</strong>
+            <strong id="scoreValue"
+              style="display: block; font-size: 1.1rem; color: var(--coral);">Redirecting...</strong>
           </div>
         </div>
       </section>
