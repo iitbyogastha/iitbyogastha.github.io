@@ -145,6 +145,22 @@ p {
   margin-top: 0;
 }
 
+.hero-rules {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #fffdf7;
+  opacity: 0.9;
+  text-shadow: none;
+}
+
+.hero-rules li {
+  margin-bottom: 12px;
+}
+
 h1,
 h2 {
   font-family: "Playfair Display", Georgia, serif;
@@ -529,6 +545,8 @@ p {
 
   .hero {
     min-height: auto;
+    padding-bottom: 48px;
+    padding-top: 48px;
   }
 
   .status-bar {

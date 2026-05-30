@@ -43,6 +43,7 @@ const state = {
   name: "",
   email: "",
   phone: "",
+  affiliation: "",
   currentIndex: 0,
   answers: {},
   startedAt: null,
@@ -72,6 +73,7 @@ const els = {
   participantName: document.getElementById("participantName"),
   participantEmail: document.getElementById("participantEmail"),
   participantPhone: document.getElementById("participantPhone"),
+  participantAffiliation: document.getElementById("participantAffiliation"),
   startView: document.getElementById("startView"),
   questionView: document.getElementById("questionView"),
   resultView: document.getElementById("resultView"),
@@ -132,6 +134,7 @@ function saveState() {
     name: state.name,
     email: state.email,
     phone: state.phone,
+    affiliation: state.affiliation,
     currentIndex: state.currentIndex,
     answers: state.answers,
     startedAt: state.startedAt,
@@ -152,6 +155,7 @@ function restoreState() {
     state.name = saved.name || "";
     state.email = saved.email || "";
     state.phone = saved.phone || "";
+    state.affiliation = saved.affiliation || "";
     state.currentIndex = saved.currentIndex || 0;
     state.answers = saved.answers || {};
     state.startedAt = saved.startedAt;
@@ -160,6 +164,7 @@ function restoreState() {
     els.participantName.value = state.name;
     if (els.participantEmail) els.participantEmail.value = state.email;
     if (els.participantPhone) els.participantPhone.value = state.phone;
+    if (els.participantAffiliation) els.participantAffiliation.value = state.affiliation;
     return getRemainingSeconds() > 0;
   } catch {
     return false;
@@ -242,10 +247,11 @@ function startTimer() {
   }, 1000);
 }
 
-function beginQuiz(name, email, phone) {
+function beginQuiz(name, email, phone, affiliation) {
   state.name = name.trim();
   state.email = email.trim();
   state.phone = phone.trim();
+  state.affiliation = affiliation ? affiliation.trim() : "";
 
   if (!state.name) {
     showNotice("Please enter your name.");
@@ -259,6 +265,11 @@ function beginQuiz(name, email, phone) {
 
   if (!state.phone || !/^\d{10}$/.test(state.phone)) {
     showNotice("Please enter a valid 10-digit phone number.");
+    return;
+  }
+  
+  if (!state.affiliation) {
+    showNotice("Please select your affiliation with IITB.");
     return;
   }
 
@@ -331,6 +342,7 @@ function localScoreAttempt(finishedAt) {
     name: state.name,
     email: state.email,
     phone: state.phone,
+    affiliation: state.affiliation,
     score,
     total,
     elapsedSeconds,
@@ -346,6 +358,7 @@ function localScoreAttempt(finishedAt) {
     name: entry.name,
     email: entry.email,
     phone: entry.phone,
+    affiliation: entry.affiliation,
     submittedAt: entry.submittedAt,
     score,
     total,
@@ -396,6 +409,7 @@ async function submitQuiz(isAutoSubmit = false) {
             name: result.name,
             email: result.email,
             phone: result.phone,
+            affiliation: result.affiliation,
             score: result.score,
             total: result.total,
             elapsedSeconds: result.elapsedSeconds,
@@ -436,7 +450,7 @@ function renderResult(result) {
 function bindEvents() {
   els.participantForm.addEventListener("submit", event => {
     event.preventDefault();
-    beginQuiz(els.participantName.value, els.participantEmail.value, els.participantPhone.value);
+    beginQuiz(els.participantName.value, els.participantEmail.value, els.participantPhone.value, els.participantAffiliation.value);
   });
 
   els.submitBtn.addEventListener("click", () => submitQuiz(false));
@@ -452,6 +466,7 @@ async function init() {
     els.participantName.disabled = true;
     if (els.participantEmail) els.participantEmail.disabled = true;
     if (els.participantPhone) els.participantPhone.disabled = true;
+    if (els.participantAffiliation) els.participantAffiliation.disabled = true;
     const submitBtn = els.participantForm.querySelector('button');
     if (submitBtn) submitBtn.disabled = true;
     return;
