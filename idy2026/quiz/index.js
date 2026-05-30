@@ -274,9 +274,17 @@ function beginQuiz(name, email, phone, affiliation) {
   }
 
   const leaderboard = getLocalLeaderboard();
-  const isDuplicate = leaderboard.some(entry => entry.email && entry.email.toLowerCase() === state.email.toLowerCase());
+  const now = new Date();
+  const todayDate = now.toDateString();
+  
+  const isDuplicate = leaderboard.some(entry => {
+    if (!entry.email || entry.email.toLowerCase() !== state.email.toLowerCase()) return false;
+    if (!entry.submittedAt) return true; // If no date recorded, assume duplicate to be safe, or false? Let's check date.
+    return new Date(entry.submittedAt).toDateString() === todayDate;
+  });
+  
   if (isDuplicate) {
-    showNotice("You have already submitted the quiz with this email address.");
+    window.alert("You have already submitted the quiz today. Please come back tomorrow!");
     return;
   }
 
