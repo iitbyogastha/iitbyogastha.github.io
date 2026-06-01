@@ -399,6 +399,11 @@ h2 {
   line-height: 1.75;
 }
 
+.feature-copy strong {
+  color: var(--leaf);
+  font-weight: 900;
+}
+
 .stats-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
