@@ -111,9 +111,10 @@
 
     <!-- Chief guest section: ready-to-fill space for speaker photo, talk title, venue, and time. -->
     <section class="split-feature" id="chief-guest">
-      <div class="feature-image">
+      <a class="feature-image" href="https://belluriyengaryogacenter.com/yoga-teachers/rajvi-mehta/"
+        target="_blank" rel="noopener" aria-label="Open Rajvi Mehta profile">
         <img src="guest.png" alt="Chief Guest Image">
-      </div>
+      </a>
 
       <div class="feature-copy">
         <span class="section-kicker">Chief Guest Talk</span>
@@ -899,8 +900,13 @@
               detailsHref = 'https://forms.gle/ivkYa15LdMTKBeK98';
               detailsTarget = ' target="_blank" rel="noopener"';
             } else if (comp.title.includes('Quiz')) {
-              posterHtml = `<div class="mini-poster-placeholder">Quiz</div>`;
-              detailsHref = 'quiz/';
+              posterHtml = `<div class="compact-poster-media"><img src="Quiz Competition social media.png" alt="Quiz Competition Poster"></div>`;
+              detailsHref = 'https://iitbyogastha.in/idy2026/quiz/index.html';
+              detailsTarget = ' target="_blank" rel="noopener"';
+            } else if (comp.title.includes('Best Yogasana')) {
+              posterHtml = `<div class="compact-poster-media"><img src="Best yogasana social media .png" alt="Best Yogasana Competition Poster"></div>`;
+              detailsHref = 'https://docs.google.com/forms/d/e/1FAIpQLScMS9yMsj6eq1xRYhpg3cBmqzmah_oj0-73nbs3tGrAs7t5kA/viewform?usp=dialog';
+              detailsTarget = ' target="_blank" rel="noopener"';
             }
             const registerAttrs = isClosed ? 'href="#" aria-disabled="true" onclick="event.preventDefault()"' : `href="${detailsHref}"${detailsTarget}`;
             compGrid.innerHTML += `
