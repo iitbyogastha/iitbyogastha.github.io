@@ -288,7 +288,6 @@ function beginQuiz(name, email, phone, affiliation) {
     return;
   }
 
-  const now = new Date();
   const endTime = activeConfig ? activeConfig.end : new Date(0);
   if (now > endTime) {
     showNotice("The quiz has ended and the leaderboard is frozen. No new attempts can be started.");
