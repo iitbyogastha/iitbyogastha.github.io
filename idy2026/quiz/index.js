@@ -4,7 +4,9 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxSihB9KvWqjsWPa-ETW
 const QUIZ_CONFIG = {
   secondsPerQuestion: 20,
   storageKey: "idy2026QuizState",
-  localLeaderboardKey: "idy2026QuizLocalLeaderboard"
+  localLeaderboardKey: "idy2026QuizLocalLeaderboard",
+  eventYear: 2026,
+  timeZone: "Asia/Kolkata"
 };
 
 let questions = [];
@@ -12,28 +14,43 @@ let localAnswerKey = {};
 let activeConfig = null;
 let currentStorageKey = QUIZ_CONFIG.storageKey;
 
-function getActiveQuizConfig() {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth();
-  const date = now.getDate();
-  const hours = now.getHours();
+function getEventTimeParts(date = new Date()) {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: QUIZ_CONFIG.timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    hour12: false
+  }).formatToParts(date);
 
-  if (month === 5) { // June is month 5 (0-indexed)
-    if (date >= 4 && date <= 7) {
-      if (hours >= 8 && hours < 20) {
+  return Object.fromEntries(parts
+    .filter(part => part.type !== "literal")
+    .map(part => [part.type, Number(part.value)]));
+}
+
+function getEventDateTime(day, hour) {
+  return new Date(`${QUIZ_CONFIG.eventYear}-06-${String(day).padStart(2, "0")}T${String(hour).padStart(2, "0")}:00:00+05:30`);
+}
+
+function getActiveQuizConfig() {
+  const { year, month, day, hour } = getEventTimeParts();
+
+  if (year === QUIZ_CONFIG.eventYear && month === 6) {
+    if (day >= 4 && day <= 7) {
+      if (hour >= 8 && hour < 20) {
         return {
-          filename: `Yoga_Quiz_Set_${date - 3}.txt`,
-          start: new Date(year, month, date, 8, 0, 0),
-          end: new Date(year, month, date, 20, 0, 0)
+          filename: `Yoga_Quiz_Set_${day - 3}.txt`,
+          start: getEventDateTime(day, 8),
+          end: getEventDateTime(day, 20)
         };
       }
     }
-  } else if (month === 4 && date === 30) {
+  } else if (year === QUIZ_CONFIG.eventYear && month === 5 && day === 30) {
     return {
       filename: `test.txt`,
-      start: new Date(year, month, date, 0, 0, 0),
-      end: new Date(year, month, date, 23, 59, 59)
+      start: new Date(`${QUIZ_CONFIG.eventYear}-05-30T00:00:00+05:30`),
+      end: new Date(`${QUIZ_CONFIG.eventYear}-05-30T23:59:59+05:30`)
     };
   }
   return null;
