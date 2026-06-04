@@ -19,7 +19,7 @@ function getActiveQuizConfig() {
   const date = now.getDate();
   const hours = now.getHours();
 
-  if (month === 4) { // May is month 4 (0-indexed)
+  if (month === 5) { // June is month 5 (0-indexed)
     if (date >= 4 && date <= 7) {
       if (hours >= 8 && hours < 20) {
         return {
@@ -28,13 +28,13 @@ function getActiveQuizConfig() {
           end: new Date(year, month, date, 20, 0, 0)
         };
       }
-    } else if (date === 30) {
-      return {
-        filename: `test.txt`,
-        start: new Date(year, month, date, 0, 0, 0),
-        end: new Date(year, month, date, 23, 59, 59)
-      };
     }
+  } else if (month === 4 && date === 30) {
+    return {
+      filename: `test.txt`,
+      start: new Date(year, month, date, 0, 0, 0),
+      end: new Date(year, month, date, 23, 59, 59)
+    };
   }
   return null;
 }
