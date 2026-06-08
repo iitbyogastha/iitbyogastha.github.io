@@ -866,6 +866,10 @@
               posterHtml = `<div class="compact-poster-media"><img src="Yoga Abhiyojna social media.png" alt="Yoga Abhiyojna Poster"></div>`;
               detailsHref = 'https://forms.gle/wGAkx2aDHKZc8Ubk8';
               detailsTarget = ' target="_blank" rel="noopener"';
+            } else if (ev.title.includes('Yogathon')) {
+              posterHtml = `<div class="compact-poster-media"><a href="#" target="_blank" rel="noopener"><img src="108 SuryaNamaskar.png" alt="Yogathon Practice Sessions Poster"></a></div>`;
+              detailsHref = '#';
+              detailsTarget = ' target="_blank" rel="noopener"';
             } else if (ev.title.includes('Himalayan Samarpan Meditation')) {
               posterHtml = `<div class="compact-poster-media"><img src="himalayan.jpeg" alt="Himalayan Samarpan Meditation Poster"></div>`;
               detailsHref = 'https://forms.gle/L99qQdEZVzDkFu1y9';
@@ -1002,7 +1006,7 @@
     let savedTheme = localStorage.getItem("theme") || "light";
     setTheme(savedTheme);
   </script>
-  <a href="quiz/index.html" class="floating-quiz-btn" aria-label="Take me to quiz">Take me to quiz 🚀</a>
+  <span class="floating-quiz-btn" aria-label="Quiz is over" style="cursor: default; opacity: 0.55; filter: grayscale(1);">Quiz Over 🔒</span>
 </body>
 
 </html>
