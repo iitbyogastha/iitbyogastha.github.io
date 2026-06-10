@@ -854,38 +854,56 @@
             let posterHtml = `<div class="mini-poster-placeholder">${typeLabel}</div>`;
             let detailsHref = '#all-events-table';
             let detailsTarget = '';
+            let posterImg = '';
+            let posterAlt = '';
+
             if (ev.title.includes('Swasti')) {
-              posterHtml = `<div class="compact-poster-media"><img src="../assets/img/events_2026/Swasti.png" alt="Swasti Yoga Camp Poster"></div>`;
+              posterImg = '../assets/img/events_2026/Swasti.png';
+              posterAlt = 'Swasti Yoga Camp Poster';
               detailsHref = 'https://docs.google.com/forms/d/19WqmZcJUDok4yaEh_vrHGP7pHpw6bAqVyNCSFUPNtr0/edit?usp=drivesdk&ouid=112002247348647291799&chromeless=1';
               detailsTarget = ' target="_blank" rel="noopener"';
             } else if (ev.title.includes('Yogic Concentration')) {
-              posterHtml = `<div class="compact-poster-media"><img src="YOGIC CONCENTRATION SESSION final social media.png" alt="Yogic Concentration Session Poster"></div>`;
+              posterImg = 'YOGIC CONCENTRATION SESSION final social media.png';
+              posterAlt = 'Yogic Concentration Session Poster';
               detailsHref = 'https://forms.gle/BsaiCxQcg11CPCNWA';
               detailsTarget = ' target="_blank" rel="noopener"';
             } else if (ev.title.includes('Yoga Abhiyojna')) {
-              posterHtml = `<div class="compact-poster-media"><img src="Yoga Abhiyojna social media.png" alt="Yoga Abhiyojna Poster"></div>`;
+              posterImg = 'Yoga Abhiyojna social media.png';
+              posterAlt = 'Yoga Abhiyojna Poster';
               detailsHref = 'https://forms.gle/wGAkx2aDHKZc8Ubk8';
               detailsTarget = ' target="_blank" rel="noopener"';
             } else if (ev.title.includes('Yogathon')) {
-              posterHtml = `<div class="compact-poster-media"><a href="#" target="_blank" rel="noopener"><img src="108 SuryaNamaskar.png" alt="Yogathon Practice Sessions Poster"></a></div>`;
-              detailsHref = '#';
+              posterImg = '108 SuryaNamaskar.png';
+              posterAlt = 'Yogathon Practice Sessions Poster';
+              detailsHref = 'https://forms.gle/rUA168ra4RwJbXoJA';
               detailsTarget = ' target="_blank" rel="noopener"';
             } else if (ev.title.includes('Himalayan Samarpan Meditation')) {
-              posterHtml = `<div class="compact-poster-media"><img src="himalayan.jpeg" alt="Himalayan Samarpan Meditation Poster"></div>`;
+              posterImg = 'himalayan.jpeg';
+              posterAlt = 'Himalayan Samarpan Meditation Poster';
               detailsHref = 'https://forms.gle/L99qQdEZVzDkFu1y9';
               detailsTarget = ' target="_blank" rel="noopener"';
             } else if (ev.title.includes('Sound Bath')) {
-              posterHtml = `<div class="compact-poster-media"><img src="Sound Bath Session.png" alt="Sound Bath Session Poster"></div>`;
+              posterImg = 'Sound Bath Session.png';
+              posterAlt = 'Sound Bath Session Poster';
               detailsHref = 'https://forms.gle/7kGYP9mXuSj6stbA6';
               detailsTarget = ' target="_blank" rel="noopener"';
             } else if (ev.title.includes('Women\'s Empowerment')) {
-              posterHtml = `<div class="compact-poster-media"><img src="women empowerment workshop social media.png" alt="Women's Empowerment Workshop Poster"></div>`;
+              posterImg = 'women empowerment workshop social media.png';
+              posterAlt = 'Women\'s Empowerment Workshop Poster';
               detailsHref = 'https://forms.gle/dR3JqTYPSA1svJYW8';
               detailsTarget = ' target="_blank" rel="noopener"';
             } else if (ev.title.includes('Varenyam Yoga')) {
-              posterHtml = `<div class="compact-poster-media"><img src="Varenyam Yoga session.png" alt="Varenyam Yoga Session Poster"></div>`;
+              posterImg = 'Varenyam Yoga session.png';
+              posterAlt = 'Varenyam Yoga Session Poster';
+              detailsHref = 'https://docs.google.com/forms/d/e/1FAIpQLSey8ZQ4KZy_SCglhy7ats_ADJ1BPSmyyY_W7YPH9vqjeyR_9w/viewform?usp=header';
+              detailsTarget = ' target="_blank" rel="noopener"';
             }
+
             const registerAttrs = isClosed ? 'href="#" aria-disabled="true" onclick="event.preventDefault()"' : `href="${detailsHref}"${detailsTarget}`;
+            if (posterImg) {
+              posterHtml = `<a class="compact-poster-media" ${registerAttrs}><img src="${posterImg}" alt="${posterAlt}"></a>`;
+            }
+
             eventsGrid.innerHTML += `
               <article class="${cardClass}">
                 <span class="pill">Event</span>
@@ -915,32 +933,51 @@
             let posterHtml = `<div class="mini-poster-placeholder">Poster</div>`;
             let detailsHref = '#competitions';
             let detailsTarget = '';
+            let posterImg = '';
+            let posterAlt = '';
+
             if (comp.title.includes('T-Shirt Design')) {
-              posterHtml = `<div class="compact-poster-media"><img src="T-shirt Design Competition extension Social Media.jpg" alt="T-Shirt Design Competition Poster"></div>`;
+              posterImg = 'T-shirt Design Competition extension Social Media.jpg';
+              posterAlt = 'T-Shirt Design Competition Poster';
               detailsHref = 'https://forms.gle/maJNZDqyEr2FAqkD7';
               detailsTarget = ' target="_blank" rel="noopener"';
             } else if (comp.title.includes('Reel-Making')) {
-              posterHtml = `<div class="compact-poster-media"><img src="reel.jpeg" alt="Reel-Making Competition Poster"></div>`;
+              posterImg = 'reel.jpeg';
+              posterAlt = 'Reel-Making Competition Poster';
               detailsHref = 'https://forms.gle/D9r1L29WLHFhSwieA';
               detailsTarget = ' target="_blank" rel="noopener"';
             } else if (comp.title.includes('Mantra Chanting')) {
-              posterHtml = `<div class="compact-poster-media"><img src="Mantra chanting PRO.png" alt="Mantra Chanting Competition Poster"></div>`;
+              posterImg = 'Mantra chanting PRO.png';
+              posterAlt = 'Mantra Chanting Competition Poster';
               detailsHref = 'https://forms.gle/ivkYa15LdMTKBeK98';
               detailsTarget = ' target="_blank" rel="noopener"';
             } else if (comp.title.includes('Quiz')) {
-              posterHtml = `<div class="compact-poster-media"><img src="Quiz Competition social media.png" alt="Quiz Competition Poster"></div>`;
+              posterImg = 'Quiz Competition social media.png';
+              posterAlt = 'Quiz Competition Poster';
               detailsHref = 'https://iitbyogastha.in/idy2026/quiz/index.html';
               detailsTarget = ' target="_blank" rel="noopener"';
             } else if (comp.title.includes('Best Yogasana')) {
-              posterHtml = `<div class="compact-poster-media"><img src="Best yogasana social media .png" alt="Best Yogasana Competition Poster"></div>`;
+              posterImg = 'Best yogasana social media .png';
+              posterAlt = 'Best Yogasana Competition Poster';
               detailsHref = 'https://docs.google.com/forms/d/e/1FAIpQLScMS9yMsj6eq1xRYhpg3cBmqzmah_oj0-73nbs3tGrAs7t5kA/viewform?usp=dialog';
               detailsTarget = ' target="_blank" rel="noopener"';
             } else if (comp.title.includes('Poem Writing')) {
-              posterHtml = `<div class="compact-poster-media"><img src="Poem writing competition.png" alt="Poem Writing Competition Poster"></div>`;
+              posterImg = 'Poem writing competition.png';
+              posterAlt = 'Poem Writing Competition Poster';
+              detailsHref = 'https://docs.google.com/forms/d/e/1FAIpQLSeEj3LXi_XqhERnhgLo6gcQL4-c0N1IKAGAs0pemcAtG9b_jA/viewform?usp=header';
+              detailsTarget = ' target="_blank" rel="noopener"';
             } else if (comp.title.includes('Slogan Competition')) {
-              posterHtml = `<div class="compact-poster-media"><img src="Slogan competition.png" alt="Slogan Competition Poster"></div>`;
+              posterImg = 'Slogan competition.png';
+              posterAlt = 'Slogan Competition Poster';
+              detailsHref = 'https://docs.google.com/forms/d/e/1FAIpQLScPPiKq5jaNnJUA5hHRLZ05lsLOqaZNkkie-aRCYtCGx8EKIg/viewform?usp=header';
+              detailsTarget = ' target="_blank" rel="noopener"';
             }
+
             const registerAttrs = isClosed ? 'href="#" aria-disabled="true" onclick="event.preventDefault()"' : `href="${detailsHref}"${detailsTarget}`;
+            if (posterImg) {
+              posterHtml = `<a class="compact-poster-media" ${registerAttrs}><img src="${posterImg}" alt="${posterAlt}"></a>`;
+            }
+
             compGrid.innerHTML += `
               <article class="${cardClass}">
                 <span class="pill">Competition</span>
