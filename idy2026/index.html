@@ -882,6 +882,8 @@
               posterHtml = `<div class="compact-poster-media"><img src="women empowerment workshop social media.png" alt="Women's Empowerment Workshop Poster"></div>`;
               detailsHref = 'https://forms.gle/dR3JqTYPSA1svJYW8';
               detailsTarget = ' target="_blank" rel="noopener"';
+            } else if (ev.title.includes('Varenyam Yoga')) {
+              posterHtml = `<div class="compact-poster-media"><img src="Varenyam Yoga session.png" alt="Varenyam Yoga Session Poster"></div>`;
             }
             const registerAttrs = isClosed ? 'href="#" aria-disabled="true" onclick="event.preventDefault()"' : `href="${detailsHref}"${detailsTarget}`;
             eventsGrid.innerHTML += `
@@ -933,6 +935,10 @@
               posterHtml = `<div class="compact-poster-media"><img src="Best yogasana social media .png" alt="Best Yogasana Competition Poster"></div>`;
               detailsHref = 'https://docs.google.com/forms/d/e/1FAIpQLScMS9yMsj6eq1xRYhpg3cBmqzmah_oj0-73nbs3tGrAs7t5kA/viewform?usp=dialog';
               detailsTarget = ' target="_blank" rel="noopener"';
+            } else if (comp.title.includes('Poem Writing')) {
+              posterHtml = `<div class="compact-poster-media"><img src="Poem writing competition.png" alt="Poem Writing Competition Poster"></div>`;
+            } else if (comp.title.includes('Slogan Competition')) {
+              posterHtml = `<div class="compact-poster-media"><img src="Slogan competition.png" alt="Slogan Competition Poster"></div>`;
             }
             const registerAttrs = isClosed ? 'href="#" aria-disabled="true" onclick="event.preventDefault()"' : `href="${detailsHref}"${detailsTarget}`;
             compGrid.innerHTML += `
