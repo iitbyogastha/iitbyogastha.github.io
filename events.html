@@ -172,567 +172,224 @@
          </h5>
         </div>
     
-        <div class="box-shadow-full mb-5">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Yoga Camp
-             </h5>
-            </div>
-            <p>
-             Instructor: Swasti Yoga Centre
-            </p>
-            <hr/>
-            <p><strong>Date:</strong> 04-07 May</p>
-            <p><strong>Time:</strong> 6:30 AM- 8:30 AM & 6:30 PM- 8:30 PM</p>
-            <p><strong>Venue:</strong> Yoga Hall, New SAC</p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img class="d-block w-100" src="assets/img/events_2026/Swasti.png"/>
-              <!-- style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; min-height: 250px; border-radius:8px;"> -->
-              <!-- <img class="img-fluid" src="assets/img/Header_logo.png" style="max-height: 150px; opacity:0.3;" alt="Placeholder Poster"/>
-              <p style="position:absolute; bottom:10px; width:100%; text-align:center; color:#888; margin:0;">Poster coming soon</p> -->
+        <div id="idy-2026-schedule-list"></div>
+
+        <script>
+         const idy2026Schedule = [
+          {
+           title: 'T-Shirt Design Competition',
+           meta: 'Showcase your creativity!',
+           date: '1-10 May 2026',
+           sortDate: '2026-05-01',
+           time: 'Not specified',
+           venue: 'Online',
+           poster: 'idy2026/T-shirt Design Competition extension Social Media.jpg',
+           alt: 'T-Shirt Design Competition Poster'
+          },
+          {
+           title: 'Yoga Camp',
+           meta: 'Instructor: Swasti Yoga Centre',
+           date: '04-07 May 2026',
+           sortDate: '2026-05-04',
+           time: '6:30 AM- 8:30 AM & 6:30 PM- 8:30 PM',
+           venue: 'Yoga Hall, New SAC',
+           poster: 'idy2026/Pasted image.png',
+           alt: 'Swasti Yoga Camp Poster'
+          },
+          {
+           title: 'Yogic Concentration Session',
+           meta: 'Instructor: Nilesh Varkute (Yogastha)',
+           date: '15 May 2026',
+           sortDate: '2026-05-15',
+           time: '6:30 PM- 8:30 PM',
+           venue: 'Yoga Hall, New SAC',
+           poster: 'idy2026/YOGIC CONCENTRATION SESSION final social media.png',
+           alt: 'Yogic Concentration Session Poster'
+          },
+          {
+           title: 'Yoga Abhiyojna (54 Surya Namaskar)',
+           meta: 'Instructor: Yogastha',
+           date: '18-20 May 2026',
+           sortDate: '2026-05-18',
+           time: '5:30 PM- 8:30 PM',
+           venue: 'Yoga Hall, New SAC',
+           poster: 'idy2026/Yoga Abhiyojna social media.png',
+           alt: 'Yoga Abhiyojna Poster'
+          },
+          {
+           title: 'Reel-Making Competition',
+           meta: 'Create engaging yoga reels.',
+           date: '24-31 May 2026',
+           sortDate: '2026-05-24',
+           time: 'Not specified',
+           venue: 'Online',
+           poster: 'idy2026/reel.jpeg',
+           alt: 'Reel-Making Competition Poster'
+          },
+          {
+           title: 'Samarpan Meditation Session',
+           meta: 'Instructor: Himalayan Samarpan Meditation',
+           date: '25 May 2026',
+           sortDate: '2026-05-25',
+           time: '6:30 PM- 8:30 PM',
+           venue: 'Yoga Hall, New SAC',
+           poster: 'idy2026/himalayan.jpeg',
+           alt: 'Himalayan Samarpan Meditation Poster'
+          },
+          {
+           title: "Yoga Workshop for Women's Empowerment",
+           meta: 'Instructor: Sarika M Chavan (Yogastha)',
+           date: '29 May 2026',
+           sortDate: '2026-05-29',
+           time: '7 PM- 8 PM',
+           venue: 'Not specified',
+           poster: 'idy2026/women empowerment workshop social media.png',
+           alt: "Women's Empowerment Workshop Poster"
+          },
+          {
+           title: 'Mantra Chanting Competition',
+           meta: 'Experience the power of mantras.',
+           date: '31 May 2026',
+           sortDate: '2026-05-31',
+           time: '05:30 PM- 08:30 PM',
+           venue: 'Offline',
+           poster: 'idy2026/Mantra chanting PRO.png',
+           alt: 'Mantra Chanting Competition Poster'
+          },
+          {
+           title: 'Sound Bath Session',
+           meta: 'Instructor: Savita Patodia',
+           date: '01 June 2026',
+           sortDate: '2026-06-01',
+           time: '6:30 PM- 8:30 PM',
+           venue: 'Yoga Hall, New SAC',
+           poster: 'idy2026/Sound Bath Session.png',
+           alt: 'Sound Bath Session Poster'
+          },
+          {
+           title: 'Quiz',
+           meta: 'Test your knowledge on Yoga.',
+           date: '04-07 June 2026',
+           sortDate: '2026-06-04',
+           time: 'Not specified',
+           venue: 'Online',
+           poster: 'idy2026/Quiz Competition social media.png',
+           alt: 'Quiz Competition Poster'
+          },
+          {
+           title: 'Best Yogasana (Holding & Advanced Practice)',
+           meta: 'Demonstrate advanced asanas.',
+           date: '04 June 2026',
+           sortDate: '2026-06-04',
+           time: '05:30 PM- 08:30 PM',
+           venue: 'Offline',
+           poster: 'idy2026/Best yogasana social media .png',
+           alt: 'Best Yogasana Competition Poster'
+          },
+          {
+           title: 'Yogathon Practice Sessions',
+           meta: 'Instructor: Yogastha',
+           date: '7, 9, 11, 13, 16 and 18 June 2026',
+           sortDate: '2026-06-07',
+           time: '6:30 PM- 8:30 PM',
+           venue: 'Yoga Hall, New SAC',
+           poster: 'idy2026/108 SuryaNamaskar.png',
+           alt: 'Yogathon Practice Sessions Poster'
+          },
+          {
+           title: 'Poem Writing Competition',
+           meta: 'Express yoga through poetry.',
+           date: '09-12 June 2026',
+           sortDate: '2026-06-09',
+           time: 'Not specified',
+           venue: 'Online',
+           poster: 'idy2026/Poem writing competition.png',
+           alt: 'Poem Writing Competition Poster'
+          },
+          {
+           title: 'Slogan Competition',
+           meta: 'Write inspiring yoga slogans.',
+           date: '09-12 June 2026',
+           sortDate: '2026-06-09',
+           time: 'Not specified',
+           venue: 'Online',
+           poster: 'idy2026/Slogan competition.png',
+           alt: 'Slogan Competition Poster'
+          },
+          {
+           title: 'Varenyam Yoga Session',
+           meta: 'Instructor: Sugam Kumar',
+           date: '12 June 2026',
+           sortDate: '2026-06-12',
+           time: '5:30 PM- 6:30 PM',
+           venue: 'Yoga Hall, New SAC',
+           poster: 'idy2026/Varenyam Yoga session.png',
+           alt: 'Varenyam Yoga Session Poster'
+          },
+          {
+           title: 'Common Yoga Protocol Practice Sessions',
+           meta: 'Instructor: Yogastha',
+           date: '12, 15, 17 June 2026',
+           sortDate: '2026-06-12',
+           time: '6:30 AM- 8:30 AM',
+           venue: 'Yoga Hall, New SAC',
+           poster: 'idy2026/CYP_practice.png',
+           alt: 'Common Yoga Protocol Practice Sessions Poster'
+          },
+          {
+           title: 'Poster making competition',
+           meta: 'Design beautiful yoga posters.',
+           date: '14 June 2026',
+           sortDate: '2026-06-14',
+           time: '05:30 PM- 07:30 PM',
+           venue: 'Offline (Yoga Hall)',
+           poster: 'idy2026/yogastha.png',
+           alt: 'Yogastha Logo'
+          },
+          {
+           title: 'Tratak competition',
+           meta: 'Enhance your focus with Tratak.',
+           date: '14 June 2026',
+           sortDate: '2026-06-14',
+           time: '07:30 PM- 08:30 PM',
+           venue: 'Offline (Yoga Hall)',
+           poster: 'idy2026/yogastha.png',
+           alt: 'Yogastha Logo'
+          }
+         ];
+
+         const scheduleList = document.getElementById('idy-2026-schedule-list');
+         scheduleList.innerHTML = idy2026Schedule
+          .sort((a, b) => new Date(b.sortDate) - new Date(a.sortDate) || a.title.localeCompare(b.title))
+          .map((item) => `
+           <div class="box-shadow-full mb-5">
+            <div class="row">
+             <div class="col-md-6">
+              <div class="about-me pt-4 pt-md-0">
+               <div class="title-box-2">
+                <h5 class="title-left">${item.title}</h5>
+               </div>
+               <p>${item.meta}</p>
+               <hr/>
+               <p><strong>Date:</strong> ${item.date}</p>
+               <p><strong>Time:</strong> ${item.time}</p>
+               <p><strong>Venue:</strong> ${item.venue}</p>
+              </div>
+             </div>
+             <div class="col-md-5">
+              <div class="carousel slide carousel-fade" data-bs-ride="carousel">
+               <div class="carousel-inner">
+                <div class="carousel-item active">
+                 <img alt="${item.alt}" class="d-block w-100" src="${item.poster}"/>
+                </div>
+               </div>
+              </div>
              </div>
             </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        
-        <div class="box-shadow-full mb-5">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Yogic Concentration Session
-             </h5>
-            </div>
-            <p>
-             Instructor: Nilesh Varkute (Yogastha)
-            </p>
-            <hr/>
-            <p><strong>Date:</strong> 15 May</p>
-            <p><strong>Time:</strong> 6:30 PM- 8:30 PM</p>
-            <p><strong>Venue:</strong> Yoga Hall, New SAC</p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-             <div class="carousel-item active" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; min-height: 250px; border-radius:8px;">
-              <img class="img-fluid" src="assets/img/Header_logo.png" style="max-height: 150px; opacity:0.3;" alt="Placeholder Poster"/>
-              <p style="position:absolute; bottom:10px; width:100%; text-align:center; color:#888; margin:0;">Poster coming soon</p>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        
-        <div class="box-shadow-full mb-5">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Yoga Abhiyojna (54 Surya Namaskar)
-             </h5>
-            </div>
-            <p>
-             Instructor: Yogastha
-            </p>
-            <hr/>
-            <p><strong>Date:</strong> 18 - 20 May</p>
-            <p><strong>Time:</strong> 5:30 PM- 8:30 PM</p>
-            <p><strong>Venue:</strong> Yoga Hall, New SAC</p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-             <div class="carousel-item active" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; min-height: 250px; border-radius:8px;">
-              <img class="img-fluid" src="assets/img/Header_logo.png" style="max-height: 150px; opacity:0.3;" alt="Placeholder Poster"/>
-              <p style="position:absolute; bottom:10px; width:100%; text-align:center; color:#888; margin:0;">Poster coming soon</p>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        
-        <div class="box-shadow-full mb-5">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Samarpan Meditation Session
-             </h5>
-            </div>
-            <p>
-             Instructor: Himalayan Samarpan Meditation
-            </p>
-            <hr/>
-            <p><strong>Date:</strong> 25 May</p>
-            <p><strong>Time:</strong> 6:30 PM- 8:30 PM</p>
-            <p><strong>Venue:</strong> Yoga Hall, New SAC</p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-             <div class="carousel-item active" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; min-height: 250px; border-radius:8px;">
-              <img class="img-fluid" src="assets/img/Header_logo.png" style="max-height: 150px; opacity:0.3;" alt="Placeholder Poster"/>
-              <p style="position:absolute; bottom:10px; width:100%; text-align:center; color:#888; margin:0;">Poster coming soon</p>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        
-        <div class="box-shadow-full mb-5">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Yoga Workshop for Women's Empowerment
-             </h5>
-            </div>
-            <p>
-             Instructor: Sarika M Chavan (Yogastha)
-            </p>
-            <hr/>
-            <p><strong>Date:</strong> 29 May</p>
-            <p><strong>Time:</strong> 7 PM- 8 PM</p>
-            <p><strong>Venue:</strong> Not specified</p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-             <div class="carousel-item active" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; min-height: 250px; border-radius:8px;">
-              <img class="img-fluid" src="assets/img/Header_logo.png" style="max-height: 150px; opacity:0.3;" alt="Placeholder Poster"/>
-              <p style="position:absolute; bottom:10px; width:100%; text-align:center; color:#888; margin:0;">Poster coming soon</p>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        
-        <div class="box-shadow-full mb-5">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Sound Bath Session
-             </h5>
-            </div>
-            <p>
-             Instructor: Savita Patodia
-            </p>
-            <hr/>
-            <p><strong>Date:</strong> 01 June</p>
-            <p><strong>Time:</strong> 6:30 PM- 8:30 PM</p>
-            <p><strong>Venue:</strong> Yoga Hall, New SAC</p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-             <div class="carousel-item active" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; min-height: 250px; border-radius:8px;">
-              <img class="img-fluid" src="assets/img/Header_logo.png" style="max-height: 150px; opacity:0.3;" alt="Placeholder Poster"/>
-              <p style="position:absolute; bottom:10px; width:100%; text-align:center; color:#888; margin:0;">Poster coming soon</p>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        
-        <div class="box-shadow-full mb-5">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Varenyam Yoga Session
-             </h5>
-            </div>
-            <p>
-             Instructor: Sugam Kumar
-            </p>
-            <hr/>
-            <p><strong>Date:</strong> 12 June</p>
-            <p><strong>Time:</strong> 5:30 PM- 6:30 PM</p>
-            <p><strong>Venue:</strong> Yoga Hall, New SAC</p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-             <div class="carousel-item active" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; min-height: 250px; border-radius:8px;">
-              <img class="img-fluid" src="assets/img/Header_logo.png" style="max-height: 150px; opacity:0.3;" alt="Placeholder Poster"/>
-              <p style="position:absolute; bottom:10px; width:100%; text-align:center; color:#888; margin:0;">Poster coming soon</p>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        
-        <div class="box-shadow-full mb-5">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Yogathon Practice Sessions
-             </h5>
-            </div>
-            <p>
-             Instructor: Yogastha
-            </p>
-            <hr/>
-            <p><strong>Date:</strong> 7,9,11,13,16 and 18 June</p>
-            <p><strong>Time:</strong> 6:30 PM- 8:30 PM</p>
-            <p><strong>Venue:</strong> Yoga Hall, New SAC</p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-             <div class="carousel-item active" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; min-height: 250px; border-radius:8px;">
-              <img class="img-fluid" src="assets/img/Header_logo.png" style="max-height: 150px; opacity:0.3;" alt="Placeholder Poster"/>
-              <p style="position:absolute; bottom:10px; width:100%; text-align:center; color:#888; margin:0;">Poster coming soon</p>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        
-        <div class="box-shadow-full mb-5">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Common Yoga Protocol Practice Sessions
-             </h5>
-            </div>
-            <p>
-             Instructor: Yogastha
-            </p>
-            <hr/>
-            <p><strong>Date:</strong> 12,15,17 June</p>
-            <p><strong>Time:</strong> 6:30 AM- 8:30 AM</p>
-            <p><strong>Venue:</strong> Yoga Hall, New SAC</p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-             <div class="carousel-item active" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; min-height: 250px; border-radius:8px;">
-              <img class="img-fluid" src="assets/img/Header_logo.png" style="max-height: 150px; opacity:0.3;" alt="Placeholder Poster"/>
-              <p style="position:absolute; bottom:10px; width:100%; text-align:center; color:#888; margin:0;">Poster coming soon</p>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        
-    
-        <div class="box-shadow-full mb-5">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              T-Shirt Design Competition
-             </h5>
-            </div>
-            <p>
-             Showcase your creativity!
-            </p>
-            <hr/>
-            <p><strong>Date:</strong> 1-10 May</p>
-            <p><strong>Time:</strong> Not specified</p>
-            <p><strong>Venue:</strong> Online</p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-             <div class="carousel-item active" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; min-height: 250px; border-radius:8px;">
-              <img class="img-fluid" src="assets/img/Header_logo.png" style="max-height: 150px; opacity:0.3;" alt="Placeholder Poster"/>
-              <p style="position:absolute; bottom:10px; width:100%; text-align:center; color:#888; margin:0;">Poster coming soon</p>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        
-        <div class="box-shadow-full mb-5">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Reel-Making Competition
-             </h5>
-            </div>
-            <p>
-             Create engaging yoga reels.
-            </p>
-            <hr/>
-            <p><strong>Date:</strong> 24-31 May</p>
-            <p><strong>Time:</strong> Not specified</p>
-            <p><strong>Venue:</strong> Online</p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-             <div class="carousel-item active" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; min-height: 250px; border-radius:8px;">
-              <img class="img-fluid" src="assets/img/Header_logo.png" style="max-height: 150px; opacity:0.3;" alt="Placeholder Poster"/>
-              <p style="position:absolute; bottom:10px; width:100%; text-align:center; color:#888; margin:0;">Poster coming soon</p>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        
-        <div class="box-shadow-full mb-5">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Mantra Chanting Competition
-             </h5>
-            </div>
-            <p>
-             Experience the power of mantras.
-            </p>
-            <hr/>
-            <p><strong>Date:</strong> 31 May</p>
-            <p><strong>Time:</strong> 05:30 PM- 08:30 PM</p>
-            <p><strong>Venue:</strong> Offline</p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-             <div class="carousel-item active" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; min-height: 250px; border-radius:8px;">
-              <img class="img-fluid" src="assets/img/Header_logo.png" style="max-height: 150px; opacity:0.3;" alt="Placeholder Poster"/>
-              <p style="position:absolute; bottom:10px; width:100%; text-align:center; color:#888; margin:0;">Poster coming soon</p>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        
-        <div class="box-shadow-full mb-5">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Quiz
-             </h5>
-            </div>
-            <p>
-             Test your knowledge on Yoga.
-            </p>
-            <hr/>
-            <p><strong>Date:</strong> 04-07 June</p>
-            <p><strong>Time:</strong> Not specified</p>
-            <p><strong>Venue:</strong> Online</p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-             <div class="carousel-item active" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; min-height: 250px; border-radius:8px;">
-              <img class="img-fluid" src="assets/img/Header_logo.png" style="max-height: 150px; opacity:0.3;" alt="Placeholder Poster"/>
-              <p style="position:absolute; bottom:10px; width:100%; text-align:center; color:#888; margin:0;">Poster coming soon</p>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        
-        <div class="box-shadow-full mb-5">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Best Yogasana (Holding & Advanced Practice)
-             </h5>
-            </div>
-            <p>
-             Demonstrate advanced asanas.
-            </p>
-            <hr/>
-            <p><strong>Date:</strong> 07 June</p>
-            <p><strong>Time:</strong> 05:30 PM- 08:30 PM</p>
-            <p><strong>Venue:</strong> Offline</p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-             <div class="carousel-item active" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; min-height: 250px; border-radius:8px;">
-              <img class="img-fluid" src="assets/img/Header_logo.png" style="max-height: 150px; opacity:0.3;" alt="Placeholder Poster"/>
-              <p style="position:absolute; bottom:10px; width:100%; text-align:center; color:#888; margin:0;">Poster coming soon</p>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        
-        <div class="box-shadow-full mb-5">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Poem Writing Competition
-             </h5>
-            </div>
-            <p>
-             Express yoga through poetry.
-            </p>
-            <hr/>
-            <p><strong>Date:</strong> 09-12 June</p>
-            <p><strong>Time:</strong> Not specified</p>
-            <p><strong>Venue:</strong> Online</p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-             <div class="carousel-item active" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; min-height: 250px; border-radius:8px;">
-              <img class="img-fluid" src="assets/img/Header_logo.png" style="max-height: 150px; opacity:0.3;" alt="Placeholder Poster"/>
-              <p style="position:absolute; bottom:10px; width:100%; text-align:center; color:#888; margin:0;">Poster coming soon</p>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        
-        <div class="box-shadow-full mb-5">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Slogan Competition
-             </h5>
-            </div>
-            <p>
-             Write inspiring yoga slogans.
-            </p>
-            <hr/>
-            <p><strong>Date:</strong> 09–12 June</p>
-            <p><strong>Time:</strong> Not specified</p>
-            <p><strong>Venue:</strong> Online</p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-             <div class="carousel-item active" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; min-height: 250px; border-radius:8px;">
-              <img class="img-fluid" src="assets/img/Header_logo.png" style="max-height: 150px; opacity:0.3;" alt="Placeholder Poster"/>
-              <p style="position:absolute; bottom:10px; width:100%; text-align:center; color:#888; margin:0;">Poster coming soon</p>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        
-        <div class="box-shadow-full mb-5">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Poster making competition
-             </h5>
-            </div>
-            <p>
-             Design beautiful yoga posters.
-            </p>
-            <hr/>
-            <p><strong>Date:</strong> 14 June</p>
-            <p><strong>Time:</strong> 05:30 PM- 07:30 PM</p>
-            <p><strong>Venue:</strong> Offline (Yoga Hall)</p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-             <div class="carousel-item active" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; min-height: 250px; border-radius:8px;">
-              <img class="img-fluid" src="assets/img/Header_logo.png" style="max-height: 150px; opacity:0.3;" alt="Placeholder Poster"/>
-              <p style="position:absolute; bottom:10px; width:100%; text-align:center; color:#888; margin:0;">Poster coming soon</p>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        
-        <div class="box-shadow-full mb-5">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Tratak competition
-             </h5>
-            </div>
-            <p>
-             Enhance your focus with Tratak.
-            </p>
-            <hr/>
-            <p><strong>Date:</strong> 14 June</p>
-            <p><strong>Time:</strong> 07:30 PM- 08:30 PM</p>
-            <p><strong>Venue:</strong> Offline (Yoga Hall)</p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-             <div class="carousel-item active" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; min-height: 250px; border-radius:8px;">
-              <img class="img-fluid" src="assets/img/Header_logo.png" style="max-height: 150px; opacity:0.3;" alt="Placeholder Poster"/>
-              <p style="position:absolute; bottom:10px; width:100%; text-align:center; color:#888; margin:0;">Poster coming soon</p>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        
+           </div>`)
+          .join('');
+        </script>
+
        </div>
       </div>
      </div>
