@@ -976,6 +976,16 @@
               posterAlt = 'Slogan Competition Poster';
               detailsHref = 'https://docs.google.com/forms/d/e/1FAIpQLScPPiKq5jaNnJUA5hHRLZ05lsLOqaZNkkie-aRCYtCGx8EKIg/viewform?usp=header';
               detailsTarget = ' target="_blank" rel="noopener"';
+            } else if (comp.title.includes('Poster making')) {
+              posterImg = 'POSTER MAKING COMPETITION.png';
+              posterAlt = 'Poster Making Competition Poster';
+              detailsHref = 'https://docs.google.com/forms/d/e/1FAIpQLSei9WJ01N0zYpAJU2RQibEFOk5eDn8lQAB8n-w0H2UNTzjMlA/viewform?usp=header';
+              detailsTarget = ' target="_blank" rel="noopener"';
+            } else if (comp.title.includes('Tratak')) {
+              posterImg = 'tratak.png';
+              posterAlt = 'Tratak Competition Poster';
+              detailsHref = 'https://docs.google.com/forms/d/e/1FAIpQLSdyjdLUjB69gsTAIGMbBmyvvt1qxjq4SS5FIADWcniEmVLq8g/viewform?usp=header';
+              detailsTarget = ' target="_blank" rel="noopener"';
             }
 
             const registerAttrs = isClosed ? 'href="#" aria-disabled="true" onclick="event.preventDefault()"' : `href="${detailsHref}"${detailsTarget}`;
