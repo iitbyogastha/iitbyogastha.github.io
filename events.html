@@ -8,8 +8,8 @@
   </title>
   <meta content="" name="description"/>
   <meta content="" name="keywords"/>
-  <link href="assets/img/favicon.png" rel="icon"/>
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+  <link href="assets/img/favicon.webp" rel="icon"/>
+  <link href="assets/img/apple-touch-icon.webp" rel="apple-touch-icon"/>
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
@@ -17,14 +17,66 @@
   <link href="assets/css/style.css" rel="stylesheet"/>
   <link href="assets/css/msc.css" rel="stylesheet"/>
   <link href="assets/css/theme.css" rel="stylesheet"/>
+  <link href="assets/css/portal-transition.css" rel="stylesheet"/>
  </head>
 <body>
+  <!-- 3D Book Page-Flip Portal Transition -->
+  <div id="book-transition-overlay">
+    <div class="book-cover" id="book-element">
+      <div class="book">
+        <!-- Left static page -->
+        <div class="book-page left">
+          <div class="page-content">
+            <h3 style="font-family: 'Times New Roman', serif; border-bottom: 2px solid #4a2e1b; padding-bottom: 5px; margin-bottom: 15px;">Yogastha Chronicles</h3>
+            <p>A journey through the archives of mindfulness, wellness, and self-realization at IIT Bombay...</p>
+            <p style="margin-top: 20px; font-style: italic; font-size: 12px; color: #6e4e37;">"Within lies the infinite path of self-realization."</p>
+          </div>
+        </div>
+
+        <!-- Right static page -->
+        <div class="book-page right">
+          <div class="page-content" style="text-align: right;">
+            <h3 style="font-family: 'Times New Roman', serif; border-bottom: 2px solid #4a2e1b; padding-bottom: 5px; margin-bottom: 15px;">Historical Records</h3>
+            <p>Flipping back to the origins of yoga camps, international day of yoga celebrations, and historic wellness modules...</p>
+          </div>
+        </div>
+
+        <!-- Flipping page 3 (farthest back, 2023) -->
+        <div class="book-page flipping flipping-3">
+          <div class="year-display">
+            2023
+            <div class="year-sub">Hatha &amp; Pranayama</div>
+          </div>
+        </div>
+
+        <!-- Flipping page 2 (middle, 2024) -->
+        <div class="book-page flipping flipping-2">
+          <div class="year-display">
+            2024
+            <div class="year-sub">Detox &amp; Yogathons</div>
+          </div>
+        </div>
+
+        <!-- Flipping page 1 (closest, 2025) -->
+        <div class="book-page flipping flipping-1">
+          <div class="year-display">
+            2025
+            <div class="year-sub">Holistic Wellness</div>
+          </div>
+        </div>
+
+        <!-- Spine overlay shadow -->
+        <div class="book-spine"></div>
+      </div>
+    </div>
+  </div>
+  <div id="portal-flash"></div>
   <!-- Site header: shared navigation for the events archive, dropdowns, and theme toggle. -->
   <header class="fixed-top" id="header">
    <div class="container d-flex align-items-center justify-content-between">
     <h1 class="logo">
      <a class="logo" href="index.html">
-      <img alt="" class="img-fluid" src="assets/img/Header_logo.png"/>
+      <img alt="" class="img-fluid" src="assets/img/Header_logo.webp"/>
      </a>
     </h1>
     <nav class="navbar" id="navbar">
@@ -39,10 +91,14 @@
         Office Bearers
        </a>
       </li>
-      <li>
-       <a class="nav-link scrollto active" href="events.html">
-        Events
+      <li class="dropdown">
+       <a class="active" href="events.html">
+        <span>Events</span> <i class="bi bi-chevron-down"></i>
        </a>
+       <ul>
+        <li><a href="events.html">Recent &amp; Upcoming Events</a></li>
+        <li><a href="old_events.html">All Events Archive</a></li>
+       </ul>
       </li>
       <li class="dropdown">
        <a href="#camps">
@@ -132,13 +188,13 @@
       </div>
       <ul class="nav nav-tabs justify-content-center fixed fs-5">
        <li class="nav-item">
-        <a class="nav-link" href="#upcoming">
-         Upcoming
+        <a class="nav-link" href="#ongoing">
+         Ongoing
         </a>
        </li>
        <li class="nav-item">
-        <a class="nav-link" href="#ongoing">
-         Ongoing
+        <a class="nav-link" href="#upcoming">
+         Upcoming
         </a>
        </li>
        <li class="nav-item">
@@ -146,256 +202,12 @@
          Recent
         </a>
        </li>
-       <li class="nav-item">
-        <a class="nav-link" href="#workshops">
-         Workshops
-        </a>
-       </li>
-       <li class="nav-item">
-        <a class="nav-link" href="#talks">
-         Talks
-        </a>
-       </li>
       </ul>
      </div>
     </div>
     
-    <!-- Upcoming events section: current/future event cards with registration and poster details. -->
-    <section class="about-mf sect-pt4 route" id="upcoming">
-     <div class="container">
-      <div class="row">
-       <div class="col-sm-12">
-
-        <div class="title-box-1 mt-5">
-         <h5 class="title-left">
-          Upcoming
-         </h5>
-        </div>
-    
-        <div id="idy-2026-schedule-list"></div>
-
-        <script>
-         const idy2026Schedule = [
-          {
-           title: 'T-Shirt Design Competition',
-           meta: 'Showcase your creativity!',
-           date: '1-10 May 2026',
-           sortDate: '2026-05-01',
-           time: 'Not specified',
-           venue: 'Online',
-           poster: 'idy2026/T-shirt Design Competition extension Social Media.jpg',
-           alt: 'T-Shirt Design Competition Poster'
-          },
-          {
-           title: 'Yoga Camp',
-           meta: 'Instructor: Swasti Yoga Centre',
-           date: '04-07 May 2026',
-           sortDate: '2026-05-04',
-           time: '6:30 AM- 8:30 AM & 6:30 PM- 8:30 PM',
-           venue: 'Yoga Hall, New SAC',
-           poster: 'idy2026/Pasted image.png',
-           alt: 'Swasti Yoga Camp Poster'
-          },
-          {
-           title: 'Yogic Concentration Session',
-           meta: 'Instructor: Nilesh Varkute (Yogastha)',
-           date: '15 May 2026',
-           sortDate: '2026-05-15',
-           time: '6:30 PM- 8:30 PM',
-           venue: 'Yoga Hall, New SAC',
-           poster: 'idy2026/YOGIC CONCENTRATION SESSION final social media.png',
-           alt: 'Yogic Concentration Session Poster'
-          },
-          {
-           title: 'Yoga Abhiyojna (54 Surya Namaskar)',
-           meta: 'Instructor: Yogastha',
-           date: '18-20 May 2026',
-           sortDate: '2026-05-18',
-           time: '5:30 PM- 8:30 PM',
-           venue: 'Yoga Hall, New SAC',
-           poster: 'idy2026/Yoga Abhiyojna social media.png',
-           alt: 'Yoga Abhiyojna Poster'
-          },
-          {
-           title: 'Reel-Making Competition',
-           meta: 'Create engaging yoga reels.',
-           date: '24-31 May 2026',
-           sortDate: '2026-05-24',
-           time: 'Not specified',
-           venue: 'Online',
-           poster: 'idy2026/reel.jpeg',
-           alt: 'Reel-Making Competition Poster'
-          },
-          {
-           title: 'Samarpan Meditation Session',
-           meta: 'Instructor: Himalayan Samarpan Meditation',
-           date: '25 May 2026',
-           sortDate: '2026-05-25',
-           time: '6:30 PM- 8:30 PM',
-           venue: 'Yoga Hall, New SAC',
-           poster: 'idy2026/himalayan.jpeg',
-           alt: 'Himalayan Samarpan Meditation Poster'
-          },
-          {
-           title: "Yoga Workshop for Women's Empowerment",
-           meta: 'Instructor: Sarika M Chavan (Yogastha)',
-           date: '29 May 2026',
-           sortDate: '2026-05-29',
-           time: '7 PM- 8 PM',
-           venue: 'Not specified',
-           poster: 'idy2026/women empowerment workshop social media.png',
-           alt: "Women's Empowerment Workshop Poster"
-          },
-          {
-           title: 'Mantra Chanting Competition',
-           meta: 'Experience the power of mantras.',
-           date: '31 May 2026',
-           sortDate: '2026-05-31',
-           time: '05:30 PM- 08:30 PM',
-           venue: 'Offline',
-           poster: 'idy2026/Mantra chanting PRO.png',
-           alt: 'Mantra Chanting Competition Poster'
-          },
-          {
-           title: 'Sound Bath Session',
-           meta: 'Instructor: Savita Patodia',
-           date: '01 June 2026',
-           sortDate: '2026-06-01',
-           time: '6:30 PM- 8:30 PM',
-           venue: 'Yoga Hall, New SAC',
-           poster: 'idy2026/Sound Bath Session.png',
-           alt: 'Sound Bath Session Poster'
-          },
-          {
-           title: 'Quiz',
-           meta: 'Test your knowledge on Yoga.',
-           date: '04-07 June 2026',
-           sortDate: '2026-06-04',
-           time: 'Not specified',
-           venue: 'Online',
-           poster: 'idy2026/Quiz Competition social media.png',
-           alt: 'Quiz Competition Poster'
-          },
-          {
-           title: 'Best Yogasana (Holding & Advanced Practice)',
-           meta: 'Demonstrate advanced asanas.',
-           date: '04 June 2026',
-           sortDate: '2026-06-04',
-           time: '05:30 PM- 08:30 PM',
-           venue: 'Offline',
-           poster: 'idy2026/Best yogasana social media .png',
-           alt: 'Best Yogasana Competition Poster'
-          },
-          {
-           title: 'Yogathon Practice Sessions',
-           meta: 'Instructor: Yogastha',
-           date: '7, 9, 11, 13, 16 and 18 June 2026',
-           sortDate: '2026-06-07',
-           time: '6:30 PM- 8:30 PM',
-           venue: 'Yoga Hall, New SAC',
-           poster: 'idy2026/108 SuryaNamaskar.png',
-           alt: 'Yogathon Practice Sessions Poster'
-          },
-          {
-           title: 'Poem Writing Competition',
-           meta: 'Express yoga through poetry.',
-           date: '09-12 June 2026',
-           sortDate: '2026-06-09',
-           time: 'Not specified',
-           venue: 'Online',
-           poster: 'idy2026/Poem writing competition.png',
-           alt: 'Poem Writing Competition Poster'
-          },
-          {
-           title: 'Slogan Competition',
-           meta: 'Write inspiring yoga slogans.',
-           date: '09-12 June 2026',
-           sortDate: '2026-06-09',
-           time: 'Not specified',
-           venue: 'Online',
-           poster: 'idy2026/Slogan competition.png',
-           alt: 'Slogan Competition Poster'
-          },
-          {
-           title: 'Varenyam Yoga Session',
-           meta: 'Instructor: Sugam Kumar',
-           date: '12 June 2026',
-           sortDate: '2026-06-12',
-           time: '5:30 PM- 6:30 PM',
-           venue: 'Yoga Hall, New SAC',
-           poster: 'idy2026/Varenyam Yoga session.png',
-           alt: 'Varenyam Yoga Session Poster'
-          },
-          {
-           title: 'Common Yoga Protocol Practice Sessions',
-           meta: 'Instructor: Yogastha',
-           date: '12, 15, 17 June 2026',
-           sortDate: '2026-06-12',
-           time: '6:30 AM- 8:30 AM',
-           venue: 'Yoga Hall, New SAC',
-           poster: 'idy2026/CYP_practice.png',
-           alt: 'Common Yoga Protocol Practice Sessions Poster'
-          },
-          {
-           title: 'Poster making competition',
-           meta: 'Design beautiful yoga posters.',
-           date: '14 June 2026',
-           sortDate: '2026-06-14',
-           time: '05:30 PM- 07:30 PM',
-           venue: 'Offline (Yoga Hall)',
-           poster: 'idy2026/POSTER MAKING COMPETITION.png',
-           alt: 'Poster Making Competition Poster'
-          },
-          {
-           title: 'Tratak competition',
-           meta: 'Enhance your focus with Tratak.',
-           date: '14 June 2026',
-           sortDate: '2026-06-14',
-           time: '07:30 PM- 08:30 PM',
-           venue: 'Offline (Yoga Hall)',
-           poster: 'idy2026/tratak.png',
-           alt: 'Tratak Competition Poster'
-          }
-         ];
-
-         const scheduleList = document.getElementById('idy-2026-schedule-list');
-         scheduleList.innerHTML = idy2026Schedule
-          .sort((a, b) => new Date(b.sortDate) - new Date(a.sortDate) || a.title.localeCompare(b.title))
-          .map((item) => `
-           <div class="box-shadow-full mb-5">
-            <div class="row">
-             <div class="col-md-6">
-              <div class="about-me pt-4 pt-md-0">
-               <div class="title-box-2">
-                <h5 class="title-left">${item.title}</h5>
-               </div>
-               <p>${item.meta}</p>
-               <hr/>
-               <p><strong>Date:</strong> ${item.date}</p>
-               <p><strong>Time:</strong> ${item.time}</p>
-               <p><strong>Venue:</strong> ${item.venue}</p>
-              </div>
-             </div>
-             <div class="col-md-5">
-              <div class="carousel slide carousel-fade" data-bs-ride="carousel">
-               <div class="carousel-inner">
-                <div class="carousel-item active">
-                 <img alt="${item.alt}" class="d-block w-100" src="${item.poster}"/>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-           </div>`)
-          .join('');
-        </script>
-
-       </div>
-      </div>
-     </div>
-    </section>
-<!-- Ongoing events section: active recurring or currently running programs. -->
-<section class="about-mf sect-pt4 route" id="ongoing">
+    <!-- Ongoing events section: active recurring or currently running programs. -->
+    <section class="about-mf sect-pt4 route" id="ongoing">
      <div class="container">
       <div class="row">
        <div class="col-sm-12">
@@ -471,6 +283,291 @@
       </div>
      </div>
     </section>
+<!-- Upcoming events section: current/future event cards with registration and poster details. -->
+<section class="about-mf sect-pt4 route" id="upcoming">
+     <div class="container">
+      <div class="row">
+       <div class="col-sm-12">
+
+        <div class="title-box-1 mt-5">
+         <h5 class="title-left">
+          Upcoming
+         </h5>
+        </div>
+    
+        <div id="idy-2026-schedule-list"></div>
+
+        <script>
+         const idy2026Schedule = [
+          {
+           title: 'T-Shirt Design Competition',
+           meta: 'Showcase your creativity!',
+           date: '1-10 May 2026',
+           sortDate: '2026-05-01',
+           time: 'Not specified',
+           venue: 'Online',
+           poster: 'idy2026/T-shirt Design Competition extension Social Media.webp',
+           alt: 'T-Shirt Design Competition Poster'
+          },
+          {
+           title: 'Yoga Camp',
+           meta: 'Instructor: Swasti Yoga Centre',
+           date: '04-07 May 2026',
+           sortDate: '2026-05-04',
+           time: '6:30 AM- 8:30 AM & 6:30 PM- 8:30 PM',
+           venue: 'Yoga Hall, New SAC',
+           poster: 'idy2026/Pasted image.webp',
+           alt: 'Swasti Yoga Camp Poster'
+          },
+          {
+           title: 'Yogic Concentration Session',
+           meta: 'Instructor: Nilesh Varkute (Yogastha)',
+           date: '15 May 2026',
+           sortDate: '2026-05-15',
+           time: '6:30 PM- 8:30 PM',
+           venue: 'Yoga Hall, New SAC',
+           poster: 'idy2026/YOGIC CONCENTRATION SESSION final social media.webp',
+           alt: 'Yogic Concentration Session Poster'
+          },
+          {
+           title: 'Yoga Abhiyojna (54 Surya Namaskar)',
+           meta: 'Instructor: Yogastha',
+           date: '18-20 May 2026',
+           sortDate: '2026-05-18',
+           time: '5:30 PM- 8:30 PM',
+           venue: 'Yoga Hall, New SAC',
+           poster: 'idy2026/Yoga Abhiyojna social media.webp',
+           alt: 'Yoga Abhiyojna Poster'
+          },
+          {
+           title: 'Reel-Making Competition',
+           meta: 'Create engaging yoga reels.',
+           date: '24-31 May 2026',
+           sortDate: '2026-05-24',
+           time: 'Not specified',
+           venue: 'Online',
+           poster: 'idy2026/reel.webp',
+           alt: 'Reel-Making Competition Poster'
+          },
+          {
+           title: 'Samarpan Meditation Session',
+           meta: 'Instructor: Himalayan Samarpan Meditation',
+           date: '25 May 2026',
+           sortDate: '2026-05-25',
+           time: '6:30 PM- 8:30 PM',
+           venue: 'Yoga Hall, New SAC',
+           poster: 'idy2026/himalayan.webp',
+           alt: 'Himalayan Samarpan Meditation Poster'
+          },
+          {
+           title: "Yoga Workshop for Women's Empowerment",
+           meta: 'Instructor: Sarika M Chavan (Yogastha)',
+           date: '29 May 2026',
+           sortDate: '2026-05-29',
+           time: '7 PM- 8 PM',
+           venue: 'Not specified',
+           poster: 'idy2026/women empowerment workshop social media.webp',
+           alt: "Women's Empowerment Workshop Poster"
+          },
+          {
+           title: 'Mantra Chanting Competition',
+           meta: 'Experience the power of mantras.',
+           date: '31 May 2026',
+           sortDate: '2026-05-31',
+           time: '05:30 PM- 08:30 PM',
+           venue: 'Offline',
+           poster: 'idy2026/Mantra chanting PRO.webp',
+           alt: 'Mantra Chanting Competition Poster'
+          },
+          {
+           title: 'Sound Bath Session',
+           meta: 'Instructor: Savita Patodia',
+           date: '01 June 2026',
+           sortDate: '2026-06-01',
+           time: '6:30 PM- 8:30 PM',
+           venue: 'Yoga Hall, New SAC',
+           poster: 'idy2026/Sound Bath Session.webp',
+           alt: 'Sound Bath Session Poster'
+          },
+          {
+           title: 'Quiz',
+           meta: 'Test your knowledge on Yoga.',
+           date: '04-07 June 2026',
+           sortDate: '2026-06-04',
+           time: 'Not specified',
+           venue: 'Online',
+           poster: 'idy2026/Quiz Competition social media.webp',
+           alt: 'Quiz Competition Poster'
+          },
+          {
+           title: 'Best Yogasana (Holding & Advanced Practice)',
+           meta: 'Demonstrate advanced asanas.',
+           date: '04 June 2026',
+           sortDate: '2026-06-04',
+           time: '05:30 PM- 08:30 PM',
+           venue: 'Offline',
+           poster: 'idy2026/Best yogasana social media .webp',
+           alt: 'Best Yogasana Competition Poster'
+          },
+          {
+           title: 'Yogathon Practice Sessions',
+           meta: 'Instructor: Yogastha',
+           date: '7, 9, 11, 13, 16 and 18 June 2026',
+           sortDate: '2026-06-07',
+           time: '6:30 PM- 8:30 PM',
+           venue: 'Yoga Hall, New SAC',
+           poster: 'idy2026/108 SuryaNamaskar.webp',
+           alt: 'Yogathon Practice Sessions Poster'
+          },
+          {
+           title: 'Poem Writing Competition',
+           meta: 'Express yoga through poetry.',
+           date: '09-12 June 2026',
+           sortDate: '2026-06-09',
+           time: 'Not specified',
+           venue: 'Online',
+           poster: 'idy2026/Poem writing competition.webp',
+           alt: 'Poem Writing Competition Poster'
+          },
+          {
+           title: 'Slogan Competition',
+           meta: 'Write inspiring yoga slogans.',
+           date: '09-12 June 2026',
+           sortDate: '2026-06-09',
+           time: 'Not specified',
+           venue: 'Online',
+           poster: 'idy2026/Slogan competition.webp',
+           alt: 'Slogan Competition Poster'
+          },
+          {
+           title: 'Varenyam Yoga Session',
+           meta: 'Instructor: Sugam Kumar',
+           date: '12 June 2026',
+           sortDate: '2026-06-12',
+           time: '5:30 PM- 6:30 PM',
+           venue: 'Yoga Hall, New SAC',
+           poster: 'idy2026/Varenyam Yoga session.webp',
+           alt: 'Varenyam Yoga Session Poster'
+          },
+          {
+           title: 'Common Yoga Protocol Practice Sessions',
+           meta: 'Instructor: Yogastha',
+           date: '12, 15, 17 June 2026',
+           sortDate: '2026-06-12',
+           time: '6:30 AM- 8:30 AM',
+           venue: 'Yoga Hall, New SAC',
+           poster: 'idy2026/CYP_practice.webp',
+           alt: 'Common Yoga Protocol Practice Sessions Poster'
+          },
+          {
+           title: 'Poster making competition',
+           meta: 'Design beautiful yoga posters.',
+           date: '14 June 2026',
+           sortDate: '2026-06-14',
+           time: '05:30 PM- 07:30 PM',
+           venue: 'Offline (Yoga Hall)',
+           poster: 'idy2026/POSTER MAKING COMPETITION.webp',
+           alt: 'Poster Making Competition Poster'
+          },
+          {
+           title: 'Tratak competition',
+           meta: 'Enhance your focus with Tratak.',
+           date: '14 June 2026',
+           sortDate: '2026-06-14',
+           time: '07:30 PM- 08:30 PM',
+           venue: 'Offline (Yoga Hall)',
+           poster: 'idy2026/tratak.webp',
+           alt: 'Tratak Competition Poster'
+          }
+         ];
+
+                   const today = new Date();
+          today.setHours(0, 0, 0, 0);
+
+          const upcomingEvents = idy2026Schedule.filter(item => {
+            return new Date(item.sortDate) >= today;
+          });
+
+          const pastEvents = idy2026Schedule.filter(item => {
+            return new Date(item.sortDate) < today;
+          });
+
+          const scheduleList = document.getElementById('idy-2026-schedule-list');
+          if (upcomingEvents.length === 0) {
+            scheduleList.innerHTML = `
+              <div class="box-shadow-full text-center py-5">
+                <p class="lead text-muted mb-0">No upcoming events scheduled at the moment. All International Day of Yoga 2026 events have successfully concluded!</p>
+              </div>`;
+          } else {
+            scheduleList.innerHTML = upcomingEvents
+             .sort((a, b) => new Date(b.sortDate) - new Date(a.sortDate) || a.title.localeCompare(b.title))
+             .map((item) => `
+              <div class="box-shadow-full mb-5">
+               <div class="row">
+                <div class="col-md-6">
+                 <div class="about-me pt-4 pt-md-0">
+                  <div class="title-box-2">
+                   <h5 class="title-left">${item.title}</h5>
+                  </div>
+                  <p>${item.meta}</p>
+                  <hr/>
+                  <p><strong>Date:</strong> ${item.date}</p>
+                  <p><strong>Time:</strong> ${item.time}</p>
+                  <p><strong>Venue:</strong> ${item.venue}</p>
+                 </div>
+                </div>
+                <div class="col-md-5">
+                 <div class="carousel slide carousel-fade" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                   <div class="carousel-item active">
+                    <img alt="${item.alt}" class="d-block w-100" src="${item.poster}"/>
+                   </div>
+                  </div>
+                 </div>
+                </div>
+               </div>
+              </div>`)
+             .join('');
+          }
+
+          const pastList = document.getElementById('idy-2026-past-list');
+          if (pastList && pastEvents.length > 0) {
+            pastList.innerHTML = pastEvents
+             .sort((a, b) => new Date(b.sortDate) - new Date(a.sortDate) || a.title.localeCompare(b.title))
+             .map((item) => `
+              <div class="box-shadow-full mb-5">
+               <div class="row">
+                <div class="col-md-6">
+                 <div class="about-me pt-4 pt-md-0">
+                  <div class="title-box-2">
+                   <h5 class="title-left">${item.title}</h5>
+                  </div>
+                  <p>${item.meta}</p>
+                  <hr/>
+                  <p><strong>Date:</strong> ${item.date}</p>
+                  <p><strong>Time:</strong> ${item.time}</p>
+                  <p><strong>Venue:</strong> ${item.venue}</p>
+                 </div>
+                </div>
+                <div class="col-md-5">
+                 <div class="carousel slide carousel-fade" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                   <div class="carousel-item active">
+                    <img alt="${item.alt}" class="d-block w-100" src="${item.poster}"/>
+                   </div>
+                  </div>
+                 </div>
+                </div>
+               </div>
+              </div>`)
+             .join('');
+          }
+        </script>
+
+       </div>
+      </div>
+     </div>
+    </section>
     <!-- Recent events archive: most recent completed workshops, camps, and sessions. -->
     <section class="about-mf sect-pt4 route" id="recent">
      <div class="container">
@@ -481,6 +578,8 @@
           Recent
          </h5>
         </div>
+        <!-- Dynamically populated past IDY 2026 events -->
+        <div id="idy-2026-past-list"></div>
         <!-- <div class="container"> -->
           
 
@@ -508,7 +607,7 @@
         <div class="carousel slide carousel-fade" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" src="assets/img/events_2026/shakti.png"/>
+              <img class="d-block w-100" src="assets/img/events_2026/shakti.webp"/>
             </div>
           </div>
         </div>
@@ -540,7 +639,7 @@
         <div class="carousel slide carousel-fade" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" src="assets/img/events_2026/energy_science.png"/>
+              <img class="d-block w-100" src="assets/img/events_2026/energy_science.webp"/>
             </div>
           </div>
         </div>
@@ -572,7 +671,7 @@
         <div class="carousel slide carousel-fade" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" src="assets/img/events_2026/meditation.png"/>
+              <img class="d-block w-100" src="assets/img/events_2026/meditation.webp"/>
             </div>
           </div>
         </div>
@@ -604,7 +703,7 @@
         <div class="carousel slide carousel-fade" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" src="assets/img/events_2025/Antarlya.png"/>
+              <img class="d-block w-100" src="assets/img/events_2025/Antarlya.webp"/>
             </div>
           </div>
         </div>
@@ -612,2549 +711,16 @@
     </div>
   </div>
 
-
-        <div class="box-shadow-full mt-4">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h6 class="title-left">
-              IDY 2025: Yoga Workshop – Empowering Women
-             </h6>
-            </div>
-           </div>
-          </div>
-         </div>
-         <p class="lead">
-          A two-day workshop focused on empowering women through yoga practices, mindfulness, and inner strength.
-         </p>
-         <hr/>
-         <p>
-          <strong>
-           Date:
-          </strong>
-          27–28 May 2025
-         </p>
-         <p>
-          <strong>
-           Time:
-          </strong>
-          5:30 PM – 6:30 PM
-         </p>
-         <p>
-          <strong>
-           Venue:
-          </strong>
-          Yoga Hall, New SAC
-         </p>
-         <p>
-          <strong>
-           Instructor:
-          </strong>
-          Mrs. Sarika M Chavan (Yogastha)
-         </p>
-        </div>
-        <div class="box-shadow-full mt-4">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h6 class="title-left">
-              IDY 2025: Yoga Abhiyojna – 54 Surya Namaskar
-             </h6>
-            </div>
-           </div>
-           <p class="lead">
-            A high-energy group event to perform 54 rounds of Surya Namaskar, fostering strength, focus, and
-                  unity.
-           </p>
-           <hr/>
-           <p>
-            <strong>
-             Date:
-            </strong>
-            13–15 May 2025
-           </p>
-           <p>
-            <strong>
-             Time:
-            </strong>
-            5:30 PM – 8:30 PM
-           </p>
-           <p>
-            <strong>
-             Venue:
-            </strong>
-            Yoga Hall, New SAC
-           </p>
-           <p>
-            <strong>
-             Organizer:
-            </strong>
-            Yogastha
-           </p>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carousel8">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="" class="d-block w-100" src="assets/img/events_2025/surya.png"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Yoga for LiFE Conference Selection
-             </h5>
-            </div>
-            <p>
-             Yogastha members and alumni were selected for the final round of the Yoga Start-up Challenge at the Yoga for LiFE Conference 2025. Their innovative yoga-based startup idea was recognized at an international level, showcasing the team’s vision and impact.
-            </p>
-            <hr/>
-            <p>
-             Date - 06 April 2025
-            </p>
-            <p>
-             Venue - Tbilisi, Georgia (Online)
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carousel8">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="" class="d-block w-100" src="assets/img/events_2025/georgia.png"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Special Yoga Session for Hostel 18
-             </h5>
-            </div>
-            <p>
-             As part of Hostel 18 Fest, Yogastha conducted a special yoga session introducing residents to holistic wellness practices. The session included Sukshma Vyayama, Surya Namaskar, asanas, pranayama, and meditation. Participants experienced improved relaxation, focus, and awareness, making the session a refreshing and impactful start to the day.
-            </p>
-            <hr/>
-            <p>
-             Date - 22 March 2025
-            </p>
-            <p>
-             Venue - Hostel 18
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carousel3">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="" class="d-block w-100" src="assets/img/events_2025/h18.png"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Healing Through Chakras Meditation
-             </h5>
-            </div>
-            <p>
-             A four-day workshop on Chakra Meditation provided participants with a deep exploration of energy balance and inner awareness. Guided by an experienced yoga therapist, the sessions combined pranayama, affirmations, and meditation techniques to awaken and align energy centers. The immersive experience helped participants feel more connected, calm, and mentally clear.
-            </p>
-            <hr/>
-            <p>
-             Date - 10–13 March 2025
-            </p>
-            <p>
-             Venue - Yoga Hall, New SAC
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carousel2">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="" class="d-block w-100" src="assets/img/events_2025/chakra_medit.png"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Yogmay Conclave 2025
-             </h5>
-            </div>
-            <p>
-             Yogastha representatives participated in the Yogmay Maharashtra Conclave, engaging with leading yoga practitioners and experts. The event provided valuable insights into yoga philosophy, research, and practices, enriching their understanding and exposure to the broader yoga community.
-            </p>
-            <hr/>
-            <p>
-             Date - 23 February 2025
-            </p>
-            <p>
-             Venue - K. C. College, Mumbai
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carousel6">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="" class="d-block w-100" src="assets/img/events_2025/meditation.png"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              New Team Orientation
-             </h5>
-            </div>
-            <p>
-             Yogastha began its journey for 2025 with an enthusiastic orientation session welcoming the new core team members. The session featured insights from Prof. Neeraj Kumbhakarana, who highlighted Yogastha’s vision and its role in promoting wellness on campus. The team was introduced to ongoing initiatives, structure, and responsibilities, setting a strong foundation for collaboration and growth.
-            </p>
-            <hr/>
-            <p>
-             Date - 15 February 2025
-            </p>
-            <p>
-             Venue - Mechanical Engineering Department
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carousel1">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="" class="d-block w-100" src="assets/img/events_2025/new_team_2025_oreo.png"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Instructor Certification Collaboration
-             </h5>
-            </div>
-            <p>
-             Yogastha collaborated with Swasti Yoga Centre to provide structured training for students aiming to become certified yoga instructors. The initiative focused on building foundational knowledge and practical skills, empowering students to promote wellness and lead sessions within the campus.
-            </p>
-            <hr/>
-            <p>
-             Date - 14 January 2025
-            </p>
-            <p>
-             Venue - IIT Bombay
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carousel5">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="" class="d-block w-100" src="assets/img/events_2025/instructor.png"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              IDY Series
-             </h5>
-            </div>
-            <p>
-             Yogastha organized a series of preparatory sessions and events leading up to the International Day of Yoga 2024. Activities included Surya Namaskar practice sessions, Common Yoga Protocol training, competitions, quizzes, and awareness initiatives.
-            </p>
-            <hr/>
-            <p>
-             Date - May–June 2024
-            </p>
-            <p>
-             Venue - Multiple Locations
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carousel4">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="" class="d-block w-100" src="assets/img/events_2025/IDY_2024.png"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Ayurveda College Visit
-             </h5>
-            </div>
-            <p>
-             The Yogastha team visited an Ayurveda college in Pune to explore the scientific aspects of yoga and wellness, connecting traditional practices with modern medical understanding.
-            </p>
-            <hr/>
-            <p>
-             Date - March 2025
-            </p>
-            <p>
-             Venue - PCMC Ayurveda College, Pune
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carousel7">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="" class="d-block w-100" src="assets/img/events_2025/ayurveda.png"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Talk Session on Female Health
-             </h5>
-            </div>
-            <p>
-             We organized a session focusing on women’s health, addressing topics such as menstrual health and PCOD. The session provided practical yoga-based solutions for maintaining hormonal balance and well-being.
-            </p>
-            <hr/>
-            <p>
-             Date - 31 January 2025
-            </p>
-            <p>
-             Venue - Yoga Hall, New SAC
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselFemaleHealth">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="" class="d-block w-100" src="assets/img/events_2025/female_health.png"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Swasti Yoga Camp
-             </h5>
-            </div>
-            <p>
-             We conducted a four-day yoga camp covering Hatha Yoga practices including asanas, breathing techniques, and mindfulness. The camp provided a holistic and enriching experience for participants.
-            </p>
-            <hr/>
-            <p>
-             Date - 28–31 January 2025
-            </p>
-            <p>
-             Venue - Yoga Hall, New SAC
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselSwasti">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="" class="d-block w-100" src="assets/img/events_2025/swasti.png"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Sahaja Yoga Camp
-             </h5>
-            </div>
-            <p>
-             We organized a meditation workshop introducing participants to simple techniques for achieving inner peace and emotional balance. The sessions focused on energy awareness and mental well-being.
-            </p>
-            <hr/>
-            <p>
-             Date - January 2025
-            </p>
-            <p>
-             Venue - Yoga Hall, New SAC
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselSahaja">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="" class="d-block w-100" src="assets/img/events_2025/sahaja.png"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Yoga Session at KV School Powai
-             </h5>
-            </div>
-            <p>
-             We conducted a yoga session for school students to introduce them to basic yoga practices, breathing techniques, and meditation. The session aimed to promote discipline, focus, and awareness among children.
-            </p>
-            <hr/>
-            <p>
-             Date - 16 November 2024
-            </p>
-            <p>
-             Venue - KV School, IIT Powai
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselKV">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="" class="d-block w-100" src="assets/img/events_2024/kv.png"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Talk Session on Kriya Yoga
-             </h5>
-            </div>
-            <p>
-             We hosted a talk session on the “Eternal Spiritual Science of Kriya Yoga” which introduced participants to deeper aspects of yoga beyond physical practice, focusing on spiritual growth and self-awareness.
-            </p>
-            <hr/>
-            <p>
-             Date - 16 October 2024
-            </p>
-            <p>
-             Venue - LC 102, Lecture Hall Complex
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselKriya">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="" class="d-block w-100" src="assets/img/events_2024/shantanu.png"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Talk Session and Naadi Parikshan
-             </h5>
-            </div>
-            <p>
-             We organized a session on “Human Psychology and Ayurveda” followed by Naadi Parikshan. Participants gained insights into holistic health and experienced pulse-based diagnosis for better understanding of their well-being.
-            </p>
-            <hr/>
-            <p>
-             Date - 31 August 2024
-            </p>
-            <p>
-             Venue - LC 101, Lecture Hall Complex
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselNadi">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="" class="d-block w-100" src="assets/img/events_2024/nadi.png"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              PG Orientation
-             </h5>
-            </div>
-            <p>
-             We conducted a dedicated orientation session for postgraduate students to introduce them to Yogastha’s vision and activities. The session included an overview of yoga classes, meditation sessions, and wellness initiatives, followed by a short practical session.
-            </p>
-            <hr/>
-            <p>
-             Date - August 2024
-            </p>
-            <p>
-             Venue - LH 001, Lecture Hall Complex
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselPG">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="" class="d-block w-100" src="assets/img/events_2024/yogastha.png"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              UG Orientation
-             </h5>
-            </div>
-            <p>
-             We organized an orientation session for first-year undergraduate students in collaboration with the Sports Council. The session introduced students to Yogastha’s activities and initiatives. Interactive yoga-based questions were conducted and winners received Yogastha merchandise.
-            </p>
-            <hr/>
-            <p>
-             Date - August 2024
-            </p>
-            <p>
-             Venue - Indoor Badminton Court
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselUG">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="" class="d-block w-100" src="assets/img/events_2024/ug_oreo.png"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Siddha Samadhi Yoga
-             </h5>
-            </div>
-            <p class="lead">
-            </p>
-            <p>
-             We in coordination with Siddha Samadhi Yoga (Website: Siddha Samadhi Yoga (ssy.org)) are
-                        pleased to introduce our alumnus Shri Narayana will conduct a Powerful Yoga Course on our campus
-                        from 10th May. It is a 17-day course that includes a few days' stay at a beautiful Ashram in the
-                        countryside outside Mumbai.
-            </p>
-            <p>
-             The course has a registration fee (Rs. 500) and is prioritized on a first-come first-served
-                        basis. Registration has already started and only a limited number of seats are available
-            </p>
-            <hr/>
-            <p>
-             Date - May 10 - 26, 2024
-            </p>
-            <p>
-             Time - 5:30 to 8:30 PM
-            </p>
-            <p>
-             Venue - Yoga room of Old SAC
-            </p>
-            <p>
-             Ashram visit - 23rd to 26th, with sattvic food
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events_2024/yoga course.jpg"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Exclusive Workshop with Avinash Gautam!
-             </h5>
-            </div>
-            <p class="lead">
-            </p>
-            <p>
-             Get ready to embark on a transformative journey through the art of yoga! We're thrilled to
-                        announce an exclusive workshop led by the esteemed Avinash Gautam, a distinguished yoga
-                        practitioner, and instructor renowned for his expertise and passion for the ancient discipline.
-            </p>
-            <hr/>
-            <p>
-             Date - May 11 -12, 2024
-            </p>
-            <p>
-             Time - 7:00 to 8:30 PM (May 11) &amp; 6:30 to 8:30 PM (May 12)
-            </p>
-            <p>
-             Venue - Yoga room, New SAC, Opposite to hostel 11
-            </p>
-            <p>
-             Registration link : https://forms.gle/9A8NKHUwF56RfKiZ8
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events_2024/photo_2024-05-11_16-29-51.jpg"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Mathematics and Well-Being
-             </h5>
-            </div>
-            <p class="lead">
-            </p>
-            <p>
-             We were delighted to invite you to a thought-provoking talk session on "Mathematics and
-                        Well-Being" by the esteemed Prof. Madhusudan Manjunath from the Mathematics Department, IIT
-                        Bombay. This session aims to explore the fascinating intersection between mathematics and
-                        well-being, shedding light on how mathematical principles can contribute to our overall health
-                        and happiness
-            </p>
-            <hr/>
-            <p>
-             Date - May 05, 2024
-            </p>
-            <p>
-             Time - 6:00 pm - 8:30 pm
-            </p>
-            <p>
-             Venue - Yoga Room, IIT Bombay
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events_2024/mathematics and well being.gif"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Mini Yogathon
-             </h5>
-            </div>
-            <p class="lead">
-            </p>
-            <p>
-             We announced the Mini Yogathon (54 Surya Namaskar Challenge)
-            </p>
-            <p>
-             This Mini Yogathon kicks off the 50-day series leading up to the International Day of Yoga.
-            </p>
-            <p>
-             All participants received a Certificate of Appreciation. For those who participated in at
-                        least 1 practice session and completed the Mini Yogathon Challenge, we have a surprise for you!
-                        All prizes and certificates will be distributed on 21st June.
-            </p>
-            <hr/>
-            <p>
-             Date - May 04, 2024
-            </p>
-            <p>
-             Time - 6:30 pm - 7:30 pm
-            </p>
-            <p>
-             Venue - New SAC
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events_2024/mini yogathon gif.gif"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Digital Detoxification
-             </h5>
-            </div>
-            <p class="lead">
-            </p>
-            <p>
-             Yogastha invited you to delve into the art of digital detoxification, a sanctuary of serenity
-                        amidst the chaos of the digital age.
-            </p>
-            <p>
-             Research indicates that about 61% of people admit they're addicted to the internet and their
-                        digital screens. This constant connection can lead to self-image problems, low self-esteem etc.
-                        However, a digital detox, where you intentionally reduce your online time or disconnect
-                        completely, can offer numerous benefits. It can help you calm down, feel content, boost
-                        productivity.
-            </p>
-            <hr/>
-            <p>
-             Date - April 13, 2024
-            </p>
-            <p>
-             Time - 5:15 - 6:15 pm
-            </p>
-            <p>
-             Venue - FC Kohli Auditorium
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events_2024/digital detox gif.gif"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Siddha Samadhi Yoga &amp; Decoding Disease and Health
-             </h5>
-            </div>
-            <p class="lead">
-            </p>
-            <p>
-             Shri Narayana Ji, class of 1991, returned to IIT Bombay on March 30th and 31st to share his
-                        knowledge about yoga and wellness. It was 2-day series of events:
-            </p>
-            <hr/>
-            <p>
-             MARCH 30th (About- Siddha Samadhi Yoga)
-            </p>
-            <p>
-             LA 002 from 6:00 PM to 7:30 PM
-            </p>
-            <p>
-             The talk explored what Yoga really means at a deeper level and elucidate the tangible and
-                        intangible benefits that Siddha Samadhi Yoga provides, helping us in day-to-day living as well
-                        as in the long term.
-            </p>
-            <hr/>
-            <p>
-             MARCH 31st (About- Decoding Disease and Health)
-            </p>
-            <p>
-             LT PCSA from 10:00 AM to 11:30 AM
-            </p>
-            <p>
-             The talk delved into this very aspect in a holistic way and provide deep insights into how we
-                        can maintain a vibrant, healthy body irrespective of any external circumstances
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events_2024/siddha samadhi.gif"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Sat Bir Singh Khalsa
-             </h5>
-            </div>
-            <p class="lead">
-            </p>
-            <p>
-             It was an enlightening talk session where we explored "The Research Evidence Base for Basic and
-                        Applied Multidisciplinary Research on Yoga followed by QnA by Sat Bir Singh Khalsa".This session
-                        was intellectually stimulating and informative.
-            </p>
-            <p>
-             'Sat Bir Singh Khalsa'- An associate Professor at Harvard Medical School. Renowned for his
-                        interdisciplinary expertise, Khalsa pioneers research at yoga's forefront, probing its impact on
-                        health, wellness, and sleep patterns. His work significantly advances understanding of mind-body
-                        interventions.
-            </p>
-            <hr/>
-            <p>
-             Topic: Basic and applied interdisciplinary research on Yoga
-            </p>
-            <p>
-             Date - March 20th
-            </p>
-            <p>
-             Time - 5:15 - 6:15 pm
-            </p>
-            <p>
-             Venue - SJMSOM Auditorium
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events_2024/sat bir singh gif.gif"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Yoga Camp
-             </h5>
-            </div>
-            <p class="lead">
-            </p>
-            <p>
-             Team Yogastha brings you a calming 5-day long yoga camp conducted in association with the
-                        trained professionals from Shri Ambika Yoga Kutir. The camp will introduce participants to the
-                        fundamentals of yoga, featuring guided sessions on the following practices, to promote mental,
-                        physical and spiritual wellbeing.
-             <p>
-              <ol>
-               <li>
-                Introduction of Yoga, Shuddhi kriyas
-                <li>
-                 Shatkarmas
-                 <li>
-                  Preliminary pranayama such as kapalbhati, Ujjai etc
-                  <li>
-                   Introduction to Asanas and its practices
-                   <li>
-                    Tratak, Omkar meditation
-                   </li>
-                  </li>
-                 </li>
-                </li>
-               </li>
-              </ol>
-              <p>
-               The participants would also develop a keen understanding of yoga and how it can be applied to
-                        our daily life to enhance our overall health and wellness.
-               <hr/>
-               <p>
-                <p>
-                 Days: Monday, 11th March - Friday 15th March
-                </p>
-                <p>
-                 Time: 5:45 - 8:00 PM
-                </p>
-                <p>
-                 Venue: 3rd Floor, MPH, New Gymkhana Building, Opp. Hostel 11
-                </p>
-               </p>
-              </p>
-             </p>
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events_2024/YOGA CAMP.gif"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Meditation for Midsemester
-             </h5>
-            </div>
-            <p class="lead">
-            </p>
-            <p>
-             As mid-semester exams approached, Team Yogastha hosted a transformative workshop led by
-                        experienced members. Focused on enhancing concentration, positivity, and addressing anxiety,
-                        attendees gained practical tools to navigate exam challenges and cultivate calm amidst academic
-                        pressures.
-            </p>
-            <p>
-             The workshop is free and open to everyone.
-            </p>
-            <hr/>
-            <p>
-             Details:
-            </p>
-            <p>
-             Date and time: 6pm – 6:45pm, 18th Feb (Sunday)
-            </p>
-            <p>
-             Venue: Yoga room, third floor, New SAC, opposite to Hostel 11
-            </p>
-            <p>
-             Contact: +91 6394708089 (Anika) | +91 8318806303 (Divyansh) for any queries
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events_2024/Meditation-gif.gif"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Breakthrough with Sri Krishna ji
-             </h5>
-            </div>
-            <p class="lead">
-            </p>
-            <p>
-             An exclusive gathering where Sri Krishnaji unveiled the secrets to effective stress management
-                        and provided tools to navigate life's challenges. Together, we delved into the serene world of
-                        meditation.
-            </p>
-            <p>
-             Thank you to everyone who attended the workshop.
-            </p>
-            <hr/>
-            <p>
-             Details:
-            </p>
-            <p>
-             Speaker: Sri Krishna ji
-            </p>
-            <p>
-             Date: 11 Feb 2024, Sunday (5:00PM onwards)
-            </p>
-            <p>
-             Venue: LA002, LH Complex
-            </p>
-            <p>
-             Contact: yogastha.iitb@gmail.com or Harish Kumbar - 9116071709 for any queries
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events_2024/Breakthrough-gif.gif"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Pranayama Workshop
-             </h5>
-            </div>
-            <p class="lead">
-            </p>
-            <p>
-             Team Yogastha recently concluded an enlightening Pranayama workshop, offering participants a
-                        deep dive into breath control techniques for holistic wellness.
-            </p>
-            <hr/>
-            <p>
-             Details:
-            </p>
-            <p>
-             Speaker: Vaishali Vaidya
-            </p>
-            <p>
-             Date: January 19th (Friday Evening)
-            </p>
-            <p>
-             Venue: Yoga Hall, New SAC, Opposite to Hostel 11, 3rd Floor
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events/pranayama workshop.jpeg"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Rhythmic Breathing and your Health
-             </h5>
-            </div>
-            <p class="lead">
-            </p>
-            <p>
-             Team Yogastha in association with the institute's NSO yoga organized a transformative 3 days
-                        workshop on 'Rhythmic Breathing and your Health led by our esteemed NSO Yoga instructor, Dr.
-                        Deepak Parmar sir (PhD in stress management (Yoga)). Its all about learning and exploring the
-                        intriguing connection among breathing, body and mind with a renowned expert in this domain.
-            </p>
-            <hr/>
-            <p>
-             Details:
-            </p>
-            <p>
-             Instructor: Dr. Deepak Parmar
-            </p>
-            <p>
-             Date:27 Oct, 3 Nov and 10 Nov, 2023 (All Fridays)
-            </p>
-            <p>
-             Venue: Screening room, third floor, New SAC, opposite to Hostel 11
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events/2023_After IDY/Rhythmic Breathing and your Health.gif"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              NrityaYogsutra for Stress Management and Physical Health
-             </h5>
-            </div>
-            <p class="lead">
-            </p>
-            <p>
-             Yogastha conducted an amazing workshop on 'NrityaYogsutra for Stress Management and Physical
-                        Health,' featuring the renowned professional Dr. Sangeeta Pethkar. It was a unique combination
-                        of Nritya and Yoga that enhanced physical health and offered deep relaxation and mindfulness.
-            </p>
-            <hr/>
-            <p>
-             Details:
-            </p>
-            <p>
-             Instructor: Dr. Sangeeta Pethkar
-            </p>
-            <p>
-             Date:28 and 29 October 2023 (Saturday and Sunday)
-            </p>
-            <p>
-             Venue: Yoga room, third floor, New SAC, opposite to Hostel 11
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events/2023_After IDY/NrityaYogsutra for Stress Management and Physical Health.gif"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              'Meditation: Meaning, how to Meditate &amp; its effects on the Mind and Body'
-             </h5>
-            </div>
-            <p class="lead">
-            </p>
-            <p>
-             Yogastha hosted meditation workshop featuring the renowned Doctor Nita Kamat focusing on -
-                        Meaning, how to Meditate &amp; its effects on the Mind and Body with live meditation session.
-            </p>
-            <hr/>
-            <p>
-             Details:
-            </p>
-            <p>
-             Speaker: Dr. Nita Kamat
-            </p>
-            <p>
-             Date: Saturday, 7 October, 2023
-            </p>
-            <p>
-             Venue: F. C. Kohli Auditorium, Ground Floor New CSE Building, Opp. Gulmohar Cafe.
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events/2023_After IDY/meditation.gif"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Lifestyle Engineering
-             </h5>
-            </div>
-            <p class="lead">
-             <p>
-              Yogastha recently organized a talk session on "Lifestyle Engineering". The esteemed speaker, Mr.
-                        Niranjan Pendharkar, an alumnus of IISc and architect at Google, inferred a wonderful
-                        presentation on spirituality and lifestyle engineering. He discussed various concepts and
-                        amazing techniques to keep a healthy body and sound mind. More than 70 participants including
-                        students, staff and faculties gathered and enjoyed the session.
-             </p>
-             <hr/>
-             <p>
-              Details:
-             </p>
-             <p>
-              Date: 28th September, 2023
-             </p>
-             <p>
-              Venue: F. C. Kohli Auditorium
-             </p>
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events/2023_After IDY/Life Style Engineering.gif"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Hatha Yoga Workshop
-             </h5>
-            </div>
-            <p class="lead">
-             <p>
-              Yogastha hosted a Hatha Yoga Workshop with Dr. Kush Panchal. He guided us in exploring Hatha
-                        Yoga for self-discovery. 50+ participants joined the workshop. All embraced the various Hata
-                        Yoga techniques and enjoyed all the moments.
-             </p>
-             <hr/>
-             <p>
-              Details:
-             </p>
-             <p>
-              Date: 31st August 2023
-             </p>
-             <p>
-              Venue: 3rd floor, MPH, New Gymkhana Building, opp. Hostel 11
-             </p>
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events/2023_After IDY/Hatha Yoga Workshop.gif"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              How Postures Affect Emotions - Practical Exposition
-             </h5>
-            </div>
-            <p class="lead">
-             <p>
-              Yogastha recently organized a workshop that explores the intriguing connection between postures
-                        and emotions. Led by the esteemed Birjoo Mehta, a dedicated student of Yogacharya B K S Iyengar
-                        since 1974.
-             </p>
-             <hr/>
-             <p>
-              Details:
-             </p>
-             <p>
-              Date: 19th August 2023
-             </p>
-             <p>
-              Venue: 3rd floor, MPH, New Gymkhana Building, opp. Hostel 11
-             </p>
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events/How Postures Affect Emotions - Practical Exposition.gif"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              International Day of Yoga (IDY 2023):
-             </h5>
-            </div>
-            <p class="lead">
-             <p>
-              The International Day of Yoga happens every year on June 21st. It's a worldwide event that
-                        encourages people to be healthy in their bodies and minds through yoga, an old practice from
-                        India. Yogastha, a group that cares about wellness, is a big supporter of this day. On 21st June
-                        we conduct CYP (common yoga protocol), talk sessions and yogathon. Also, we start 50-day IDY
-                        series, which is designed to help you achieve just that. By participating in these events,
-                        you'll not only have the chance to win exciting prizes but also learn about the many benefits of
-                        yoga and how it can transform your life. All of this helps show how yoga can make us feel better
-                        and more balanced. It's like a reminder to take care of ourselves and our minds, and Yogastha is
-                        a part of making that happen.
-             </p>
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events/idy2023.gif"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              i-Meditate
-             </h5>
-            </div>
-            <p class="lead">
-             <p>
-              As the demands of academic life increase, it is important to take some time out
-                        and focus on our well-being. That's why we are inviting you to participate
-                        in "i-meditate", a Yoga and Meditation Workshop starting from 12th April, 2023.
-
-                        This workshop is designed to help you manage stress, anxiety, and other mental health issues
-                        that can arise during your academic journey and will also help in improving physical fitness.
-                        The benefits of yoga and meditation are well documented, and we believe that incorporating these
-                        practices into your daily routine can improve your overall health and well-being.
-
-                        We understand that your schedule may be busy, but we encourage you to take
-                        some time out for yourself and join us for this workshop.
-             </p>
-             <hr/>
-             <p>
-              Eligibility - open to all. no pre-requisites.
-             </p>
-             <p>
-              Duration - 2 months (starting from 12th April, 2023)
-             </p>
-             <p>
-              Days: Every Wednesday and Saturday
-             </p>
-             <p>
-              Time: 7 - 8 PM
-             </p>
-             <p>
-              Venue: Yoga Room, 3rd Floor, New Gymkhana Building, Opp. Hostel 11
-             </p>
-             <p>
-              Contact: Praveen Kant - 9949563009 | Shubham Giri - 9733535102
-             </p>
-             <p>
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSd6TbDHb3_7wAjuCBuqQFIY8prEZnDQYp1F_PmEHxhj9e6bIA/viewform" style="color:blue;" target="_blank">
-               Click here to register
-              </a>
-             </p>
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets\img\events\i_meditate.jpeg"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Yoga Camp
-             </h5>
-            </div>
-            <p class="lead">
-             <p>
-              Yogastha organized a 5-day Yoga Camp featuring morning yoga sessions and evening meditation
-                        practices. The camp covered a wide range of yoga practices, including balance and flexibility,
-                        asanas and meditation, yogic detox techniques, emotion management yoga, self-compassion and
-                        acceptance, and breath awareness. Additionally, talk sessions were conducted on the youth zen
-                        mastery program, Ayurvedic lifestyle and yoga for women.
-             </p>
-            </p>
-            <hr/>
-            <p>
-             Details:
-            </p>
-            <p>
-             Date: 5th April to 9th April, 2023
-            </p>
-            <p>
-             Speakers: Dr. Vikas Chothe, the founder of Swasti Yoga Centre, MD and PhD in Ayurvedic
-                        medicine, Yoga Ambassador for the Indian government and Dr. Shwetambari Chothe, the co-founders
-                        of Swasti Yoga Centre, MD Homoeopathy and Anatomy and Physiology, Assistant professor at LMF
-                        Homoeopathic Medical College in Pune
-             <p>
-              Venue: 3rd floor, MPH, New Gymkhana Building, opp. Hostel 11
-             </p>
-             <p>
-              Contact: Harish Kumbar - 9116071709 | Gaurav Prajapati - 7041451597
-             </p>
-             <p class="lead">
-             </p>
-            </p>
-           </div>
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events/Yoga Camp.gif"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Mini Yogathon
-             </h5>
-            </div>
-            <p class="lead">
-             <p>
-              Yogastha organized a Mini Yogathon challenge which received an overwhelming response from
-                        participants. Over 100 people registered for the challenge, out of which more than 50 actively
-                        participated. In preparation for the challenge, three practice sessions were conducted in
-                        regular morning sessions to provide participants with the necessary training and guidance.
-                        During the challenge, almost all the participants were able to perform 72 rounds of Surya
-                        Namaskar, which is an impressive feat. Special recognition was given to the top 16 performers
-                        who completed all the rounds with perfect postures. These performers were awarded special prizes
-                        as a recognition of their achievements.
-                        Overall, the Mini Yogathon challenge provided an excellent opportunity for participants to test
-                        their physical endurance and mental focus while also promoting the practice of yoga. The
-                        challenge was a resounding success, with participants showing enthusiasm and dedication
-                        throughout.
-             </p>
-             <hr/>
-             <p>
-              Details:
-             </p>
-             <p>
-              Date: 11th of February 2023
-             </p>
-             <p>
-              Venue: 3rd floor, MPH, New Gymkhana Building, opp. Hostel 11
-             </p>
-            </p>
-            <p class="lead">
-            </p>
-           </div>
-          </div>
-          <div class="col-md-1">
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events/2022_Nov_dec/Mini yogathon 11Feb 23.gif"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Increasing Concentration and Focus of the mind
-             </h5>
-            </div>
-            <p class="lead">
-             <p>
-              Yogastha organized a session with a focus on improving concentration and focus, as well as
-                        strategies for managing distractions and staying motivated. The session was led by Dr. EV
-                        Swaminathan, who is a Corporate Trainer with a specialization in integrating science with
-                        spirituality. Dr. Swaminathan is a renowned expert in his field and has appeared on numerous
-                        television talk shows, providing guidance and insights on how individuals can improve their
-                        concentration and focus.
-                        During the session, Dr. Swaminathan shared practical tips and techniques that participants can
-                        incorporate into their daily routines to enhance their ability to concentrate and stay focused.
-                        He also provided strategies for managing distractions and staying motivated, which are essential
-                        skills for success in any field.
-                        The session provided a valuable opportunity for participants to learn from an expert in the
-                        field of corporate training and spirituality and to gain practical insights that can help them
-                        achieve their goals and succeed in their chosen pursuits.
-             </p>
-             <hr/>
-             <p>
-              Details:
-             </p>
-             <p>
-              Date: 29 January 2023
-             </p>
-             <p>
-              Speaker: - Dr. EV Swaminathan
-             </p>
-             <p>
-              Venue: 3rd floor, MPH, New Gymkhana Building, opp. Hostel 11
-             </p>
-            </p>
-            <p class="lead">
-            </p>
-           </div>
-          </div>
-          <div class="col-md-1">
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events/2022_Nov_dec/Increasing concentration and focus of the mind 29 jan 23.gif"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Sahaja Yoga Workshop
-             </h5>
-            </div>
-            <p class="lead">
-             <p>
-              Yogastha conducted a workshop with the aim of providing participants with simple meditation
-                        techniques that can help them stay calm, handle stress, and maintain physical and mental
-                        well-being. The session was led by three experienced speakers - Dr. Sandeep Rai, Dr. Madhur Rai,
-                        and Dr. Devdutt Rai. These speakers shared their knowledge and insights on meditation techniques
-                        that are easy to learn and can be incorporated into daily life.
-                        The workshop also included a practical experience of "Sahaja-Yoga" or "Simple Meditation", which
-                        provided participants with a wholesome experience of the benefits of meditation. Overall, the
-                        workshop provided a practical and meaningful approach to incorporating meditation as a tool for
-                        enhancing mental and emotional well-being. The speakers' expertise and practical guidance,
-                        combined with the practical meditation experience, made the session a valuable and enriching
-                        experience for all participants.
-             </p>
-             <hr/>
-             <p>
-              Details:
-             </p>
-             <p>
-              Date: 14th of January 2023
-             </p>
-             <p>
-              Speaker: - Dr. Sandeep Rai, Dr. Madhur Rai, and Dr. Devdutt Rai
-             </p>
-             <p>
-              Venue: 3rd floor, MPH, New Gymkhana Building, opp. Hostel 11
-             </p>
-            </p>
-            <p class="lead">
-            </p>
-           </div>
-          </div>
-          <div class="col-md-1">
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events/2022_Nov_dec/Sahaja Yoga workshop 14 jan 23.gif"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Meditation Marathon
-             </h5>
-            </div>
-            <p class="lead">
-             <p>
-              An online session was conducted that provided the participants with an opportunity to
-                        experience deep meditation. The session was led by Dr. BK Bandre and Rahul Taparia from
-                        alwaysliveyoga, who introduced meditation as a technique that can help individuals to pause,
-                        relax and take control of situations.
-                        Towards the end of the session, a marathon was conducted where some participants were able to
-                        meditate for more than an hour. Overall, the session provided a meaningful and practical
-                        approach to incorporating meditation as a tool for enhancing mental and emotional well-being.
-             </p>
-             <hr/>
-             <p>
-              Details:
-             </p>
-             <p>
-              Date: 3rd Dec 2022
-             </p>
-             <p>
-              Speaker: Dr. BK Bandre and Rahul Taparia
-             </p>
-             <p>
-              Online mode
-             </p>
-            </p>
-            <p class="lead">
-            </p>
-           </div>
-          </div>
-          <div class="col-md-1">
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-            </div>
-            <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleFade" type="button">
-             <span aria-hidden="true" class="carousel-control-prev-icon">
-             </span>
-             <span class="visually-hidden">
-              Previous
-             </span>
-            </button>
-            <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleFade" type="button">
-             <span aria-hidden="true" class="carousel-control-next-icon">
-             </span>
-             <span class="visually-hidden">
-              Next
-             </span>
-            </button>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Yogic IKIGAI and Life along with Yogic Panchsutras
-             </h5>
-            </div>
-            <p class="lead">
-             <p>
-              Yogastha organized a session that was primarily centered around exploring the meaning and
-                        purpose of life, as well as the reasons for being.
-                        The session featured a talk by Dr. Vikas Chothe, who is highly qualified in Ayurvedic medicine
-                        and holds an MD and Ph.D. degree in this field.
-                        Dr. Chothe is also a certified yoga instructor by AYUSH and QCI India and has previously served
-                        as a Yoga Ambassador for the government of India.
-                        Currently, he is serving as an examiner for the Yoga Certification Board at TQ Cert (TATA
-                        projects).
-             </p>
-             <hr/>
-             <p>
-              Details:
-             </p>
-             <p>
-              Date: 26th and 27th Nov 2022
-             </p>
-             <p>
-              Speaker: Dr. Vikas Chothe
-             </p>
-             <p>
-              Venue: 3rd floor, MPH, New Gymkhana Building, opp. Hostel 11
-             </p>
-            </p>
-            <p class="lead">
-            </p>
-           </div>
-          </div>
-          <div class="col-md-1">
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events/2022_Nov_dec/Yogic IKIGAI and Life along with Yogic Panchsutras_26-27 Nov 22.gif"/>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Lifestyle Engineering
-             </h5>
-            </div>
-            <p class="lead">
-             <p>
-              Yogastha organized an orientation session to introduce UG freshers to Yogastha and its
-                        mission. The session aimed to provide participants with an overview of Yogastha's activities and
-                        to encourage them to become involved in the organization.
-                        The keynote speaker for the session was Mr Anurag Pareek, who provided valuable insights on the
-                        benefits of yoga and how Yogastha is working to promote yoga practice in the community.
-                        Through this orientation session, Yogastha aimed to create awareness among freshers about the
-                        importance of yoga and its benefits and inspire them to do and practice yoga.
-             </p>
-             <hr/>
-             <p>
-              Details:
-             </p>
-             <p>
-              Date:19th Feb 2022
-             </p>
-             <p>
-              Speaker: Mr Anurag Pareek &amp; Team Yogastha (Sneha, Shachi, Yash, Harish and Gaurav)
-             </p>
-             <p>
-              Venue: Venue: FC Kohli Auditorium
-             </p>
-            </p>
-            <p class="lead">
-            </p>
-           </div>
-          </div>
-          <div class="col-md-1">
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-            </div>
-            <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleFade" type="button">
-             <span aria-hidden="true" class="carousel-control-prev-icon">
-             </span>
-             <span class="visually-hidden">
-              Previous
-             </span>
-            </button>
-            <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleFade" type="button">
-             <span aria-hidden="true" class="carousel-control-next-icon">
-             </span>
-             <span class="visually-hidden">
-              Next
-             </span>
-            </button>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Mini Yogathon
-             </h5>
-            </div>
-            <p class="lead">
-             <p>
-              It is a challenge to perform 54 Surya Namaskar, which is an initiative to promote Yoga and
-                        establish a regular practice for a healthier lifestyle. Yogastha provides three practice
-                        sessions to complete the challenge.
-             </p>
-             <hr/>
-             <p>
-              Details:
-             </p>
-             <p>
-              Date: 15th OCt , 2022 (Saturday)
-             </p>
-             <p>
-              Time: 6:00 (evening)
-             </p>
-             <p>
-              Venue: 3rd floor, MPH, New Gymkhana Building, Opp. Hostel 11
-             </p>
-            </p>
-            <p>
-             Practice sessions: you may join any of the session to train yourself for mini-yogathon
-            </p>
-            <ul>
-             <li>
-              Morning sessions on 12-14 Oct 6:30 AM
-             </li>
-            </ul>
-            <p>
-             <a href="https://docs.google.com/forms/d/1VHZy02oYK8oPmEfvCUVfbQjJ475n86TUeiH91D2WBw4/edit" style="color:blue;" target="_blank">
-              Click here to register
-             </a>
-             <p>
-              Contact: yogastha.iitb@gmail.com or 6394708089 / 6300728098
-             </p>
-             <p class="lead">
-             </p>
-            </p>
-           </div>
-          </div>
-          <div class="col-md-1">
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events/HW/IMG_20191202_194438.jpg"/>
-             </div>
-            </div>
-            <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleFade" type="button">
-             <span aria-hidden="true" class="carousel-control-prev-icon">
-             </span>
-             <span class="visually-hidden">
-              Previous
-             </span>
-            </button>
-            <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleFade" type="button">
-             <span aria-hidden="true" class="carousel-control-next-icon">
-             </span>
-             <span class="visually-hidden">
-              Next
-             </span>
-            </button>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              The Five Tibetans Yoga Workshop
-             </h5>
-            </div>
-            <p class="lead">
-             <p>
-              Is it possible to reverse your aging? Or have you thought about detoxifying your body? Or to
-                        simply increase energy in your body? How about nailing all this with a practice of just 15
-                        minutes a day?
-                        Yogastha, IIT-B is organizing “The Five Tibetans Yoga Workshop”, a form of yoga originated
-                        in Tibet. This workshop will introduce you to the Five Tibetan Rites of Rejuvenation, as they
-                        are called. These can be practiced in a time of just 15 minutes and help you balance the
-                        chakras, realign the body’s energies, improve digestion and eyesight, enhance calmness in
-                        the mind along with numerous other benefit
-             </p>
-            </p>
-            <hr/>
-            <p>
-             Details:
-            </p>
-            <p>
-             Date: 14th Oct (Friday), 2022
-            </p>
-            <p>
-             Time: 6:00 (evening)
-            </p>
-            <p>
-             Venue: 3rd floor, MPH, New Gymkhana Building, Opp. Hostel 11
-            </p>
-            <p>
-             <a href="https://docs.google.com/forms/d/1VHZy02oYK8oPmEfvCUVfbQjJ475n86TUeiH91D2WBw4/edit" style="color:blue;" target="_blank">
-              Click here to register
-             </a>
-             <p>
-              Contact: Sneha | 6300728098
-             </p>
-             <p class="lead">
-             </p>
-            </p>
-           </div>
-          </div>
-          <div class="col-md-1">
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events/Workshop_and_mini-yogathon.jpeg"/>
-             </div>
-            </div>
-            <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleFade" type="button">
-             <span aria-hidden="true" class="carousel-control-prev-icon">
-             </span>
-             <span class="visually-hidden">
-              Previous
-             </span>
-            </button>
-            <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleFade" type="button">
-             <span aria-hidden="true" class="carousel-control-next-icon">
-             </span>
-             <span class="visually-hidden">
-              Next
-             </span>
-            </button>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Posture Alignment Workshop
-             </h5>
-            </div>
-            <p class="lead">
-            </p>
-            <p class="lead">
-             <hr/>
-             <p>
-              Details:
-             </p>
-             <p>
-              Date: 7th Oct(Friday), 2022
-             </p>
-             <p>
-              Time: 5:30-7:00 PM (evening)
-             </p>
-             <p>
-              Venue: 3rd floor, MPH, New Gymkhana Building, Opp. Hostel 11
-             </p>
-             <p>
-              <a href="https://forms.gle/XyuhadM3rRYBMFry7" style="color:blue;">
-               Click here to register
-              </a>
-             </p>
-             <p>
-              Contact: 6300728098
-             </p>
-             <p class="lead">
-             </p>
-            </p>
-           </div>
-          </div>
-          <div class="col-md-1">
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-            </div>
-            <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleFade" type="button">
-             <span aria-hidden="true" class="carousel-control-prev-icon">
-             </span>
-             <span class="visually-hidden">
-              Previous
-             </span>
-            </button>
-            <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleFade" type="button">
-             <span aria-hidden="true" class="carousel-control-next-icon">
-             </span>
-             <span class="visually-hidden">
-              Next
-             </span>
-            </button>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Learn To Reverse Chronic Diseases Naturally
-             </h5>
-            </div>
-            <p class="lead">
-            </p>
-            <p class="lead">
-             <p>
-              Let's play the UNO reverse card to Chronic Diseases.
-                        Yogastha brings this session for you to know how to reverse chronic diseases naturally by a
-                        method worked upon by researchers around the world, based on plant based whole food,
-                        detoxification, cicadian rhythm, physical activity, emotional &amp; spiritual health.
-             </p>
-             <hr/>
-             <p>
-              Details:
-             </p>
-             <p>
-              Date: 1st Oct(Saturday)
-             </p>
-             <p>
-              Time: 2:00-4:00 PM
-             </p>
-             <p>
-              Instructor: Lalit M Kapoor (IITK'71)
-             </p>
-             <p>
-              Venue: LH101, IIT Bombay
-             </p>
-             <p>
-              <a href="https://forms.gle/JqmXK8GSjZqpusxr7" style="color:blue;">
-               Click here to register
-              </a>
-             </p>
-             <p>
-              Contact: 7877482605
-             </p>
-             <p class="lead">
-             </p>
-            </p>
-           </div>
-          </div>
-          <div class="col-md-1">
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events/UNO.jpeg"/>
-             </div>
-            </div>
-            <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleFade" type="button">
-             <span aria-hidden="true" class="carousel-control-prev-icon">
-             </span>
-             <span class="visually-hidden">
-              Previous
-             </span>
-            </button>
-            <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleFade" type="button">
-             <span aria-hidden="true" class="carousel-control-next-icon">
-             </span>
-             <span class="visually-hidden">
-              Next
-             </span>
-            </button>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="box-shadow-full">
-         <div class="row">
-          <div class="col-md-6">
-           <div class="about-me pt-4 pt-md-0">
-            <div class="title-box-2">
-             <h5 class="title-left">
-              Mind Mastery Workshop
-             </h5>
-            </div>
-            <p class="lead">
-            </p>
-            <p class="lead">
-             <p>
-              You can not control what goes outside but you can always control what goes INSIDE. Hence,
-                        Yogastha is organizing a Mind Mastery workshop for you all.
-                        The workshop will be conducted by Kush Panchal who will guide you through- smart study
-                        techniques, refreshing meditation techniques, dynamic yoga sequence for youth, stress management
-                        along with QnA session. If you want to learn how to increase memory power, understand real
-                        fitness, and dance flow to set free please join the session on:
-             </p>
-             <hr/>
-             <p>
-              Details:
-             </p>
-             <p>
-              Date: 23rd Aug Oct, 2022
-             </p>
-             <p>
-              Time: 6:00-8:00 PM
-             </p>
-             <p>
-              Instructor: Dr. kush Panchal (International Yoga Tariner)
-             </p>
-             <p>
-              Venue: 3rd Floor, MPH, New Gymkhana Building, Opp. Hostel 11
-             </p>
-             <p>
-              <a href="https://forms.gle/U6nxkxmViR3nhzs97" style="color:blue;">
-               Click here to register
-              </a>
-             </p>
-             <p class="lead">
-             </p>
-            </p>
-           </div>
-          </div>
-          <div class="col-md-1">
-          </div>
-          <div class="col-md-5">
-           <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-            <div class="carousel-inner">
-             <div class="carousel-item active">
-              <img alt="..." class="d-block w-100" src="assets/img/events/Mind Mastery.jpeg"/>
-             </div>
-            </div>
-            <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleFade" type="button">
-             <span aria-hidden="true" class="carousel-control-prev-icon">
-             </span>
-             <span class="visually-hidden">
-              Previous
-             </span>
-            </button>
-            <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleFade" type="button">
-             <span aria-hidden="true" class="carousel-control-next-icon">
-             </span>
-             <span class="visually-hidden">
-              Next
-             </span>
-            </button>
-           </div>
-          </div>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-    </section>
-    <div class="container">
-     <!-- Workshop archive: older hands-on yoga and pranayama workshops. -->
-     <div class="row" id="workshops">
-      <div class="col-sm-12">
-       <div class="title-box-1">
-        <h5 class="title-left">
-         Workshops
-        </h5>
-       </div>
-       <div class="box-shadow-full">
-        <div class="row">
-         <div class="col-md-6">
-          <div class="about-me pt-4 pt-md-0">
-           <div class="title-box-2">
-            <h5 class="title-left">
-             Hath Yoga Workshops
-            </h5>
-           </div>
-           <p class="lead">
-           </p>
-           <p class="lead">
-            <p class="lead">
-             Title: Hatha Yoga : Intensive Vinyasa with Amit Srividya
-             <br/>
-             <hr/>
-             Time: 7 - 8:30 PM
-             <br/>
-             Venue: Yoga room, 3rd floor, MPH, New SAC building, Opp. Hostel 11
-             <br/>
-             Fee: INR 500/-
-            </p>
-           </p>
-           <div class="alert alert-secondary" role="alert">
-            Date : 05/03/2019 - 09/03/2019
-           </div>
-           <p class="lead">
-           </p>
-          </div>
-         </div>
-         <div class="col-md-1">
-         </div>
-         <div class="col-md-5">
-          <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-           <div class="carousel-inner">
-            <div class="carousel-item active">
-             <img alt="..." class="d-block w-100" src="assets/img/events/HW.gif"/>
-            </div>
-           </div>
-           <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleFade" type="button">
-            <span aria-hidden="true" class="carousel-control-prev-icon">
-            </span>
-            <span class="visually-hidden">
-             Previous
-            </span>
-           </button>
-           <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleFade" type="button">
-            <span aria-hidden="true" class="carousel-control-next-icon">
-            </span>
-            <span class="visually-hidden">
-             Next
-            </span>
-           </button>
-          </div>
-         </div>
-        </div>
-       </div>
-       <div class="box-shadow-full">
-        <div class="row">
-         <div class="col-md-6">
-          <div class="about-me pt-4 pt-md-0">
-           <div class="title-box-2">
-            <h5 class="title-left">
-             Pranayam Workshop
-            </h5>
-           </div>
-           <p class="lead">
-           </p>
-           <p class="lead">
-            Yogastha is back with Pranayamma and relaxtion techniques work shop in the festival season of
-                      lights and hopes and to over come the stress of End-Semister exams with wishes and good luck
-            <br/>
-            <hr/>
-            Time: 6:30 - 7:35 AM
-            <br/>
-            Venue: Yoga room, 3rd Floor, New SAC, Opp. Hostel 11.
-            <br/>
-            Contact: Shashibhushan | 9738871153 WhatsApp Image
-            <br/>
-           </p>
-           <div class="alert alert-secondary" role="alert">
-            Date : 08/11/2018
-           </div>
-           <p class="lead">
-           </p>
-          </div>
-         </div>
-         <div class="col-md-1">
-         </div>
-         <div class="col-md-5">
-          <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-           <div class="carousel-inner">
-            <div class="carousel-item active">
-             <img alt="..." class="d-block w-100" src="assets/img/events/PW.gif"/>
-            </div>
-           </div>
-           <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleFade" type="button">
-            <span aria-hidden="true" class="carousel-control-prev-icon">
-            </span>
-            <span class="visually-hidden">
-             Previous
-            </span>
-           </button>
-           <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleFade" type="button">
-            <span aria-hidden="true" class="carousel-control-next-icon">
-            </span>
-            <span class="visually-hidden">
-             Next
-            </span>
-           </button>
-          </div>
-         </div>
-        </div>
-       </div>
-       <!-- Talks archive: notable lectures and speaker sessions from previous years. -->
-       <section class="about-mf sect-pt4 route" id="talks">
-        <div class="container">
-         <div class="row">
-          <div class="col-sm-12">
-           <div class="title-box-1">
-            <h5 class="title-left">
-             Talks
-            </h5>
-           </div>
-           <div class="box-shadow-full">
-            <div class="row">
-             <div class="col-md-6">
-              <div class="about-me pt-4 pt-md-0">
-               <div class="title-box-2">
-                <h5 class="title-left">
-                 A talk by Sri M
-                </h5>
-               </div>
-               <p class="lead">
-               </p>
-               <p class="lead">
-                <p>
-                 Yogastha-The Wellness Club of IIT Bombay is happy to organise a talk on "Yoga-The Way to
-                              rejuvenate
-                              your mind &amp; body" by Sri M.
-                </p>
-                <p>
-                 Event Details
-                </p>
-                <p>
-                 Time: 5:30 pm onwards
-                </p>
-                <p>
-                 Venue: LH101
-                </p>
-                <p>
-                 LECTURE HALL COMPLEX
-                </p>
-               </p>
-               <div class="alert alert-secondary" role="alert">
-                Date : 31/8/2019
-               </div>
-               <p class="lead">
-               </p>
-              </div>
-             </div>
-             <div class="col-md-1">
-             </div>
-             <div class="col-md-5">
-              <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-               <div class="carousel-inner">
-                <div class="carousel-item active">
-                 <img alt="..." class="d-block w-100" src="assets/img/events/SRIM.gif"/>
-                </div>
-               </div>
-               <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleFade" type="button">
-                <span aria-hidden="true" class="carousel-control-prev-icon">
-                </span>
-                <span class="visually-hidden">
-                 Previous
-                </span>
-               </button>
-               <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleFade" type="button">
-                <span aria-hidden="true" class="carousel-control-next-icon">
-                </span>
-                <span class="visually-hidden">
-                 Next
-                </span>
-               </button>
-              </div>
-             </div>
-            </div>
-           </div>
-           <div class="box-shadow-full">
-            <div class="row">
-             <div class="col-md-6">
-              <div class="about-me pt-4 pt-md-0">
-               <div class="title-box-2">
-                <h5 class="title-left">
-                 Youth and Truth with Sadhguru
-                </h5>
-               </div>
-               <p class="lead">
-               </p>
-               <p class="lead">
-                Students in conversation with Sadhguru-The Yogi, mystic and visionary of modern times.
-                <hr/>
-                Day: Thursday
-                <br/>
-                Time: 5:00 PM
-                <br/>
-                Venue: Convocation hall, IITB
-               </p>
-               <div class="alert alert-secondary" role="alert">
-                Date : 20/09/2018
-               </div>
-               <p class="lead">
-               </p>
-              </div>
-             </div>
-             <div class="col-md-1">
-             </div>
-             <div class="col-md-5">
-              <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-               <div class="carousel-inner">
-                <div class="carousel-item active">
-                 <img alt="..." class="d-block w-100" src="assets/img/lectures/Sadhguru.jpg"/>
-                </div>
-               </div>
-               <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleFade" type="button">
-                <span aria-hidden="true" class="carousel-control-prev-icon">
-                </span>
-                <span class="visually-hidden">
-                 Previous
-                </span>
-               </button>
-               <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleFade" type="button">
-                <span aria-hidden="true" class="carousel-control-next-icon">
-                </span>
-                <span class="visually-hidden">
-                 Next
-                </span>
-               </button>
-              </div>
-             </div>
-            </div>
-           </div>
-           <div class="box-shadow-full">
-            <div class="row">
-             <div class="col-md-6">
-              <div class="about-me pt-4 pt-md-0">
-               <div class="title-box-2">
-                <h5 class="title-left">
-                 Talk on YOGA : The Science and Biomedical Research
-                </h5>
-               </div>
-               <p class="lead">
-               </p>
-               <p class="lead fs-6">
-                Yoga is an ancient behavioral practice that allows for the development of mind-body skills
-                              including
-                              awareness / mindfulness and self-regulation of internal physiological and psychological
-                              states. This
-                              talk will review some of the basic science underlying the psychophysiology of yoga
-                              practices and
-                              describe some of the cutting edge biomedical research studies with relevance to yoga,
-                              including
-                              research on molecular biology and brain imaging. Models of psychophysiological mechanisms
-                              of action
-                              and current areas of research will be presented. We will also overview the significant
-                              research on
-                              the benefits of yoga as a therapeutic intervention, and as a preventive medicine practice
-                              for
-                              maintaining health, wellness and well-being. Research supporting the potential of yoga as
-                              a
-                              contemplative and transformative practice that enhances unitive states of consciousness
-                              and
-                              spirituality will also be reviewed.
-               </p>
-               <hr/>
-               <p>
-                Speaker: Dr. Sat Bir Singh Khalsa, Harvard Medical School
-                <br/>
-                Time: 6:00 PM - 7:00 PM
-                <br/>
-                Venue: FC Kohli Auditorium, KReSIT Building
-               </p>
-               <div class="alert alert-secondary" role="alert">
-                Date : 05/03/2018
-               </div>
-               <p class="lead">
-               </p>
-              </div>
-             </div>
-             <div class="col-md-1">
-             </div>
-             <div class="col-md-5">
-              <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
-               <div class="carousel-inner">
-                <div class="carousel-item active">
-                 <img alt="..." class="d-block w-100" src="assets/img/events/SSK.gif"/>
-                </div>
-               </div>
-               <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleFade" type="button">
-                <span aria-hidden="true" class="carousel-control-prev-icon">
-                </span>
-                <span class="visually-hidden">
-                 Previous
-                </span>
-               </button>
-               <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleFade" type="button">
-                <span aria-hidden="true" class="carousel-control-next-icon">
-                </span>
-                <span class="visually-hidden">
-                 Next
-                </span>
-               </button>
-              </div>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-       </section>
+  <!-- Redirection and IDY 2026 links -->
+  <div class="d-flex flex-wrap justify-content-center gap-3 mt-5 mb-5">
+    <a href="old_events.html" id="btn-old-events" class="btn btn-portal-archive btn-lg px-4 py-2">
+      Explore All Past Events Archive &rarr;
+    </a>
+    <a href="idy2026/index.html" class="btn btn-portal-idy btn-lg px-4 py-2">
+      View IDY 2026 Celebrations &rarr;
+    </a>
+  </div>
+  </section>
        <!-- Contact placeholder: shared contact-cards.html is loaded here at runtime. -->
        <div id="contactSection">
        </div>
@@ -3246,8 +812,50 @@ setTheme(savedTheme);
        </script>
       </div>
      </div>
-    </div>
-   </div>
   </section>
+
+  <script>
+    // 3D Book Page-Flip Portal Transition
+    const archiveLinks = document.querySelectorAll('a[href="old_events.html"]');
+    archiveLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const dest = this.getAttribute('href');
+        const overlay = document.getElementById('book-transition-overlay');
+        const book = document.getElementById('book-element');
+        const flash = document.getElementById('portal-flash');
+        
+        if (overlay && book && flash) {
+          // 1. Show the overlay dimming background
+          overlay.classList.add('active');
+          
+          // 2. Start page flips slightly after
+          setTimeout(() => {
+            book.classList.add('book-exit-active');
+            flash.classList.add('flash-active');
+          }, 150);
+          
+          // 3. Navigate when flash is solid white
+          setTimeout(() => {
+            window.location.href = dest;
+          }, 1650);
+        } else {
+          window.location.href = dest;
+        }
+      });
+    });
+
+    // Reset animations if navigated back (e.g. browser back button)
+    window.addEventListener('pageshow', function(event) {
+      if (event.persisted) {
+        const overlay = document.getElementById('book-transition-overlay');
+        const book = document.getElementById('book-element');
+        const flash = document.getElementById('portal-flash');
+        if (overlay) overlay.classList.remove('active');
+        if (book) book.classList.remove('book-exit-active');
+        if (flash) flash.classList.remove('flash-active');
+      }
+    });
+  </script>
  </body>
 </html>

@@ -284,7 +284,7 @@ function beginQuiz(name, email, phone, affiliation) {
     showNotice("Please enter a valid 10-digit phone number.");
     return;
   }
-  
+
   if (!state.affiliation) {
     showNotice("Please select your affiliation with IITB.");
     return;
@@ -293,13 +293,13 @@ function beginQuiz(name, email, phone, affiliation) {
   const leaderboard = getLocalLeaderboard();
   const now = new Date();
   const todayDate = now.toDateString();
-  
+
   const isDuplicate = leaderboard.some(entry => {
     if (!entry.email || entry.email.toLowerCase() !== state.email.toLowerCase()) return false;
     if (!entry.submittedAt) return true; // If no date recorded, assume duplicate to be safe, or false? Let's check date.
     return new Date(entry.submittedAt).toDateString() === todayDate;
   });
-  
+
   if (isDuplicate) {
     window.alert("You have already submitted the quiz today. Please come back tomorrow!");
     return;
@@ -553,6 +553,33 @@ async function init() {
     const submitBtn = els.participantForm.querySelector('button');
     if (submitBtn) submitBtn.disabled = true;
   }
+}
+
+init();
+questions.push({
+  id: `q${questions.length + 1}`,
+  prompt: currentQuestion,
+  options: options
+});
+    }
+
+els.questionCountLabel.textContent = String(questions.length);
+updateStatus();
+bindEvents();
+
+if (restoreState()) {
+  showNotice("Your in-progress quiz was restored from this browser.");
+  setView(els.questionView);
+  renderQuestion();
+  startTimer();
+}
+  } catch (error) {
+  console.error(error);
+  showNotice("Failed to load quiz questions.");
+  els.participantName.disabled = true;
+  const submitBtn = els.participantForm.querySelector('button');
+  if (submitBtn) submitBtn.disabled = true;
+}
 }
 
 init();
